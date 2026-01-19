@@ -1,0 +1,29 @@
+topic_model.visualize_heatmap(n_clusters=30)
+# Visualize the potential hierarchical structure of topics
+topic_model.visualize_hierarchy()
+Adding a Special Lego Block
+The pipeline in BERTopic that we have explored thus far, albeit fast and modular, has
+a disadvantage: it still represents a topic through a bag-of-words without taking into
+account semantic structures.
+The solution is to leverage the strength of the bag-of-words representation, which is
+its speed to generate a meaningful representation. We can use this first meaningful
+representation and tweak it using more powerful but slower techniques, like embed‐
+ding models. As shown in Figure 5-19, we can rerank the initial distribution of words
+to improve the resulting representation. Note that this idea of reranking an initial set
+of results is a main staple in neural search, a subject that we cover in Chapter 8.
+Figure 5-19. Fine-tune the topic representations by reranking the original c-TF-IDF
+distributions.
+As a result, we can design a new Lego block, as shown in Figure 5-20, that takes in
+this first topic representation and spits out an improved representation.
+In BERTopic, such reranker models are referred to as representation models. A major
+benefit of this approach is that the optimization of topic representations only needs
+to be done as many times as we have topics. For instance, if we have millions of
+documents and a hundred topics, the representation block only needs to be applied
+once for every topic instead of for every document.
+As shown in Figure 5-21, a wide variety of representation blocks have been designed
+for BERTopic that allows you to fine-tune the representations. The representation
+block can even be stacked multiple times to fine-tune representations using different
+methodologies.
+156 
+| 
+Chapter 5: Text Clustering and Topic Modeling

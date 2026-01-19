@@ -1,0 +1,38 @@
+API Keys
+We use both open source and proprietary models throughout the examples to
+demonstrate the advantages and disadvantages of both. For the proprietary models,
+using OpenAI and Cohere’s offering, you will need to create a free account:
+OpenAI
+Click “sign up” on the site to create a free account. This account allows you to
+create an API key, which can be used to access GPT-3.5. Then, go to “
+API keys” to
+create a secret key.
+Cohere
+Register a free account on the website. Then, go to “API keys” to create a secret
+key.
+Note that with both accounts, rate limits apply and that these free API keys only allow
+for a limited number of calls per minute. Throughout all examples, we have taken
+that into account and provided local alternatives if necessary.
+For the open source models, you do not need to create an account with the exception
+of the Llama 2 model in Chapter 2. To use that model, you will need a Hugging Face
+account:
+Hugging Face
+Click “sign up” on the Hugging Face website to create a free account. Then, in
+“Settings” go to “Access Tokens” to create a token that you can use to download
+certain LLMs.
+Conventions Used in This Book
+The following typographical conventions are used in this book:
+Italic
+Indicates new terms, URLs, email addresses, filenames, and file extensions.
+Constant width
+Used for program listings, as well as within paragraphs to refer to program
+elements such as variable or function names, databases, data types, environment
+variables, statements, and keywords.
+Constant width bold
+Shows commands or other text that should be typed literally by the user.
+Constant width italic
+Shows text that should be replaced with user-supplied values or by values deter‐
+mined by context.
+Preface 
+| 
+xv

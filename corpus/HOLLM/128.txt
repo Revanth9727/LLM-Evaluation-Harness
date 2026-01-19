@@ -1,0 +1,48 @@
+Summary
+In this chapter we discussed the main intuitions of Transformers and recent develop‐
+ments that enable the latest Transformer LLMs. We went over many new concepts, so
+let’s break down the key concepts that we discussed in this chapter:
+• A Transformer LLM generates one token at a time.
+•
+• That output token is appended to the prompt, then this updated prompt is presen‐
+•
+ted to the model again for another forward pass to generate the next token.
+• The three major components of the Transformer LLM are the tokenizer, a stack of
+•
+Transformer blocks, and a language modeling head.
+• The tokenizer contains the token vocabulary for the model. The model has token
+•
+embeddings associated with those tokens. Breaking the text into tokens and then
+using the embeddings of these tokens is the first step in the token generation
+process.
+• The forward pass flows through all the stages once, one by one.
+•
+• Near the end of the process, the LM head scores the probabilities of the next
+•
+possible token. Decoding strategies inform which actual token to pick as the
+output for this generation step (sometimes it’s the most probable next token, but
+not always).
+• One reason the Transformer excels is its ability to process tokens in parallel.
+•
+Each of the input tokens flow into their individual tracks or streams of processing.
+The number of streams is the model’s “context size” and this represents the max
+number of tokens the model can operate on.
+• Because Transformer LLMs loop to generate the text one token at a time, it’s a
+•
+good idea to cache the processing results of each step so we don’t duplicate the
+processing effort (these results are stored as various matrices within the layers).
+• The majority of processing happens within Transformer blocks. These are made
+•
+up of two components. One of them is the feedforward neural network, which is
+able to store information and make predictions and interpolations from data it
+was trained on.
+• The second major component of a Transformer block is the attention layer.
+•
+Attention incorporates contextual information to allow the model to better cap‐
+ture the nuance of language.
+• Attention happens in two major steps: (1) scoring relevance and (2) combining
+•
+information.
+106 
+| 
+Chapter 3: Looking Inside Large Language Models

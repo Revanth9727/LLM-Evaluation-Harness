@@ -1,0 +1,22 @@
+CHAPTER 11
+Fine-Tuning Representation
+Models for Classification
+In Chapter 4, we used pretrained models to classify our text. We kept the pretrained
+models as they were without any modifications to them. This might make you
+wonder, what happens if we were to fine-tune them?
+If we have sufficient data, fine-tuning tends to lead to some of the best-performing
+models possible. In this chapter, we will go through several methods and applications
+for fine-tuning BERT models. “Supervised Classification” on page 323 demonstrates
+the general process of fine-tuning a classification model. Then, in “Few-Shot Classifi‐
+cation” on page 333, we look at SetFit, which is a method for efficiently fine-tuning
+a high-performing model using a small number of training examples. In “Continued
+Pretraining with Masked Language Modeling” on page 340, we will explore how to
+continue training a pretrained model. Lastly, classification on a token level is explored
+in “Named-Entity Recognition” on page 345.
+We will focus on nongenerative tasks, as generative models will be covered in
+Chapter 12.
+Supervised Classification
+In Chapter 4, we explored supervised classification tasks by leveraging pretrained
+representation models that were either trained to predict sentiment (task-specific
+model) or to generate embeddings (embedding model), as shown in Figure 11-1.
+323

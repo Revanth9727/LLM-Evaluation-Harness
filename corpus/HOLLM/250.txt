@@ -1,0 +1,19 @@
+Semantic Search with Language Models
+Let’s now dive into more detail on the major categories of systems that can upgrade
+the search capabilities of our language models. We’ll start with dense retrieval and
+then move on through reranking and RAG.
+Dense Retrieval
+Recall that embeddings turn text into numeric representations. Those can be thought
+of as points in space, as we can see in Figure 8-4. Points that are close together mean
+that the text they represent is similar. So in this example, text 1 and text 2 are more
+similar to each other (because they are near each other) than text 3 (because it’s
+farther away).
+Figure 8-4. The intuition of embeddings: each text is a point and texts with similar
+meaning are close to each other.
+This is the property that is used to build search systems. In this scenario, when a user
+enters a search query, we embed the query, thus projecting it into the same space as
+our text archive. Then we simply find the nearest documents to the query in that
+space, and those would be the search results (Figure 8-5).
+228 
+| 
+Chapter 8: Semantic Search and Retrieval-Augmented Generation

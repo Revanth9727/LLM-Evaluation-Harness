@@ -1,0 +1,22 @@
+There are 12 (0–11) encoder blocks consisting of attention heads, dense networks,
+and layer normalization. We further illustrate this architecture in Figure 11-4 to
+demonstrate everything that could be potentially frozen. On top of that, we have our
+classification head.
+Figure 11-4. The basic architecture of BERT with the additional classification head.
+We could choose to only freeze certain layers to speed up computing but still allow
+the main model to learn from the classification task. Generally, we want frozen layers
+to be followed by trainable layers.
+We are going to freeze everything except for the classification head as we did in
+Chapter 2:
+for name, param in model.named_parameters():
+     # Trainable classification head
+     if name.startswith("classifier"):
+        param.requires_grad = True
+      # Freeze everything else
+     else:
+        param.requires_grad = False
+As shown in Figure 11-5, we have frozen everything except for the feedforward
+neural network, which is our classification head.
+Supervised Classification 
+| 
+329

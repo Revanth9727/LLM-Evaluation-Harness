@@ -1,0 +1,40 @@
+Merge Weights
+After we have trained our QLoRA weights, we still need to combine them with the
+original weights to use them. We reload the model in 16 bits, instead of the quantized
+4 bits, to merge the weights. Although the tokenizer was not updated during training,
+we save it to the same folder as the model for easier access:
+from peft import AutoPeftModelForCausalLM
+model = AutoPeftModelForCausalLM.from_pretrained(
+    "TinyLlama-1.1B-qlora",
+    low_cpu_mem_usage=True,
+    device_map="auto",
+)
+# Merge LoRA and base model
+merged_model = model.merge_and_unload()
+After merging the adapter with the base model, we can use it with the prompt
+template that we defined earlier:
+from transformers import pipeline
+# Use our predefined prompt template
+prompt = """<|user|>
+Tell me something about Large Language Models.</s>
+<|assistant|>
+"""
+# Run our instruction-tuned model
+pipe = pipeline(task="text-generation", model=merged_model, tokenizer=tokenizer)
+print(pipe(prompt)[0]["generated_text"])
+Large Language Models (LLMs) are artificial intelligence (AI) models that 
+learn language and understand what it means to say things in a particular 
+language. They are trained on huge amounts of text…
+The aggregate output shows that the model now closely follows our instructions,
+which is not possible with the base model.
+Evaluating Generative Models
+Evaluating generative models poses a significant challenge. Generative models are
+used across many diverse use cases, making it a challenge to rely on a singular metric
+for judgment. Unlike more specialized models, a generative model’s ability to solve
+mathematical questions does not guarantee success in solving coding questions.
+At the same time, evaluating these models is vital, particularly in production settings
+where consistency is important. Given their probabilistic nature, generative models
+do not necessarily generate consistent outputs; there is a need for robust evaluation.
+Evaluating Generative Models 
+| 
+373

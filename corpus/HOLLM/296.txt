@@ -1,0 +1,29 @@
+5 Junnan Li et al. “BLIP-2: Bootstrapping language-image pretraining with frozen image encoders and large
+language models.” International Conference on Machine Learning. PMLR, 2023.
+Instead of building the architecture from scratch, BLIP-2 bridges the vision-language
+gap by building a bridge, named the Querying Transformer (Q-Former), that con‐
+nects a pretrained image encoder and a pretrained LLM.5
+By leveraging pretrained models, BLIP-2 only needs to train the bridge without
+needing to train the image encoder and LLM from scratch. It makes great use of
+the technology and models that are already out there! This bridge is illustrated in
+Figure 9-16.
+Figure 9-16. The Querying Transformer is the bridge between vision (ViT) and text
+(LLM) that is the only trainable component of the pipeline.
+To connect the two pretrained models, the Q-Former mimics their architectures. It
+has two modules that share their attention layers:
+• An Image Transformer to interact with the frozen Vision Transformer for feature
+•
+extraction
+• A Text Transformer that can interact with the LLM
+•
+The Q-Former is trained in two stages, one for each modality, as illustrated in
+Figure 9-17.
+In step 1, image-document pairs are used to train the Q-Former to represent both
+images and text. These pairs are generally captions of images, as we have seen before
+when training CLIP.
+The images are fed to the frozen ViT to extract vision embeddings. These embed‐
+dings are used as the input of Q-Former’s ViT. The captions are used as the input of
+Q-Former’s Text Transformer.
+274 
+| 
+Chapter 9: Multimodal Large Language Models

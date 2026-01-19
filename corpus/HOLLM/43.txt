@@ -1,0 +1,6 @@
+Figure 1-24. The architecture of a GPT-1. It uses a decoder-only architecture and
+removes the encoder-attention block.
+Figure 1-25. GPT models quickly grew in size with each iteration.
+A Recent History of Language AI 
+| 
+21

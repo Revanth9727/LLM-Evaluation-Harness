@@ -1,0 +1,41 @@
+5 Niklas Muennighoff et al. “MTEB: Massive Text Embedding Benchmark.” arXiv preprint arXiv:2210.07316
+(2022).
+After training our model, we can use the evaluator to get the performance on this
+single task:
+# Evaluate our trained model
+evaluator(embedding_model)
+{'pearson_cosine': 0.5982288436666162,
+ 'spearman_cosine': 0.6026682018489217,
+ 'pearson_manhattan': 0.6100690915500567,
+ 'spearman_manhattan': 0.617732600131989,
+ 'pearson_euclidean': 0.6079280934202278,
+ 'spearman_euclidean': 0.6158926913905742,
+ 'pearson_dot': 0.38364924527804595,
+ 'spearman_dot': 0.37008497926991796,
+ 'pearson_max': 0.6100690915500567,
+ 'spearman_max': 0.617732600131989}
+We get several different distance measures. The one we are interested in most is
+'pearson_cosine', which is the cosine similarity between centered vectors. It is a
+value between 0 and 1 where a higher value indicates higher degrees of similarity. We
+get a value of 0.59, which we consider a baseline throughout this chapter.
+Larger batch sizes tend to work better with multiple negative rank‐
+ings (MNR) loss as a larger batch makes the task more difficult.
+The reason for this is that the model needs to find the best match‐
+ing sentence from a larger set of potential pairs of sentences. You
+can adapt the code to try out different batch sizes and get a feeling
+of its effects.
+In-Depth Evaluation
+A good embedding model is more than just a good score on the STSB benchmark! As
+we observed earlier, the GLUE benchmark has a number of tasks for which we can
+evaluate our embedding model. However, there exist many more benchmarks that
+allow for the evaluation of embedding models. To unify this evaluation procedure,
+the Massive Text Embedding Benchmark (MTEB) was developed.5 The MTEB spans
+8 embedding tasks that cover 58 datasets and 112 languages.
+To publicly compare state-of-the-art embedding models, a leaderboard was created
+with the scores of each embedding model across all tasks:
+from mteb import MTEB
+# Choose evaluation task
+evaluation = MTEB(tasks=["Banking77Classification"])
+300 
+| 
+Chapter 10: Creating Text Embedding Models

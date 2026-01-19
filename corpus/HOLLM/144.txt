@@ -1,0 +1,27 @@
+6 Nils Reimers and Iryna Gurevych. “Sentence-BERT: Sentence embeddings using Siamese BERT-networks.”
+arXiv preprint arXiv:1908.10084 (2019).
+We can perform this step with sentence-transformer, a popular package for lever‐
+aging pretrained embedding models.6 Creating the embeddings is straightforward:
+from sentence_transformers import SentenceTransformer
+# Load model
+model = SentenceTransformer("sentence-transformers/all-mpnet-base-v2")
+# Convert text to embeddings
+train_embeddings = model.encode(data["train"]["text"], show_progress_bar=True)
+test_embeddings = model.encode(data["test"]["text"], show_progress_bar=True)
+As we covered in Chapter 1, these embeddings are numerical representations of the
+input text. The number of values, or dimension, of the embedding depends on the
+underlying embedding model. Let’s explore that for our model:
+train_embeddings.shape
+(8530, 768)
+This shows that each of our 8,530 input documents has an embedding dimension of
+768 and therefore each embedding contains 768 numerical values.
+In the second step, these embeddings serve as the input features to the classifier illus‐
+trated in Figure 4-12. The classifier is trainable and not limited to logistic regression
+and can take on any form as long as it performs classification.
+Figure 4-12. Using the embeddings as our features, we train a logistic regression model
+on our training data.
+We will keep this step straightforward and use a logistic regression as the classifier. To
+train it, we only need to use the generated embeddings together with our labels:
+122 
+| 
+Chapter 4: Text Classification

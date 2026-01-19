@@ -1,0 +1,19 @@
+About the Authors
+Jay Alammar is Director and Engineering Fellow at Cohere (pioneering provider of
+large language models as an API). In this role, he advises and educates enterprises
+and the developer community on using language models for practical use cases.
+Through his popular AI/ML blog, Jay has helped millions of researchers and engi‐
+neers visually understand machine learning tools and concepts from the basic (end‐
+ing up in the documentation of packages like NumPy and pandas) to the cutting-edge
+(Transformers, BERT, GPT-3, Stable Diffusion). Jay is also a co-creator of popular
+machine learning and natural language processing courses on Deeplearning.ai and
+Udacity.
+Maarten Grootendorst is a Senior Clinical Data Scientist at IKNL (Netherlands
+Comprehensive Cancer Organization). He holds master’s degrees in organizational
+psychology, clinical psychology, and data science, which he leverages to communicate
+complex machine learning concepts to a wide audience. With his popular blogs,
+he has reached millions of readers by explaining the fundamentals of artificial intelli‐
+gence—often from a psychological point of view. He is the author and maintainer
+of several open source packages that rely on the strength of large language models,
+such as BERTopic, PolyFuzz, and KeyBERT. His packages are downloaded millions of
+times and used by data professionals and organizations worldwide.

@@ -1,0 +1,37 @@
+1. Fine-tune a cross-encoder (BERT) using a small, annotated dataset (gold
+1.
+dataset).
+2. Create new sentence pairs.
+2.
+3. Label new sentence pairs with the fine-tuned cross-encoder (silver dataset).
+3.
+4. Train a bi-encoder (SBERT) on the extended dataset (gold + silver dataset).
+4.
+Here, a gold dataset is a small but fully annotated dataset that holds the ground truth.
+A silver dataset is also fully annotated but is not necessarily the ground truth as it was
+generated through predictions of the cross-encoder.
+Figure 10-12. Augmented SBERT works through training a cross-encoder on a small
+gold dataset, then using that to label an unlabeled dataset to generate a larger silver
+dataset. Finally, both the gold and silver datasets are used to train the bi-encoder.
+Before we get into the preceding steps, let’s first prepare the data. Instead of our
+original 50,000 documents, we take a subset of 10,000 documents to simulate a
+setting where we have limited annotated data. As we did in our example with cosine
+similarity loss, give entailment a score of 1 whereas neutral and contradiction get a
+score of 0:
+import pandas as pd
+from tqdm import tqdm
+from datasets import load_dataset, Dataset
+from sentence_transformers import InputExample
+from sentence_transformers.datasets import NoDuplicatesDataLoader
+# Prepare a small set of 10000 documents for the cross-encoder
+dataset = load_dataset("glue", "mnli", split="train").select(range(10_000))
+mapping = {2: 0, 1: 0, 0:1}
+# Data loader
+gold_examples = [
+    InputExample(texts=[row["premise"], row["hypothesis"]], label=map
+ping[row["label"]])
+    for row in tqdm(dataset)
+]
+312 
+| 
+Chapter 10: Creating Text Embedding Models

@@ -1,0 +1,41 @@
+The Modularity of BERTopic
+The modularity of BERTopic has another advantage: it allows it to be used and
+adapted to different use cases using the same base model. For instance, BERTopic
+supports a wide variety of algorithmic variants:
+• Guided topic modeling
+•
+• (Semi-)supervised topic modeling
+•
+• Hierarchical topic modeling
+•
+• Dynamic topic modeling
+•
+• Multimodal topic modeling
+•
+• Multi-aspect topic modeling
+•
+• Online and incremental topic modeling
+•
+• Zero-shot topic modeling
+•
+• Etc.
+•
+The modularity and algorithmic flexibility are the foundation of the author’s aim to
+make BERTopic the one-stop-shop for topic modeling. You can find a full overview of
+its capabilities in the documentation or the repository.
+To run BERTopic with our ArXiv dataset, we can use our previously defined models
+and embeddings (although it is not mandatory):
+from bertopic import BERTopic
+# Train our model with our previously defined models
+topic_model = BERTopic(
+    embedding_model=embedding_model,
+    umap_model=umap_model,
+    hdbscan_model=hdbscan_model,
+    verbose=True
+).fit(abstracts, embeddings)
+Let us start by exploring the topics that were created. The get_topic_info() method
+is useful to get a quick description of the topics that we found:
+topic_model.get_topic_info()
+152 
+| 
+Chapter 5: Text Clustering and Topic Modeling

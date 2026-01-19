@@ -1,0 +1,25 @@
+1 Nils Reimers and Iryna Gurevych. “Sentence-BERT: Sentence embeddings using Siamese BERT-networks.”
+arXiv preprint arXiv:1908.10084 (2019).
+Figure 2-10. In step 1, we use the embedding model to extract the features and convert
+the input text to embeddings.
+There are multiple ways of producing a text embedding vector. One of the most
+common ways is to average the values of all the token embeddings produced by the
+model. Yet high-quality text embedding models tend to be trained specifically for text
+embedding tasks.
+We can produce text embeddings with sentence-transformers, a popular package
+for leveraging pretrained embedding models.1 The package, like transformers in the
+previous chapter, can be used to load publicly available models. To illustrate creating
+embeddings, we use the all-mpnet-base-v2 model. Note that in Chapter 4, we will
+further explore how you can choose an embedding model for your task.
+from sentence_transformers import SentenceTransformer
+# Load model
+model = SentenceTransformer("sentence-transformers/all-mpnet-base-v2")
+# Convert text to text embeddings
+vector = model.encode("Best movie ever!")
+The number of values, or the dimensions, of the embedding vector depends on the
+underlying embedding model. Let’s explore that for our model:
+vector.shape
+(768,)
+62 
+| 
+Chapter 2: Tokens and Embeddings

@@ -1,0 +1,26 @@
+1 Patrick Lewis et al. “Retrieval-augmented generation for knowledge-intensive NLP tasks.” Advances in Neural
+Information Processing Systems 33 (2020): 9459–9474.
+Figure 8-23. The mean average precision takes into consideration the average precision
+score of a system for every query in the test suite. By averaging them, it produces a single
+metric that we can use to compare a search system against another.
+You may be wondering why the same operation is called “mean” and “average.” It’s
+likely an aesthetic choice because MAP sounds better than average average precision.
+Now we have a single metric that we can use to compare different systems. If you
+want to learn more about evaluation metrics, see the “Evaluation in Information
+Retrieval” chapter of Introduction to Information Retrieval (Cambridge University
+Press) by Christopher D. Manning, Prabhakar Raghavan, and Hinrich Schütze.
+In addition to mean average precision, another metric commonly used for search
+systems is normalized discounted cumulative gain (nDCG), which is more nuanced
+in that the relevance of documents is not binary (relevant versus not relevant) and
+one document can be labeled as more relevant than another in the test suite and
+scoring mechanism.
+Retrieval-Augmented Generation (RAG)
+The mass adoption of LLMs quickly led to people asking them questions and
+expecting factual answers. While the models can answer some questions correctly,
+they also confidently answer lots of questions incorrectly. The leading method the
+industry turned to remedy this behavior is RAG, described in the paper “Retrieval-
+Augmented Generation for Knowledge-Intensive NLP Tasks” (2020)1 and illustrated
+in Figure 8-24.
+Retrieval-Augmented Generation (RAG) 
+| 
+249

@@ -1,0 +1,44 @@
+Since we are loading a new model, it is advised to restart the notebook. That will clear
+any previous models and empty the VRAM. You can also run the following to empty
+the VRAM:
+import gc
+import torch
+del model, tokenizer, pipe
+# Flush memory
+gc.collect()
+torch.cuda.empty_cache()
+Now that we have cleared the memory, we can load Phi-3. We set n_gpu_layers to
+-1 to indicate that we want all layers of the model to be run from the GPU. The
+n_ctx refers to the context size of the model. The repo_id and filename refer to the
+Hugging Face repository where the model resides:
+from llama_cpp.llama import Llama
+# Load Phi-3
+llm = Llama.from_pretrained(
+    repo_id="microsoft/Phi-3-mini-4k-instruct-gguf",
+    filename="*fp16.gguf",
+    n_gpu_layers=-1,
+    n_ctx=2048,
+    verbose=False
+)
+To generate the output using the internal JSON grammar, we only need to specify the
+response_format as a JSON object. Under the hood, it will apply a JSON grammar to
+make sure the output adheres to that format.
+To illustrate, let’s ask the model to create an RPG character in JSON format to be used
+in a Dungeons & Dragons session:
+# Generate output
+output = llm.create_chat_completion(
+    messages=[
+        {"role": "user", "content": "Create a warrior for an RPG in JSON for
+mat."},
+    ],
+    response_format={"type": "json_object"},
+    temperature=0,
+)['choices'][0]['message']["content"]
+To check whether the output actually is JSON, we can attempt to process it as such:
+import json
+# Format as json
+json_output = json.dumps(json.loads(output), indent=4)
+print(json_output)
+196 
+| 
+Chapter 6: Prompt Engineering

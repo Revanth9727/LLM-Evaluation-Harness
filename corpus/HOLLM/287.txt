@@ -1,0 +1,28 @@
+3 Alec Radford et al. “Learning transferable visual models from natural language supervision.” International
+Conference on Machine Learning. PMLR, 2021.
+4 Robin Rombach et al. “High-resolution image synthesis with latent diffusion models.” Proceedings of the
+IEEE/CVF Conference on Computer Vision and Pattern Recognition, 2022.
+CLIP: Connecting Text and Images
+CLIP is an embedding model that can compute embeddings of both images and texts.
+The resulting embeddings lie in the same vector space, which means that the embed‐
+dings of images can be compared with the embeddings of text.3 This comparison
+capability makes CLIP, and similar models, usable for tasks such as:
+Zero-shot classification
+We can compare the embedding of an image with that of the description of its
+possible classes to find which class is most similar.
+Clustering
+Cluster both images and a collection of keywords to find which keywords belong
+to which sets of images.
+Search
+Across billions of texts or images, we can quickly find what relates to an input
+text or image.
+Generation
+Use multimodal embeddings to drive the generation of images (e.g., stable
+diffusion4).
+How Can CLIP Generate Multimodal Embeddings?
+The procedure of CLIP is actually quite straightforward. Imagine that you have a
+dataset with millions of images alongside captions as we illustrate in Figure 9-8.
+Figure 9-8. The type of data that is needed to train a multimodal embedding model.
+Multimodal Embedding Models 
+| 
+265

@@ -1,0 +1,17 @@
+Figure 8-18. Looking at the relevance judgments from our test suite, we can see that
+system 1 did a better job than system 2.
+This shows us a clear case where system 1 is better than system 2. Intuitively, we may
+just count how many relevant results each system retrieved. System 1 got two out of
+three correct, and system 2 got only one out of three correct. But what about a case
+like Figure 8-19 where both systems only get one relevant result out of three, but
+they’re in different positions?
+Figure 8-19. We need a scoring system that rewards system 1 for assigning a high
+position to a relevant result—even though both systems retrieved only one relevant result
+in their top three results.
+In this case, we can intuit that system 1 did a better job than system 2 because the
+result in the first position (the most important position) is correct. But how can we
+assign a number or score to how much better that result is? Mean average precision is
+a measure that is able to quantify this distinction.
+246 
+| 
+Chapter 8: Semantic Search and Retrieval-Augmented Generation

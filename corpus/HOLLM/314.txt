@@ -1,0 +1,35 @@
+1 Alan Garfinkel. Forms of Explanation: Rethinking the Questions in Social Theory. Yale University Press (1982).
+2 Tim Miller. “Contrastive explanation: A structural-model approach.” The Knowledge Engineering Review 36
+(2021): e14.
+similar to the word2vec method from Chapter 2. We have seen this notion previously
+in Figures 10-2 and 10-3.
+The underlying idea of contrastive learning is that the best way to learn and model
+similarity/dissimilarity between documents is by feeding a model examples of similar
+and dissimilar pairs. In order to accurately capture the semantic nature of a docu‐
+ment, it often needs to be contrasted with another document for a model to learn
+what makes it different or similar. This contrasting procedure is quite powerful and
+relates to the context in which documents are written. This high-level procedure is
+demonstrated in Figure 10-4.
+Figure 10-4. Contrastive learning aims to teach an embedding model whether docu‐
+ments are similar or dissimilar. It does so by presenting groups of documents to a model
+that are similar or dissimilar to a certain degree.
+Another way to look at contrastive learning is through the nature of explanations. A
+nice example of this is an anecdotal story of a reporter asking a robber “Why did you
+rob a bank?” to which he answers, “Because that is where the money is.”1 Although
+a factually correct answer, the intent of the question was not why he robs banks
+specifically but why he robs at all. This is called contrastive explanation and refers to
+understanding a particular case, “Why P?” in contrast to alternatives, “Why P and not
+Q?”2 In the example, the question could be interpreted in a number of ways and may
+be best modeled by providing an alternative: “Why did you rob a bank (P) instead of
+obeying the law (Q)?”
+The importance of alternatives to the understanding of a question also applies to how
+an embedding learns through contrastive learning. By showing a model similar and
+dissimilar pairs of documents, it starts to learn what makes something similar/dissim‐
+ilar and more importantly, why.
+For example, you could teach a model to understand what a dog is by letting it
+find features such as “tail,” “nose,” “four legs,” etc. This learning process can be quite
+difficult since features are often not well-defined and can be interpreted in a number
+of ways. A being with a “tail,” “nose,” and “four legs” can also be a cat. To help the
+292 
+| 
+Chapter 10: Creating Text Embedding Models

@@ -1,0 +1,21 @@
+Figure 10-1. We use an embedding model to convert textual input, such as documents,
+sentences, and phrases, to numerical representations, called embeddings.
+This process of embedding the input is typically performed by an LLM, which we
+refer to as an embedding model. The main purpose of such a model is to be as accurate
+as possible in representing the textual data as an embedding.
+However, what does it mean to be accurate in representation? Typically, we want to
+capture the semantic nature—the meaning—of documents. If we can capture the core
+of what the document communicates, we hope to have captured what the document
+is about. In practice, this means that we expect vectors of documents that are similar
+to one another to be similar, whereas the embeddings of documents that each discuss
+something entirely different should be dissimilar. We’ve seen this idea of semantic
+similarity several times already in this book, and it is visualized in Figure 10-2. This
+figure is a simplified example. While two-dimensional visualization helps illustrate
+the proximity and similarity of embeddings, these embeddings typically reside in
+high-dimensional spaces.
+Figure 10-2. The idea of semantic similarity is that we expect textual data with similar
+meanings to be closer to each other in n-dimensional space (two dimensions are illustra‐
+ted here).
+290 
+| 
+Chapter 10: Creating Text Embedding Models

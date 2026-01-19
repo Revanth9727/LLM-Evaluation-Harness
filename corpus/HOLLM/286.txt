@@ -1,0 +1,14 @@
+Figure 9-6. Multimodal embedding models can create embeddings for multiple modali‐
+ties in the same vector space.
+An advantage is that this allows for comparing multimodal representations since the
+resulting embeddings lie in the same vector space (Figure 9-7). For instance, using
+such a multimodal embedding model, we can find images based on input text. What
+images would we find if we search for images similar to “pictures of a puppy”? Vice
+versa would also be possible. Which documents are best related to this question?
+Figure 9-7. Despite having coming from different modalities, embeddings with similar
+meaning will be close to each other in vector space.
+There are a number of multimodal embedding models, but the most well-known and
+currently most-used model is Contrastive Language-Image Pre-training (CLIP).
+264 
+| 
+Chapter 9: Multimodal Large Language Models

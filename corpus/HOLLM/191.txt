@@ -1,0 +1,37 @@
+tokenizer=tokenizer,
+    return_full_text=False,
+    max_new_tokens=500,
+    do_sample=False,
+)
+Compared to previous chapters, we will take a closer look at developing and using the
+prompt template.
+To illustrate, let’s revisit the example from Chapter 1 where we asked the LLM to
+make a joke about chickens:
+# Prompt
+messages = [
+    {"role": "user", "content": "Create a funny joke about chickens."}
+]
+# Generate the output
+output = pipe(messages)
+print(output[0]["generated_text"])
+Why don't chickens like to go to the gym? Because they can't crack the egg-
+sistence of it!
+Under the hood, transformers.pipeline first converts our messages into a specific
+prompt template. We can explore this process by accessing the underlying tokenizer:
+# Apply prompt template
+prompt = pipe.tokenizer.apply_chat_template(messages, tokenize=False)
+print(prompt)
+<s><|user|>
+Create a funny joke about chickens.<|end|>
+<|assistant|>
+You may recognize the special tokens <|user|> and <|assistant|> from Chapter 2.
+This prompt template, further illustrated in Figure 6-2, was used during the training
+of the model. Not only does it provide information about who said what, but it is also
+used to indicate when the model should stop generating text (see the <|end|> token).
+This prompt is passed directly to the LLM and processed all at once.
+In the next chapter, we will customize parts of this template ourselves. Throughout
+this chapter, we can use transformers.pipeline to handle chat template processing
+for us. Next, let us explore how we can control the output of the model.
+Using Text Generation Models 
+| 
+169

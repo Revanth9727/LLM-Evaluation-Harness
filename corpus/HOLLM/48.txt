@@ -1,0 +1,31 @@
+14 Hugo Touvron et al. “Llama 2: Open foundation and fine-tuned chat models.” arXiv preprint arXiv:2307.09288
+(2023).
+Creating LLMs, in contrast, typically consists of at least two steps:
+Language modeling
+The first step, called pretraining, takes the majority of computation and training
+time. An LLM is trained on a vast corpus of internet text allowing the model
+to learn grammar, context, and language patterns. This broad training phase is
+not yet directed toward specific tasks or applications beyond predicting the next
+word. The resulting model is often referred to as a foundation model or base
+model. These models generally do not follow instructions.
+Fine-tuning
+The second step, fine-tuning or sometimes post-training, involves using the previ‐
+ously trained model and further training it on a narrower task. This allows the
+LLM to adapt to specific tasks or to exhibit desired behavior. For example, we
+could fine-tune a base model to perform well on a classification task or to follow
+instructions. It saves massive amounts of resources because the pretraining phase
+is quite costly and generally requires data and computing resources that are
+out of the reach of most people and organizations. For instance, Llama 2 has
+been trained on a dataset containing 2 trillion tokens.14 Imagine the compute
+necessary to create that model! In Chapter 12, we will go over several methods
+for fine-tuning foundation models on your dataset.
+Any model that goes through the first step, pretraining, we consider a pretrained
+model, which also includes fine-tuned models. This two-step approach of training is
+visualized in Figure 1-30.
+Figure 1-30. Compared to traditional machine learning, LLM training takes a multistep
+approach.
+Additional fine-tuning steps can be added to further align the model with the user’s
+preferences, as we will explore in Chapter 12.
+26 
+| 
+Chapter 1: An Introduction to Large Language Models

@@ -1,0 +1,41 @@
+We’ll start by creating this prompt:
+# Create an updated prompt template to include a chat history
+template = """<s><|user|>Current conversation:{chat_history}
+{input_prompt}<|end|>
+<|assistant|>"""
+prompt = PromptTemplate(
+    template=template,
+    input_variables=["input_prompt", "chat_history"]
+)
+Notice that we added an additional input variable, namely chat_history. This is
+where the conversation history will be given before we ask the LLM our question.
+Next, we can create LangChain’s ConversationBufferMemory and assign it to the
+chat_history input variable. ConversationBufferMemory will store all the conversa‐
+tions we have had with the LLM thus far.
+We put everything together and chain the LLM, memory, and prompt template:
+from langchain.memory import ConversationBufferMemory
+# Define the type of memory we will use
+memory = ConversationBufferMemory(memory_key="chat_history")
+# Chain the LLM, prompt, and memory together
+llm_chain = LLMChain(
+    prompt=prompt,
+    llm=llm,
+    memory=memory
+)
+To explore whether we did this correctly, let’s create a conversation history with the
+LLM by asking it a simple question:
+# Generate a conversation and ask a basic question
+llm_chain.invoke({"input_prompt": "Hi! My name is Maarten. What is 1 + 1?"})
+{'input_prompt': 'Hi! My name is Maarten. What is 1 + 1?',
+ 'chat_history': ',
+ 'text': " Hello Maarten! The answer to 1 + 1 is 2. Hope you're having a great 
+day!"}
+You can find the generated text in the 'text' key, the input prompt in 'in
+put_prompt', and the chat history in 'chat_history'. Note that since this is the
+first time we used this specific chain, there is no chat history.
+Next, let’s follow up by asking the LLM if it remembers the name we used:
+# Does the LLM remember the name we gave it?
+llm_chain.invoke({"input_prompt": "What is my name?"})
+Memory: Helping LLMs to Remember Conversations 
+| 
+211

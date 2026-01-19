@@ -1,0 +1,32 @@
+Advanced RAG Techniques
+There are several additional techniques to improve the performance of RAG systems.
+Some of them are laid out here.
+Query rewriting
+If the RAG system is a chatbot, the preceding simple RAG implementation would
+likely struggle with the search step if a question is too verbose, or to refer to context
+in previous messages in the conversation. This is why it’s a good idea to use an
+LLM to rewrite the query into one that aids the retrieval step in getting the right
+information. An example of this is a message such as:
+User Question: “We have an essay due tomorrow. We have to write about some animal.
+I love penguins. I could write about them. But I could also write about dolphins. Are
+they animals? Maybe. Let’s do dolphins. Where do they live for example?”
+This should actually be rewritten into a query like:
+Query: “Where do dolphins live”
+This rewriting behavior can be done through a prompt (or through an API call).
+Cohere’s API, for example, has a dedicated query-rewriting mode for co.chat.
+Multi-query RAG
+The next improvement we can introduce is to extend the query rewriting to be able to
+search multiple queries if more than one is needed to answer a specific question. Take
+for example:
+User Question: “Compare the financial results of Nvidia in 2020 vs. 2023”
+We may find one document that contains the results for both years, but more likely,
+we’re better off making two search queries:
+Query 1: “Nvidia 2020 financial results”
+Query 2: “Nvidia 2023 financial results”
+We then present the top results of both queries to the model for grounded generation.
+An additional small improvement here is to also give the query rewriter the option to
+determine if no search is required and if it can directly generate a confident answer
+without searching.
+Retrieval-Augmented Generation (RAG) 
+| 
+255

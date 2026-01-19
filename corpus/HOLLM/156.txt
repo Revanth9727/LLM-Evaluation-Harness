@@ -1,0 +1,40 @@
+Next, we will need to create a template to ask the model to perform the classification:
+# Define a prompt template as a base
+prompt = """Predict whether the following document is a positive or negative 
+movie review:
+[DOCUMENT]
+If it is positive return 1 and if it is negative return 0. Do not give any 
+other answers.
+"""
+# Predict the target using GPT
+document = "unpretentious , charming , quirky , original"
+chatgpt_generation(prompt, document)
+This template is merely an example and can be changed however you want. For now,
+we kept it as simple as possible to illustrate how to use such a template.
+Before you use this over a potentially large dataset, it is important to always keep
+track of your usage. External APIs such as OpenAI’s offering can quickly become
+costly if you perform many requests. At the time of writing, running our test dataset
+using the “gpt-3.5-turbo-0125” model costs 3 cents, which is covered by the free
+account, but this might change in the future.
+When dealing with external APIs, you might run into rate limit
+errors. These appear when you call the API too often as some APIs
+might limit the rate with which you can use it per minute or hour.
+To prevent these errors, we can implement several methods for
+retrying the request, including something referred to as exponential
+backoff. It performs a short sleep each time we hit a rate limit
+error and then retries the unsuccessful request. Whenever it is
+unsuccessful again, the sleep length is increased until the request is
+successful or we hit a maximum number of retries.
+To use it with OpenAI, there is a great guide that can help you get
+started.
+Next, we can run this for all reviews in the test dataset to get its predictions. You can
+skip this if you want to save your (free) credits for other tasks.
+# You can skip this if you want to save your (free) credits
+predictions = [
+    chatgpt_generation(prompt, doc) for doc in tqdm(data["test"]["text"])
+]
+Like the previous example, we need to convert the output from strings to integers to
+evaluate its performance:
+134 
+| 
+Chapter 4: Text Classification

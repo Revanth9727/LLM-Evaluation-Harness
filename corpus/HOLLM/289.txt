@@ -1,0 +1,8 @@
+Figure 9-10. In the second step of training CLIP, the similarity between the sentence and
+image embedding is calculated using cosine similarity.
+Figure 9-11. In the third step of training CLIP, the text and image encoders are updated
+to match what the intended similarity should be. This updates the embeddings such that
+they are closer in vector space if the inputs are similar.
+Multimodal Embedding Models 
+| 
+267

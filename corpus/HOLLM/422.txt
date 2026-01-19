@@ -1,0 +1,99 @@
+chain prompting, 182-184
+in-context learning, 180-182
+instruction-based prompting, 175-177
+output verification, 191-197
+constrained sampling, 194-197
+providing examples, 192
+potential complexity of prompts, 177-179
+prompt components, 173-175
+reasoning with generative models, 184-191
+text generation models, 167-172
+choosing, 167
+controlling output, 170-172
+loading, 168-169
+Proximal Policy Optimization (PPO), 383
+Python, learning about, xii
+Q
+Q-Former (Querying Transformer), 274-277
+Q8 model, 201
+QLoRA (quantized low-rank adaptation),
+367-373
+fine-tuning, 372
+LoRA configuration, 370
+merging weights, 373
+model quantization, 369
+templating instruction data, 367
+training configuration, 371
+quantization, 201, 364-367
+quantization_config parameter, 371
+quantized low-rank adaptation (see QLoRA)
+Querying Transformer (Q-Former), 274-277
+R
+r parameter, 370
+RAG (retrieval-augmented generation), 57, 63,
+227, 249-257
+agentic RAG, 256
+basic pipeline, 249
+converting search system to, 250
+evaluating results, 257
+grounded generation, 252
+with local models, 252-254
+multi-hop RAG, 256
+multi-query RAG, 255
+query rewriting, 255
+query routing, 256
+Ragas, 257
+random_state parameter, 142
+rate limit errors, 134
+ReAct
+in LangChain, 221-223
+step-by-step reasoning, 219
+reasoning
+with generative models, 184-191
+chain-of-thought, 185-188
+self-consistency, 188
+tree-of-thought, 189-191
+step-by-step, 219, 221
+recall predictions, confusion matrices, 119
+recency effect, 177
+recommendation systems, 67-70
+recurrent neural networks (RNNs), 11
+reduce_outliers() function, 153
+regulation, 28
+relevance scoring, 90, 92-94, 104
+repository, xiv
+representation models, 18-20
+defined, 7
+fine-tuning for classification, 323-354
+few-shot classification, 333-339
+masked language modeling, 340-345
+named-entity recognition, 345-353
+supervised classification, 323-332
+generative models versus, 20
+text classification, 113-126
+classification tasks that leverage embed‐
+dings, 120-126
+model selection, 115-116
+task-specific models, 116
+representation_model parameter, 161
+reranking, 226, 240-244
+BERTopic, 156
+example of, 241-243
+function of reranking models, 244
+sentence transformers, 243
+response validation, in chain prompting, 184
+retrieval evaluation metrics, 244-249
+scoring multiple queries with mean average
+precision, 248
+scoring single queries with average preci‐
+sion, 247
+retrieval-augmented generation (see RAG)
+return_full_text parameter, 33
+reward models, 379-383
+inputs and outputs of, 380
+training, 380-383
+RMSNorm, 101
+RNNs (recurrent neural networks), 11
+400 
+| 
+Index

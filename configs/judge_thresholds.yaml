@@ -1,0 +1,4 @@
+min_agreement: 0.75
+max_flip_rate: 0.10
+max_order_bias: 0.05   # e.g., abs(win_rate_when_A_first - win_rate_when_B_first)
+min_cases: 30

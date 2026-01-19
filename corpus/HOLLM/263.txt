@@ -1,0 +1,32 @@
+pipeline. This step is tasked with changing the order of the search results based on
+relevance to the search query. This one step can vastly improve search results and
+it’s in fact what Microsoft Bing added to achieve the improvements to search results
+using BERT-like models. Figure 8-14 shows the structure of a rerank search system
+serving as the second stage in a two-stage search system.
+Figure 8-14. LLM rerankers operate as part of a search pipeline with the goal of
+reordering a number of shortlisted search results by relevance.
+Reranking example
+A reranker takes in the search query and a number of search results, and returns
+the optimal ordering of these documents so the most relevant ones to the query are
+higher in ranking. Cohere’s Rerank endpoint is a simple way to start using a first
+reranker. We simply pass it the query and texts and get the results back. We don’t
+need to train or tune it:
+query = "how precise was the science"
+results = co.rerank(query=query, documents=texts, top_n=3, return_docu
+ments=True)
+results.results
+We can print these results:
+for idx, result in enumerate(results.results):
+  print(idx, result.relevance_score , result.document.text)
+Output:
+0 0.1698185 It has also received praise from many astronomers for its scien-
+tific accuracy and portrayal of theoretical astrophysics
+1 0.07004896 The film had a worldwide gross over $677 million (and $773 mil-
+lion with subsequent re-releases), making it the tenth-highest grossing film 
+of 2014
+2 0.0043994132 Caltech theoretical physicist and 2017 Nobel laureate in Phys-
+ics[4] Kip Thorne was an executive producer, acted as a scientific consultant, 
+and wrote a tie-in book, The Science of Interstellar
+Semantic Search with Language Models 
+| 
+241

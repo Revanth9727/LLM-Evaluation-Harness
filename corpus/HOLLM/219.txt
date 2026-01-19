@@ -1,0 +1,51 @@
+{
+    "name": "Eldrin Stormbringer",
+    "class": "Warrior",
+    "level": 10,
+    "attributes": {
+        "strength": 18,
+        "dexterity": 12,
+        "constitution": 16,
+        "intelligence": 9,
+        "wisdom": 14,
+        "charisma": 10
+    },
+    "skills": {
+        "melee_combat": {
+            "weapon_mastery": 20,
+            "armor_class": 18,
+            "hit_points": 35
+        },
+        "defense": {
+            "shield_skill": 17,
+            "block_chance": 90
+        },
+        "endurance": {
+            "health_regeneration": 2,
+            "stamina": 30
+        }
+    },
+    "equipment": [
+        {
+            "name": "Ironclad Armor",
+            "type": "Armor",
+            "defense_bonus": 15
+        },
+        {
+            "name": "Steel Greatsword",
+            "type": "Weapon",
+            "damage": 8,
+            "critical_chance": 20
+        }
+    ],
+    "background": "Eldrin grew up in a small village on the outskirts of a 
+war-torn land. Witnessing the brutality and suffering caused by conflict, he 
+dedicated his life to becoming a formidable warrior who could protect those 
+unable to defend themselves."
+}
+The output is properly formatted as JSON. This allows us to more confidently use
+generative models in applications where we expect the output to adhere to certain
+formats.
+Output Verification 
+| 
+197

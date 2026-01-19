@@ -1,0 +1,85 @@
+transfer learning, 19
+Transformer architecture, 15-18, 73-107
+attention layer, 79, 86
+decoding strategy, 79-81
+feedforward layer, 86
+forward pass components, 76-79
+inputs and outputs of, 74-76
+keys and values cache, 83-85
+optimizing attention, 98
+parallel token processing and context size,
+81-83
+recent improvements to, 95-105
+more efficient attention, 96-100
+positional embeddings, 102-104
+Transformer blocks, 101
+Transformer blocks, 85-94
+attention calculation, 91-93
+attention layer, 88
+attention mechanism, 89-91
+feedforward neural networks, 87
+self-attention and relevance scoring,
+93-94
+Vision Transformer, 260-262
+transparency and accountability, 28
+tree-of-thought, 189-191
+TruthfulQA, 374, 376
+TSDAE (Transformer-Based Sequential Denois‐
+ing Auto-Encoder)
+for domain adaptation, 320
+overview of, 316-320
+U
+UltraChat dataset, 368
+UMAP (Uniform Manifold Approximation and
+Projection), 141
+unigram language model, 50
+unk_token [UNK], 47
+use_cache parameter, 84
+V
+valid output, verifying, 192
+validation splits, 113
+vector databases
+dense retrieval, 229
+nearest neighbor search versus, 238
+retrieval-augmented generation, 253
+video random-access memory (VRAM), xiv, 29
+visualization
+BERTopic, 155
+cluster analysis, 144
+dimensionality reduction and, 145
+ViT (Vision Transformer), 260-262, 274
+vocabulary, of tokenizers, 55, 57, 77, 106
+VRAM (video random-access memory), xiv, 29
+W
+warmup_ratio parameter, 387
+warmup_steps argument, 299
+Weaviate, 239
+whitespace characters, 50
+windowed conversation buffer memory,
+212-214, 217
+word embeddings, 63-67
+pretrained, 63
+word2vec algorithm and contrastive train‐
+ing, 64-67
+word tokens, 44
+word-level metrics, in generative model evalua‐
+tion, 374
+word2vec algorithm, 8, 10-12
+contrastive training and, 64-67, 293
+embedding songs, 67
+WordPiece, 43
+cased BERT base model, 48
+uncased BERT base model, 47
+<work> token, 53
+Y
+Year of Generative AI, 23-24
+Z
+zero-shot classification, 123-126
+CLIP, 265
+SetFit, 339
+zero-shot prompting
+chain-of-thought, 187
+in-context learning, 181
+Index 
+| 
+403

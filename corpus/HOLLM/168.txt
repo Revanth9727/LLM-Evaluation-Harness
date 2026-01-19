@@ -1,0 +1,18 @@
+Figure 5-8. The generated clusters (colored) and outliers (gray) are represented as a 2D
+visualization.
+This is visually appealing but does not yet allow us to see what is happening inside
+the clusters. Instead, we can extend this visualization by going from text clustering to
+topic modeling.
+From Text Clustering to Topic Modeling
+Text clustering is a powerful tool for finding structure among large collections of
+documents. In our previous example, we could manually inspect each cluster and
+identify them based on their collection of documents. For instance, we explored a
+cluster that contained documents about sign language. We could say that the topic of
+that cluster is “sign language.”
+This idea of finding themes or latent topics in a collection of textual data is often
+referred to as topic modeling. Traditionally, it involves finding a set of keywords or
+phrases that best represent and capture the meaning of the topic, as we illustrate in
+Figure 5-9.
+146 
+| 
+Chapter 5: Text Clustering and Topic Modeling

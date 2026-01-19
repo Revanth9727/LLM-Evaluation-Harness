@@ -1,0 +1,33 @@
+As we did in the previous chapter, we will use the MTEB leaderboard to select
+an embedding model. We will need an embedding model that has a decent score
+on clustering tasks but also is small enough to run quickly. Instead of using the
+“sentence-transformers/all-mpnet-base-v2” model we used in the previous chapter,
+we use the “thenlper/gte-small” model instead. It is a more recent model that outper‐
+forms the previous model on clustering tasks and due to its small size is even faster
+for inference. However, feel free to play around with newer models that have been
+released since!
+from sentence_transformers import SentenceTransformer
+# Create an embedding for each abstract
+embedding_model = SentenceTransformer("thenlper/gte-small")
+embeddings = embedding_model.encode(abstracts, show_progress_bar=True)
+Let’s check how many values each document embedding contains:
+# Check the dimensions of the resulting embeddings
+embeddings.shape
+(44949, 384)
+Each embedding has 384 values that together represent the semantic representation
+of the document. You can view these embeddings as the features that we want to
+cluster.
+Reducing the Dimensionality of Embeddings
+Before we cluster the embeddings, we will first need to take their high dimensionality
+into account. As the number of dimensions increases, there is an exponential growth
+in the number of possible values within each dimension. Finding all subspaces within
+each dimension becomes increasingly complex.
+As a result, high-dimensional data can be troublesome for many clustering tech‐
+niques as it gets more difficult to identify meaningful clusters. Instead, we can make
+use of dimensionality reduction. As illustrated in Figure 5-4, this technique allows
+us to reduce the size of the dimensional space and represent the same data with
+fewer dimensions. Dimensionality reduction techniques aim to preserve the global
+structure of high-dimensional data by finding low-dimensional representations.
+140 
+| 
+Chapter 5: Text Clustering and Topic Modeling

@@ -1,0 +1,25 @@
+The LLM indeed has no access to our age since that was not retained in the chat
+history.
+Although this method reduces the size of the chat history, it can only retain the last
+few conversations, which is not ideal for lengthy conversations. Let’s explore how we
+can summarize the chat history instead.
+Conversation Summary
+As we have discussed previously, giving your LLM the ability to remember conver‐
+sations is vital for a good interactive experience. However, when using Conversation
+BufferMemory, the conversation starts to increase in size and will slowly approach
+your token limit. Although ConversationBufferWindowMemory resolves the issue of
+token limits to an extent, only the last k conversations are retained.
+Although a solution would be to use an LLM with a larger context window, these
+tokens still need to be processed before generation tokens, which can increase
+compute time. Instead, let’s look toward a more sophisticated technique, Conversa
+tionSummaryMemory. As the name implies, this technique summarizes an entire con‐
+versation history to distill it into the main points.
+This summarization process is enabled by another LLM that is given the conversation
+history as input and asked to create a concise summary. A nice advantage of using an
+external LLM is that we are not confined to using the same LLM during conversation.
+The summarization process is illustrated in Figure 7-12.
+Figure 7-12. Instead of passing the conversation history directly to the prompt, we use
+another LLM to summarize it first.
+214 
+| 
+Chapter 7: Advanced Text Generation Techniques and Tools

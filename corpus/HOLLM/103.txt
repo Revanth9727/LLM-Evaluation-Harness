@@ -1,0 +1,20 @@
+token_id = lm_head_output[0,-1].argmax(-1)
+tokenizer.decode(token_id)
+In this case this turns out to be:
+Paris
+Parallel Token Processing and Context Size
+One of the most compelling features of Transformers is that they lend themselves
+better to parallel computing than previous neural network architectures in language
+processing. In text generation, we get a first glance at this when looking at how each
+token is processed. We know from the previous chapter that the tokenizer will break
+down the text into tokens. Each of these input tokens then flows through its own
+computation path (that’s a good first intuition, at least). We can see these individual
+processing tracks or streams in Figure 3-8.
+Figure 3-8. Each token is processed through its own stream of computation (with some
+interaction between them in attention steps, as we’ll later see).
+Current Transformer models have a limit for how many tokens they can process at
+once. That limit is called the model’s context length. A model with 4K context length
+can only process 4K tokens and would only have 4K of these streams.
+An Overview of Transformer Models 
+| 
+81

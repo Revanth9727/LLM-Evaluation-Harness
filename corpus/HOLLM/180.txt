@@ -1,0 +1,30 @@
+7 Maarten Grootendorst. “KeyBERT: Minimal keyword extraction with BERT.” (2020).
+Second, let’s create a short wrapper that we can use to quickly visualize the differences
+in topic words to compare with and without representation models:
+def topic_differences(model, original_topics, nr_topics=5):
+    """Show the differences in topic representations between two models """
+    df = pd.DataFrame(columns=["Topic", "Original", "Updated"])
+    for topic in range(nr_topics):
+        # Extract top 5 words per topic per model
+        og_words = " | ".join(list(zip(*original_topics[topic]))[0][:5])
+        new_words = " | ".join(list(zip(*model.get_topic(topic)))[0][:5])
+        df.loc[len(df)] = [topic, og_words, new_words]
+    
+    return df
+KeyBERTInspired
+The first representation block that we are going to explore is KeyBERTInspired.
+KeyBERTInspired is, as you might have guessed, a method inspired by the keyword
+extraction package, KeyBERT.7 KeyBERT extracts keywords from texts by comparing
+word and document embeddings through cosine similarity.
+BERTopic uses a similar approach. KeyBERTInspired uses c-TF-IDF to extract the
+most representative documents per topic by calculating the similarity between a
+document’s c-TF-IDF values and those of the topic they correspond to. As shown in
+Figure 5-22, the average document embedding per topic is calculated and compared
+to the embeddings of candidate keywords to rerank the keywords.
+Figure 5-22. KeyBERTInspired representation model procedure.
+Due to the modular nature of BERTopic, we can update our initial topic representa‐
+tions with KeyBERTInspired without needing to perform the dimensionality reduc‐
+tion and clustering steps:
+158 
+| 
+Chapter 5: Text Clustering and Topic Modeling

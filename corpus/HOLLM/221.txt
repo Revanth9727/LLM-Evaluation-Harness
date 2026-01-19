@@ -1,0 +1,23 @@
+CHAPTER 7
+Advanced Text Generation
+Techniques and Tools
+In the previous chapter, we saw how prompt engineering can do wonders for the
+accuracy of your text-generation large language model (LLM). With just a few small
+tweaks, these LLMs are guided toward more purposeful and accurate answers. This
+showed how much there is to gain using techniques that do not fine-tune the LLM
+but instead use the LLM more efficiently, such as the relatively straightforward
+prompt engineering.
+In this chapter, we will continue this train of thought. What can we do to further
+enhance the experience and output that we get from the LLM without needing to
+fine-tune the model itself?
+Fortunately, a great deal of methods and techniques allow us to further improve what
+we started with in the previous chapter. These more advanced techniques lie at the
+foundation of numerous LLM-focused systems and are, arguably, one of the first
+things users implement when designing such systems.
+In this chapter, we will explore several such methods and concepts for improving the
+quality of the generated text:
+Model I/O
+Loading and working with LLMs
+Memory
+Helping LLMs to remember
+199

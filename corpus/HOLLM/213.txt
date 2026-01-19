@@ -1,0 +1,38 @@
+# Zero-shot tree-of-thought
+zeroshot_tot_prompt = [
+    {"role": "user", "content": "Imagine three different experts are answering 
+this question. All experts will write down 1 step of their thinking, then share 
+it with the group. Then all experts will go on to the next step, etc. If any 
+expert realizes they're wrong at any point then they leave. The question is 
+'The cafeteria had 23 apples. If they used 20 to make lunch and bought 6 more, 
+how many apples do they have?' Make sure to discuss the results."}
+]
+We can use this prompt to explore how an LLM might respond to complex questions:
+# Generate the output
+outputs = pipe(zeroshot_tot_prompt)
+print(outputs[0]["generated_text"])
+Expert 1: Step 1 - Start with the initial number of apples: 23 apples.
+Expert 2: Step 1 - Subtract the apples used for lunch: 23 - 20 = 3 apples 
+remaining.
+Expert 3: Step 1 - Add the newly bought apples: 3 + 6 = 9 apples.
+Expert 1: Step 2 - Confirm the final count: The cafeteria has 9 apples.
+Expert 2: Step 2 - Review the calculations: 23 - 20 = 3, then 3 + 6 = 9. The 
+calculations are correct.
+Expert 3: Step 2 - Agree with the result: The cafeteria indeed has 9 apples.
+All experts agree on the final count: The cafeteria has 9 apples.
+We again get the correct answer but instead through a “discussion between experts.”
+It is interesting to see such a conservation between “experts” that demonstrates the
+creativity that comes with prompt engineering.
+Output Verification
+Systems and applications built with generative models might eventually end up in
+production. When that happens, it is important that we verify and control the output
+of the model to prevent breaking the application and to create a robust generative AI
+application.
+Reasons for validating the output might include:
+Structured output
+By default, most generative models create free-form text without adhering to
+specific structures other than those defined by natural language. Some use cases
+require their output to be structured in certain formats, like JSON.
+Output Verification 
+| 
+191

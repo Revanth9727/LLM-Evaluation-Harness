@@ -1,0 +1,19 @@
+logarithm of the average frequency of all words across all clusters divided by the total
+frequency of each word.
+Figure 5-14. Creating a weighting scheme.
+The result is a weight (“IDF”) for each word that we can multiply with their fre‐
+quency (“c-TF”) to get the weighted values (“c-TF-IDF”).
+This second part of the procedure, as shown in Figure 5-15, allows for generating
+a distribution over words as we have seen before. We can use scikit-learn’s CountVec
+torizer to generate the bag-of-words (or term frequency) representation. Here, each
+cluster is considered a topic that has a specific ranking of the corpus’s vocabulary.
+Figure 5-15. The second part of BERTopic’s pipeline is representing the topics: the calcu‐
+lation of the weight of term *x* in a class *c*.
+Putting the two steps together, clustering and representing topics, results in the full
+pipeline of BERTopic, as illustrated in Figure 5-16. With this pipeline, we can cluster
+semantically similar documents and from the clusters generate topics represented by
+several keywords. The higher a word’s weight in a topic, the more representative it is
+of that topic.
+150 
+| 
+Chapter 5: Text Clustering and Topic Modeling

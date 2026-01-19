@@ -1,0 +1,39 @@
+1 Shunyu Yao et al. “ReAct: Synergizing reasoning and acting in language models.” arXiv preprint
+arXiv:2210.03629 (2022).
+In other words, agents that make use of LLMs can be powerful general problem solv‐
+ers. Although the tools they use are important, the driving force of many agent-based
+systems is the use of a framework called Reasoning and Acting (ReAct1).
+The Driving Power Behind Agents: Step-by-step Reasoning
+ReAct is a powerful framework that combines two important concepts in behavior:
+reasoning and acting. LLMs are exceptionally powerful when it comes to reasoning as
+we explored in detail in Chapter 5.
+Acting is a bit of a different story. LLMs are not able to act like you and I do. To
+give them the ability to act, we could tell an LLM that it can use certain tools, like
+a weather forecasting API. However, since LLMs can only generate text, they would
+need to be instructed to use specific queries to trigger the forecasting API.
+ReAct merges these two concepts and allows reasoning to affect acting and actions
+to affect reasoning. In practice, the framework consists of iteratively following these
+three steps:
+• Thought
+•
+• Action
+•
+• Observation
+•
+Illustrated in Figure 7-15, the LLM is asked to create a “thought” about the input
+prompt. This is similar to asking the LLM what it thinks it should do next and
+why. Then, based on the thought, an “action” is triggered. The action is generally
+an external tool, like a calculator or a search engine. Finally, after the results of the
+“action” are returned to the LLM it “observes” the output, which is often a summary
+of whatever result it retrieved.
+To illustrate with an example, imagine you are on holiday in the United States and
+interested in buying a MacBook Pro. Not only do you want to know the price but you
+need it converted to EUR as you live in Europe and are more comfortable with those
+prices.
+As illustrated in Figure 7-16, the agent will first search the web for current prices. It
+might find one or more prices depending on the search engine. After retrieving the
+price, it will use a calculator to convert USD to EUR assuming we know the exchange
+rate.
+Agents: Creating a System of LLMs 
+| 
+219

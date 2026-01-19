@@ -1,0 +1,24 @@
+# Metamorphic testing config
+run_name: metamorphic
+base_dataset_path: data/smoke.jsonl
+
+transforms:
+  - name: paraphrase_question
+    enabled: true
+  - name: reorder_context
+    enabled: true
+  - name: add_irrelevant_doc
+    enabled: true
+  - name: remove_key_chunk
+    enabled: true
+
+invariants:
+  - name: hard_checks_still_pass
+  - name: citations_present_when_required
+    citation_regex: '\[[A-Za-z0-9_-]+(?:\s+p|_p)\d+\]'
+  - name: idk_when_missing_context
+    canonical_idk: "I don't know based on the provided context."
+
+artifacts:
+  root_dir: artifacts
+  write_metamorphic_report: true

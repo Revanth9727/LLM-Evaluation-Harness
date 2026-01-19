@@ -1,0 +1,18 @@
+Figure 11-1. In Chapter 4, we used pretrained models to perform classification without
+updating their weight. These models were kept “frozen.
+”
+Both models were kept frozen (nontrainable) to showcase the potential of leveraging
+pretrained models for classification tasks. The embedding model uses a separate
+trainable classification head (classifier) to predict the sentiment of movie reviews.
+In this section, we will take a similar approach but allow both the model and the
+classification head to be updated during training. As shown in Figure 11-2, instead
+of using an embedding model, we will fine-tune a pretrained BERT model to create
+a task-specific model similar to the one we used in Chapter 2. Compared to the
+embedding model approach, we will fine-tune both the representation model and the
+classification head as a single architecture.
+Figure 11-2. Compared to the “frozen” architecture, we instead train both the pretrained
+BERT model and the classification head. A backward pass will start at the classification
+head and go through BERT.
+324 
+| 
+Chapter 11: Fine-Tuning Representation Models for Classification

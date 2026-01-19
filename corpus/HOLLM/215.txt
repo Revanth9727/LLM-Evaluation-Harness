@@ -1,0 +1,46 @@
+]
+# Generate the output
+outputs = pipe(zeroshot_prompt)
+print(outputs[0]["generated_text"])
+ ```json
+{
+  "characterProfile": {
+    "name": "Eldrin Stormbringer",
+    "class": "Warlock",
+    "race": "Half-Elf",
+    "age": 27,
+   "gender": "Male",
+    "alignment": "Chaotic Good",
+    "background": "Rogue",
+    …
+    },
+    "attributes": {
+      "strength": 10,
+      "dexterity": 17,
+      "constitution": 12,
+      "intelligence": 12,
+      "wisdom": 10,
+      "charisma
+The preceding truncated output is not valid JSON since the model stopped gener‐
+ating tokens after starting the “charisma” attribute. Moreover, we might not want
+certain attributes. Instead, we can provide the model with a number of examples that
+indicate the expected format:
+# One-shot learning: Providing an example of the output structure
+one_shot_template = """Create a short character profile for an RPG game. Make 
+sure to only use this format:
+{
+  "description": "A SHORT DESCRIPTION",
+  "name": "THE CHARACTER'S NAME",
+  "armor": "ONE PIECE OF ARMOR",
+  "weapon": "ONE OR MORE WEAPONS"
+}
+"""
+one_shot_prompt = [
+    {"role": "user", "content": one_shot_template}
+]
+# Generate the output
+outputs = pipe(one_shot_prompt)
+print(outputs[0]["generated_text"])
+Output Verification 
+| 
+193

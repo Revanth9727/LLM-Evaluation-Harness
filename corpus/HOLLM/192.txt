@@ -1,0 +1,20 @@
+Figure 6-2. The template Phi-3 expects when interacting with the model.
+Controlling Model Output
+Other than prompt engineering, we can control the kind of output we want by
+adjusting the model parameters. In our previous example, you might have noticed
+that we used several parameters in the pipe function, including temperature and
+top_p.
+These parameters control the randomness of the output. A part of what makes LLMs
+exciting technology is that it can generate different responses for the exact same
+prompt. Each time an LLM needs to generate a token, it assigns a likelihood number
+to each possible token.
+As illustrated in Figure 6-3, in the sentence “I am driving a…” the likelihood of that
+sentence being followed by tokens like “car” or “truck” is generally higher than a
+token like “elephant.” However, there is still a possibility of “elephant” being generated
+but it is much lower.
+Figure 6-3. The model chooses the next token to generate based on their likelihood scores.
+When we loaded our model, we purposefully set do_sample=False to make sure the
+output is somewhat consistent. This means that no sampling will be done and only
+170 
+| 
+Chapter 6: Prompt Engineering

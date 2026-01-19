@@ -1,0 +1,20 @@
+We use the term Language AI to encompass technologies that technically might not
+be LLMs but still have a significant impact on the field, like how retrieval systems can
+give LLMs superpowers (see Chapter 8).
+Throughout this book, we want to focus on the models that have had a major role
+in shaping the field of Language AI. This means exploring more than just LLMs in
+isolation. That, however, brings us to the question: what are large language models?
+To begin answering this question in this chapter, let’s first explore the history of
+Language AI.
+A Recent History of Language AI
+The history of Language AI encompasses many developments and models aiming to
+represent and generate language, as illustrated in Figure 1-1.
+Figure 1-1. A peek into the history of Language AI.
+Language, however, is a tricky concept for computers. Text is unstructured in nature
+and loses its meaning when represented by zeros and ones (individual characters).
+As a result, throughout the history of Language AI, there has been a large focus on
+representing language in a structured manner so that it can more easily be used by
+computers. Examples of these Language AI tasks are provided in Figure 1-2.
+A Recent History of Language AI 
+| 
+5

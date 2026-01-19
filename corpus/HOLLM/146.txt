@@ -1,0 +1,14 @@
+Figure 4-13. In zero-shot classification, we have no labeled data, only the labels them‐
+selves. The zero-shot model decides how the input is related to the candidate labels.
+To perform zero-shot classification with embeddings, there is a neat trick that we can
+use. We can describe our labels based on what they should represent. For example, a
+negative label for movie reviews can be described as “This is a negative movie review.”
+By describing and embedding the labels and documents, we have data that we can
+work with. This process, as illustrated in Figure 4-14, allows us to generate our own
+target labels without the need to actually have any labeled data.
+Figure 4-14. To embed the labels, we first need to give them a description, such as “a
+negative movie review.
+” This can then be embedded through sentence-transformers.
+124 
+| 
+Chapter 4: Text Classification

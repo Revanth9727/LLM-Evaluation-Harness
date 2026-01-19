@@ -1,0 +1,45 @@
+from transformers import pipeline
+# Save our fine-tuned model
+trainer.save_model("ner_model")
+# Run inference on the fine-tuned model
+token_classifier = pipeline(
+    "token-classification", 
+    model="ner_model", 
+)
+token_classifier("My name is Maarten.")
+[{'entity': 'B-PER',
+  'score': 0.99534035,
+  'index': 4,
+  'word': 'Ma',
+  'start': 11,
+  'end': 13},
+ {'entity': 'I-PER',
+  'score': 0.9928328,
+  'index': 5,
+  'word': '##arte',
+  'start': 13,
+  'end': 17},
+ {'entity': 'I-PER',
+  'score': 0.9954301,
+  'index': 6,
+  'word': '##n',
+  'start': 17,
+  'end': 18}]
+In the sentence "My name is Maarten", the word "Maarten" and its subtokens were
+correctly identified as a person!
+Summary
+In this chapter, we explored several tasks for fine-tuning pretrained representation
+models on specific classification tasks. We started by demonstrating how to fine-tune
+a pretrained BERT model and extended the examples by freezing certain layers of its
+architectures.
+We experimented with a few-shot classification technique called SetFit, which
+involves fine-tuning a pretrained embedding model together with a classification
+head using limited labeled data. Using only a few labeled data points, this model
+generated similar performance to the models we explored in earlier chapters.
+Next, we delved into the concept of continued pretraining, where we used a pre‐
+trained BERT model as a starting point and continued training it using different data.
+The underlying process, masked language modeling, is not only used for creating a
+representation model but can also be used to continue pretraining models.
+Summary 
+| 
+353

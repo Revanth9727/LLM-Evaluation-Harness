@@ -1,0 +1,45 @@
+from bertopic.representation import KeyBERTInspired
+# Update our topic representations using KeyBERTInspired
+representation_model = KeyBERTInspired()
+topic_model.update_topics(abstracts, representation_model=representation_model)
+# Show topic differences
+topic_differences(topic_model, original_topics)
+Topic Original
+Updated
+0
+speech | asr | recognition | end | acoustic
+speech | encoder | phonetic | language | trans...
+1
+medical | clinical | biomedical | patient | he...
+nlp | ehr | clinical | biomedical | language
+2
+sentiment | aspect | analysis | reviews | opinion
+aspect | sentiment | aspects | sentiments | cl...
+3
+translation | nmt | machine | neural | bleu
+translation | translating | translate | transl...
+4
+summarization | summaries | summary | abstract...
+summarization | summarizers | summaries | summ...
+The updated model shows that the topics are easier to read compared to the original
+model. It also demonstrates the downside of using embedding-based techniques.
+Words in the original model, like nmt (topic 3), which stands for neural machine
+translation, are removed as the model could not properly represent the entity. For
+domain experts, these abbreviations are highly informative.
+Maximal marginal relevance
+With c-TF-IDF and the previously shown KeyBERTInspired techniques, we still have
+significant redundancy in the resulting topic representations. For instance, having
+both the words “summaries” and “summary” in a topic representation introduces
+redundancy as they are quite similar.
+We can use maximal marginal relevance (MMR) to diversify our topic representa‐
+tions. The algorithm attempts to find a set of keywords that are diverse from one
+another but still relate to the documents they are compared to. It does so by embed‐
+ding a set of candidate keywords and iteratively calculating the next best keyword
+to add. Doing so requires setting a diversity parameter, which indicates how diverse
+keywords need to be.
+In BERTopic, we use MMR to go from a set of initial keywords, let’s say 30, to a
+smaller but more diverse set of keywords, let’s say 10. It filters out redundant words
+and only keeps words that contribute something new to the topic representation.
+From Text Clustering to Topic Modeling 
+| 
+159

@@ -1,0 +1,45 @@
+6 Matthew Henderson et al. “Efficient natural language response suggestion for smart reply.” arXiv preprint
+arXiv:1705.00652 (2017).
+7 Aaron van den Oord, Yazhe Li, and Oriol Vinyals. “Representation learning with contrastive predictive
+coding.” arXiv preprint arXiv:1807.03748 (2018).
+8 Ting Chen et al. “A simple framework for contrastive learning of visual representations.” International Confer‐
+ence on Machine Learning. PMLR, 2020.
+    warmup_steps=100,
+    fp16=True,
+    eval_steps=100,
+    logging_steps=100,
+)
+# Train model
+trainer = SentenceTransformerTrainer(
+    model=embedding_model,
+    args=args,
+    train_dataset=train_dataset,
+    loss=train_loss,
+    evaluator=evaluator
+)
+trainer.train()
+Evaluating the model after training gives us the following score:
+# Evaluate our trained model
+evaluator(embedding_model)
+{'pearson_cosine': 0.7222322163831805,
+ 'spearman_cosine': 0.7250508271229599,
+ 'pearson_manhattan': 0.7338163436711481,
+ 'spearman_manhattan': 0.7323479193408869,
+ 'pearson_euclidean': 0.7332716434966307,
+ 'spearman_euclidean': 0.7316999722750905,
+ 'pearson_dot': 0.660366792336156,
+ 'spearman_dot': 0.6624167554844425,
+ 'pearson_max': 0.7338163436711481,
+ 'spearman_max': 0.7323479193408869}
+A Pearson cosine score of 0.72 is a big improvement compared to the softmax loss
+example, which scored 0.59. This demonstrates the impact the loss function can have
+on performance.
+Make sure to restart your notebook so we can explore a more common and perform‐
+ant loss, namely multiple negatives ranking loss.
+Multiple negatives ranking loss
+Multiple negatives ranking (MNR) loss,6 often referred to as InfoNCE7 or NTXen‐
+tLoss,8 is a loss that uses either positive pairs of sentences or triplets that contain
+a pair of positive sentences and an additional unrelated sentence. This unrelated
+304 
+| 
+Chapter 10: Creating Text Embedding Models

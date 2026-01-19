@@ -1,0 +1,43 @@
+• The generative model itself
+•
+• Its underlying tokenizer
+•
+The tokenizer is in charge of splitting the input text into tokens before feeding it to
+the generative model. You can find the tokenizer and model on the Hugging Face site
+and only need the corresponding IDs to be passed. In this case, we use “microsoft/
+Phi-3-mini-4k-instruct” as the main path to the model.
+We can use transformers to load both the tokenizer and model. Note that we assume
+you have an NVIDIA GPU (device_map="cuda") but you can choose a different
+device instead. If you do not have access to a GPU you can use the free Google Colab
+notebooks we made available in the repository of this book:
+from transformers import AutoModelForCausalLM, AutoTokenizer
+# Load model and tokenizer
+model = AutoModelForCausalLM.from_pretrained(
+    "microsoft/Phi-3-mini-4k-instruct",
+    device_map="cuda",
+    torch_dtype="auto",
+    trust_remote_code=True,
+)
+tokenizer = AutoTokenizer.from_pretrained("microsoft/Phi-3-mini-4k-instruct")
+Running the code will start downloading the model and depending on your internet
+connection can take a couple of minutes.
+Although we now have enough to start generating text, there is a nice trick in trans‐
+formers that simplifies the process, namely transformers.pipeline. It encapsulates
+the model, tokenizer, and text generation process into a single function:
+from transformers import pipeline
+# Create a pipeline
+generator = pipeline(
+    "text-generation",
+    model=model,
+    tokenizer=tokenizer,
+    return_full_text=False,
+    max_new_tokens=500,
+    do_sample=False
+)
+The following parameters are worth mentioning:
+return_full_text
+By setting this to False, the prompt will not be returned but merely the output of
+the model.
+Generating Your First Text 
+| 
+33

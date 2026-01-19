@@ -1,0 +1,27 @@
+The Word2vec Algorithm and Contrastive Training
+The word2vec algorithm described in the paper “Efficient estimation of word repre‐
+sentations in vector space” is described in detail in The Illustrated Word2vec. The
+central ideas are condensed here as we build on them when discussing one method
+for creating embeddings for recommendation engines in the following section.
+Just like LLMs, word2vec is trained on examples generated from text. Let’s say, for
+example, we have the text “Thou shalt not make a machine in the likeness of a human
+mind” from the Dune novels by Frank Herbert. The algorithm uses a sliding window
+to generate training examples. We can, for example, have a window size two, meaning
+that we consider two neighbors on each side of a central word.
+The embeddings are generated from a classification task. This task is used to train
+a neural network to predict if words commonly appear in the same context or not
+(context here means in many sentences in the training dataset we’re modeling). We
+can think of this as a neural network that takes two words and outputs 1 if they tend
+to appear in the same context, and 0 if they do not.
+In the first position for the sliding window, we can generate four training examples,
+as we can see in Figure 2-11.
+Figure 2-11. A sliding window is used to generate training examples for the word2vec
+algorithm to later predict if two words are neighbors or not.
+In each of the produced training examples, the word in the center is used as one
+input, and each of its neighbors is a distinct second input in each training example.
+We expect the final trained model to be able to classify this neighbor relationship
+and output 1 if the two input words it receives are indeed neighbors. These training
+examples are visualized in Figure 2-12.
+64 
+| 
+Chapter 2: Tokens and Embeddings

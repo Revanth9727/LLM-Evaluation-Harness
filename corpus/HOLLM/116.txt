@@ -1,0 +1,14 @@
+The relevance scoring step of attention is conducted by multiplying the query vector
+of the current position with the keys matrix. This produces a score stating how
+relevant each previous token is. Passing that by a softmax operation normalizes these
+scores so they sum up to 1. Figure 3-20 shows the relevance score resulting from this
+calculation.
+Figure 3-20. Scoring the relevance of previous tokens is accomplished by multiplying the
+query associated with the current position with the keys matrix.
+Self-attention: Combining information
+Now that we have the relevance scores, we multiply the value vector associated with
+each token by that token’s score. Summing up those resulting vectors produces the
+output of this attention step, as we see in Figure 3-21.
+94 
+| 
+Chapter 3: Looking Inside Large Language Models

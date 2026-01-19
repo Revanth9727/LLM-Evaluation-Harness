@@ -1,0 +1,13 @@
+Figure 5-20. The reranker (representation) block sits on top of the c-TF-IDF
+representation.
+Figure 5-21. After applying the c-TF-IDF weighting, topics can be fine-tuned with a wide
+variety of representation models, many of which are large language models.
+Before we explore how we can use these representation blocks, we first need to do
+two things. First, we are going to save our original topic representations so that it will
+be much easier to compare with and without representation models:
+# Save original representations
+from copy import deepcopy
+original_topics = deepcopy(topic_model.topic_representations_)
+From Text Clustering to Topic Modeling 
+| 
+157

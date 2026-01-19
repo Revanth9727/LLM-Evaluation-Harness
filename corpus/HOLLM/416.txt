@@ -1,0 +1,99 @@
+Bidirectional Encoder Representations from
+Transformers (see BERT)
+bitsandbytes package, 369
+BLEU, 374
+BLIP-2 (Bootstrapping Language-Image Pre-
+training for Unified Vision-Language
+Understanding and Generation 2)
+chat-based prompting, 283-286
+image captioning, 280
+preprocessing text, 280
+Q-Former, 273-277
+BM25 algorithm, 233
+BPE (byte pair encoding), 43, 55
+byte tokens, 45
+C
+c-TF-IDF, 149, 158, 161
+capitalization, 56
+captioning, 280-283
+centroid-based algorithms, 143
+chains, 182-184, 202-209
+chain-of-thought, 185-188
+chaining single prompt, 203-205
+sequential chaining of multiple prompts,
+206-209
+character tokens, 45
+chat tokens, 54
+chat-based prompting, 283-286
+Chatbot Arena, 376
+ChatGPT, 202, 273, 383, 386
+release of, 3
+text classification, 132-135
+chatgpt_generation function, 133
+chat_history input variable, 211
+classification reports, 119-120
+classification step, embedding model, 121
+CLIP, 265-268
+connecting text and images, 265
+generating multimodal embeddings,
+265-268
+OpenCLIP, 268-272
+closed-source LLMs, 29
+[CLS] token, 18, 48, 60, 270, 294, 318, 351
+cluster model, 142-144
+clustering (see text clustering)
+CNNs (convolutional neural networks), 260
+Cohere, 252
+Command R+, 30, 256
+creating accounts, xv, 230
+generating embeddings, 123
+query rewriting, 255
+Rerank endpoint, 241
+completion models, 22
+compute_metrics function, 351
+confusion matrices, 119
+CoNLL-2003 dataset, 347
+constrained sampling, 194-197
+context
+attention and, 88
+prompt engineering, 178
+training datasets, 64
+context length
+completion models, 22
+token processing limits, 81
+context window, in completion models, 22
+contrastive learning
+text embedding models, 291-293, 296
+word2vec algorithm and, 64-67
+Contrastive Tension (CT), 316
+conversation buffer memory, 217
+overview of, 210-212
+windowed, 212-214
+conversation summary memory, 214-217
+convert_ids_to_tokens function, 269
+convolutional neural networks (CNNs), 260
+cosine similarity, 125, 302-304
+CountVectorizer, 150
+cross-encoders, 244
+cross-entropy loss, 305
+CT (Contrastive Tension), 316
+D
+data outliers, 143
+DataCollator class, 326, 342
+datamapplot package, 163
+DBSCAN (Density-Based Spatial Clustering),
+143
+DeBERTa, 59, 115
+decoder-only models (see generative models)
+decoding strategy, 79-81, 106
+dense retrieval, 226, 228-240
+caveats of, 234
+example of, 230-234
+fine-tuning embedding models for, 239
+nearest neighbor search versus vector data‐
+bases, 238
+text chunking, 235-237
+density-based algorithms, 143
+394 
+| 
+Index

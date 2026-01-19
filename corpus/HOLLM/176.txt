@@ -1,0 +1,40 @@
+For example, topic 0 contains the keywords “speech,” “asr,” and “recognition.” Based
+on these keywords, it seems that the topic is about automatic speech recognition
+(ASR).
+We can use the find_topics() function to search for specific topics based on a
+search term. Let’s search for a topic about topic modeling:
+topic_model.find_topics("topic modeling")
+([22, -1, 1, 47, 32],
+ [0.95456535, 0.91173744, 0.9074769, 0.9067007, 0.90510106])
+This returns that topic 22 has a relatively high similarity (0.95) with our search term.
+If we then inspect the topic, we can see that it is indeed a topic about topic modeling:
+topic_model.get_topic(22)
+[('topic', 0.06634619076655907),
+ ('topics', 0.035308535091932707),
+ ('lda', 0.016386314730705634),
+ ('latent', 0.013372311924864435),
+ ('document', 0.012973600191120576),
+ ('documents', 0.012383715497143821),
+ ('modeling', 0.011978375291037142),
+ ('dirichlet', 0.010078277589545706),
+ ('word', 0.008505619415413312),
+ ('allocation', 0.007930890698168108)]
+Although we know that this topic is about topic modeling, let’s see if the BERTopic
+abstract is also assigned to this topic:
+topic_model.topics_[titles.index("BERTopic: Neural topic modeling with a class-
+based TF-IDF procedure")]
+22
+It is! These functionalities allow us to quickly find the topics that we are interested in.
+The modularity of BERTopic gives you a lot of choices, which
+can be overwhelming. For that purpose, the author created a best
+practices guide that goes through common practices to speed up
+training, improve representations, and more.
+To make exploration of the topics a bit easier, we can look back at our text clustering
+example. There, we created a static visualization to see the general structure of the
+created topic. With BERTopic, we can create an interactive variant that allows us to
+quickly explore which topics exist and which documents they contain.
+Doing so requires us to use the two-dimensional embeddings, reduced_embeddings,
+that we created with UMAP. Moreover, when we hover over documents, we will show
+154 
+| 
+Chapter 5: Text Clustering and Topic Modeling

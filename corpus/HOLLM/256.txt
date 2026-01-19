@@ -1,0 +1,49 @@
+print(f"Top-3 lexical search (BM25) hits")
+    for hit in bm25_hits[0:top_k]:
+        print("\t{:.3f}\t{}".format(hit['score'], texts[hit['cor
+pus_id']].replace("\n", " ")))
+Now when we search for the same query, we get a different set of results from the
+dense retrieval search:
+keyword_search(query = "how precise was the science")
+Results:
+Input question: how precise was the science
+Top-3 lexical search (BM25) hits
+      1.789 Interstellar is a 2014 epic science fiction film co-written, direc-
+ted, and produced by Christopher Nolan
+      1.373 Caltech theoretical physicist and 2017 Nobel laureate in Phys-
+ics[4] Kip Thorne was an executive producer, acted as a scientific consultant, 
+and wrote a tie-in book, The Science of Interstellar
+      0.000 It stars Matthew McConaughey, Anne Hathaway, Jessica Chastain, 
+Bill Irwin, Ellen Burstyn, Matt Damon, and Michael Caine
+Note that the first result does not really answer the question despite it sharing the
+word “science” with the query. In the next section, we’ll see how adding a reranker
+can improve this search system. But before that, let’s complete our overview of dense
+retrieval by looking at its caveats and go over some methods of breaking down texts
+into chunks.
+Caveats of dense retrieval
+It’s useful to be aware of some of the drawbacks of dense retrieval and how to address
+them. What happens, for example, if the texts don’t contain the answer? We still get
+results and their distances. For example:
+Query:'What is the mass of the moon?'
+Nearest neighbors:
+ 
+texts
+distance
+0
+The film had a worldwide gross over $677 million (and $773 million with subsequent re-releases),
+making it the tenth-highest grossing film of 2014
+1.298275
+1
+It has also received praise from many astronomers for its scientific accuracy and portrayal of theoretical
+astrophysics
+1.324389
+2
+Cinematographer Hoyte van Hoytema shot it on 35 mm movie film in the Panavision anamorphic
+format and IMAX 70 mm
+1.328375
+In cases like this, one possible heuristic is to set a threshold level—a maximum
+distance for relevance, for example. A lot of search systems present the user with
+the best info they can get and leave it up to the user to decide if it’s relevant or not.
+234 
+| 
+Chapter 8: Semantic Search and Retrieval-Augmented Generation

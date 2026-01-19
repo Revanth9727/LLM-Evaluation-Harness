@@ -1,0 +1,33 @@
+You can access these models through an interface that communicates with the LLM,
+called an API (application programming interface), as illustrated in Figure 1-31. For
+instance, to use ChatGPT in Python you can use OpenAI’s package to interface with
+the service without directly accessing it.
+Figure 1-31. Closed source LLMs are accessed by an interface (API). As a result, details
+of the LLM itself, including its code and architecture are not shared with the user.
+A huge benefit of proprietary models is that the user does not need to have a strong
+GPU to use the LLM. The provider takes care of hosting and running the model and
+generally has more computing available. There is no expertise necessary concerning
+hosting and using the model, which lowers the barrier to entry significantly. More‐
+over, these models tend to be more performant than their open source counterparts
+due to the significant investment from these organizations.
+A downside to this is that it can be a costly service. The provider manages the risk
+and costs of hosting the LLM, which often translates to a paid service. Moreover,
+since there is no direct access to the model, there is no method to fine-tune it
+yourself. Lastly, your data is shared with the provider, which is not desirable in many
+common use cases, such as sharing patient data.
+Open Models
+Open LLMs are models that share their weights and architecture with the public to
+use. They are still developed by specific organizations but often share their code for
+creating or running the model locally—with varying levels of licensing that may or
+may not allow commercial usage of the model. Cohere’s Command R, the Mistral
+models, Microsoft’s Phi, and Meta’s Llama models are all examples of open models.
+There are ongoing discussions as to what truly represents an open
+source model. For instance, some publicly shared models have a
+permissive commercial license, which means that the model cannot
+be used for commercial purposes. For many, this is not the true
+definition of open source, which states that using these models
+should not have any restrictions. Similarly, the data on which a
+model is trained as well as its source code are seldom shared.
+30 
+| 
+Chapter 1: An Introduction to Large Language Models

@@ -1,0 +1,14 @@
+Figure 8-21. If the system places nonrelevant documents ahead of a relevant document,
+its precision score is penalized.
+Let’s now look at a query with more than one relevant document. Figure 8-22 shows
+that calculation and how averaging now comes into the picture.
+Figure 8-22. Average precision of a document with multiple relevant documents consid‐
+ers the precision at k results of all the relevant documents.
+Scoring across multiple queries with mean average precision
+Now that we’re familiar with precision at k and average precision, we can extend this
+knowledge to a metric that can score a search system against all the queries in our
+test suite. That metric is called mean average precision. Figure 8-23 shows how to
+calculate this metric by taking the mean of the average precisions of each query.
+248 
+| 
+Chapter 8: Semantic Search and Retrieval-Augmented Generation

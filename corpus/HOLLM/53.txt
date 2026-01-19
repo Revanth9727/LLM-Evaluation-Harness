@@ -1,0 +1,33 @@
+You can download these models and use them on your device as long as you have a
+powerful GPU that can handle these kinds of models, as shown in Figure 1-32.
+Figure 1-32. Open source LLMs are directly by the user. As a result, details of the LLM
+itself including its code and architecture are shared with the user.
+A major advantage of these local models is that you, the user, have complete control
+over the model. You can use the model without depending on the API connection,
+fine-tune it, and run sensitive data through it. You are not dependent on any service
+and have complete transparency of the processes that lead to the output of the model.
+This benefit is enhanced by the large communities that enable these processes, such
+as Hugging Face, demonstrating the possibilities of collaborative efforts.
+A downside is that you need powerful hardware to run these models and even more
+when training or fine-tuning them. Moreover, it requires specific knowledge to set up
+and use these models (which we will cover throughout this book).
+We generally prefer using open source models wherever we can. The freedom this
+gives to play around with options, explore the inner workings, and use the model
+locally arguably provides more benefits than using proprietary LLMs.
+Open Source Frameworks
+Compared to closed source LLMs, open source LLMs require you to use certain pack‐
+ages to run them. In 2023, many different packages and frameworks were released
+that, each in their own way, interact with and make use of LLMs. Wading through
+hundreds upon hundreds of potentially worthwhile frameworks is not the most
+enjoyable experience.
+As a result, you might even miss your favorite framework in this book!
+Instead of attempting to cover every LLM framework in existence (there are too
+many, and they continue to grow in number), we aim to provide you with a solid
+foundation for leveraging LLMs. The idea is that after reading this book, you can
+easily pick up most other frameworks as they all work in a very similar manner.
+The intuition that we attempt to realize is an important component of this. If you
+have an intuitive understanding of not only LLMs but also using them in practice
+with common frameworks, branching out to others should be a straightforward task.
+Interfacing with Large Language Models 
+| 
+31

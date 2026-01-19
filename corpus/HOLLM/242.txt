@@ -1,0 +1,5 @@
+Figure 7-15. An example of a ReAct prompt template.
+Figure 7-16. An example of two cycles in a ReAct pipeline.
+220 
+| 
+Chapter 7: Advanced Text Generation Techniques and Tools

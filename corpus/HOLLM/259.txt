@@ -1,0 +1,26 @@
+The chunking approach is better because it has full coverage of the text and because
+the vectors tend to capture individual concepts inside the text. This leads to a more
+expressive search index. Figure 8-9 shows a number of possible approaches.
+Figure 8-9. A number of possible options for chunking a document for embedding.
+The best way of chunking a long text will depend on the types of texts and queries
+your system anticipates. Approaches include:
+• Each sentence is a chunk. The issue here is this could be too granular and the
+•
+vectors don’t capture enough of the context.
+• Each paragraph is a chunk. This is great if the text is made up of short para‐
+•
+graphs. Otherwise, it may be that every 3–8 sentences is a chunk.
+• Some chunks derive a lot of their meaning from the text around them. So we can
+•
+incorporate some context via:
+— Adding the title of the document to the chunk.
+—
+— Adding some of the text before and after them to the chunk. This way, the
+—
+chunks can overlap so they include some surrounding text that also appears in
+adjacent chunks. This is what we can see in Figure 8-10.
+Expect more chunking strategies to arise as the field develops—some of which may
+even use LLMs to dynamically split a text into meaningful chunks.
+Semantic Search with Language Models 
+| 
+237

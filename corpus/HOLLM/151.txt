@@ -1,0 +1,14 @@
+Figure 4-19. The T5 architecture is similar to the original Transformer model, a decoder-
+encoder architecture.
+With this architecture, these models were first pretrained using masked language
+modeling. In the first step of training, illustrated in Figure 4-20, instead of masking
+individual tokens, sets of tokens (or token spans) were masked during pretraining.
+Figure 4-20. In the first step of training, namely pretraining, the T5 model needs to
+predict masks that could contain multiple tokens.
+The second step of training, namely fine-tuning the base model, is where the real
+magic happens. Instead of fine-tuning the model for one specific task, each task is
+converted to a sequence-to-sequence task and trained simultaneously. As illustrated
+in Figure 4-21, this allows the model to be trained on a wide variety of tasks.
+Text Classification with Generative Models 
+| 
+129

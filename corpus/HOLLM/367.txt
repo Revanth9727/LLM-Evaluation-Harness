@@ -1,0 +1,36 @@
+The output demonstrates concepts like “idea,” “dream,” and “day,” which definitely
+make sense. Next, let’s see what our updated model predicts:
+# Load and create predictions
+mask_filler = pipeline("fill-mask", model="mlm")
+preds = mask_filler("What a horrible [MASK]!")
+# Print results
+for pred in preds:
+    print(f">>> {pred["sequence"]}")
+>>> What a horrible movie!
+>>> What a horrible film!
+>>> What a horrible mess!
+>>> What a horrible comedy!
+>>> What a horrible story!
+A horrible movie, film, mess, etc. clearly shows us that the model is more biased
+toward the data that we fed it compared to the pretrained model.
+The next step would be to fine-tune this model on the classification task that we did
+at the beginning of this chapter. Simply load the model as follows and you are good
+to go:
+from transformers import AutoModelForSequenceClassification
+# Fine-tune for classification
+model = AutoModelForSequenceClassification.from_pretrained("mlm", num_labels=2)
+tokenizer = AutoTokenizer.from_pretrained("mlm")
+Named-Entity Recognition
+In this section, we will delve into the process of fine-tuning a pretrained BERT
+model specifically for NER (named-entity recognition). Instead of classifying entire
+documents, this procedure allows for the classification of individual tokens and/or
+words, including people and locations. This is especially helpful for de-identification
+and anonymization tasks when there is sensitive data.
+NER shares similarities with the classification example we explored at the beginning
+of this chapter. Nevertheless, a key distinction lies in the preprocessing and classifica‐
+tion of data. Given that we are focusing on classifying individual words instead of
+entire documents, we must preprocess the data to consider this granular structure.
+Figure 11-18 provides a visual representation of this word-level approach.
+Named-Entity Recognition 
+| 
+345

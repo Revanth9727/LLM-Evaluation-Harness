@@ -1,0 +1,14 @@
+Figure 8-12. Before fine-tuning, the embeddings of both relevant and irrelevant queries
+may be close to a particular document.
+The fine-tuning step works to make the relevant queries closer to the document and
+at the same time make irrelevant queries farther from the document. We can see this
+effect in Figure 8-13.
+Figure 8-13. After the fine-tuning process, the text embedding model becomes better
+at this search task by incorporating how we define relevance on our dataset using the
+examples we provided of relevant and irrelevant documents.
+Reranking
+A lot of organizations have already built search systems. For those organizations,
+an easier way to incorporate language models is as a final step inside their search
+240 
+| 
+Chapter 8: Semantic Search and Retrieval-Augmented Generation

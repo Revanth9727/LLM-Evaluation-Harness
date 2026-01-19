@@ -1,0 +1,24 @@
+Figure 10-13. TSDAE randomly removes words from an input sentence that is passed
+through an encoder to generate a sentence embedding. From this sentence embedding,
+the original sentence is reconstructed.
+Since we only need a bunch of sentences without any labels, training this model is
+straightforward. We start by downloading an external tokenizer, which is used for the
+denoising procedure:
+# Download additional tokenizer
+import nltk
+nltk.download("punkt")
+Then, we create flat sentences from our data and remove any labels that we have to
+mimic an unsupervised setting:
+from tqdm import tqdm
+from datasets import Dataset, load_dataset
+from sentence_transformers.datasets import DenoisingAutoEncoderDataset
+# Create a flat list of sentences
+mnli = load_dataset("glue", "mnli", split="train").select(range(25_000))
+flat_sentences = mnli["premise"] + mnli["hypothesis"]
+# Add noise to our input data
+damaged_data = DenoisingAutoEncoderDataset(list(set(flat_sentences)))
+# Create dataset
+train_dataset = {"damaged_sentence": [], "original_sentence": []}
+Unsupervised Learning 
+| 
+317

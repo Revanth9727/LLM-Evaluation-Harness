@@ -1,0 +1,44 @@
+Doing so is rather straightforward:
+from bertopic.representation import MaximalMarginalRelevance
+# Update our topic representations to MaximalMarginalRelevance
+representation_model = MaximalMarginalRelevance(diversity=0.2)
+topic_model.update_topics(abstracts, representation_model=representation_model)
+# Show topic differences
+topic_differences(topic_model, original_topics)
+Topic Original
+Updated
+0
+speech | asr | recognition | end | acoustic
+speech | asr | error | model | training
+1
+medical | clinical | biomedical | patient | he...
+clinical | biomedical | patient | healthcare |...
+2
+sentiment | aspect | analysis | reviews | opinion
+sentiment | analysis | reviews | absa | polarity
+3
+translation | nmt | machine | neural | bleu
+translation | nmt | bleu | parallel | multilin...
+4
+summarization | summaries | summary | abstract...
+summarization | document | extractive | rouge ...
+The resulting topics demonstrate more diversity in their representations. For
+instance, topic 4 only shows one “summary”-like word and instead adds other words
+that might contribute more to the overall representation.
+Both KeyBERTInspired and MMR are amazing techniques for
+improving the first set of topic representations. KeyBERTInspired
+especially tends to remove nearly all stop words since it focuses on
+the semantic relationships between words and documents.
+The Text Generation Lego Block
+The representation block in BERTopic has been acting as a reranking block in our
+previous examples. However, as we already explored in the previous chapter, genera‐
+tive models have great potential for a wide variety of tasks.
+We can use generative models in BERTopic quite efficiently by following a part of
+the reranking procedure. Instead of using a generative model to identify the topic of
+all documents, of which there can potentially be millions, we will use the model to
+generate a label for our topic. As illustrated in Figure 5-23, instead of generating or
+reranking keywords, we ask the model to generate a short label based on keywords
+that were previously generated and a small set of representative documents.
+160 
+| 
+Chapter 5: Text Clustering and Topic Modeling

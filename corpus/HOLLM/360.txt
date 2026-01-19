@@ -1,0 +1,34 @@
+from setfit import TrainingArguments as SetFitTrainingArguments
+from setfit import Trainer as SetFitTrainer
+# Define training arguments
+args = SetFitTrainingArguments(
+    num_epochs=3, # The number of epochs to use for contrastive learning
+    num_iterations=20  # The number of text pairs to generate
+)
+args.eval_strategy = args.evaluation_strategy
+# Create trainer
+trainer = SetFitTrainer(
+    model=model,
+    args=args,
+    train_dataset=sampled_train_data,
+    eval_dataset=test_data,
+    metric="f1"
+)
+We only need to call train to start the training loop. When we do, we should get the
+following output:
+# Training loop
+trainer.train()
+***** Running training *****
+  Num unique pairs = 1280
+  Batch size = 16
+  Num epochs = 3
+  Total optimization steps = 240
+Notice that the output mentions that 1,280 sentence pairs were generated for fine-
+tuning the SentenceTransformer model. As a default, 20 sentence pair combinations
+are generated for each sample in our data, which would be 20 * 32 = 680 samples.
+We will have to multiply this value by 2 for each positive and negative pair generated,
+680 * 2 = 1,280 sentence pairs. Generating 1,280 sentence pairs is quite impressive
+considering we only had 32 labeled sentences to start with!
+338 
+| 
+Chapter 11: Fine-Tuning Representation Models for Classification

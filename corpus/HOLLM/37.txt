@@ -1,0 +1,21 @@
+5 Ashish Vaswani et al. “
+Attention is all you need.” Advances in Neural Information Processing Systems 30 (2017).
+Attention Is All You Need
+The true power of attention, and what drives the amazing abilities of large lan‐
+guage models, was first explored in the well-known “Attention is all you need”
+paper released in 2017.5 The authors proposed a network architecture called the
+Transformer, which was solely based on the attention mechanism and removed the
+recurrence network that we saw previously. Compared to the recurrence network, the
+Transformer could be trained in parallel, which tremendously sped up training.
+In the Transformer, encoding and decoder components are stacked on top of each
+other, as illustrated in Figure 1-16. This architecture remains autoregressive, needing
+to consume each generated word before creating a new word.
+Figure 1-16. The Transformer is a combination of stacked encoder and decoder blocks
+where the input flows through each encoder and decoder.
+Now, both the encoder and decoder blocks would revolve around attention instead
+of leveraging an RNN with attention features. The encoder block in the Transformer
+consists of two parts, self-attention and a feedforward neural network, which are
+shown in Figure 1-17.
+A Recent History of Language AI 
+| 
+15

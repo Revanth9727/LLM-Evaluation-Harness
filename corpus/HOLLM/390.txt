@@ -1,0 +1,43 @@
+7 Ning Ding et al. “Enhancing chat language models by scaling high-quality instructional conversations.” arXiv
+preprint arXiv:2305.14233 (2023).
+We chose this chat template to use throughout the examples since the chat version of
+TinyLlama uses the same format. The data that we are using is a small subset of the
+UltraChat dataset.7 This dataset is a filtered version of the original UltraChat dataset
+that contains almost 200k conversations between a user and an LLM.
+We create a function, format_prompt, to make sure that the conversations follow this
+template:
+from transformers import AutoTokenizer
+from datasets import load_dataset
+# Load a tokenizer to use its chat template
+template_tokenizer = AutoTokenizer.from_pretrained(
+    "TinyLlama/TinyLlama-1.1BChat-v1.0"
+)
+def format_prompt(example):
+    """Format the prompt to using the <|user|> template TinyLLama is using"""
+    # Format answers
+    chat = example["messages"]
+    prompt = template_tokenizer.apply_chat_template(chat, tokenize=False)
+    return {"text": prompt}
+# Load and format the data using the template TinyLLama is using
+dataset = (
+    load_dataset("HuggingFaceH4/ultrachat_200k", split="test_sft")
+      .shuffle(seed=42)
+      .select(range(3_000))
+)
+dataset = dataset.map(format_prompt)
+We select a subset of 3,000 documents to reduce the training time, but you can
+increase this value to get more accurate results.
+Using the "text" column, we can explore these formatted prompts:
+# Example of formatted prompt
+print(dataset["text"][2576])
+<|user|>
+Given the text: Knock, knock. Who's there? Hike.
+Can you continue the joke based on the given text material "Knock, knock. 
+Who's there? Hike"?</s>
+<|assistant|>
+Sure! Knock, knock. Who's there? Hike. Hike who? Hike up your pants, it's cold 
+outside!</s>
+<|user|>
+368 
+| 
+Chapter 12: Fine-Tuning Generation Models

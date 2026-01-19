@@ -1,0 +1,15 @@
+Figure 9-18. In step 1, the output of the frozen ViT is used together with its caption and
+trained on three contrastive-like tasks to learn visual-text representations.
+In step 2, the learnable embeddings derived from step 1 now contain visual informa‐
+tion in the same dimensional space as the corresponding textual information. The
+learnable embeddings are then passed to the LLM. In a way, these embeddings serve
+as soft visual prompts that condition the LLM on the visual representations that were
+extracted by the Q-Former.
+There is also a fully connected linear layer in between them to make sure that the
+learnable embeddings have the same shape as the LLM expects. This second step of
+converting vision to language is represented in Figure 9-19.
+Figure 9-19. In step 2, the learned embeddings from the Q-Former are passed to the
+LLM through a projection layer. The projected embeddings serve as a soft visual prompt.
+276 
+| 
+Chapter 9: Multimodal Large Language Models

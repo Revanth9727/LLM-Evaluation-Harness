@@ -1,0 +1,22 @@
+text embeddings, where a whole sentence or document can have one vector that
+represents it—enabling applications like semantic search and topic modeling that we
+see in Part II of this book.
+LLM Tokenization
+The way the majority of people interact with language models, at the time of this
+writing, is through a web playground that presents a chat interface between the user
+and a language model. You may notice that a model does not produce its output
+response all at once; it actually generates one token at a time.
+But tokens aren’t only the output of a model, they’re also the way in which the model
+sees its inputs. A text prompt sent to the model is first broken down into tokens, as
+we’ll now see.
+How Tokenizers Prepare the Inputs to the Language Model
+Viewed from the outside, generative LLMs take an input prompt and generate a
+response, as we can see in Figure 2-2.
+Figure 2-2. High-level view of a language model and its input prompt.
+Before the prompt is presented to the language model, however, it first has to go
+through a tokenizer that breaks it into pieces. You can find an example showing the
+tokenizer of GPT-4 on the OpenAI Platform. If we feed it the input text, it shows the
+output in Figure 2-3, where each token is shown in a different color.
+38 
+| 
+Chapter 2: Tokens and Embeddings

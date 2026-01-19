@@ -1,0 +1,37 @@
+1 Nelson F. Liu et al. “Lost in the middle: How language models use long contexts.” arXiv preprint
+arXiv:2307.03172 (2023).
+Hallucination
+LLMs may generate incorrect information confidently, which is referred to as
+hallucination. To reduce its impact, we can ask the LLM to only generate an
+answer if it knows the answer. If it does not know the answer, it can respond with
+“I don’t know.”
+Order
+Either begin or end your prompt with the instruction. Especially with long
+prompts, information in the middle is often forgotten.1 LLMs tend to focus on
+information either at the beginning of a prompt (primacy effect) or the end of a
+prompt (recency effect).
+Here, specificity is arguably the most important aspect. By restricting and specifying
+what the model should generate, there is a smaller chance of having it generate
+something not related to your use case. For instance, if we were to skip the instruc‐
+tion “in two to three sentences” it might generate complete paragraphs. Like human
+conversations, without any specific instructions or additional context, it is difficult to
+derive what the task at hand actually is.
+Advanced Prompt Engineering
+On the surface, creating a good prompt might seem straightforward. Ask a specific
+question, be accurate, add some examples, and you are done! However, prompting
+can grow complex quite quickly and as a result is an often-underestimated compo‐
+nent of leveraging LLMs.
+Here, we will go through several advanced techniques for building up your prompts,
+starting with the iterative workflow of building up complex prompts all the way to
+using LLMs sequentially to get improved results. Eventually, we will even build up to
+advanced reasoning techniques.
+The Potential Complexity of a Prompt
+As we explored in the intro to prompt engineering, a prompt generally consists of
+multiple components. In our very first example, our prompt consisted of instruction,
+data, and output indicators. As we mentioned before, no prompt is limited to just
+these three components and you can build it up to be as complex as you want.
+These advanced components can quickly make a prompt quite complex. Some com‐
+mon components are:
+Advanced Prompt Engineering 
+| 
+177

@@ -1,0 +1,11 @@
+Finally, we looked at named-entity recognition, a task that involves identifying spe‐
+cific entities such as people and places in unstructured text. Compared to previous
+examples, this classification was done on a word level rather than on a document
+level.
+In the next chapter, we continue with the field of fine-tuning language models but
+focus on generative models instead. Using a two-step process, we will explore how to
+fine-tune a generative model to properly follow instructions and then fine-tune it for
+human preference.
+354 
+| 
+Chapter 11: Fine-Tuning Representation Models for Classification

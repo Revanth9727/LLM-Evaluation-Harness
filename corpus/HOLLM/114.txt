@@ -1,0 +1,25 @@
+• The training process produces three projection matrices that produce the com‐
+•
+ponents that interact in this calculation:
+— A query projection matrix
+—
+— A key projection matrix
+—
+— A value projection matrix
+—
+Figure 3-18 shows the starting position for all of these components before the atten‐
+tion calculations start. For simplicity, let’s look at only one attention head because the
+other heads have identical calculations but with their individual projection matrices.
+Figure 3-18. Before starting the self-attention calculation, we have the inputs to the layer
+and projection matrices for queries, keys, and values.
+Attention starts by multiplying the inputs by the projection matrices to create three
+new matrices. These are called the queries, keys, and values matrices. These matrices
+contain the information of the input tokens projected to three different spaces that
+help carry out the two steps of attention:
+1. Relevance scoring
+1.
+2. Combining information
+2.
+92 
+| 
+Chapter 3: Looking Inside Large Language Models

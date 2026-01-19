@@ -1,0 +1,16 @@
+CHAPTER 2
+Tokens and Embeddings
+Tokens and embeddings are two of the central concepts of using large language
+models (LLMs). As we’ve seen in the first chapter, they’re not only important to
+understanding the history of Language AI, but we cannot have a clear sense of how
+LLMs work, how they’re built, and where they will go in the future without a good
+sense of tokens and embeddings, as we can see in Figure 2-1.
+Figure 2-1. Language models deal with text in small chunks called tokens. For the lan‐
+guage model to compute language, it needs to turn tokens into numeric representations
+called embeddings.
+In this chapter, we look more closely at what tokens are and the tokenization meth‐
+ods used to power LLMs. We will then dive into the famous word2vec embedding
+method that preceded modern-day LLMs and see how it’s extending the concept
+of token embeddings to build commercial recommendation systems that power a
+lot of the apps you use. Finally, we go from token embeddings into sentence or
+37

@@ -1,0 +1,18 @@
+Figure 9-5. The main algorithm behind ViT. After patching the images and linearly
+projecting them, the patch embeddings are passed to the encoder and treated as if they
+were textual tokens.
+Multimodal Embedding Models
+In previous chapters, we used embedding models to capture the semantic content
+of textual representations, such as papers and documents. We saw that we could
+use these embeddings or numerical representations to find similar documents, apply
+classification tasks, and even perform topic modeling.
+As we have seen many times before, embeddings often are an important driver
+behind LLM applications. They are an efficient method for capturing large-scale
+information and searching for the needle in the haystack of information.
+That said, we have looked at text-only embedding models thus far, which focus
+on generating embeddings for textual representations. Although embedding models
+exist for solely embedding imagery, we will look at embedding models that can
+capture both textual as well as visual representations. We illustrate this in Figure 9-6.
+Multimodal Embedding Models 
+| 
+263

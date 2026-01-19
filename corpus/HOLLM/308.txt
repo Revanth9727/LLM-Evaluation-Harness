@@ -1,0 +1,30 @@
+It seems that we can continue the conversation and ask a bunch of questions. Using
+this chat-based approach, we essentially created a chatbot that can reason about
+images!
+Summary
+In this chapter, we explored various methods for making LLMs multimodal by
+bridging the gap between textual and visual representations. We started by discus‐
+sing Transformers for vision, which are models that convert images into numerical
+representations. This was achieved through the use of image encoders and patch
+embeddings, which allow the model to process images at various scales.
+We then explored the creation of embedding models that can convert both images
+and text to numerical representations using CLIP. We saw how CLIP uses contrastive
+learning to align image and text embeddings in a shared space, allowing for tasks like
+zero-shot classification, clustering, and search. The chapter also introduced Open‐
+CLIP, an open source variant of CLIP that is easy to use for multimodal embedding
+tasks.
+Finally, we explored how text generation models could be made multimodal and
+dived into the BLIP-2 model. The core idea of these multimodal text generation
+models involves projecting visual features from input images to text embeddings that
+can be used by LLMs. We saw how this model could be used for image captioning and
+multimodal chat-based prompting, where both modalities are combined to generate
+responses. Overall, this chapter highlighted the power of multimodality in LLMs and
+demonstrated its applications in various areas such as image captioning, search, and
+chat-based prompting.
+In Part III of the book, we will cover training and fine-tuning techniques. In Chap‐
+ter 10, we will explore how to create and fine-tune a text embedding model, which
+is a core technology that drives many language modeling applications. This next
+chapter serves as an introduction into both training and fine-tuning language models.
+286 
+| 
+Chapter 9: Multimodal Large Language Models

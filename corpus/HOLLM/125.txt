@@ -1,0 +1,24 @@
+be inefficient to allocate the entire, say, 4K context to a short 10-word sentence.
+So during model training, documents are packed together into each context in the
+training batch, as Figure 3-31 shows.
+Figure 3-31. Packing is the process of efficiently organizing short training documents
+into the context. It includes grouping multiple documents in a single context while
+minimizing the padding at the end of the context.
+Learn more about packing by reading “Efficient sequence packing without cross-
+contamination: Accelerating large language models without impacting performance”
+and watching the great visuals in “Introducing packed BERT for 2X training speed-up
+in natural language processing”.
+Positional embedding methods have to adapt to this and other practical considera‐
+tions. If Document 50, for example, starts at position 50, then we’d be misinforming
+the model if we tell it that that first token is number 50 and that would affect
+its performance (because it would assume there’s previous context while in reality
+the earlier tokens belong to a different and unrelated document the model should
+ignore).
+Instead of the static, absolute embeddings that are added in the beginning of the
+forward pass, rotary embeddings are a method to encode positional information in
+a way that captures absolute and relative token position information. It is based on
+the idea of rotating vectors in their embeddings space. In the forward pass, they are
+added in the attention step, as Figure 3-32 shows.
+Recent Improvements to the Transformer Architecture 
+| 
+103

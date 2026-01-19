@@ -1,0 +1,13 @@
+CHAPTER 9
+Multimodal Large Language Models
+When you think about large language models (LLMs), multimodality might not be
+the first thing that comes to mind. After all, they are language models! But we can
+quickly see that models can be much more useful if they’re able to handle types of
+data other than text. It’s very useful, for example, if a language model is able to glance
+at a picture and answer questions about it. A model that is able to handle text and
+images (each of which is called a modality) is said to be multimodal, as we can see in
+Figure 9-1.
+Figure 9-1. Models that are able to deal with different types (or modalities) of data, such
+as images, audio, video, or sensors, are said to be multimodal. It’s possible for a model to
+accept a modality as input yet not be able to generate in that modality.
+259

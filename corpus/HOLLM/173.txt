@@ -1,0 +1,21 @@
+Figure 5-16. The full pipeline of BERTopic, roughly, consists of two steps, clustering and
+topic representation.
+A major advantage of this pipeline is that the two steps, clustering and topic repre‐
+sentation, are largely independent of one another. For instance, with c-TF-IDF, we
+are not dependent on the models used in clustering the documents. This allows
+for significant modularity throughout every component of the pipeline. And as we
+will explore later in this chapter, it is a great starting point to fine-tune the topic
+representations.
+As illustrated in Figure 5-17, although sentence-transformers is used as the default
+embedding model, we can swap it with any other embedding technique. The same
+applies to all other steps. If you do not want outliers generated with HDBSCAN, you
+can use k-means instead.
+Figure 5-17. The modularity of BERTopic is a key component and allows you to build
+your own topic model however you want.
+You can think of this modularity as building with Lego blocks; each part of the
+pipeline is completely replaceable with another, similar algorithm. Through this
+modularity, newly released models can be integrated within its architecture. As the
+field of Language AI grows, so does BERTopic!
+From Text Clustering to Topic Modeling 
+| 
+151

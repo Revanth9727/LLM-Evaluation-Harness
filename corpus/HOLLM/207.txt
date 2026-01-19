@@ -1,0 +1,38 @@
+5 Daniel Kahneman. Thinking, Fast and Slow. Macmillan (2011).
+6 Jason Wei et al. “Chain-of-thought prompting elicits reasoning in large language models.” Advances in Neural
+Information Processing Systems 35 (2022): 24824–24837.
+like prompt chaining, proved to be the first step toward enabling complex reasoning
+with generative models.
+Reasoning is a core component of human intelligence and is often compared to the
+emergent behavior of LLMs that often resembles reasoning. We highlight “resemble”
+as these models, at the time of writing, are generally considered to demonstrate this
+behavior through memorization of training data and pattern matching.
+The output that they showcase, however, can demonstrate complex behavior and
+although it might not be “true” reasoning, they are still referred to as reasoning capa‐
+bilities. In other words, we work together with the LLM through prompt engineering
+so we can mimic reasoning processes in order to improve the output of the LLM.
+To allow for this reasoning behavior, it is a good moment to step back and explore
+what reasoning entails in human behavior. To simplify, our methods of reasoning can
+be divided into system 1 and 2 thinking processes.
+System 1 thinking represents an automatic, intuitive, and near-instantaneous pro‐
+cess. It shares similarities with generative models that automatically generate tokens
+without any self-reflective behavior. In contrast, system 2 thinking is a conscious,
+slow, and logical process, akin to brainstorming and self-reflection.5
+If we could give a generative model the ability to mimic a form of self-reflection, we
+would essentially be emulating the system 2 way of thinking, which tends to produce
+more thoughtful responses than system 1 thinking. In this section, we will explore
+several techniques that attempt to mimic these kinds of thought processes of human
+reasoners with the aim of improving the output of the model.
+Chain-of-Thought: Think Before Answering
+The first and major step toward complex reasoning in generative models was
+through a method called chain-of-thought. Chain-of-thought aims to have the gen‐
+erative model “think” first rather than answering the question directly without any
+reasoning.6
+As illustrated in Figure 6-15, it provides examples in a prompt that demonstrate
+the reasoning the model should do before generating its response. These reasoning
+processes are referred to as “thoughts.” This helps tremendously for tasks that involve
+a higher degree of complexity, like mathematical questions. Adding this reasoning
+step allows the model to distribute more compute over the reasoning process. Instead
+Reasoning with Generative Models 
+| 
+185

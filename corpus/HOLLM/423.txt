@@ -1,0 +1,99 @@
+RoBERTa, 46, 115
+RoPE (rotary positional embeddings), 102-104
+Rorschach test, 282
+Rotten Tomatoes dataset, 112, 325
+ROUGE, 374
+RWKV, 24
+S
+SBERT, 293-296, 311-315
+self-attention, 15, 93-94
+self-consistency, 188
+semantic search, 225-249
+defined, 225
+dense retrieval, 226, 228-240
+caveats of, 234
+example of, 230-234
+fine-tuning embedding models for, 239
+nearest neighbor search versus vector
+databases, 238
+text chunking, 235-237
+reranking, 226, 240-244
+example of, 241-243
+function of reranking models, 244
+sentence transformers, 243
+retrieval evaluation metrics, 244-249
+scoring multiple queries with mean aver‐
+age precision, 248
+scoring single queries with average pre‐
+cision, 247
+Semantic Textual Similarity Benchmark
+(STSB), 298
+semi-hard negatives, 308
+sentence-transformers, 62, 122, 151, 243, 272,
+293-295, 309, 333
+SentencePiece, 50
+[SEP] token, 47, 60, 351
+sequence-to-sequence models, 127, 128
+SetFit, 323, 333-336
+SFT (supervised fine-tuning), 356-373
+full fine-tuning, 357
+parameter-efficient fine-tuning, 359-367
+adapters, 359-361
+compression, 364-367
+LoRA, 361-364
+QLoRA, 367-373
+fine-tuning, 372
+LoRA configuration, 370
+merging weights, 373
+model quantization, 369
+templating instruction data, 367
+training configuration, 371
+shared memory (SRAM), 100
+shortlisting, 242
+silver datasets, 312
+SimCSE (Simple Contrastive Learning of Sen‐
+tence Embeddings), 316
+skip-gram, 65
+softmax loss function, 301
+song recommendation systems, 67-70
+sparse attention, 96
+special tokens, 47, 55
+specificity, in instruction-based prompting, 176
+SRAM (shared memory), 100
+StableLM, 168
+StarCoder2, 51
+step-by-step reasoning, 219-221
+structured output, validating, 191
+STSB (Semantic Textual Similarity Bench‐
+mark), 298
+subword tokens, 44
+supervised classification, 121-123
+fine-tuning representation models for,
+323-332
+freezing layers, 328-332
+pretrained BERT models, 325-328
+supervised fine-tuning (see SFT)
+system 1 and 2 thinking processes, 185
+T
+T5 (Text-to-Text Transfer Transformer),
+128-131
+target_modules parameter, 370
+task-specific models, 113
+temperature parameter, 171-172, 188
+Tesla T4, 372
+test splits, 113, 118
+text chunking, 230, 235-237
+approaches for, 237
+multiple vectors per document, 236
+one vector per document, 236
+text classification, 111-135
+with generative models, 127-135
+ChatGPT, 132-135
+T5, 128-131
+movie reviews, 112-113
+with representation models, 113-126
+classification tasks that leverage embed‐
+dings, 120-126
+Index 
+| 
+401

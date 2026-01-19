@@ -1,0 +1,28 @@
+This book is a must-read for anyone interested in the rapidly-evolving field of
+generative AI. With a focus on both text and visual embeddings, it’s a great blend
+of algorithmic evolution, theoretical rigor, and practical guidance. Whether you are a
+student, researcher, or industry professional, this book will equip you with the use cases
+and solutions needed to level-up your knowledge of generative AI. Well done!
+—Chris Fregly, Principal Solution Architect,
+Generative AI at AWS
+In the heart of the GenAI revolution, this indispensable guide masterfully balances theory
+and practice, navigating the vast landscape of large language models to equip readers with
+the knowledge needed for immediate and transformative impact in the field of AI.
+—Tarun Narayanan Venkatachalam, AI Researcher,
+University of Washington
+Timely reading to get hands-on experience with language models.
+—Emir Muñoz, Genesys
+Hands-On Large Language Models brings clarity and practical examples to cut through
+the hype of AI. It provides a wealth of great diagrams and visual aids to supplement
+the clear explanations. The worked examples and code make concrete what other books
+leave abstract. The book starts with simple introductory beginnings, and steadily builds in
+scope. By the final chapters, you will be fine-tuning and building your own large language
+models with confidence.
+—Leland McInnes, Researcher at the Tutte Institute for
+Mathematics and Computing
+Finally, a book that not only avoids superficial coverage of large language models but
+also thoroughly explores the background in a way that is both accessible and engaging.
+The authors have masterfully created a definitive guide that will remain essential reading
+despite the fast-paced advancements in the field.
+—Prof. DDr. Roman Egger, CEO of Smartvisions.at
+and Modul University Vienna

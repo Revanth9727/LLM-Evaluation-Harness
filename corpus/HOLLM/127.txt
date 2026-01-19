@@ -1,0 +1,13 @@
+Figure 3-33. Rotary positional embeddings are added to the representation of tokens just
+before the relevance scoring step in self-attention.
+Other Architectural Experiments and Improvements
+Many tweaks of the Transformer are proposed and researched on a continuous basis.
+“A Survey of Transformers” highlights a few of the main directions. Transformer
+architectures are also constantly adapted to domains beyond LLMs. Computer vision
+is an area where a lot of Transformer architecture research is happening (see: “Trans‐
+formers in vision: A survey” and “A survey on vision transformer”). Other domains
+include robotics (see “Open X-Embodiment: Robotic learning datasets and RT-X
+models”) and time series (see “Transformers in time series: A survey”).
+Recent Improvements to the Transformer Architecture 
+| 
+105

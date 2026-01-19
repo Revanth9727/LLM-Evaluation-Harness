@@ -1,0 +1,20 @@
+Figure 2-3. A tokenizer breaks down text into words or parts of words before the model
+processes the text. It does so according to a specific method and training procedure (from
+https://oreil.ly/ovUWO).
+Let’s look at a code example and interact with these tokens ourselves. Here we’ll be
+downloading an LLM and seeing how to tokenize the input before generating text
+with the LLM.
+Downloading and Running an LLM
+Let’s start by loading our model and its tokenizer as we’ve done in Chapter 1:
+from transformers import AutoModelForCausalLM, AutoTokenizer
+# Load model and tokenizer
+model = AutoModelForCausalLM.from_pretrained(
+    "microsoft/Phi-3-mini-4k-instruct",
+    device_map="cuda",
+    torch_dtype="auto",
+    trust_remote_code=True,
+)
+tokenizer = AutoTokenizer.from_pretrained("microsoft/Phi-3-mini-4k-instruct")
+LLM Tokenization 
+| 
+39

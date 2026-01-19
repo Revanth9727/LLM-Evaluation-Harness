@@ -1,0 +1,39 @@
+To do so, we load in three models:
+• A tokenizer for tokenizing the textual input
+•
+• A preprocessor to preprocess and resize the image
+•
+• The main model that converts the previous outputs to embeddings
+•
+from transformers import CLIPTokenizerFast, CLIPProcessor, CLIPModel
+model_id = "openai/clip-vit-base-patch32"
+# Load a tokenizer to preprocess the text
+clip_tokenizer = CLIPTokenizerFast.from_pretrained(model_id)
+# Load a processor to preprocess the images
+clip_processor = CLIPProcessor.from_pretrained(model_id)
+# Main model for generating text and image embeddings
+model = CLIPModel.from_pretrained(model_id)
+After having loaded in the models, preprocessing our input is straightforward. Let’s
+start with the tokenizer and see what happens if we preprocess our input:
+# Tokenize our input
+inputs = clip_tokenizer(caption, return_tensors="pt")
+inputs
+This outputs a dictionary that contains the IDs of the input:
+{'input_ids': tensor([[49406, 320, 6829, 1629, 530, 518, 2583, 49407]]), 'at-
+tention_mask': tensor([[1, 1, 1, 1, 1, 1, 1, 1]])}
+To see what those IDs represent, we can convert them to tokens using the aptly
+named convert_ids_to_tokens function:
+# Convert our input back to tokens
+clip_tokenizer.convert_ids_to_tokens(inputs["input_ids"][0])
+This gives us the following output:
+['<|startoftext|>',
+ 'a</w>',
+ 'puppy</w>',
+ 'playing</w>',
+ 'in</w>',
+ 'the</w>',
+ 'snow</w>',
+ '<|endoftext|>']
+Multimodal Embedding Models 
+| 
+269

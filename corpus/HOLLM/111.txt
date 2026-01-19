@@ -1,0 +1,15 @@
+Figure 3-14. The self-attention layer incorporates relevant information from previous
+positions that help process the current token.
+The model does that based on the patterns seen and learned from the training dataset.
+Perhaps previous sentences also give more clues, like, for example, referring to the
+dog as “she” thus making it clear that “it” refers to the squirrel.
+Attention is all you need
+It is worth diving deeper into the attention mechanism. The most stripped-down
+version of the mechanism is shown in Figure 3-15. It shows multiple token positions
+going into the attention layer; the final one is the one being currently processed (the
+pink arrow). The attention mechanism operates on the input vector at that position.
+It incorporates relevant information from the context into the vector it produces as
+the output for that position.
+An Overview of Transformer Models 
+| 
+89

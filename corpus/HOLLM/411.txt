@@ -1,0 +1,41 @@
+23 Jiwoo Hong, Noah Lee, and James Thorne, “ORPO: Monolithic preference optimization without reference
+model”. arXiv preprint arXiv:2403.07691 (2024).
+    low_cpu_mem_usage=True,
+    device_map="auto",
+)
+sft_model = model.merge_and_unload()
+# Merge DPO LoRA and SFT model
+dpo_model = PeftModel.from_pretrained(
+    sft_model,
+    "TinyLlama-1.1B-dpo-qlora",
+    device_map="auto",
+)
+dpo_model = dpo_model.merge_and_unload()
+This combination of SFT+DPO is a great way to first fine-tune your model to
+perform basic chatting and then align its answers with human preference. However,
+it does come at a cost since we need to perform two training loops and potentially
+tweak the parameters in two processes.
+Since the release of DPO, new methods of aligning preferences have been developed.
+Of note is Odds Ratio Preference Optimization (ORPO), a process that combines SFT
+and DPO into a single training process.23 It removes the need to perform two separate
+training loops, further simplifying the training process while allowing for the use of
+QLoRA.
+Summary
+In this chapter, we explored different steps of fine-tuning pretrained LLMs. We per‐
+formed fine-tuning by making use of parameter-efficient fine-tuning (PEFT) through
+the low-rank adaptation (LoRA) technique. We explained how LoRA can be extended
+through quantization, a technique for reducing memory constraints when represent‐
+ing the parameters of the model and adapters.
+The fine-tuning process we explored has two steps. In the first step, we performed
+supervised fine-tuning using instruction data on a pretrained LLM, often called
+instruction tuning. This resulted in a model that has chat-like behavior and could
+closely follow instructions.
+In the second step, we further improved the model by fine-tuning it on alignment
+data, data that represents what type of answers are preferred over others. This pro‐
+cess, referred to as preference tuning, distills human preference to the previously
+instruction-tuned model.
+Overall, this chapter has shown the two major steps of fine-tuning a pretrained LLM
+and how that could lead to more accurate and informative outputs.
+Summary 
+| 
+389

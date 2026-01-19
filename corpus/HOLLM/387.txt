@@ -1,0 +1,18 @@
+6 Tim Dettmers et al. “QLoRA: Efficient finetuning of quantized LLMs.” arXiv preprint arXiv:2305.14314 (2023).
+With quantization, we aim to lower the number of bits while still accurately repre‐
+senting the original weight values. However, as shown in Figure 12-16, when directly
+mapping higher precision values to lower precision values, multiple higher precision
+values might end up being represented by the same lower precision values.
+Figure 12-16. Quantizing weights that are close to one another results in the same
+reconstructed weights thereby removing any differentiating factor.
+Instead, the authors of QLoRA, a quantized version of LoRA, found a way to go from
+a higher number of bits to a lower value and vice versa without differentiating too
+much from the original weights.6
+They used blockwise quantization to map certain blocks of higher precision values
+to lower precision values. Instead of directly mapping higher precision to lower preci‐
+sion values, additional blocks are created that allow for quantizing similar weights. As
+shown in Figure 12-17, this results in values that can be accurately represented with
+lower precision.
+Supervised Fine-Tuning (SFT) 
+| 
+365

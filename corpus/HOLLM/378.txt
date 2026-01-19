@@ -1,0 +1,29 @@
+Figure 12-1. During language modeling, the LLM aims to predict the next token
+based on an input. This is a process without labels.
+2. Fine-tuning 1 (supervised fine-tuning)
+LLMs are more useful if they respond well to instructions and try to follow
+them. When humans ask the model to write an article, they expect the model to
+generate the article and not list other instructions for example (which is what a
+base model might do).
+With supervised fine-tuning (SFT), we can adapt the base model to follow
+instructions. During this fine-tuning process, the parameters of the base model
+are updated to be more in line with our target task, like following instructions.
+Like a pretrained model, it is trained using next-token prediction but instead of
+only predicting the next token, it does so based on a user input (Figure 12-2).
+Figure 12-2. During supervised fine-tuning, the LLM aims to predict the next token
+based on an input that has additional labels. In a sense, the label is the user’s input.
+SFT can also be used for other tasks, like classification, but is often used to go
+from a base generative model to an instruction (or chat) generative model.
+3. Fine-tuning 2 (preference tuning)
+The final step further improves the quality of the model and makes it more
+aligned with the expected behavior of AI safety or human preferences. This
+is called preference tuning. Preference tuning is a form of fine-tuning and, as
+the name implies, aligns the output of the model to our preferences, which are
+defined by the data that we give it. Like SFT, it can improve upon the original
+model but has the added benefit of distilling preference of output in its training
+process. These three steps are illustrated in Figure 12-3 and demonstrate the
+process of starting from an untrained architecture and ending with a preference-
+tuned LLM.
+356 
+| 
+Chapter 12: Fine-Tuning Generation Models

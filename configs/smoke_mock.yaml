@@ -1,0 +1,46 @@
+# Smoke run config with mock providers (for CI/testing, no API costs)
+run_name: smoke_mock
+dataset_path: data/smoke.jsonl
+
+candidates:
+  A:
+    provider: mock
+    model: mock
+    system_prompt_path: system_prompts/candidate.txt
+  B:
+    provider: mock
+    model: mock
+    system_prompt_path: system_prompts/candidate.txt
+
+task_contract:
+  canonical_idk: "I don't know based on the provided context."
+  require_citations_when: ["answer_with_citations", "requires_citations"]
+  citation_regex: '\[[A-Za-z0-9_-]+(?:\s+p|_p)\d+\]'
+
+hard_checks:
+  enabled: true
+  fail_fast_per_candidate: true
+
+judge:
+  enabled: true
+  provider: mock_judge
+  model: mock_judge
+  system_prompt_path: system_prompts/judge.txt
+  rubric_path: rubrics/judge_prompt.txt
+  order_randomization_seed: 1337
+  two_pass_on_uncertain: false
+
+artifacts:
+  root_dir: artifacts
+  write_config_snapshot: true
+  write_outputs_jsonl: true
+  write_hard_checks_jsonl: true
+  write_judge_votes_jsonl: true
+  write_summary_md: true
+  write_summary_json: true
+
+reproducibility:
+  seed: 1337
+
+gates:
+  enabled: false

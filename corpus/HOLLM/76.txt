@@ -1,0 +1,48 @@
+Tokenization method: Byte pair encoding (BPE)
+Vocabulary size: 32,000
+Special tokens:
+• <|endoftext|>
+•
+• Chat tokens: As chat LLMs rose to popularity in 2023, the conversational nature
+•
+of LLMs started to be a leading use case. Tokenizers have been adapted to this
+direction by the addition of tokens that indicate the turns in a conversation and
+the roles of each speaker. These special tokens include:
+— <|user|>
+—
+— <|assistant|>
+—
+— <|system|>
+—
+We can now recap our tour by looking at all these examples side by side:
+BERT base
+model
+(uncased)
+[CLS] english and capital ##ization [UNK] [UNK] show _ token ##s false none eli
+##f = = > = else : two tab ##s : " " three tab ##s : " " 12 . 0 * 50 = 600 [SEP]
+BERT base
+model (cased)
+[CLS] English and CA ##PI ##TA ##L ##I ##Z ##AT ##ION [UNK] [UNK] show _ token
+##s F ##als ##e None el ##if = = > = else : two ta ##bs : " " Three ta ##bs : " " 12 .
+0 * 50 = 600 [SEP]
+GPT-2
+English and CAP ITAL IZ ATION
+     
+show _ t ok ens False None el if == >= else : two tabs :" " Three tabs : " "
+12 . 0 * 50 = 600
+FLAN-T5
+English and CA PI TAL IZ ATION <unk> <unk> show _ to ken s Fal s e None e l if = = >
+= else : two tab s : " " Three tab s : " " 12. 0 * 50 = 600 </s>
+GPT-4
+English and CAPITAL IZATION
+     
+show _tokens False None elif == >= else : two tabs :"  " Three tabs : "  "
+12 . 0 * 50 = 600
+StarCoder
+English and CAPITAL IZATION
+    
+show _ tokens False None elif == >= else : two tabs :"  " Three tabs : "  "
+1 2 . 0 * 5 0 = 6 0 0
+54 
+| 
+Chapter 2: Tokens and Embeddings

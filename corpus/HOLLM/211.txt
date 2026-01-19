@@ -1,0 +1,18 @@
+Figure 6-17. By sampling from multiple reasoning paths, we can use majority voting to
+extract the most likely answer.
+However, this does require a single question to be asked multiple times. As a result,
+although the method can improve performance, it becomes n times slower where n is
+the number of output samples.
+Tree-of-Thought: Exploring Intermediate Steps
+The ideas of chain-of-thought and self-consistency are meant to enable more com‐
+plex reasoning. By sampling from multiple “thoughts” and making them more
+thoughtful, we aim to improve the output of generative models.
+These techniques only scratch the surface of what is currently being done to mimic
+complex reasoning. An improvement to these approaches can be found in tree-of-
+thought, which allows for an in-depth exploration of several ideas.
+The method works as follows. When faced with a problem that requires multiple
+reasoning steps, it often helps to break it down into pieces. At each step, and as
+illustrated in Figure 6-18, the generative model is prompted to explore different
+Reasoning with Generative Models 
+| 
+189

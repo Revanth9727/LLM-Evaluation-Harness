@@ -1,0 +1,20 @@
+Summary
+In this chapter, we explored the basics of using generative models through prompt
+engineering and output verification. We focused on the creativity and potential com‐
+plexity that comes with prompt engineering. These components of a prompt are key
+in generating and optimizing output appropriate for different use cases.
+We further explored advanced prompt engineering techniques such as in-context
+learning and chain-of-thought. These methods involve guiding generative models to
+reason through complex problems by providing examples or phrases that encourage
+step-by-step thinking thereby mimicking human reasoning processes.
+Overall, this chapter demonstrated that prompt engineering is a crucial aspect of
+working with LLMs, as it allows us to effectively communicate our needs and prefer‐
+ences to the model. By mastering prompt engineering techniques, we can unlock
+some of the potential of LLMs and generate high-quality responses that meet our
+requirements.
+The next chapter will build upon these concepts by exploring more advanced tech‐
+niques for leveraging generative models. We will go beyond prompt engineering and
+explore how LLMs can use external memory and tools.
+198 
+| 
+Chapter 6: Prompt Engineering

@@ -1,0 +1,18 @@
+2 Fabrizio Sebastiani. “Machine learning in automated text categorization.” ACM Computing Surveys (CSUR)
+34.1 (2002): 1–47.
+Figure 1-2. Language AI is capable of many tasks by processing textual input.
+Representing Language as a Bag-of-Words
+Our history of Language AI starts with a technique called bag-of-words, a method for
+representing unstructured text.2 It was first mentioned around the 1950s but became
+popular around the 2000s.
+Bag-of-words works as follows: let’s assume that we have two sentences for which we
+want to create numerical representations. The first step of the bag-of-words model
+is tokenization, the process of splitting up the sentences into individual words or
+subwords (tokens), as illustrated in Figure 1-3.
+Figure 1-3. Each sentence is split into words (tokens) by splitting on a whitespace.
+The most common method for tokenization is by splitting on a whitespace to create
+individual words. However, this has its disadvantages as some languages, like Man‐
+darin, do not have whitespaces around individual words. In the next chapter, we will
+6 
+| 
+Chapter 1: An Introduction to Large Language Models

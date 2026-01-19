@@ -1,0 +1,26 @@
+4 Ibid.
+As illustrated in Figure 6-13, this comes in a number of forms depending on how
+many examples you show the LLM. Zero-shot prompting does not leverage examples,
+one-shot prompts use a single example, and few-shot prompts use two or more
+examples.
+Figure 6-13. An example of a complex prompt with many components.
+Adopting the original phrase, we believe that “an example is worth a thousand
+words.” These examples provide a direct example of what and how the LLM should
+achieve.
+We can illustrate this method with a simple example taken from the original paper
+describing this method.4 The goal of the prompt is to generate a sentence with
+a made-up word. To improve the quality of the resulting sentence, we can show
+the generative model an example of what a proper sentence with a made-up word
+would be.
+To do so, we will need to differentiate between our question (user) and the answers
+that were provided by the model (assistant). We additionally showcase how this
+interaction is processed using the template:
+# Use a single example of using the made-up word in a sentence
+one_shot_prompt = [
+    {
+        "role": "user",
+        "content": "A 'Gigamuru' is a type of Japanese musical instrument. An 
+example of a sentence that uses the word Gigamuru is:"
+Advanced Prompt Engineering 
+| 
+181

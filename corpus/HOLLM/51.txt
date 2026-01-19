@@ -1,0 +1,37 @@
+15 The models were trained for 3,311,616 GPU hours, which refers to the amount of time it takes to train a
+model on a GPU, multiplied by the number of GPUs available.
+In choosing a GPU, an important component is the amount of VRAM (video
+random-access memory) you have available. This refers to the amount of memory
+you have available on your GPU. In practice, the more VRAM you have the better.
+The reason for this is that some models simply cannot be used at all if you do not
+have sufficient VRAM.
+Because training and fine-tuning LLMs can be an expensive process, GPU-wise, those
+without a powerful GPU have often been referred to as the GPU-poor. This illustrates
+the battle for computing resources to train these huge models. To create the Llama 2
+family of models, for example, Meta used A100-80 GB GPUs. Assuming renting such
+a GPU would cost $1.50/hr, the total costs of creating these models would exceed
+$5,000,000!15
+Unfortunately, there is no single rule to determine exactly how much VRAM you
+need for a specific model. It depends on the model’s architecture and size, compres‐
+sion technique, context size, backend for running the model, etc.
+This book is for the GPU-poor! We will use models that users can run without the
+most expensive GPU(s) available or a big budget. To do so, we will make all the code
+available in Google Colab instances. At the time of writing, a free instance of Google
+Colab will net you a T4 GPU with 16 GB VRAM, which is the minimum amount of
+VRAM that we suggest.
+Interfacing with Large Language Models
+Interfacing with LLMs is a vital component of not only using them but also develop‐
+ing an understanding of their inner workings. Due to the many developments in
+the field, there has been an abundance of techniques, methods, and packages for
+communicating with LLMs. Throughout the book, we intend to explore the most
+common techniques for doing so, including using both proprietary (closed source)
+and publicly available open models.
+Proprietary, Private Models
+Closed source LLMs are models that do not have their weights and architecture
+shared with the public. They are developed by specific organizations with their
+underlying code being kept secret. Examples of such models include OpenAI’s GPT-4
+and Anthropic’s Claude. These proprietary models are generally backed by significant
+commercial support and have been developed and integrated within their services.
+Interfacing with Large Language Models 
+| 
+29

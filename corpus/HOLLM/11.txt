@@ -1,0 +1,43 @@
+Part III. 
+Training and Fine-Tuning Language Models
+10. Creating Text Embedding Models. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  289
+Embedding Models                                                                                                      289
+What Is Contrastive Learning?                                                                                  291
+SBERT                                                                                                                            293
+Creating an Embedding Model                                                                                  296
+Generating Contrastive Examples                                                                         296
+Train Model                                                                                                               297
+In-Depth Evaluation                                                                                                300
+Loss Functions                                                                                                          301
+Fine-Tuning an Embedding Model                                                                           309
+Supervised                                                                                                                 309
+Augmented SBERT                                                                                                  311
+Unsupervised Learning                                                                                               316
+Transformer-Based Sequential Denoising Auto-Encoder                                  316
+Using TSDAE for Domain Adaptation                                                                 320
+Summary                                                                                                                       321
+11. Fine-Tuning Representation Models for Classification. . . . . . . . . . . . . . . . . . . . . . . . .  323
+Supervised Classification                                                                                            323
+Fine-Tuning a Pretrained BERT Model                                                                325
+Freezing Layers                                                                                                         328
+Few-Shot Classification                                                                                               333
+SetFit: Efficient Fine-Tuning with Few Training Examples                               333
+Fine-Tuning for Few-Shot Classification                                                              337
+Continued Pretraining with Masked Language Modeling                                    340
+Named-Entity Recognition                                                                                        345
+Preparing Data for Named-Entity Recognition                                                   347
+Fine-Tuning for Named-Entity Recognition                                                       352
+Summary                                                                                                                       353
+12. Fine-Tuning Generation Models. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  355
+The Three LLM Training Steps: Pretraining, Supervised Fine-Tuning, and
+Preference Tuning                                                                                                    355
+Supervised Fine-Tuning (SFT)                                                                                  357
+Full Fine-Tuning                                                                                                       357
+Parameter-Efficient Fine-Tuning (PEFT)                                                             359
+Instruction Tuning with QLoRA                                                                               367
+Templating Instruction Data                                                                                  367
+Model Quantization                                                                                                 369
+LoRA Configuration                                                                                                370
+Table of Contents 
+| 
+ix

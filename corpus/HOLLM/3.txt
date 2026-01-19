@@ -1,0 +1,23 @@
+Praise for Hands-On Large Language Models
+This is an exceptional guide to the world of language models and their practical
+applications in industry. Its highly-visual coverage of generative, representational, and
+retrieval applications of language models empowers readers to quickly understand, use,
+and refine LLMs. Highly recommended!
+—Nils Reimers, Director of Machine Learning
+at Cohere | creator of sentence-transformers
+Jay and Maarten have continued their tradition of providing beautifully illustrated and
+insightful descriptions of complex topics in their new book. Bolstered with working code,
+timelines, and references to key papers, their book is a valuable resource for anyone
+looking to understand the main techniques behind how Large Language Models are built.
+—Andrew Ng, founder of DeepLearning.AI
+I can’t think of another book that is more important to read right now. On every single
+page, I learned something that is critical to success in this era of language models.
+—Josh Starmer, StatQuest
+If you’re looking to get up to speed in everything regarding LLMs, look no further! In
+this wonderful book, Jay and Maarten will take you from zero to expert in the history
+and latest advances in large language models. With very intuitive explanations, great
+real-life examples, clear illustrations, and comprehensive code labs, this book lifts the
+curtain on the complexities of transformer models, tokenizers, semantic search, RAG,
+and many other cutting-edge technologies. A must read for anyone interested in the
+latest AI technology!
+—Luis Serrano, PhD, Founder and CEO of Serrano Academy

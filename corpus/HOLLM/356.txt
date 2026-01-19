@@ -1,0 +1,24 @@
+2. Fine-tuning embeddings
+Fine-tuning a pretrained embedding model based on the previously generated
+training data
+3. Training a classifier
+Create a classification head on top of the embedding model and train it using the
+previously generated training data
+Before fine-tuning an embedding model, we need to generate training data. The
+model assumes the training data to be samples of positive (similar) and negative
+(dissimilar) pairs of sentences. However, when we are dealing with a classification
+task, our input data is generally not labeled as such.
+Say, for example, we have the training dataset in Figure 11-9 that classifies text into
+two categories: text about programming languages, and text about pets.
+Figure 11-9. Data in two classes: text about programming languages and text about pets.
+In step 1, SetFit handles this problem by generating the necessary data based on
+in-class and out-class selection as we illustrate in Figure 11-10. For example, when we
+have 16 sentences about sports, we can create 16 * (16 – 1) / 2 = 120 pairs that we
+label as positive pairs. We can use this process to generate negative pairs by collecting
+pairs from different classes.
+Figure 11-10. Step 1: sampling training data. We assume sentences within a class are
+similar and create positive pairs while sentences in different classes become negative
+pairs.
+334 
+| 
+Chapter 11: Fine-Tuning Representation Models for Classification

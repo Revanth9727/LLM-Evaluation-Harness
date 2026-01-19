@@ -1,0 +1,13 @@
+Figure 3-10. When generating text, it’s important to cache the computation results of
+previous tokens instead of repeating the same calculation over and over again.
+In Hugging Face Transformers, cache is enabled by default. We can disable it by
+setting use_cache to False. We can see the difference in speed by asking for a long
+generation, and timing the generation with and without caching:
+prompt = "Write a very long email apologizing to Sarah for the tragic gardening 
+mishap. Explain how it happened."
+# Tokenize the input prompt
+input_ids = tokenizer(prompt, return_tensors="pt").input_ids
+input_ids = input_ids.to("cuda")
+84 
+| 
+Chapter 3: Looking Inside Large Language Models

@@ -1,0 +1,27 @@
+ViT uses a principle much like that. Instead of splitting up text into tokens, it converts
+the original image into patches of images. In other words, it cuts the image into a
+number of pieces horizontally and vertically as illustrated in Figure 9-4.
+Figure 9-4. The “tokenization” process for image input. It converts an image into patches
+of subimages.
+Just like we are converting text into tokens of text, we are converting an image
+into patches of images. The flattened input of image patches can be thought of as
+the tokens in a piece of text. However, unlike tokens, we cannot just assign each
+patch with an ID since these patches will rarely be found in other images, unlike the
+vocabulary of a text.
+Instead, the patches are linearly embedded to create numerical representations,
+namely embeddings. These can then be used as the input of a Transformer model.
+That way, the patches of images are treated the same way as tokens. The full process is
+illustrated in Figure 9-5.
+For illustrative purposes, the images in the examples were patched into 3 × 3 patches
+but the original implementation used 16 × 16 patches. After all, the paper is called
+“
+An Image is Worth 16x16 Words.”
+What is so interesting about this approach is that the moment the embeddings are
+passed to the encoder, they are treated as if they were textual tokens. From that point
+forward, there is no difference in how a text or image trains.
+Due to these similarities, the ViT is often used to make all kinds of language models
+multimodal. One of the most straightforward ways to use it is during the training of
+embedding models.
+262 
+| 
+Chapter 9: Multimodal Large Language Models

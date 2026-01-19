@@ -1,0 +1,29 @@
+sentence is called a negative and represents the dissimilarity between the positive
+sentences.
+For example, you might have pairs of question/answer, image/image caption, paper
+title/paper abstract, etc. The great thing about these pairs is that we can be confident
+they are hard positive pairs. In MNR loss (Figure 10-10), negative pairs are construc‐
+ted by mixing a positive pair with another positive pair. In the example of a paper
+title and abstract, you would generate a negative pair by combining the title of a paper
+with a completely different abstract. These negatives are called in-batch negatives and
+can also be used to generate the triplets.
+Figure 10-10. Multiple negatives ranking loss aims to minimize the distance between
+related pairs of text, such as questions and answers, and maximize the distance between
+unrelated pairs, such as questions and unrelated answers.
+After having generated these positive and negative pairs, we calculate their embed‐
+dings and apply cosine similarity. These similarity scores are then used to answer
+the question, are these pairs negative or positive? In other words, it is treated as a
+classification task and we can use cross-entropy loss to optimize the model.
+To make these triplets we start with an anchor sentence (i.e., labeled as the “prem‐
+ise”), which is used to compare other sentences. Then, using the MNLI dataset, we
+only select sentence pairs that are positive (i.e., labeled as “entailment”). To add
+negative sentences, we randomly sample sentences as the “hypothesis.”
+import random
+from tqdm import tqdm
+from datasets import Dataset, load_dataset
+# # Load MNLI dataset from GLUE
+mnli = load_dataset("glue", "mnli", split="train").select(range(50_000))
+mnli = mnli.remove_columns("idx")
+Creating an Embedding Model 
+| 
+305

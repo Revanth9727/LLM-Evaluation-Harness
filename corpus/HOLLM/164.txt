@@ -1,0 +1,30 @@
+pipeline, we are going with UMAP as it tends to handle nonlinear relationships and
+structures a bit better than PCA.
+Dimensionality reduction techniques, however, are not flawless.
+They do not perfectly capture high-dimensional data in a lower-
+dimensional representation. Information will always be lost with
+this procedure. There is a balance between reducing dimensionality
+and keeping as much information as possible.
+To perform dimensionality reduction, we need to instantiate our UMAP class and
+pass the generated embeddings to it:
+from umap import UMAP
+# We reduce the input embeddings from 384 dimensions to 5 dimensions
+umap_model = UMAP(
+    n_components=5, min_dist=0.0, metric='cosine', random_state=42
+)
+reduced_embeddings = umap_model.fit_transform(embeddings)
+We can use the n_components parameter to decide the shape of the lower-
+dimensional space, namely 5 dimensions. Generally, values between 5 and 10 work
+well to capture high-dimensional global structures.
+The min_dist parameter is the minimum distance between embedded points. We are
+setting this to 0 as that generally results in tighter clusters. We set metric to 'cosine'
+as Euclidean-based methods have issues dealing with high-dimensional data.
+Note that setting a random_state in UMAP will make the results reproducible across
+sessions but will disable parallelism and therefore slow down training.
+Cluster the Reduced Embeddings
+The third step is to cluster the reduced embeddings, as illustrated in Figure 5-6.
+Figure 5-6. Step 3: We cluster the documents using the embeddings with reduced
+dimensionality.
+142 
+| 
+Chapter 5: Text Clustering and Topic Modeling

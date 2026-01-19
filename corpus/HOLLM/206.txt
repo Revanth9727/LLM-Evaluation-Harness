@@ -1,0 +1,41 @@
+Then, we can use the generated output as input for the LLM to generate a sales pitch:
+# Based on a name and slogan for a product, generate a sales pitch
+sales_prompt = [
+    {"role": "user", "content": f"Generate a very short sales pitch for the 
+following product: '{product_description}'"}
+]
+outputs = pipe(sales_prompt)
+sales_pitch = outputs[0]["generated_text"]
+print(sales_pitch)
+Introducing MindMeld Messenger - your ultimate communication partner! Unleash 
+intelligent conversations with our innovative AI-powered messaging platform. 
+With MindMeld Messenger, every response is thoughtful, personalized, and 
+timely. Say goodbye to generic replies and hello to meaningful interactions. 
+Elevate your communication game with MindMeld Messenger - where every message 
+is a step toward smarter conversations. Try it now and experience the future 
+of messaging!
+Although we need two calls to the model, a major benefit is that we can give each call
+different parameters. For instance, the number of tokens created was relatively small
+for the name and slogan whereas the pitch can be much longer.
+This can be used for a variety of use cases, including:
+Response validation
+Ask the LLM to double-check previously generated outputs.
+Parallel prompts
+Create multiple prompts in parallel and do a final pass to merge them. For
+example, ask multiple LLMs to generate multiple recipes in parallel and use the
+combined result to create a shopping list.
+Writing stories
+Leverage the LLM to write books or stories by breaking down the problem into
+components. For example, by first writing a summary, developing characters, and
+building the story beats before diving into creating the dialogue.
+In the next chapter, we will automate this process and go beyond chaining LLMs.
+We will chain other pieces of technology together, like memory, tool use, and more!
+Before that, this idea of prompt chaining will be explored further in the following sec‐
+tions, which describe more complex prompt chaining methods like self-consistency,
+chain-of-thought, and tree-of-thought.
+Reasoning with Generative Models
+In the previous sections, we focused mostly on the modular component of prompts,
+building them up through iteration. These advanced prompt engineering techniques,
+184 
+| 
+Chapter 6: Prompt Engineering

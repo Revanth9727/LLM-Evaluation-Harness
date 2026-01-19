@@ -1,0 +1,32 @@
+To test whether the agent works, we use the previous example, namely finding the
+price of a MacBook Pro:
+# What is the price of a MacBook Pro?
+agent_executor.invoke(
+    {
+        "input": "What is the current price of a MacBook Pro in USD? How much 
+would it cost in EUR if the exchange rate is 0.85 EUR for 1 USD."
+    }
+)
+While executing, the model generates multiple intermediate steps similar to the steps
+illustrated in Figure 7-17.
+Figure 7-17. An example of the ReAct process in LangChain.
+These intermediate steps illustrate how the model processes the ReAct template and
+what tools it accesses. This allows us to debug issues and explore whether the agent
+uses the tools correctly.
+When finished, the model gives us an output like this:
+{'input': 'What is the current price of a MacBook Pro in USD? How much would 
+it cost in EUR if the exchange rate is 0.85 EUR for 1 USD?',
+ 'output': 'The current price of a MacBook Pro in USD is $2,249.00. It would 
+cost approximately 1911.65 EUR with an exchange rate of 0.85 EUR for 1 USD.'}
+Considering the limited tools the agent has, this is quite impressive! Using just a
+search engine and a calculator the agent could give us an answer.
+Whether that answer is actually correct should be taken into account. By creating
+this relatively autonomous behavior, we are not involved in the intermediate steps. As
+such, there is no human in the loop to judge the quality of the output or reasoning
+process.
+This double-edged sword requires a careful system design to improve its reliability.
+For instance, we could have the agent return the website’s URL where it found the
+MacBook Pro’s price or ask whether the output is correct at each step.
+Agents: Creating a System of LLMs 
+| 
+223

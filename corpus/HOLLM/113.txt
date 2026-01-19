@@ -1,0 +1,32 @@
+To give the Transformer more extensive attention capability, the attention mecha‐
+nism is duplicated and executed multiple times in parallel. Each of these parallel
+applications of attention is conducted into an attention head. This increases the
+model’s capacity to model complex patterns in the input sequence that require paying
+attention to different patterns at once.
+Figure 3-17 shows the intuition of how attention heads run in parallel with a preced‐
+ing step of splitting information and a later step of combining the results of all the
+heads.
+Figure 3-17. We get better LLMs by doing attention multiple times in parallel, increasing
+the model’s capacity to attend to different types of information.
+How attention is calculated
+Let’s look at how attention is calculated inside a single attention head. Before we start
+the calculation, let’s observe the following as the starting position:
+• The attention layer (of a generative LLM) is processing attention for a single
+•
+position.
+• The inputs to the layer are:
+•
+— The vector representation of the current position or token
+—
+— The vector representations of the previous tokens
+—
+• The goal is to produce a new representation of the current position that incorpo‐
+•
+rates relevant information from the previous tokens:
+— For example, if we’re processing the last position in the sentence “Sarah fed
+—
+the cat because it,” we want “it” to represent the cat—so attention bakes in “cat
+information” from the cat token.
+An Overview of Transformer Models 
+| 
+91

@@ -1,0 +1,36 @@
+When we do not specifically define a classification head, by default
+a logistic regression is used. If we would like to specify a classifi‐
+cation head ourselves, we can do so by specifying the following
+model in SetFitTrainer:
+# Load a SetFit model from Hub
+model = SetFitModel.from_pretrained(
+    "sentence-transformers/all-mpnet-base-v2",
+    use_differentiable_head=True,
+    head_params={"out_features": num_classes},
+)
+# Create trainer
+trainer = SetFitTrainer(
+    model=model,
+    ...
+)
+Here, num_classes refers to the number of classes that we want to
+predict.
+Next, let’s evaluate the model to get a feeling of its performance:
+# Evaluate the model on our test data
+trainer.evaluate()
+{'f1': 0.8363988383349468}
+With only 32 labeled documents, we get an F1 score of 0.85. Considering that the
+model was trained on a tiny subset of the original data, this is very impressive!
+Moreover, in Chapter 2, we got the same performance but instead trained a logistic
+regression model on the embeddings of the full data. Thus, this pipeline demonstrates
+the potential of taking the time to label just a few instances.
+Not only can SetFit perform few-shot classification tasks, but it also
+has support for when you have no labels at all, also called zero-shot
+classification. SetFit generates synthetic examples from the label
+names to resemble the classification task and then trains a SetFit
+model on them. For example, if the target labels are “happy” and
+“sad,” then synthetic data could be “The example is happy” and
+“This example is sad.”
+Few-Shot Classification 
+| 
+339

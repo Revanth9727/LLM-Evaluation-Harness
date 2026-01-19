@@ -1,0 +1,39 @@
+A major benefit of using preference data over instruction data is the nuance it
+represents. By demonstrating the difference between a good and better output the
+generative model learns to generate text that resembles human preference. In Chap‐
+ter 12, we will explore how these fine-tuning and preference-tuning methodologies
+work and how you can perform them yourself.
+The process of using a closed sourced model is quite different from the open sourced
+examples we have seen thus far. Instead of loading the model, we can access the
+model through OpenAI’s API.
+Before we go into the classification example, you will first need to create a free
+account on https://oreil.ly/AEXvA and create an API key here: https://oreil.ly/lrTXl.
+After doing so, you can use your API to communicate with OpenAI’s servers.
+We can use this key to create a client:
+import openai
+# Create client
+client = openai.OpenAI(api_key="YOUR_KEY_HERE")
+Using this client, we create the chatgpt_generation function, which allows us to
+generate some text based on a specific prompt, input document, and the selected
+model:
+def chatgpt_generation(prompt, document, model="gpt-3.5-turbo-0125"):
+    """Generate an output based on a prompt and an input document."""
+    messages=[
+        {
+            "role": "system",
+            "content": "You are a helpful assistant."
+            },
+        {
+            "role": "user",
+            "content":   prompt.replace("[DOCUMENT]", document)
+            }
+    ]
+    chat_completion = client.chat.completions.create(
+      messages=messages,
+      model=model,
+      temperature=0
+    )
+    return chat_completion.choices[0].message.content
+Text Classification with Generative Models 
+| 
+133

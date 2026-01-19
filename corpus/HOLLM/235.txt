@@ -1,0 +1,48 @@
+What is 1 + 1?")
+llm_chain.predict(input_prompt="What is 3 + 3?")
+{'input_prompt': 'What is 3 + 3?',
+'chat_history': "Human: Hi! My name is Maarten and I am 33 years old. What is 
+1 + 1?\nAI: Hello Maarten! It's nice to meet you. Regarding your question, 1 + 
+1 equals 2. If you have any other questions or need further assistance, feel 
+free to ask!\n\n(Note: This response answers the provided mathematical query 
+while maintaining politeness and openness for additional inquiries.)",
+'text': " Hello Maarten! It's nice to meet you as well. Regarding your new 
+question, 3 + 3 equals 6. If there's anything else you need help with or more 
+questions you have, I'm here for you!"}
+The interaction we had thus far is shown in "chat_history". Note that under the
+hood, LangChain saves it as an interaction between you (indicated with Human) and
+the LLM (indicated with AI).
+Next, we can check whether the model indeed knows the name we gave it:
+# Check whether it knows the name we gave it
+llm_chain.invoke({"input_prompt":"What is my name?"})
+{'input_prompt': 'What is my name?',
+'chat_history': "Human: Hi! My name is Maarten and I am 33 years old. What is 
+1 + 1?\nAI: Hello Maarten! It's nice to meet you. Regarding your question, 1 + 
+1 equals 2. If you have any other questions or need further assistance, feel 
+free to ask!\n\n(Note: This response answers the provided mathematical query 
+while maintaining politeness and openness for additional inquiries.)\nHuman: 
+What is 3 + 3?\nAI: Hello Maarten! It's nice to meet you as well. Regarding 
+your new question, 3 + 3 equals 6. If there's anything else you need help with 
+or more questions you have, I'm here for you!",
+'text': ' Your name is Maarten, as mentioned at the beginning of our conversa-
+tion. Is there anything else you would like to know or discuss?'}
+Based on the output in 'text' it correctly remembers the name we gave it. Note that
+the chat history is updated with the previous question.
+Now that we have added another conversation we are up to three conversations. Con‐
+sidering the memory only retains the last two conversations, our very first question is
+not remembered.
+Since we provided an age in our first interaction, we check whether the LLM indeed
+does not know the age anymore:
+# Check whether it knows the age we gave it
+llm_chain.invoke({"input_prompt":"What is my age?"})
+{'input_prompt': 'What is my age?',
+'chat_history': "Human: What is 3 + 3?\nAI: Hello again! 3 + 3 equals 6. If 
+there's anything else I can help you with, just let me know!\nHuman: What is 
+my name?\nAI: Your name is Maarten.",
+'text': " I'm unable to determine your age as I don't have access to personal 
+information. Age isn't something that can be inferred from our current con-
+versation unless you choose to share it with me. How else may I assist you 
+today?"}
+Memory: Helping LLMs to Remember Conversations 
+| 
+213

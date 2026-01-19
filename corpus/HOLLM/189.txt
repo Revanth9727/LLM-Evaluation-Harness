@@ -1,0 +1,26 @@
+CHAPTER 6
+Prompt Engineering
+In the first chapters of this book, we took our first steps into the world of large
+language models (LLMs). We delved into various applications, such as supervised and
+unsupervised classification, employing models that focus on representing text, like
+BERT and its derivatives.
+As we progressed, we used models trained primarily for text generation, models that
+are often referred to as generative pre-trained transformers (GPT). These models have
+the remarkable ability to generate text in response to prompts from the user. Through
+prompt engineering, we can design these prompts in a way that enhances the quality of
+the generated text.
+In this chapter, we will explore these generative models in more detail and dive into
+the realm of prompt engineering, reasoning with generative models, verification, and
+even evaluating their output.
+Using Text Generation Models
+Before we start with the fundamentals of prompt engineering, it is essential to explore
+the basics of utilizing a text generation model. How do we select the model to use?
+Do we use a proprietary or open source model? How can we control the generated
+output? These questions will serve as our stepping stones into using text generation
+models.
+Choosing a Text Generation Model
+Choosing a text generation model starts with choosing between proprietary models
+or open source models. Although proprietary models are generally more performant,
+we focus in this book more on open source models as they offer more flexibility and
+are free to use.
+167

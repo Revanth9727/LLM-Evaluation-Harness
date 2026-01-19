@@ -1,0 +1,8 @@
+Figure 6-11. An example of a complex prompt with many components.
+Figure 6-12. Iterating over modular components is a vital part of prompt engineering.
+Try it out yourself! Use the complex prompt to add and/or remove parts to observe
+its impact on the generated output. You will quickly notice when pieces of the puzzle
+are worth keeping. You can use your own data by adding it to the data variable:
+Advanced Prompt Engineering 
+| 
+179

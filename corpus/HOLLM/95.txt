@@ -1,0 +1,31 @@
+CHAPTER 3
+Looking Inside Large Language Models
+Now that we have a sense of tokenization and embeddings, we’re ready to dive deeper
+into the language model and see how it works. In this chapter, we’ll look at some of
+the main intuitions of how Transformer language models work. Our focus will be on
+text generation models so we get a deeper sense for generative LLMs in particular.
+We’ll be looking at both the concepts and some code examples that demonstrate
+them. Let’s start by loading a language model and getting it ready for generation
+by declaring a pipeline. In your first read, feel free to skip the code and focus on
+grasping the concepts involved. Then in a second read, the code will get you to start
+applying these concepts.
+import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
+# Load model and tokenizer
+tokenizer = AutoTokenizer.from_pretrained("microsoft/Phi-3-mini-4k-instruct")
+model = AutoModelForCausalLM.from_pretrained(
+    "microsoft/Phi-3-mini-4k-instruct",
+    device_map="cuda",
+    torch_dtype="auto",
+    trust_remote_code=True,
+)
+# Create a pipeline
+generator = pipeline(
+    "text-generation",
+    model=model,
+    tokenizer=tokenizer,
+    return_full_text=False,
+    max_new_tokens=50,
+    do_sample=False,
+)
+73

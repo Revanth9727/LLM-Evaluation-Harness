@@ -1,0 +1,20 @@
+3 Chi Sun et al. “How to fine-tune GERT for text classification?” Chinese Computational Linguistics: 18th
+China National Conference, CCL 2019, Kunming, China, October 18–20, 2019, proceedings 18. Springer
+International Publishing, 2019.
+This will update the subword representations to be more tuned toward words it
+would not have seen before. This process is illustrated in Figure 11-15 and dem‐
+onstrates how this additional step updates a masked language modeling task. Con‐
+tinuing pretraining on a pretrained BERT model has been shown to improve the
+performance of models in classification tasks and is a worthwhile addition to the
+fine-tuning pipeline.3
+Figure 11-15. Instead of a two-step approach, we can add another step that continues
+to pretrain the pretrained model before fine-tuning it on the target task. Notice how the
+masks were filled with abstract concepts in 1 while they were filled with movie-specific
+concepts in 2.
+Instead of having to pretrain an entire model from scratch, we can simply continue
+pretraining before fine-tuning it for classification. This also helps the model to adapt
+to a certain domain or even the lingo of a specific organization. The genealogy of
+models a company might want to adopt is further illustrated in Figure 11-16.
+Continued Pretraining with Masked Language Modeling 
+| 
+341

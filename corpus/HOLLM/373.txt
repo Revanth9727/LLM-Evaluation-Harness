@@ -1,0 +1,39 @@
+updated_label += 1
+                label_ids.append(updated_label)
+        updated_labels.append(label_ids)
+    token_ids["labels"] = updated_labels
+    return token_ids
+tokenized = dataset.map(align_labels, batched=True)
+Looking at our example, note that additional labels (-100) were added for the [CLS]
+and [SEP] tokens:
+# Difference between original and updated labels
+print(f"Original: {example["ner_tags"]}")
+print(f"Updated: {tokenized["train"][848]["labels"]}")
+Original: [1, 2, 0, 0, 0, 0, 0, 0, 3, 0]
+Updated: [-100, 1, 2, 0, 0, 0, 0, 0, 0, 0, 3, 0, -100]
+Now that we have tokenized and aligned the labels, we can start thinking about
+defining our evaluation metrics. This is also different from what we have seen before.
+Instead of a single prediction per document, we now have multiple predictions per
+document, namely per token.
+We will make use of the evaluate package by Hugging Face to create a compute_met
+rics function that allows us to evaluate performance on a token level:
+import evaluate 
+# Load sequential evaluation
+seqeval = evaluate.load("seqeval")
+def compute_metrics(eval_pred):
+    # Create predictions
+    logits, labels = eval_pred
+    predictions = np.argmax(logits, axis=2)
+    true_predictions = []
+    true_labels = []
+    # Document-level iteration
+    for prediction, label in zip(predictions, labels):
+      # Token-level iteration
+      for token_prediction, token_label in zip(prediction, label):
+        # We ignore special tokens
+        if token_label != -100:
+          true_predictions.append([id2label[token_prediction]])
+          true_labels.append([id2label[token_label]])
+Named-Entity Recognition 
+| 
+351

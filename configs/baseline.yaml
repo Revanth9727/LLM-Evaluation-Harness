@@ -1,0 +1,59 @@
+task_type: "citation_qa"
+
+dataset_path: "data/regression.jsonl"
+artifacts_dir: "artifacts/"
+seed: 1337
+
+run:
+  run_id_prefix: "regression"
+  save_replay_bundles: true
+
+candidate_a:
+  name: "gpt_a"
+  provider: "openai"
+  model: "${A_OPENAI_MODEL:-gpt-4o-mini}"
+  params:
+    temperature: 0.2
+
+candidate_b:
+  name: "llama_local"
+  provider: "openai_compatible_http"
+  base_url: "${LLAMA_BASE_URL:-http://127.0.0.1:8080/v1}"
+  api_key: "${LLAMA_API_KEY:-}"
+  model: "${LLAMA_MODEL:-llama3.1:8b}"
+  params:
+    temperature: 0.2
+
+hard_checks:
+  - name: "citations_present"
+    when_tag: "requires_citations"
+  - name: "idk_required"
+    when_tag: "should_say_idk"
+    contains: "I don't know based on the provided context."
+  - name: "max_length"
+    max_chars: 3000
+  - name: "forbidden_phrases"
+    phrases:
+      - "As an AI language model"
+      - "system prompt"
+  - name: "latency_budget"
+    max_ms: 12000
+    enabled: true
+  - name: "cost_proxy"
+    max_tokens: 2000
+    enabled: true
+
+judge:
+  enabled: true
+  mode: "${JUDGE_MODE:-live}"
+  provider: "openai"
+  model: "${JUDGE_OPENAI_MODEL:-gpt-4o-mini}"
+  rubric_path: "rubrics/v1.yaml"
+  exemplars_dir: "rubrics/exemplars/"
+  randomize_order: true
+  two_pass: true
+
+calibration:
+  enabled: false
+metamorphic:
+  enabled: false

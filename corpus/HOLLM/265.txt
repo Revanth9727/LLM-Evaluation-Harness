@@ -1,0 +1,34 @@
+Results:
+Input question: how precise was the science
+Top-3 lexical search (BM25) hits
+1.789 Interstellar is a 2014 epic science fiction film co-written, directed, 
+and produced by Christopher Nolan
+1.373 Caltech theoretical physicist and 2017 Nobel laureate in Physics[4] Kip 
+Thorne was an executive producer, acted as a scientific consultant, and wrote 
+a tie-in book, The Science of Interstellar
+0.000 Interstellar uses extensive practical and miniature effects and the com-
+pany Double Negative created additional digital effects
+Top-3 hits by rank-API (10 BM25 hits re-ranked)
+0.004 Caltech theoretical physicist and 2017 Nobel laureate in Physics[4] Kip 
+Thorne was an executive producer, acted as a scientific consultant, and wrote 
+a tie-in book, The Science of Interstellar
+0.004 Set in a dystopian future where humanity is struggling to survive, the 
+film follows a group of astronauts who travel through a wormhole near Saturn 
+in search of a new home for mankind
+0.003 Brothers Christopher and Jonathan Nolan wrote the screenplay, which had 
+its origins in a script Jonathan developed in 2007
+We see that keyword search assigns scores to only two results that share some of
+the keywords. In the second set of results, the reranker elevates the second result
+appropriately as the most relevant result for the query. This is a toy example that
+gives us a glimpse of the effect, but in practice, such a pipeline significantly improves
+search quality. On a multilingual benchmark like MIRACL, a reranker can boost
+performance from 36.5 to 62.8, measured as nDCG@10 (more on evaluation later in
+this chapter).
+Open source retrieval and reranking with sentence transformers
+If you want to locally set up retrieval and reranking on your own machine, then
+you can use the Sentence Transformers library. Refer to the documentation at https://
+oreil.ly/jJOhV for setup. Check the “Retrieve & Re-Rank” section for instructions and
+code examples for how to conduct these steps in the library.
+Semantic Search with Language Models 
+| 
+243

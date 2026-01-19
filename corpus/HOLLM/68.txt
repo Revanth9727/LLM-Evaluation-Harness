@@ -1,0 +1,40 @@
+models” show that this can be a competitive method, especially in multilingual
+scenarios.
+One distinction to highlight here: some subword tokenizers also include bytes as
+tokens in their vocabulary as the final building block to fall back to when they
+encounter characters they can’t otherwise represent. The GPT-2 and RoBERTa token‐
+izers do this, for example. This doesn’t make them tokenization-free byte-level token‐
+izers, because they don’t use these bytes to represent everything, only a subset, as we’ll
+see in the next section.
+If you want to go deeper into tokenizers, they are discussed in more detail in Design‐
+ing Large Language Model Applications.
+Comparing Trained LLM Tokenizers
+We’ve pointed out earlier three major factors that dictate the tokens that appear
+within a tokenizer: the tokenization method, the parameters and special tokens we
+use to initialize the tokenizer, and the dataset the tokenizer is trained on. Let’s
+compare and contrast a number of actual, trained tokenizers to see how these choices
+change their behavior. This comparison will show us that newer tokenizers have
+changed their behavior to improve model performance, and we’ll also see how spe‐
+cialized models (like code generation models, for example) often need specialized
+tokenizers.
+We’ll use a number of tokenizers to encode the following text:
+text = """
+English and CAPITALIZATION
+🎵鸟
+show_tokens False None elif == >= else: two tabs:" " Three tabs: "   "
+12.0*50=600
+"""
+This will allow us to see how each tokenizer deals with a number of different kinds of
+tokens:
+• Capitalization.
+•
+• Languages other than English.
+•
+• Emojis.
+•
+• Programming code with keywords and whitespaces often used for indentation
+•
+(in languages like Python for example).
+46 
+| 
+Chapter 2: Tokens and Embeddings

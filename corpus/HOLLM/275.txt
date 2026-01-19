@@ -1,0 +1,37 @@
+Loading the generation model
+We start by downloading our model:
+!wget https://huggingface.co/microsoft/Phi-3-mini-4k-instruct-gguf/resolve/main/
+Phi-3-mini-4k-instruct-fp16.gguf
+Using llama.cpp, llama-cpp-python, and LangChain, we load the text generation
+model:
+from langchain import LlamaCpp
+# Make sure the model path is correct for your system!
+llm = LlamaCpp(
+    model_path="Phi-3-mini-4k-instruct-fp16.gguf",
+    n_gpu_layers=-1,
+    max_tokens=500,
+    n_ctx=2048,
+    seed=42,
+    verbose=False
+)
+Loading the embedding model
+Let’s now load an embedding language model. In this example, we will choose the
+BAAI/bge-small-en-v1.5 model. At the time of writing, it is high on the MTEB
+leaderboard for embedding models and relatively small:
+from langchain.embeddings.huggingface import HuggingFaceEmbeddings
+# Embedding model for converting text to numerical representations
+embedding_model = HuggingFaceEmbeddings(
+    model_name='thenlper/gte-small'
+)
+We can now use the embedding model to set up our vector database:
+from langchain.vectorstores import FAISS
+# Create a local vector database
+db = FAISS.from_texts(texts, embedding_model)
+The RAG prompt
+A prompt template plays a vital part in the RAG pipeline. It is the central place where
+we communicate the relevant documents to the LLM. To do so, we will create an
+additional input variable named context that can provide the LLM with the retrieved
+documents:
+Retrieval-Augmented Generation (RAG) 
+| 
+253

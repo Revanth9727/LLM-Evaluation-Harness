@@ -1,0 +1,21 @@
+An Overview of Transformer Models
+Let’s begin our exploration with a high-level overview of the model, and then we’ll see
+how later work has improved upon the Transformer model since its introduction in
+2017.
+The Inputs and Outputs of a Trained Transformer LLM
+The most common picture of understanding the behavior of a Transformer LLM is
+to think of it as a software system that takes in text and generates text in response.
+Once a large enough text-in-text-out model is trained on a large enough high-quality
+dataset, it becomes able to generate impressive and useful outputs. Figure 3-1 shows
+one such model used to author an email.
+Figure 3-1. At a high level of abstraction, Transformer LLMs take a text prompt and
+output generated text.
+The model does not generate the text all in one operation; it actually generates one
+token at a time. Figure 3-2 shows four steps of token generation in response to the
+input prompt. Each token generation step is one forward pass through the model
+(that’s machine-learning speak for the inputs going into the neural network and
+flowing through the computations it needs to produce an output on the other end of
+the computation graph).
+74 
+| 
+Chapter 3: Looking Inside Large Language Models

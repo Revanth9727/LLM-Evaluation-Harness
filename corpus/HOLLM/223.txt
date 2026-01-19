@@ -1,0 +1,29 @@
+Figure 7-2. Attempting to represent pi with float 32-bit and float 16-bit representations.
+Notice the lowered accuracy when we halve the number of bits.
+Quantization reduces the number of bits required to represent the parameters of an
+LLM while attempting to maintain most of the original information. This comes with
+some loss in precision but often makes up for it as the model is much faster to run,
+requires less VRAM, and is often almost as accurate as the original.
+To illustrate quantization, consider this analogy. If asked what the time is, you might
+say “14:16,” which is correct but not a fully precise answer. You could have said it
+is “14:16 and 12 seconds” instead, which would have been more accurate. However,
+mentioning seconds is seldom helpful and we often simply put that in discrete
+numbers, namely full minutes. Quantization is a similar process that reduces the
+precision of a value (e.g., removing seconds) without removing vital information
+(e.g., retaining hours and minutes).
+In Chapter 12, we will further discuss how quantization works under the hood. You
+can also see a full visual guide to quantization in “A Visual Guide to Quantization”
+by Maarten Grootendorst. For now, it is important to know that we will use an
+8-bit variant of Phi-3 compared to the original 16-bit variant, cutting the memory
+requirements almost in half.
+As a rule of thumb, look for at least 4-bit quantized models. These
+models have a good balance between compression and accuracy.
+Although it is possible to use 3-bit or even 2-bit quantized mod‐
+els, the performance degradation becomes noticeable and it would
+instead be preferable to choose a smaller model with a higher
+precision.
+First, we will need to download the model. Note that the link contains multiple files
+with different bit-variants. FP16, the model we choose, represents the 16-bit variant:
+Model I/O: Loading Quantized Models with LangChain 
+| 
+201

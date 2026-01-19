@@ -1,0 +1,15 @@
+21 John Schulman et al. “Proximal Policy Optimization algorithms.” arXiv preprint arXiv:1707.06347 (2017).
+Figure 12-30. The three stages of preference tuning: collecting preference data, training a
+reward model, and finally fine-tuning the LLM.
+Reward models are an excellent idea that can be further extended and developed.
+Llama 2, for example, trains two reward models: one that scores helpfulness and
+another that scores safety (Figure 12-31).
+Figure 12-31. We can use multiple reward models to perform the scoring.
+A common method to fine-tune the LLM with the trained reward model is Proximal
+Policy Optimization (PPO). PPO is a popular reinforcement technique that optimizes
+the instruction-tuned LLM by making sure that the LLM does not deviate too much
+from the expected rewards.21 It was even used to train the original ChatGPT released
+in November 2022.
+Automating Preference Evaluation Using Reward Models 
+| 
+383

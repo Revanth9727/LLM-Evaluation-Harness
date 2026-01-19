@@ -1,0 +1,21 @@
+Figure 12-3. The three steps of creating a high-quality LLM.
+In this chapter, we use a base model that was already trained on massive datasets and
+explore how we can fine-tune it using both fine-tuning strategies. For each method,
+we start with the theoretical underpinnings before using them in practice.
+Supervised Fine-Tuning (SFT)
+The purpose of pretraining a model on large datasets is that it is able to reproduce
+language and its meaning. During this process, the model learns to complete input
+phrases as shown in Figure 12-4.
+Figure 12-4. A base or pretrained LLM was trained to predict the next word(s).
+This example also illustrates that the model was not trained to follow instructions and
+instead will attempt to complete a question rather than answer it (Figure 12-5).
+Figure 12-5. A base LLM will not follow instructions but instead attempts to predict
+each next word. It may even create new questions.
+We can use this base model and adapt it to certain use cases, such as following
+instructions, by fine-tuning it.
+Full Fine-Tuning
+The most common fine-tuning process is full fine-tuning. Like pretraining an LLM,
+this process involves updating all parameters of a model to be in line with your target
+Supervised Fine-Tuning (SFT) 
+| 
+357

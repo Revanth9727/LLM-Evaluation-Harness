@@ -1,0 +1,40 @@
+from datasets import load_dataset
+# Load our data
+data = load_dataset("rotten_tomatoes")
+data
+DatasetDict({
+    train: Dataset({
+        features: ['text', 'label'],
+        num_rows: 8530
+    })
+    validation: Dataset({
+        features: ['text', 'label'],
+        num_rows: 1066
+    })
+    test: Dataset({
+        features: ['text', 'label'],
+        num_rows: 1066
+    })
+})
+The data is split up into train, test, and validation splits. Throughout this chapter,
+we will use the train split when we train a model and the test split for validating
+the results. Note that the additional validation split can be used to further validate
+generalization if you used the train and test splits to perform hyperparameter tuning.
+Let’s take a look at some examples in our train split:
+data["train"][0, -1]
+{'text': ['the rock is destined to be the 21st century\'s new " conan " and 
+that he\'s going to make a splash even greater than arnold schwarzenegger , 
+jean-claud van damme or steven segal .',
+  'things really get weird , though not particularly scary : the movie is all 
+portent and no content .'],
+ 'label': [1, 0]}
+These short reviews are either labeled as positive (1) or negative (0). This means that
+we will focus on binary sentiment classification.
+Text Classification with Representation Models
+Classification with pretrained representation models generally comes in two flavors,
+either using a task-specific model or an embedding model. As we explored in the
+previous chapter, these models are created by fine-tuning a foundation model, like
+BERT, on a specific downstream task as illustrated in Figure 4-3.
+Text Classification with Representation Models 
+| 
+113

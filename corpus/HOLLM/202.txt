@@ -1,0 +1,42 @@
+2 Cheng Li et al. “EmotionPrompt: Leveraging psychology for large language models enhancement via emo‐
+tional stimulus.” arXiv preprint arXiv:2307.11760 (2023).
+3 Tom Brown et al. “Language models are few-shot learners.” Advances in Neural Information Processing Systems
+33 (2020): 1877–1901.
+# Prompt components
+persona = "You are an expert in Large Language models. You excel at breaking 
+down complex papers into digestible summaries.\n"
+instruction = "Summarize the key findings of the paper provided.\n"
+context = "Your summary should extract the most crucial points that can help 
+researchers quickly understand the most vital information of the paper.\n"
+data_format = "Create a bullet-point summary that outlines the method. Follow 
+this up with a concise paragraph that encapsulates the main results.\n"
+audience = "The summary is designed for busy researchers that quickly need to 
+grasp the newest trends in Large Language Models.\n"
+tone = "The tone should be professional and clear.\n"
+text = "MY TEXT TO SUMMARIZE"
+data = f"Text to summarize: {text}"
+# The full prompt - remove and add pieces to view its impact on the generated 
+output
+query = persona + instruction + context + data_format + audience + tone + data
+There is all manner of components that we could add and creative
+components like using emotional stimuli (e.g., “This is very impor‐
+tant for my career.”2). Part of the fun in prompt engineering is that
+you can be as creative as possible to figure out which combination
+of prompt components contribute to your use case. There are few
+constraints to developing a format that works for you.
+In a way, it is an attempt to reverse engineer what the model has
+learned and how it responds to certain prompts. However, note
+that some prompts work better for certain models compared to
+others as their training data might be different or they are trained
+for different purposes.
+In-Context Learning: Providing Examples
+In the previous sections, we tried to accurately describe what the LLM should do.
+Although accurate and specific descriptions help the LLM to understand the use case,
+we can go one step further. Instead of describing the task, why do we not just show
+the task?
+We can provide the LLM with examples of exactly the thing that we want to achieve.
+This is often referred to as in-context learning, where we provide the model with
+correct examples.3
+180 
+| 
+Chapter 6: Prompt Engineering

@@ -1,0 +1,23 @@
+Figure 8-24. A basic RAG pipeline is made up of a search step followed by a grounded
+generation step where the LLM is prompted with the question and the information
+retrieved from the search step.
+RAG systems incorporate search capabilities in addition to generation capabilities.
+They can be seen as an improvement to generation systems because they reduce
+their hallucinations and improve their factuality. They also enable use cases of “chat
+with my data” that consumers and companies can use to ground an LLM on internal
+company data, or a specific data source of interest (e.g., chatting with a book).
+This also extends to search systems. More search engines are incorporating an LLM
+to summarize results or answer questions submitted to the search engine. Examples
+include Perplexity, Microsoft Bing AI, and Google Gemini.
+From Search to RAG
+Let’s now turn our search system into a RAG system. We do that by adding an LLM
+to the end of the search pipeline. We present the question and the top retrieved
+documents to the LLM, and ask it to answer the question given the context provided
+by the search results. We can see an example in Figure 8-25.
+This generation step is called grounded generation because the retrieved relevant
+information we provide the LLM establishes a certain context that grounds the LLM
+in the domain we’re interested in. Figure 8-26 shows how grounded generation fits
+after search if we continue our embeddings search example from earlier.
+250 
+| 
+Chapter 8: Semantic Search and Retrieval-Augmented Generation

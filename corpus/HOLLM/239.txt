@@ -1,0 +1,60 @@
+Figure 7-13. We extend the LLM chain with memory by summarizing the entire conver‐
+sation history before giving it to the input prompt.
+This summarization helps keep the chat history relatively small without using too
+many tokens during inference. However, since the original question was not explicitly
+saved in the chat history, the model needed to infer it based on the context. This is a
+disadvantage if specific information needs to be stored in the chat history. Moreover,
+multiple calls to the same LLM are needed, one for the prompt and one for the
+summarization. This can slow down computing time.
+Often, it is a trade-off between speed, memory, and accuracy. Where Conversation
+BufferMemory is instant but hogs tokens, ConversationSummaryMemory is slow but
+frees up tokens to use. Additional pros and cons of the memory types we have
+explored thus far are described in Table 7-1.
+Table 7-1. The pros and cons of different memory types.
+Memory type
+Pros
+Cons
+Conversation
+Buffer
+• Easiest implementation
+•
+• Ensures no information loss within context
+•
+window
+• Slower generation speed as more tokens are
+•
+needed
+• Only suitable for large-context LLMs
+•
+• Larger chat histories make information retrieval
+•
+difficult
+Windowed
+Conversation
+Buffer
+• Large-context LLMs are not needed unless
+•
+chat history is large
+• No information loss over the last k
+•
+interactions
+• Only captures the last k interactions
+•
+• No compression of the last k interactions
+•
+Conversation
+Summary
+• Captures the full history
+•
+• Enables long conversations
+•
+• Reduces tokens needed to capture full history
+•
+• An additional call is necessary for each interaction
+•
+• Quality is reliant on the LLM’s summarization
+•
+capabilities
+Memory: Helping LLMs to Remember Conversations 
+| 
+217

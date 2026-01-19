@@ -1,0 +1,18 @@
+1 Harold Hotelling. “
+Analysis of a complex of statistical variables into principal components.” Journal of Educa‐
+tional Psychology 24.6 (1933): 417.
+2 Leland McInnes, John Healy, and James Melville. “UMAP: Uniform Manifold Approximation and Projection
+for dimension reduction.” arXiv preprint arXiv:1802.03426 (2018).
+Figure 5-4. Dimensionality reduction allows data in high-dimensional space to be com‐
+pressed to a lower-dimensional representation.
+Note that this is a compression technique and that the underlying algorithm is not
+arbitrarily removing dimensions. To help the cluster model create meaningful clus‐
+ters, the second step in our clustering pipeline is therefore dimensionality reduction,
+as shown in Figure 5-5.
+Figure 5-5. Step 2: The embeddings are reduced to a lower-dimensional space using
+dimensionality reduction.
+Well-known methods for dimensionality reduction are Principal Component Analy‐
+sis (PCA)1 and Uniform Manifold Approximation and Projection (UMAP).2 For this
+A Common Pipeline for Text Clustering 
+| 
+141

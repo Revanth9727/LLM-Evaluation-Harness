@@ -1,0 +1,39 @@
+!wget https://huggingface.co/microsoft/Phi-3-mini-4k-instruct-gguf/resolve/main/
+Phi-3-mini-4k-instruct-fp16.gguf
+We use llama-cpp-python together with LangChain to load the GGUF file:
+from langchain import LlamaCpp
+# Make sure the model path is correct for your system!
+llm = LlamaCpp(
+    model_path="Phi-3-mini-4k-instruct-fp16.gguf",
+    n_gpu_layers=-1,
+    max_tokens=500,
+    n_ctx=2048,
+    seed=42,
+    verbose=False
+)
+In LangChain, we use the invoke function to generate output:
+llm.invoke("Hi! My name is Maarten. What is 1 + 1?")
+''
+Unfortunately, we get no output! As we have seen in previous chapters, Phi-3 requires
+a specific prompt template. Compared to our examples with transformers, we will
+need to explicitly use a template ourselves. Instead of copy-pasting this template each
+time we use Phi-3 in LangChain, we can use one of LangChain’s core functionalities,
+namely “chains.”
+All examples in this chapter can be run with any LLM. This means
+that you can choose whether to use Phi-3, ChatGPT, Llama 3 or
+anything else when going through the examples. We will use Phi-3
+as a default throughout, but the state-of-the-art changes quickly, so
+consider using a newer model instead. You can use the Open LLM
+Leaderboard (a ranking of open source LLMs) to choose whichever
+works best for your use case.
+If you do not have access to a device that can run LLMs locally,
+consider using ChatGPT instead:
+from langchain.chat_models import ChatOpenAI
+# Create a chat-based LLM
+chat_model = ChatOpenAI(openai_api_key="MY_KEY")
+Chains: Extending the Capabilities of LLMs
+LangChain is named after one of its main methods, chains. Although we can run
+LLMs in isolation, their power is shown when used with additional components or
+202 
+| 
+Chapter 7: Advanced Text Generation Techniques and Tools

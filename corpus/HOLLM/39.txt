@@ -1,0 +1,14 @@
+Figure 1-19. The decoder has an additional attention layer that attends to the output of
+the encoder.
+As shown in Figure 1-20, the self-attention layer in the decoder masks future posi‐
+tions so it only attends to earlier positions to prevent leaking information when
+generating the output.
+Figure 1-20. Only attend to previous tokens to prevent “looking into the future.
+”
+Together, these building blocks create the Transformer architecture and are the foun‐
+dation of many impactful models in Language AI, such as BERT and GPT-1, which
+we cover later in this chapter. Throughout this book, most models that we will use are
+Transformer-based models.
+A Recent History of Language AI 
+| 
+17

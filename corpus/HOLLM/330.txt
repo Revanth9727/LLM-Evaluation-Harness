@@ -1,0 +1,23 @@
+not the actual answer, so this would be a good hard negative. Figure 10-11 illustrates
+the differences between easy and hard negatives.
+Figure 10-11. An easy negative is typically unrelated to both the question and answer. A
+semi-hard negative has some similarities to the topic of the question and answer but is
+somewhat unrelated. A hard negative is very similar to the question but is generally the
+wrong answer.
+Gathering negatives can roughly be divided into the following three processes:
+Easy negatives
+Through randomly sampling documents as we did before.
+Semi-hard negatives
+Using a pretrained embedding model, we can apply cosine similarity on all
+sentence embeddings to find those that are highly related. Generally, this does
+not lead to hard negatives since this method merely finds similar sentences, not
+question/answer pairs.
+Hard negatives
+These often need to be either manually labeled (for instance, by generating semi-
+hard negatives) or you can use a generative model to either judge or generate
+sentence pairs.
+Make sure to restart your notebook so we can explore the different methods of
+fine-tuning embedding models.
+308 
+| 
+Chapter 10: Creating Text Embedding Models

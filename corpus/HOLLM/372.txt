@@ -1,0 +1,34 @@
+Figure 11-21. The alignment process of labeling tokenized input.
+We create a function, align_labels, that will tokenize the input and align these
+tokens with their updated labels during tokenization:
+def align_labels(examples):
+    token_ids = tokenizer(
+        examples["tokens"], 
+        truncation=True, 
+        is_split_into_words=True
+    )
+    labels = examples["ner_tags"]
+    updated_labels = []
+    for index, label in enumerate(labels):
+        
+        # Map tokens to their respective word
+        word_ids = token_ids.word_ids(batch_index=index)  
+        previous_word_idx = None
+        label_ids = []
+        for word_idx in word_ids: 
+            # The start of a new word
+            if word_idx != previous_word_idx:
+                
+                previous_word_idx = word_idx
+                updated_label = -100 if word_idx is None else label[word_idx]
+                label_ids.append(updated_label)
+            # Special token is -100
+            elif word_idx is None:
+                label_ids.append(-100)
+            # If the label is B-XXX we change it to I-XXX
+            else:
+                updated_label = label[word_idx]
+                if updated_label % 2 == 1:
+350 
+| 
+Chapter 11: Fine-Tuning Representation Models for Classification

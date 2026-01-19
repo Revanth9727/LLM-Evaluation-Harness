@@ -1,0 +1,35 @@
+Persona
+Describe what role the LLM should take on. For example, use “You are an expert
+in astrophysics” if you want to ask a question about astrophysics.
+Instruction
+The task itself. Make sure this is as specific as possible. We do not want to leave
+much room for interpretation.
+Context
+Additional information describing the context of the problem or task. It answers
+questions like “What is the reason for the instruction?”
+Format
+The format the LLM should use to output the generated text. Without it, the
+LLM will come up with a format itself, which is troublesome in automated
+systems.
+Audience
+The target of the generated text. This also describes the level of the generated
+output. For education purposes, it is often helpful to use ELI5 (“Explain it like
+I’m 5”).
+Tone
+The tone of voice the LLM should use in the generated text. If you are writing a
+formal email to your boss, you might not want to use an informal tone of voice.
+Data
+The main data related to the task itself.
+To illustrate, let us extend the classification prompt we had earlier and use all of the
+preceding components. This is demonstrated in Figure 6-11.
+This complex prompt demonstrates the modular nature of prompting. We can add
+and remove components freely and judge their effect on the output. As illustrated in
+Figure 6-12, we can slowly build up our prompt and explore the effect of each change.
+The changes are not limited to simply introducing or removing components. Their
+order, as we saw before with the recency and primacy effects, can affect the quality
+of the LLM’s output. In other words, experimentation is vital when finding the
+best prompt for your use case. With prompting, we essentially have ourselves in an
+iterative cycle of experimentation.
+178 
+| 
+Chapter 6: Prompt Engineering

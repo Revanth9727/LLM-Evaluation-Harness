@@ -1,0 +1,17 @@
+In step 2, we can use the generated sentence pairs to fine-tune the embedding model.
+This leverages a method called contrastive learning to fine-tune a pretrained BERT
+model. As we reviewed in Chapter 10, contrastive learning allows accurate sentence
+embeddings to be learned from pairs of similar (positive) and dissimilar (negative)
+sentences.
+Since we generated these pairs in the previous step, we can use them to fine-tune
+a SentenceTransformers model. Although we have discussed contrastive learning
+before, we again illustrate the method in Figure 11-11 as a refresher.
+Figure 11-11. Step 2: Fine-tuning a SentenceTransformers model. Using contrastive
+learning, embeddings are learned from positive and negative sentence pairs.
+The goal of fine-tuning this embedding model is that it can create embeddings
+that are tuned to the classification task. The relevance of the classes, and their rela‐
+tive meaning, are distilled into the embeddings through fine-tuning the embedding
+model.
+Few-Shot Classification 
+| 
+335

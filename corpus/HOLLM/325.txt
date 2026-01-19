@@ -1,0 +1,45 @@
+between the sentences, so we give it a similarity score of 1. In contrast, since both
+neutral and contradiction represent dissimilarity, we give these labels a similarity
+score of 0:
+from datasets import Dataset, load_dataset
+# Load MNLI dataset from GLUE
+# 0 = entailment, 1 = neutral, 2 = contradiction
+train_dataset = load_dataset(
+    "glue", "mnli", split="train"
+).select(range(50_000))
+train_dataset = train_dataset.remove_columns("idx")
+# (neutral/contradiction)=0 and (entailment)=1
+mapping = {2: 0, 1: 0, 0:1}
+train_dataset = Dataset.from_dict({
+    "sentence1": train_dataset["premise"],
+    "sentence2": train_dataset["hypothesis"],
+    "label": [float(mapping[label]) for label in train_dataset["label"]]
+})
+As before, we create our evaluator:
+from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
+# Create an embedding similarity evaluator for stsb
+val_sts = load_dataset("glue", "stsb", split="validation")
+evaluator = EmbeddingSimilarityEvaluator(
+    sentences1=val_sts["sentence1"],
+    sentences2=val_sts["sentence2"],
+    scores=[score/5 for score in val_sts["label"]],
+    main_similarity="cosine"
+)
+Then, we follow the same steps as before but select a different loss instead:
+from sentence_transformers import losses, SentenceTransformer
+from sentence_transformers.trainer import SentenceTransformerTrainer
+from sentence_transformers.training_args import SentenceTransformerTrainingArgu
+ments
+# Define model
+embedding_model = SentenceTransformer("bert-base-uncased")
+# Loss function
+train_loss = losses.CosineSimilarityLoss(model=embedding_model)
+# Define the training arguments
+args = SentenceTransformerTrainingArguments(
+    output_dir="cosineloss_embedding_model",
+    num_train_epochs=1,
+    per_device_train_batch_size=32,
+    per_device_eval_batch_size=32,
+Creating an Embedding Model 
+| 
+303

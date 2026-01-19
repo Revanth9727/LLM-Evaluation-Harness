@@ -1,0 +1,17 @@
+Each of the token streams starts with an input vector (the embedding vector and
+some positional information; we’ll discuss positional embeddings later in the chap‐
+ter). At the end of the stream, another vector emerges as the result of the model’s
+processing, as shown in Figure 3-9.
+Figure 3-9. Each processing stream takes a vector as input and produces a final resulting
+vector of the same size (often referred to as the model dimension).
+For text generation, only the output result of the last stream is used to predict the
+next token. That output vector is the only input into the LM head as it calculates the
+probabilities of the next token.
+You may wonder why we go through the trouble of calculating all the token streams
+if we’re discarding the outputs of all but the last token. The answer is that the
+calculations of the previous streams are required and used in calculating the final
+stream. Yes, we’re not using their final output vector, but we use earlier outputs (in
+each Transformer block) in the Transformer block’s attention mechanism.
+82 
+| 
+Chapter 3: Looking Inside Large Language Models

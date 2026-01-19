@@ -1,0 +1,46 @@
+trainer = SentenceTransformerTrainer(
+    model=embedding_model,
+    args=args,
+    train_dataset=train_dataset,
+    loss=train_loss,
+    evaluator=evaluator
+)
+trainer.train()
+Let’s see how this dataset and loss function compare to our previous examples:
+# Evaluate our trained model
+evaluator(embedding_model)
+{'pearson_cosine': 0.8093892326162132,
+ 'spearman_cosine': 0.8121064796503025,
+ 'pearson_manhattan': 0.8215001523827565,
+ 'spearman_manhattan': 0.8172161486524246,
+ 'pearson_euclidean': 0.8210391407846718,
+ 'spearman_euclidean': 0.8166537141010816,
+ 'pearson_dot': 0.7473360302629125,
+ 'spearman_dot': 0.7345184137194012,
+ 'pearson_max': 0.8215001523827565,
+ 'spearman_max': 0.8172161486524246}
+Compared to our previously trained model with softmax loss (0.72), our model with
+MNR loss (0.80) seems to be much more accurate!
+Larger batch sizes tend to be better with MNR loss as a larger
+batch makes the task more difficult. The reason for this is that the
+model needs to find the best matching sentence from a larger set
+of potential pairs of sentences. You can adapt the code to try out
+different batch sizes and get a feeling of the effects.
+There is a downside to how we used this loss function. Since negatives are sampled
+from other question/answer pairs, these in-batch or “easy” negatives that we used
+could potentially be completely unrelated to the question. As a result, the embedding
+model’s task of then finding the right answer to a question becomes quite easy.
+Instead, we would like to have negatives that are very related to the question but not
+the right answer. These negatives are called hard negatives. Since this would make
+the task more difficult for the embedding model as it has to learn more nuanced
+representations, the embedding model’s performance generally improves quite a bit.
+A good example of a hard negative is the following. Let’s assume we have the follow‐
+ing question: “How many people live in Amsterdam?” A related answer to this ques‐
+tion would be: “
+Almost a million people live in Amsterdam.” To generate a good hard
+negative, we ideally want the answer to contain something about Amsterdam and the
+number of people living in this city. For example: “More than a million people live in
+Utrecht, which is more than Amsterdam.” This answer relates to the question but is
+Creating an Embedding Model 
+| 
+307

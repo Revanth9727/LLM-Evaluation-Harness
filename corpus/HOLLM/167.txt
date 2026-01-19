@@ -1,0 +1,38 @@
+import pandas as pd
+# Reduce 384-dimensional embeddings to two dimensions for easier visualization
+reduced_embeddings = UMAP(
+    n_components=2, min_dist=0.0, metric="cosine", random_state=42
+).fit_transform(embeddings)
+# Create dataframe
+df = pd.DataFrame(reduced_embeddings, columns=["x", "y"])
+df["title"] = titles
+df["cluster"] = [str(c) for c in clusters]
+# Select outliers and non-outliers (clusters)
+to_plot = df.loc[df.cluster != "-1", :]
+outliers = df.loc[df.cluster == "-1", :]
+We also created a dataframe for our clusters (clusters_df) and for the outliers (out
+liers_df) separately since we generally want to focus on the clusters and highlight
+those.
+Using any dimensionality reduction technique for visualization
+purposes creates information loss. It is merely an approximation
+of what our original embeddings look like. Although it is informa‐
+tive, it might push clusters together and drive them further apart
+than they actually are. Human evaluation, inspecting the clusters
+ourselves, is therefore a key component of cluster analysis!
+To generate a static plot, we will use the well-known plotting library, matplotlib:
+import matplotlib.pyplot as plt
+# Plot outliers and non-outliers separately
+plt.scatter(outliers_df.x, outliers_df.y, alpha=0.05, s=2, c="grey")
+plt.scatter(
+    clusters_df.x, clusters_df.y, c=clusters_df.cluster.astype(int),
+    alpha=0.6, s=2, cmap="tab20b"
+)
+plt.axis("off")
+As we can see in Figure 5-8, it tends to capture major clusters quite well. Note how
+clusters of points are colored in the same color, indicating that HDBSCAN put them
+in a group together. Since we have a large number of clusters, the plotting library
+cycles the colors between clusters, so don’t think that all green points are one cluster,
+for example.
+A Common Pipeline for Text Clustering 
+| 
+145

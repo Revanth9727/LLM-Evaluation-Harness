@@ -1,0 +1,26 @@
+6 Maarten Grootendorst. “BERTopic: Neural topic modeling with a class-based TF-IDF procedure.” arXiv
+preprint arXiv:2203.05794 (2022).
+These approaches generally use a bag-of-words technique for the main features of the
+textual data, which does not take the context nor the meaning of words and phrases
+into account. In contrast, our text clustering example does take both into account as
+it relies on Transformer-based embeddings that are optimized for semantic similarity
+and contextual meaning through attention.
+In this section, we will extend text clustering into the realm of topic modeling
+through a highly modular text clustering and topic modeling framework, namely
+BERTopic.
+BERTopic: A Modular Topic Modeling Framework
+BERTopic is a topic modeling technique that leverages clusters of semantically similar
+texts to extract various types of topic representations.6 The underlying algorithm can
+be thought of in two steps.
+First, as illustrated in Figure 5-11, we follow the same procedure as we did before
+in our text clustering example. We embed documents, reduce their dimensionality,
+and finally cluster the reduced embedding to create groups of semantically similar
+documents.
+Figure 5-11. The first part of BERTopic’s pipeline is to create clusters of semantically
+similar documents.
+Second, it models a distribution over words in the corpus’s vocabulary by leveraging
+a classic method, namely bag-of-words. The bag-of-words, as we discussed briefly in
+Chapter 1 and illustrate in Figure 5-12, does exactly what its name implies, counting
+148 
+| 
+Chapter 5: Text Clustering and Topic Modeling

@@ -1,0 +1,23 @@
+An embedding model, however, can be trained for a number of purposes. For
+example, when we are building a sentiment classifier, we are more interested in the
+sentiment of texts than their semantic similarity. As illustrated in Figure 10-3, we can
+fine-tune the model such that documents are closer in n-dimensional space based on
+their sentiment rather than their semantic nature.
+Either way, an embedding model aims to learn what makes certain documents similar
+to one another and we can guide this process. By presenting the model with enough
+examples of semantically similar documents, we can steer toward semantics whereas
+using examples of sentiment would steer it in that direction.
+Figure 10-3. In addition to semantic similarity, an embedding model can be trained
+to focus on sentiment similarity. In this figure, negative reviews (red) are close to one
+another and dissimilar to positive reviews (green).
+There are many ways in which we can train, fine-tune, and guide embedding mod‐
+els, but one of the strongest and most widely used techniques is called contrastive
+learning.
+What Is Contrastive Learning?
+One major technique for both training and fine-tuning text embedding models is
+called contrastive learning. Contrastive learning is a technique that aims to train
+an embedding model such that similar documents are closer in vector space while
+dissimilar documents are further apart. If this sounds familiar, it’s because it’s very
+What Is Contrastive Learning? 
+| 
+291

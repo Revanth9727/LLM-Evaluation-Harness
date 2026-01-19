@@ -1,0 +1,14 @@
+Figure 3-21. Attention combines the relevant information of previous positions by multi‐
+plying their relevance scores by their respective value vectors.
+Recent Improvements to the Transformer Architecture
+Since the release of the Transformer architecture, much work has been done to
+improve it and create better models. This spans training on larger datasets and opti‐
+mizations for the training process and learning rates to use, but it also extends to the
+architecture itself. At the time of writing, a lot of the ideas of the original Transformer
+stand unchanged. There are a few architectural ideas that have proved to be valuable.
+They contribute to the performance of more recent Transformer models like Llama
+2. In this final section of the chapter, we go over a number of the important recent
+developments of the Transformer architecture.
+Recent Improvements to the Transformer Architecture 
+| 
+95

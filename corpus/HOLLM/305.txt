@@ -1,0 +1,39 @@
+generated_text = generated_text[0].strip()
+generated_text
+As before, when we inspect the generated_text variable, we can take a look at the
+caption:
+a black and white ink drawing of a bat
+I can definitely see how the model would caption this image using such a description.
+Since this is a Rorschach test, what do you think it says about the model?
+Use Case 2: Multimodal Chat-Based Prompting
+Although captioning is an important task, we can extend its use case even further.
+In the previous example, we showed going from one modality, vision (image), to
+another, text (caption).
+Instead of following this linear structure, we can try to present both modalities simul‐
+taneously by performing what is called visual question answering. In this particular
+use case, we give the model an image along with a question about that specific image
+for it to answer. The model needs to process both the image as well as the question at
+once.
+To demonstrate, let’s start with the picture of a car and ask BLIP-2 to describe the
+image. To do so, we first need to preprocess the image as we did a few times before:
+# Load an AI-generated image of a supercar
+image = Image.open(urlopen(car_path)).convert("RGB")
+To perform our visual question answering we need to give BLIP-2 more than just the
+image, namely the prompt. Without it, the model would generate a caption as it did
+before. We will ask the model to describe the image we just processed:
+# Visual question answering
+prompt = "Question: Write down what you see in this picture. Answer:"
+# Process both the image and the prompt
+inputs = blip_processor(image, text=prompt, return_tensors="pt").to(device, 
+torch.float16)
+# Generate text
+generated_ids = model.generate(**inputs, max_new_tokens=30)
+generated_text = blip_processor.batch_decode(
+    generated_ids, skip_special_tokens=True
+)
+generated_text = generated_text[0].strip()
+generated_text
+This gives us the following output:
+Making Text Generation Models Multimodal 
+| 
+283

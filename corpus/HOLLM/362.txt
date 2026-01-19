@@ -1,0 +1,20 @@
+Continued Pretraining with Masked Language Modeling
+In the examples thus far, we leveraged a pretrained model and fine-tuned it to
+perform classification. This process describes a two-step process: first pretraining a
+model (which was already done for us) and then fine-tuning it for a particular task.
+We illustrate this process in Figure 11-14.
+Figure 11-14. To fine-tune the model on a target task—for example, classification—we
+either start with pretraining a BERT model or use a pretrained one.
+This two-step approach is typically used throughout many applications. It has its
+limitations when faced with domain-specific data. The pretrained model is often
+trained on very general data, like Wikipedia pages, and might not be tuned to your
+domain-specific words.
+Instead of adopting this two-step approach, we can squeeze another step between
+them, namely continue pretraining an already pretrained BERT model. In other
+words, we can simply continue training the BERT model using masked language
+modeling (MLM) but instead use data from our domain. It is like going from a
+general BERT model to a BioBERT model specialized for the medical domain, to a
+fine-tuned BioBERT model to classify medication.
+340 
+| 
+Chapter 11: Fine-Tuning Representation Models for Classification

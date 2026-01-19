@@ -1,0 +1,24 @@
+22 Rafael Rafailov, et al. “Direct Preference Optimization: Your language model is secretly a reward model.” arXiv
+preprint arXiv:2305.18290 (2023).
+Training No Reward Model
+A disadvantage of PPO is that it is a complex method that needs to train at least
+two models, the reward model and the LLM, which can be more costly than perhaps
+necessary.
+Direct Preference Optimization (DPO) is an alternative to PPO and does away with
+the reinforcement-based learning procedure.22 Instead of using the reward model to
+judge the quality of a generation, we let the LLM itself do that. As illustrated in
+Figure 12-32, we use a copy of the LLM as the reference model to judge the shift
+between the reference and trainable model in the quality of the accepted generation
+and rejected generation.
+Figure 12-32. Use the LLM itself as the reward model by comparing the output of a
+frozen model with the trainable model.
+By calculating this shift during training, we can optimize the likelihood of accepted
+generations over rejected generations by tracking the difference in the reference
+model and the trainable model.
+To calculate this shift and its related scores, the log probabilities of the rejected
+generations and accepted generations are extracted from both models. As illustrated
+in Figure 12-33, this process is performed at a token level where the probabilities are
+combined to calculate the shift between the reference and trainable models.
+384 
+| 
+Chapter 12: Fine-Tuning Generation Models

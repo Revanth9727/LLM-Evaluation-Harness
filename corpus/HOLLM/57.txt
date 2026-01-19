@@ -1,0 +1,18 @@
+We discussed the attention mechanism as a step toward encoding context within
+models, a vital component of what makes LLMs so capable. We touched on two
+main categories of models that use this incredible mechanism: representation models
+(encoder-only) like BERT and generative models (decoder-only) like the GPT family
+of models. Both categories are considered large language models throughout this
+book.
+Overall, the chapter provided an overview of the landscape of Language AI, including
+its applications, societal and ethical implications, and the resources needed to run
+such models. We ended by generating our first text using Phi-3, a model that will be
+used throughout the book.
+In the next two chapters, you will learn about some underlying processes. We start by
+exploring tokenization and embeddings in Chapter 2, two often underestimated but
+vital components of the Language AI field. What follows in Chapter 3 is an in-depth
+look into language models where you will discover the precise methods used for
+generating text.
+Summary 
+| 
+35

@@ -1,0 +1,27 @@
+When we evaluate the model, we only get an F1 score of 0.63, which is quite a bit
+lower compared to our original 0.85 score. Instead of freezing nearly all layers, let’s
+freeze everything up until encoder block 10 as illustrated in Figure 11-6, and see
+how it affects performance. A major benefit is that this reduces computation but still
+allows updates to flow through part of the pretrained model:
+Figure 11-6. We freeze the first 10 encoder blocks of our BERT model. Everything else is
+trainable and will be fine-tuned.
+# Load model
+model_id = "bert-base-cased"
+model = AutoModelForSequenceClassification.from_pretrained(
+    model_id, num_labels=2
+)
+tokenizer = AutoTokenizer.from_pretrained(model_id)
+# Encoder block 11 starts at index 165 and
+# we freeze everything before that block
+for index, (name, param) in enumerate(model.named_parameters()):    
+    if index < 165:
+        param.requires_grad = False
+# Trainer which executes the training process
+trainer = Trainer(
+   model=model,
+   args=training_args,
+   train_dataset=tokenized_train,
+   eval_dataset=tokenized_test,
+Supervised Classification 
+| 
+331

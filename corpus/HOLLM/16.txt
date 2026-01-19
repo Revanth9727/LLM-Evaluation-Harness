@@ -1,0 +1,34 @@
+Learning these individual language model capabilities will equip you with the skill
+set to problem-solve with LLMs and build more and more advanced systems and
+pipelines.
+Part III: Training and Fine-Tuning Language Models
+In Part III of the book, we explore advanced concepts through training and fine-
+tuning all kinds of language models. We will explore how to create and fine-tune an
+embedding model (see Chapter 10), review how to fine-tune BERT for classification
+(see Chapter 11), and end the book with several methods for fine-tuning generation
+models (see Chapter 12).
+Hardware and Software Requirements
+Running generative models is generally a compute-intensive task that requires a com‐
+puter with a strong GPU. Since those are not available to every reader, all examples
+in this book are made to run using an online platform, namely Google Colaboratory,
+often shortened to “Google Colab.” At the time of writing, this platform allows you to
+use an NVIDIA GPU (T4) for free to run your code. This GPU has 16 GB of VRAM
+(which is the memory of your GPU), which is the minimum amount of VRAM we
+expect for the examples throughout the book.
+Not all chapters require a minimum of 16 GB VRAM as
+some examples, like training and fine-tuning, are more compute-
+intensive than others, such as prompt engineering. In the repos‐
+itory, you will find the minimum GPU requirements for each
+chapter.
+All code, requirements, and additional tutorials are available in this book’s repository.
+If you want to run the examples locally, we recommend access to an NVIDIA GPU
+with a minimum of 16 GB of VRAM. For a local installation, for example with conda,
+you can follow this setup to create your environment:
+conda create -n thellmbook python=3.10
+conda activate thellmbook
+You can install all the necessary dependencies by forking or cloning the repository
+and then running the following in your newly created Python 3.10 environment:
+pip install -r requirements.txt
+xiv 
+| 
+Preface

@@ -1,0 +1,21 @@
+The feedforward neural network at a glance
+A simple example giving the intuition of the feedforward neural network would be if
+we pass the simple input “The Shawshank” to a language model, with the expectation
+that it will generate “Redemption” as the most probable next word (in reference to the
+film from 1994).
+The feedforward neural network (collectively in all the model layers) is the source
+of this information, as Figure 3-13 shows. When the model was successfully trained
+to model a massive text archive (which included many mentions of “The Shawshank
+Redemption”), it learned and stored the information (and behaviors) that make it
+succeed at this task.
+Figure 3-13. The feedforward neural network component of a Transformer block likely
+does the majority of the model’s memorization and interpolation.
+For an LLM to be successfully trained, it needs to memorize a lot of information.
+But it is not simply a large database. Memorization is only one ingredient in the
+recipe of impressive text generation. The model is able to use this same machinery to
+interpolate between data points and more complex patterns to be able to generalize—
+which means doing well on inputs it hadn’t seen in the past and were not in its
+training dataset.
+An Overview of Transformer Models 
+| 
+87

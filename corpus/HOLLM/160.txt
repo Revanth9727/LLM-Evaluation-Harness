@@ -1,0 +1,28 @@
+capable of capturing that notion. Text clustering, unbound by supervision, allows for
+creative solutions and diverse applications, such as finding outliers, speedup labeling,
+and finding incorrectly labeled data.
+Text clustering has also found itself in the realm of topic modeling, where we want to
+discover (abstract) topics that appear in large collections of textual data. As shown in
+Figure 5-2, we generally describe a topic using keywords or keyphrases and, ideally,
+have a single overarching label.
+Figure 5-2. Topic modeling is a way to give meaning to clusters of textual documents.
+In this chapter, we will first explore how to perform clustering with embedding
+models and then transition to a text-clustering-inspired method of topic modeling,
+namely BERTopic.
+Text clustering and topic modeling have an important role in this book as they
+explore creative ways to combine a variety of different language models. We will
+explore how combining encoder-only (embeddings), decoder-only (generative), and
+even classical methods (bag-of-words) can result in amazing new techniques and
+pipelines.
+ArXiv’s Articles: Computation and Language
+Throughout this chapter, we will be running clustering and topic modeling algo‐
+rithms on ArXiv articles. ArXiv is an open-access platform for scholarly articles,
+mostly in the fields of computer science, mathematics, and physics. We will explore
+articles in the field of Computation and Language to keep with the theme of this
+book. The dataset contains 44,949 abstracts between 1991 and 2024 from ArXiv’s
+cs.CL (Computation and Language) section.
+We load the data and create separate variables for the abstracts, titles, and years of
+each article:
+138 
+| 
+Chapter 5: Text Clustering and Topic Modeling

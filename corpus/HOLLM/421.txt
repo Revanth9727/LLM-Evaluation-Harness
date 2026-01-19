@@ -1,0 +1,98 @@
+preprocessing text, 279
+Vision Transformer, 260-262
+multiple negatives ranking (MNR) loss,
+304-308
+N
+named-entity recognition (see NER)
+natural language inference (NLI), 296
+natural language processing (NLP), 4, 293
+nDCG (normalized discounted cumulative
+gain), 243, 249
+nearest neighbor search
+pretrained word embeddings, 63
+recommendation system embeddings, 68
+vector databases versus, 238
+negative sampling, 65
+NER (named-entity recognition), 345-353, 360
+fine-tuning for, 352
+preparing data for, 347-351
+neural networks, 8
+NLI (natural language inference), 296
+NLP (natural language processing), 4, 293
+noise-contrastive estimation, 65
+nonplayable characters (NPCs), 4
+nontrainable (frozen) models, 114, 121, 324
+normalization, Transformer block, 101
+normalized discounted cumulative gain
+(nDCG), 243, 249
+NPCs (nonplayable characters), 4
+NTXentLoss, 304
+nucleus sampling, 171
+NumPy, 238
+num_train_epochs parameter, 299, 371
+NVIDIA GPUs, xiv, 33
+n_components parameter, 142
+O
+Odds Ratio Preference Optimization (ORPO),
+389
+one-shot prompting, 182
+chain-of-thought versus, 186
+in-context learning, 181
+Open LLM Leaderboard, 202, 376
+open-source LLMs, 30-32
+OpenAI, 132
+(see also ChatGPT; GPTs)
+creating accounts, xv, 133
+generating embeddings, 123
+OpenCLIP, 268-272
+optim parameter, 372
+ORPO (Odds Ratio Preference Optimization),
+389
+output verification, 191-197
+constrained sampling, 194-197
+providing examples, 192
+P
+pad_token [PAD], 47
+parallel processing, 91, 106
+parallel prompts, 184
+PCA (Principal Component Analysis), 141
+PEFT (parameter-efficient fine-tuning),
+359-367
+adapters, 359-361
+compression, 364-367
+LoRA, 361-364
+peft library, 370
+peft_config parameter, 371
+Perplexity, 250
+persona, in text-generation prompts, 178
+per_device_eval_batch_size argument, 299
+per_device_train_batch_size argument, 299
+Phi-3
+comparing to other trained tokenizers, 53
+forward pass, 79
+loading quantized models, 202
+prompt template, 204
+quantization, 201
+Phi-3-mini, 32, 168
+Pinecone, 239
+positional embeddings, 102-104
+PPO (Proximal Policy Optimization), 383
+precision predictions, confusion matrices, 119
+predictions, task-specific model, 118
+preference tuning, 132, 356, 378-389
+Direct Preference Optimization, 384-389
+fine-tuning, 388
+model quantization, 386
+templating alignment data, 386
+training configuration, 387
+reward models, 379-383
+inputs and outputs of, 380
+training, 380-383
+pretraining, defined, 26
+primacy effect, 177
+Principal Component Analysis (PCA), 141
+projection matrices, 92
+prompt engineering, 127, 167-198
+Index 
+| 
+399

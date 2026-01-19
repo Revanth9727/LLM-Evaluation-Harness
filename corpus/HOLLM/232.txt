@@ -1,0 +1,14 @@
+Figure 7-9. An example of a conversation between an LLM with memory and without
+memory.
+Conversation Buffer
+One of the most intuitive forms of giving LLMs memory is simply reminding them
+exactly what has happened in the past. As illustrated in Figure 7-10, we can achieve
+this by copying the full conversation history and pasting that into our prompt.
+Figure 7-10. We can remind an LLM of what previously happened by simply appending
+the entire conversation history to the input prompt.
+In LangChain, this form of memory is called a ConversationBufferMemory. Its
+implementation requires us to update our previous prompt to hold the history of
+the chat.
+210 
+| 
+Chapter 7: Advanced Text Generation Techniques and Tools

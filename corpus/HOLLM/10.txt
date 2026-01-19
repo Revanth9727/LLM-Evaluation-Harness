@@ -1,0 +1,42 @@
+Summary                                                                                                                       198
+7. Advanced Text Generation Techniques and Tools. . . . . . . . . . . . . . . . . . . . . . . . . . . . .  199
+Model I/O: Loading Quantized Models with LangChain                                      200
+Chains: Extending the Capabilities of LLMs                                                           202
+A Single Link in the Chain: Prompt Template                                                     203
+A Chain with Multiple Prompts                                                                            206
+Memory: Helping LLMs to Remember Conversations                                          209
+Conversation Buffer                                                                                                 210
+Windowed Conversation Buffer                                                                            212
+Conversation Summary                                                                                          214
+Agents: Creating a System of LLMs                                                                          218
+The Driving Power Behind Agents: Step-by-step Reasoning                            219
+ReAct in LangChain                                                                                                221
+Summary                                                                                                                       224
+8. Semantic Search and Retrieval-Augmented Generation. . . . . . . . . . . . . . . . . . . . . . . .  225
+Overview of Semantic Search and RAG                                                                   226
+Semantic Search with Language Models                                                                  228
+Dense Retrieval                                                                                                         228
+Reranking                                                                                                                  240
+Retrieval Evaluation Metrics                                                                                  244
+Retrieval-Augmented Generation (RAG)                                                                249
+From Search to RAG                                                                                               250
+Example: Grounded Generation with an LLM API                                            252
+Example: RAG with Local Models                                                                         252
+Advanced RAG Techniques                                                                                    255
+RAG Evaluation                                                                                                        257
+Summary                                                                                                                       258
+9. Multimodal Large Language Models. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  259
+Transformers for Vision                                                                                             260
+Multimodal Embedding Models                                                                                263
+CLIP: Connecting Text and Images                                                                       265
+How Can CLIP Generate Multimodal Embeddings?                                          265
+OpenCLIP                                                                                                                 268
+Making Text Generation Models Multimodal                                                         273
+BLIP-2: Bridging the Modality Gap                                                                       273
+Preprocessing Multimodal Inputs                                                                         278
+Use Case 1: Image Captioning                                                                                280
+Use Case 2: Multimodal Chat-Based Prompting                                                 283
+Summary                                                                                                                       286
+viii 
+| 
+Table of Contents

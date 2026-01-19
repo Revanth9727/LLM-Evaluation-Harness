@@ -1,0 +1,34 @@
+This gives us a more accurate picture of the model as it is simply predicting the next
+token based on an input prompt. Software around the neural network basically runs
+it in a loop to sequentially expand the generated text until completion.
+There’s a specific word used in machine learning to describe models that consume
+their earlier predictions to make later predictions (e.g., the model’s first generated
+token is used to generate the second token). They’re called autoregressive models.
+That is why you’ll hear text generation LLMs being called autoregressive models. This
+is often used to differentiate text generation models from text representation models
+like BERT, which are not autoregressive.
+This autoregressive, token-by-token generation is what happens under the hood
+when we generate text with the LLM like we see here:
+prompt = "Write an email apologizing to Sarah for the tragic gardening mishap. 
+Explain how it happened."
+output = generator(prompt)
+print(output[0]['generated_text'])
+This generates the text:
+Solution 1:
+Subject: My Sincere Apologies for the Gardening Mishap
+Dear Sarah,
+I hope this message finds you well. I am writing to express my deep
+We can see the model begin to write the email starting with the subject. It stopped
+abruptly because it reached the token limit we established by setting max_new_tokens
+to 50 tokens. If we increase that, it will continue until concluding the email.
+The Components of the Forward Pass
+In addition to the loop, two key internal components are the tokenizer and the
+language modeling head (LM head). Figure 3-4 shows where these components lie in
+the system. We saw in the previous chapter how tokenizers break down the text into a
+sequence of token IDs that then become the input to the model.
+The tokenizer is followed by the neural network: a stack of Transformer blocks that
+do all of the processing. That stack is then followed by the LM head, which translates
+the output of the stack into probability scores for what the most likely next token is.
+76 
+| 
+Chapter 3: Looking Inside Large Language Models

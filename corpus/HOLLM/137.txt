@@ -1,0 +1,31 @@
+2 Yinhan Liuet et al. “RoBERTa: A robustly optimized BERT pretraining approach.” arXiv preprint
+arXiv:1907.11692 (2019).
+3 Victor Sanh et al. “DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter.” arXiv preprint
+arXiv:1910.01108 (2019).
+4 Zhenzhong Lan et al. “
+ALBERT: A lite BERT for self-supervised learning of language representations.” arXiv
+preprint arXiv:1909.11942 (2019).
+5 Pengcheng He et al. “DeBERTa: Decoding-enhanced BERT with disentangled attention.” arXiv preprint
+arXiv:2006.03654 (2020).
+Model Selection
+Choosing the right models is not as straightforward as you might think with over
+60,000 models on the Hugging Face Hub for text classification and more than 8,000
+models that generate embeddings at the moment of writing. Moreover, it’s crucial
+to select a model that fits your use case and consider its language compatibility, the
+underlying architecture, size, and performance.
+Let’s start with the underlying architecture. As we explored in Chapter 1, BERT, a
+well-known encoder-only architecture, is a popular choice for creating task-specific
+and embedding models. While generative models, like the GPT family, are incredible
+models, encoder-only models similarly excel in task-specific use cases and tend to be
+significantly smaller in size.
+Over the years, many variations of BERT have been developed, including RoBERTa,2
+DistilBERT,3 ALBERT,4 and DeBERTa,5 each trained in various contexts. You can find
+an overview of some well-known BERT-like models in Figure 4-5.
+Figure 4-5. A timeline of common BERT-like model releases. These are considered
+foundation models and are mostly intended to be fine-tuned on a downstream task.
+Selecting the right model for the job can be a form of art in itself. Trying thousands
+of pretrained models that can be found on Hugging Face’s Hub is not feasible so we
+need to be efficient with the models that we choose. Having said that, several models
+Model Selection 
+| 
+115

@@ -1,0 +1,42 @@
+2. Tokens and Embeddings. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  37
+LLM Tokenization                                                                                                         38
+How Tokenizers Prepare the Inputs to the Language Model                               38
+Downloading and Running an LLM                                                                       39
+How Does the Tokenizer Break Down Text?                                                          43
+Word Versus Subword Versus Character Versus Byte Tokens                            44
+Comparing Trained LLM Tokenizers                                                                      46
+Tokenizer Properties                                                                                                  55
+Token Embeddings                                                                                                        57
+A Language Model Holds Embeddings for the Vocabulary of Its Tokenizer    57
+Creating Contextualized Word Embeddings with Language Models                58
+Text Embeddings (for Sentences and Whole Documents)                                      61
+Word Embeddings Beyond LLMs                                                                               63
+Using pretrained Word Embeddings                                                                       63
+The Word2vec Algorithm and Contrastive Training                                            64
+Embeddings for Recommendation Systems                                                              67
+Recommending Songs by Embeddings                                                                   67
+Training a Song Embedding Model                                                                         69
+Summary                                                                                                                         71
+3. Looking Inside Large Language Models. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  73
+An Overview of Transformer Models                                                                         74
+The Inputs and Outputs of a Trained Transformer LLM                                     74
+The Components of the Forward Pass                                                                    76
+Choosing a Single Token from the Probability Distribution (Sampling/
+Decoding)                                                                                                                79
+Parallel Token Processing and Context Size                                                           81
+Speeding Up Generation by Caching Keys and Values                                        83
+Inside the Transformer Block                                                                                   85
+Recent Improvements to the Transformer Architecture                                         95
+More Efficient Attention                                                                                           96
+The Transformer Block                                                                                           101
+Positional Embeddings (RoPE)                                                                              102
+Other Architectural Experiments and Improvements                                       105
+Summary                                                                                                                       106
+Part II. 
+Using Pretrained Language Models
+4. Text Classification. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  111
+The Sentiment of Movie Reviews                                                                              112
+Text Classification with Representation Models                                                     113
+vi 
+| 
+Table of Contents

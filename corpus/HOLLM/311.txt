@@ -1,0 +1,24 @@
+CHAPTER 10
+Creating Text Embedding Models
+Text embedding models lie at the foundation of many powerful natural language
+processing applications. They lay the groundwork for empowering already impres‐
+sive technologies such as text generation models. We have already used embedding
+models throughout this book in a number of applications, such as supervised classifi‐
+cation, unsupervised classification, semantic search, and even giving memory to text
+generation models like ChatGPT.
+It is nearly impossible to overstate the importance of embedding models in the field
+as they are the driving power behind so many applications. As such, in this chapter,
+we will discuss a variety of ways that we can create and fine-tune an embedding
+model to increase its representative and semantic power.
+Let’s start by discovering what embedding models are and how they generally work.
+Embedding Models
+Embeddings and embedding models have already been discussed in quite a number
+of chapters (Chapters 4, 5, and 8) thereby demonstrating their usefulness. Before
+going into training such a model, let’s recap what we have learned with embedding
+models.
+Unstructured textual data by itself is often quite hard to process. They are not
+values we can directly process, visualize, and create actionable results from. We first
+have to convert this textual data to something that we can easily process: numeric
+representations. This process is often referred to as embedding the input to output
+usable vectors, namely embeddings, as shown in Figure 10-1.
+289

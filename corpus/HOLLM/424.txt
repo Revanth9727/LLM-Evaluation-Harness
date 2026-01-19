@@ -1,0 +1,101 @@
+model selection, 115-116
+task-specific models, 116-120
+text clustering, 137-146
+CLIP embedding model and, 265
+common pipeline for, 139-146
+cluster model, 142-144
+dimensionality reduction model,
+140-142
+embedding model, 139
+inspecting clusters, 144-146
+text embedding models, 61-63, 289-321
+contrastive learning, 291-293
+creating, 296-308
+evaluating, 300
+generating contrastive examples, 296
+loss functions, 301-308
+training, 297-300
+fine-tuning, 309
+Augmented SBERT, 311-315
+supervised, 309-311
+SBERT, 293-296
+unsupervised learning, 316
+text generation, 32-34, 199-224
+agents, 218-223
+ReAct in LangChain, 221-223
+step-by-step reasoning, 219-221
+chains, 202-209
+chaining single prompt, 203-205
+sequential chaining of multiple prompts,
+206-209
+memory of conversations, 209-217
+conversation buffer, 210-212
+conversation summary, 214-217
+windowed conversation buffer, 212-214
+model I/O, 200-202
+multimodality, 273-286
+BLIP-2, 273-277
+chat-based prompting, 283-286
+image captioning, 280-283
+preprocessing images, 278
+preprocessing text, 279
+prompt engineering, 167-172
+choosing models, 167
+controlling output, 170-172
+loading models, 168-169
+topic modeling, 160-163
+text-in-text-out model, 74
+Text-to-Text Transfer Transformer (T5),
+128-131
+thenlper/gte-small model, 140
+%%timeit magic command, 85
+TinyLlama, 367, 385
+tokenization-free encoding, 45
+tokens and tokenizers, 33, 37-61
+bag-of-words model, 6
+comparing trained tokenizers, 46-54
+BERT base model (cased), 48
+BERT base model (uncased), 47
+Flan-T5, 50
+Galactica, 52
+GPT-2, 49
+GPT-4, 50
+Phi-3 and Llama 2, 53
+StarCoder2, 51
+decoding strategy, 79-81
+downloading and running LLMs, 39-42
+forward pass, 76-77
+input preparation, 38
+masked language modeling, 129
+parallel token processing and context size,
+81-83
+special tokens, 47
+task-specific representation model, 117, 127
+text breakdown, 43
+text-focused versus code-focused models, 56
+token embeddings, 57-61, 77, 106
+creating contextualized word embed‐
+dings, 58-61
+tokenizer’s vocabulary and, 57
+token spans, 129
+tokenization schemes, 44-46
+byte tokens, 45
+character tokens, 45
+subword tokens, 44
+word tokens, 44
+tokenizer properties, 55-56
+datasets, 56
+methods, 55
+parameters, 55
+white space characters, 50
+tone of voice, in text-generation prompts, 178
+topic modeling, 138, 146-163
+BERTopic, 148-155
+representation blocks, 156-163
+top_k parameter, 172
+top_p parameter, 171, 188
+train splits, 113
+TrainingArguments class, 327
+402 
+| 
+Index

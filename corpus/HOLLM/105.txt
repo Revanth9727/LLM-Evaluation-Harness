@@ -1,0 +1,27 @@
+If you’re following along with the code examples, recall that the output of lm_head
+was of the shape [1, 6, 32064]. That was because the input to it was of the shape [1,
+6, 3072], which is a batch of one input string, containing six tokens, each of them
+represented by a vector of size 3,072 corresponding to the output vectors after the
+stack of Transformer blocks.
+We can access these matrices and view their dimensions by printing:
+model_output[0].shape
+This outputs:
+torch.Size([1, 6, 3072])
+Similarly, we can print the output of the LM head:
+lm_head_output.shape
+This outputs:
+torch.Size([1, 6, 32064])
+Speeding Up Generation by Caching Keys and Values
+Recall that when generating the second token, we simply append the output token to
+the input and do another forward pass through the model. If we give the model the
+ability to cache the results of the previous calculation (especially some of the specific
+vectors in the attention mechanism), we no longer need to repeat the calculations of
+the previous streams. This time the only needed calculation is for the last stream. This
+is an optimization technique called the keys and values (kv) cache and it provides a
+significant speedup of the generation process. Keys and values are some of the central
+components of the attention mechanism, as we’ll see later in this chapter.
+Figure 3-10 shows how when generating the second token, only one processing
+stream is active as we cache the results of the previous streams.
+An Overview of Transformer Models 
+| 
+83

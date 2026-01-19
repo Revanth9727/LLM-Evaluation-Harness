@@ -1,0 +1,17 @@
+Figure 1-10. Embeddings can be created for different types of input.
+Encoding and Decoding Context with Attention
+The training process of word2vec creates static, downloadable representations of
+words. For instance, the word “bank” will always have the same embedding regardless
+of the context in which it is used. However, “bank” can refer to both a financial bank
+as well as the bank of a river. Its meaning, and therefore its embeddings, should
+change depending on the context.
+A step in encoding this text was achieved through recurrent neural networks (RNNs).
+These are variants of neural networks that can model sequences as an additional
+input.
+To do so, these RNNs are used for two tasks, encoding or representing an input
+sentence and decoding or generating an output sentence. Figure 1-11 illustrates this
+concept by showing how a sentence like “I love llamas” gets translated to the Dutch
+“Ik hou van lama’s.”
+A Recent History of Language AI 
+| 
+11

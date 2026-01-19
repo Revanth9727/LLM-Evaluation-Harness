@@ -1,0 +1,42 @@
+for data in tqdm(damaged_data):
+    train_dataset["damaged_sentence"].append(data.texts[0])
+    train_dataset["original_sentence"].append(data.texts[1])
+train_dataset = Dataset.from_dict(train_dataset)
+This creates a dataset of 50,000 sentences. When we inspect the data, notice that the
+first sentence is the damaged sentence and the second sentence the original:
+train_dataset[0]
+{'damaged_sentence': 'Grim jaws are.',
+ 'original_sentence': 'Grim faces and hardened jaws are not people-friendly.'}
+The first sentence shows the “noisy” data whereas the second shows the original input
+sentence. After creating our data, we define our evaluator as before:
+from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
+# Create an embedding similarity evaluator for stsb
+val_sts = load_dataset("glue", "stsb", split="validation")
+evaluator = EmbeddingSimilarityEvaluator(
+    sentences1=val_sts["sentence1"],
+    sentences2=val_sts["sentence2"],
+    scores=[score/5 for score in val_sts["label"]],
+    main_similarity="cosine"
+)
+Next, we run the training as before but with the [CLS] token as the pooling strategy
+instead of the mean pooling of the token embeddings. In the TSDAE paper, this was
+shown to be more effective since mean pooling loses the position information, which
+is not the case when using the [CLS] token:
+from sentence_transformers import models, SentenceTransformer
+# Create your embedding model
+word_embedding_model = models.Transformer("bert-base-uncased")
+pooling_model = models.Pooling(word_embedding_model.get_word_embedding_dimen
+sion(), "cls")
+embedding_model = SentenceTransformer(modules=[word_embedding_model, pool
+ing_model])
+Using our sentence pairs, we will need a loss function that attempts to reconstruct the
+original sentence using the noise sentence, namely DenoisingAutoEncoderLoss. By
+doing so, it will learn how to accurately represent the data. It is similar to masking but
+without knowing where the actual masks are.
+Moreover, we tie the parameters of both models. Instead of having separate weights
+for the encoder’s embedding layer and the decoder’s output layer, they share the same
+weights. This means that any updates to the weights in one layer will be reflected in
+the other layer as well:
+318 
+| 
+Chapter 10: Creating Text Embedding Models

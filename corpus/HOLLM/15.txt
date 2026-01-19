@@ -1,0 +1,14 @@
+the architecture of these models (see Chapter 3). Many terms and definitions will be
+introduced that are used throughout the book.
+Figure P-1. All parts and chapters of the book.
+Part II: Using Pretrained Language Models
+In Part II of the book, we explore how LLMs can be used through common use cases.
+We use pretrained models and demonstrate their capabilities without the need to
+fine-tune them.
+You learn how to use language models for supervised classification (see Chapter 4),
+text clustering and topic modeling (see Chapter 5), leveraging embedding models
+for semantic search (see Chapter 6), generating text (see Chapters 7 and 8), and
+extending the capabilities of text generation to the visual domain (see Chapter 9).
+Preface 
+| 
+xiii

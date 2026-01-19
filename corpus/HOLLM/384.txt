@@ -1,0 +1,18 @@
+4 Edward J. Hu et al. “LoR: Low-Rank Adaptation of large language models.” arXiv preprint arXiv:2106.09685
+(2021).
+illustrated in Figure 12-11, it creates a small subset of the base model to fine-tune
+instead of adding layers to the model.4
+Figure 12-11. LoRA requires only fine-tuning a small set of parameters that can be kept
+separately from the base LLM.
+Like adapters, this subset allows for much quicker fine-tuning since we only need
+to update a small part of the base model. We create this subset of parameters by
+approximating large matrices that accompany the original LLM with smaller matri‐
+ces. We can then use those smaller matrices as a replacement and fine-tune them
+instead of the original large matrices. Take for example the 10 × 10 matrix we see in
+Figure 12-12.
+Figure 12-12. A major bottleneck of LLMs is their massive weight matrices. Only one
+of these may have 150 million parameters and each Transformer block would have its
+version of these.
+362 
+| 
+Chapter 12: Fine-Tuning Generation Models

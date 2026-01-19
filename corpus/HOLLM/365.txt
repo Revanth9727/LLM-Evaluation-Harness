@@ -1,0 +1,32 @@
+Figure 11-17. Different methods for randomly masking tokens.
+Generally, predicting whole words tends to be more complicated than tokens, which
+makes the model perform better as it needs to learn more accurate and precise repre‐
+sentations during training. However, it tends to take a bit more time to converge.
+We will be going with token masking in this example using DataCollatorForLan
+guageModeling for faster convergence. However, we can use whole-word masking
+by replacing DataCollatorForLanguageModeling with DataCollatorForWholeWord
+Mask. Lastly, we set the probability that a token is masked in a given sentence to 15%
+(mlm_probability):
+from transformers import DataCollatorForLanguageModeling
+# Masking Tokens
+data_collator = DataCollatorForLanguageModeling(
+    tokenizer=tokenizer, 
+    mlm=True, 
+    mlm_probability=0.15
+)
+Next, we will create the Trainer for running the MLM task and specify certain
+parameters:
+# Training arguments for parameter tuning
+training_args = TrainingArguments(
+   "model",
+   learning_rate=2e-5,
+   per_device_train_batch_size=16,
+   per_device_eval_batch_size=16,
+   num_train_epochs=10,
+   weight_decay=0.01,
+   save_strategy="epoch",
+   report_to="none"
+)
+Continued Pretraining with Masked Language Modeling 
+| 
+343

@@ -1,0 +1,36 @@
+1 J. Alammar. “Machine learning research communication via illustrated and interactive web articles.” Beyond
+Static Papers: Rethinking How We Share Scientific Understanding in ML. ICLR 2021 Workshop (2021).
+in the learning process of LLMs.1 With our illustrative method of storytelling, we
+want to take you on a journey to this exciting and potentially world-changing field.
+Throughout the book, we make a clear distinction between representation and gener‐
+ative language models. Representation models are LLMs that do not generate text but
+are commonly used for task-specific use cases, like classification, whereas generation
+models are LLMs that generate text, like GPT models. Although generative models
+are typically the first thing that comes to mind when thinking about LLMs, there is
+still much use for representation models. We are also loosely using the word “large”
+in large language models and often elect to simply call them language models as size
+descriptions are often rather arbitrary and not always indicative of capability.
+Prerequisites
+This book assumes that you have some experience programming in Python and are
+familiar with the fundamentals of machine learning. The focus will be on building a
+strong intuition rather than deriving mathematical equations. As such, illustrations
+combined with hands-on examples will drive the examples and learning through this
+book. This book assumes no prior knowledge of popular deep learning frameworks
+such as PyTorch or TensorFlow nor any prior knowledge of generative modeling.
+If you are not familiar with Python, a great place to start is Learn Python, where you
+will find many tutorials on the basics of the language. To further ease the learning
+process, we made all the code available on Google Colab, a platform where you can
+run all of the code without the need to install anything locally.
+Book Structure
+The book is broadly divided into three parts. They are illustrated in Figure P-1 to give
+you a full view of the book. Note that each chapter can be read independently, so feel
+free to skim chapters you are already familiar with.
+Part I: Understanding Language Models
+In Part I of the book, we explore the inner workings of language models both small
+and large. We start with an overview of the field and common techniques (see Chap‐
+ter 1) before moving over to two central components of these models, tokenization
+and embeddings (see Chapter 2). We finish this part of the book with an updated
+and expanded version of Jay’s well-known Illustrated Transformer, which dives into
+xii 
+| 
+Preface

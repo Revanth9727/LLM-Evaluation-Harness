@@ -1,0 +1,22 @@
+These generative decoder-only models, especially the “larger” models, are commonly
+referred to as large language models (LLMs). As we will discuss later in this chapter,
+the term LLM is not only reserved for generative models (decoder-only) but also
+representation models (encoder-only).
+Generative LLMs, as sequence-to-sequence machines, take in some text and attempt
+to autocomplete it. Although a handy feature, their true power shone from being
+trained as a chatbot. Instead of completing a text, what if they could be trained to
+answer questions? By fine-tuning these models, we can create instruct or chat models
+that can follow directions.
+As illustrated in Figure 1-26, the resulting model could take in a user query (prompt)
+and output a response that would most likely follow that prompt. As such, you will
+often hear that generative models are completion models.
+Figure 1-26. Generative LLMs take in some input and try to complete it. With instruct
+models, this is more than just autocomplete and attempts to answer the question.
+A vital part of these completion models is something called the context length or
+context window. The context length represents the maximum number of tokens the
+model can process, as shown in Figure 1-27. A large context window allows entire
+documents to be passed to the LLM. Note that due to the autoregressive nature of
+these models, the current context length will increase as new tokens are generated.
+22 
+| 
+Chapter 1: An Introduction to Large Language Models

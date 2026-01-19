@@ -1,0 +1,15 @@
+Figure 12-23. Preference tuning methods update the LLM based on the evaluation score.
+As always, we need many training examples. So can we automate the preference
+evaluation? Yes, we can by training a different model called a reward model.
+Automating Preference Evaluation Using Reward Models
+To automate preference evaluation, we need a step before the preference-tuning step,
+namely to train a reward model, as shown in Figure 12-24.
+Figure 12-24. We train a reward model before fine-tuning the LLM.
+Figure 12-25 shows that to create a reward model, we take a copy of the instruction-
+tuned model and slightly change it so that instead of generating text, it now outputs a
+single score.
+Figure 12-25. The LLM becomes a reward model by replacing its language modeling
+head with a quality classification head.
+Automating Preference Evaluation Using Reward Models 
+| 
+379

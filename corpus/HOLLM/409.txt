@@ -1,0 +1,44 @@
+bnb_4bit_quant_type="nf4",  # Quantization type
+    bnb_4bit_compute_dtype="float16",  # Compute dtype
+    bnb_4bit_use_double_quant=True,  # Apply nested quantization
+)
+# Merge LoRA and base model
+model = AutoPeftModelForCausalLM.from_pretrained(
+    "TinyLlama-1.1B-qlora",
+    low_cpu_mem_usage=True,
+    device_map="auto",
+    quantization_config=bnb_config,
+)
+merged_model = model.merge_and_unload()
+# Load LLaMA tokenizer
+model_name = "TinyLlama/TinyLlama-1.1B-intermediate-step-1431k-3T"
+tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
+tokenizer.pad_token = "<PAD>"
+tokenizer.padding_side = "left"
+Next, we use the same LoRA configuration as before to perform the DPO training:
+from peft import LoraConfig, prepare_model_for_kbit_training, get_peft_model
+# Prepare LoRA configuration
+peft_config = LoraConfig(
+    lora_alpha=32,  # LoRA Scaling
+    lora_dropout=0.1,  # Dropout for LoRA Layers
+    r=64,  # Rank
+    bias="none",
+    task_type="CAUSAL_LM",
+    target_modules=  # Layers to target
+     ["k_proj", "gate_proj", "v_proj", "up_proj", "q_proj", "o_proj", 
+"down_proj"]
+)
+# prepare model for training
+model = prepare_model_for_kbit_training(model)
+model = get_peft_model(model, peft_config)
+Training Configuration
+For the sake of simplicity, we will use the same training arguments as we did before
+with one difference. Instead of running for a single epoch (which can take up to
+two hours), we run for 200 steps instead for illustration purposes. Moreover, we
+added the warmup_ratio parameter, which increases the learning rate from 0 to the
+learning_rate value we set for the first 10% of steps. By maintaining a small learning
+rate at the start (i.e., warmup period), we allow the model to adjust to the data before
+applying larger learning rates, therefore avoiding harmful divergence:
+Preference Tuning with DPO 
+| 
+387

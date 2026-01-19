@@ -1,0 +1,25 @@
+3 Leland McInnes, John Healy, and Steve Astels. “hdbscan: Hierarchical density based clustering.” J. Open
+Source Softw. 2.11 (2017): 205.
+4 Martin Ester et al. “
+A density-based algorithm for discovering clusters in large spatial databases with noise.”
+KDD’96, Aug. 1996: 226–231.
+Although a common choice is a centroid-based algorithm like k-means, which
+requires a set of clusters to be generated, we do not know the number of clusters
+beforehand. Instead, a density-based algorithm freely calculates the number of clus‐
+ters and does not force all data points to be part of a cluster, as illustrated in
+Figure 5-7.
+Figure 5-7. The clustering algorithm not only impacts how clusters are generated but also
+how they are viewed.
+A common density-based model is Hierarchical Density-Based Spatial Clustering of
+Applications with Noise (HDBSCAN).3 HDBSCAN is a hierarchical variation of a
+clustering algorithm called DBSCAN that allows for dense (micro)-clusters to be
+found without having to explicitly specify the number of clusters.4 As a density-based
+method, HDBSCAN can also detect outliers in the data, which are data points that do
+not belong to any cluster. These outliers will not be assigned or forced to belong to
+any cluster. In other words, they are ignored. Since ArXiv articles might contain some
+niche papers, using a model that detects outliers could be helpful.
+As with the previous packages, using HDBSCAN is straightforward. We only need to
+instantiate the model and pass our reduced embeddings to it:
+A Common Pipeline for Text Clustering 
+| 
+143

@@ -1,0 +1,14 @@
+Figure 11-18. Fine-tuning a BERT model for NER allows for the detection of named
+entities, such as people or locations.
+Fine-tuning the pretrained BERT model follows a similar architecture akin to what
+we observed with document classification. However, there is a fundamental shift
+in the classification approach. Rather than relying on the aggregation or pooling
+of token embeddings, the model now makes predictions for individual tokens in a
+sequence. It is crucial to emphasize that our word-level classification task does not
+entail classifying entire words, but rather the tokens that collectively constitute those
+words. Figure 11-19 provides a visual representation of this token-level classification.
+Figure 11-19. During the fine-tuning process of a BERT model, individual tokens are
+classified instead of words or entire documents.
+346 
+| 
+Chapter 11: Fine-Tuning Representation Models for Classification

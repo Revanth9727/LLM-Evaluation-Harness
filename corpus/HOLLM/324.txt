@@ -1,0 +1,26 @@
+There are many more loss functions to choose from than just
+those discussed here. For example, a loss like MarginMSE works
+great for training or fine-tuning a cross-encoder. There are a num‐
+ber of interesting loss functions implemented in the sentence-
+transformers framework.
+Cosine similarity
+The cosine similarity loss is an intuitive and easy-to-use loss that works across many
+different use cases and datasets. It is typically used in semantic textual similarity
+tasks. In these tasks, a similarity score is assigned to the pairs of texts over which we
+optimize the model.
+Instead of having strictly positive or negative pairs of sentences, we assume pairs of
+sentences that are similar or dissimilar to a certain degree. Typically, this value lies
+between 0 and 1 to indicate dissimilarity and similarity, respectively (Figure 10-9).
+Figure 10-9. Cosine similarity loss aims to minimize the cosine distance between seman‐
+tically similar sentences and to maximize the distance between semantically dissimilar
+sentences.
+Cosine similarity loss is straightforward—it calculates the cosine similarity between
+the two embeddings of the two texts and compares that to the labeled similarity score.
+The model will learn to recognize the degree of similarity between sentences.
+Cosine similarity loss intuitively works best using data where you have pairs of sen‐
+tences and labels that indicate their similarity between 0 and 1. To use this loss with
+our NLI dataset, we need to convert the entailment (0), neutral (1), and contradiction
+(2) labels to values between 0 and 1. The entailment represents a high similarity
+302 
+| 
+Chapter 10: Creating Text Embedding Models

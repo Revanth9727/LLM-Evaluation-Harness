@@ -1,0 +1,38 @@
+The BLIP-2 model here uses a GPT2Tokenizer. As we explored in Chapter 2, how
+tokenizers deal with input text can differ greatly.
+To explore how GPT2Tokenizer works, we can try it out with a small sentence. We
+start by converting the sentence to token IDs before converting them back to tokens:
+# Preprocess the text
+text = "Her vocalization was remarkably melodic"
+token_ids = blip_processor(image, text=text, return_tensors="pt")
+token_ids = token_ids.to(device, torch.float16)["input_ids"][0]
+# Convert input ids back to tokens
+tokens = blip_processor.tokenizer.convert_ids_to_tokens(token_ids)
+tokens
+This gives us the following tokens:
+['</s>', 'Her', 'Ġvocal', 'ization', 'Ġwas', 'Ġremarkably', 'Ġmel', 'odic']
+When we inspect the tokens, you might notice a strange symbol at the beginning of
+some tokens, namely, the Ġ symbol. This is actually supposed to be a space. However,
+an internal function takes characters in certain code points and moves them up by
+256 to make them printable. As a result, the space (code point 32) becomes Ġ (code
+point 288).
+We will convert them to underscores for illustrative purposes:
+# Replace the space token with an underscore
+tokens = [token.replace("Ġ", "_") for token in tokens]
+tokens
+This gives us a nicer output:
+['</s>', 'Her', '_vocal', 'ization', '_was', '_remarkably', '_mel', 'odic']
+The output shows that the underscore indicates the beginning of a word. That way,
+words that are made up of multiple tokens can be recognized.
+Use Case 1: Image Captioning
+The most straightforward usage of a model like BLIP-2 is to create captions of images
+that you have in your data. You might be a store that wants to create descriptions
+of its clothing or perhaps you are a photographer that does not have the time to
+manually label the 1,000+ pictures of a wedding.
+The process of captioning an image closely follows the processing. An image is
+converted to pixel values that the model can read. These pixel values are passed to
+BLIP-2 to be converted into soft visual prompts that the LLM can use to decide on a
+proper caption.
+280 
+| 
+Chapter 9: Multimodal Large Language Models

@@ -1,0 +1,36 @@
+from sklearn.linear_model import LogisticRegression
+# Train a logistic regression on our train embeddings
+clf = LogisticRegression(random_state=42)
+clf.fit(train_embeddings, data["train"]["label"])
+Next, let’s evaluate our model:
+# Predict previously unseen instances
+y_pred = clf.predict(test_embeddings)
+evaluate_performance(data["test"]["label"], y_pred)
+              precision    recall  f1-score   support
+Negative Review       0.85      0.86      0.85       533
+Positive Review       0.86      0.85      0.85       533
+       accuracy                           0.85      1066
+      macro avg       0.85      0.85      0.85      1066
+   weighted avg       0.85      0.85      0.85      1066
+By training a classifier on top of our embeddings, we managed to get an F1 score
+of 0.85! This demonstrates the possibilities of training a lightweight classifier while
+keeping the underlying embedding model frozen.
+In this example, we used sentence-transformers to extract our
+embeddings, which benefits from a GPU to speed up inference.
+However, we can remove this GPU dependency by using an exter‐
+nal API to create the embeddings. Popular choices for generating
+embeddings are Cohere’s and OpenAI’s offerings. As a result, this
+would allow the pipeline to run entirely on the CPU.
+What If We Do Not Have Labeled Data?
+In our previous example, we had labeled data that we could leverage, but this might
+not always be the case in practice. Getting labeled data is a resource-intensive task
+that can require significant human labor. Moreover, is it actually worthwhile to collect
+these labels?
+To test this, we can perform zero-shot classification, where we have no labeled data
+to explore whether the task seems feasible. Although we know the definition of
+the labels (their names), we do not have labeled data to support them. Zero-shot
+classification attempts to predict the labels of input text even though it was not
+trained on them, as shown in Figure 4-13.
+Classification Tasks That Leverage Embeddings 
+| 
+123

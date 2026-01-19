@@ -1,0 +1,32 @@
+label2id = {
+    "O": 0, "B-PER": 1, "I-PER": 2, "B-ORG": 3, "I-ORG": 4, 
+    "B-LOC": 5, "I-LOC": 6, "B-MISC": 7, "I-MISC": 8
+}
+id2label = {index: label for label, index in label2id.items()}
+label2id
+{'O': 0,
+ 'B-PER': 1,
+ 'I-PER': 2,
+ 'B-ORG': 3,
+ 'I-ORG': 4,
+ 'B-LOC': 5,
+ 'I-LOC': 6,
+ 'B-MISC': 7,
+ 'I-MISC': 8}
+These entities correspond to specific categories: a person (PER), organization (ORG),
+location (LOC), miscellaneous entities (MISC), and no entity (O). Note that these
+entities are prefixed with either a B (beginning) or an I (inside). If two tokens that
+follow each other are part of the same phrase, then the start of that phrase is indicated
+with B, which is followed by an I to show that they belong to each other and are not
+independent entities.
+This process is further illustrated in Figure 11-20. In the figure, since “Dean” is the
+start of the phrase and “Palmer” is the end, we know that “Dean Palmer” is a person
+and that “Dean” and “Palmer” are not individual people.
+Figure 11-20. By indicating the start and end of the phrase with the same entity, we can
+recognize entities of entire phrases.
+Our data is preprocessed and split up into words but not yet tokens. To do so, we will
+tokenize it further with the tokenizer of the pretrained model we used throughout
+this chapter, namely bert-base-cased:
+348 
+| 
+Chapter 11: Fine-Tuning Representation Models for Classification

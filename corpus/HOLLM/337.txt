@@ -1,0 +1,42 @@
+output_dir="augmented_embedding_model",
+    num_train_epochs=1,
+    per_device_train_batch_size=32,
+    per_device_eval_batch_size=32,
+    warmup_steps=100,
+    fp16=True,
+    eval_steps=100,
+    logging_steps=100,
+)
+# Train model
+trainer = SentenceTransformerTrainer(
+    model=embedding_model,
+    args=args,
+    train_dataset=train_dataset,
+    loss=train_loss,
+    evaluator=evaluator
+)
+trainer.train()
+Finally, we evaluate the model:
+evaluator(embedding_model)
+{'pearson_cosine': 0.7101597020018693,
+ 'spearman_cosine': 0.7210536464320728,
+ 'pearson_manhattan': 0.7296749443525249,
+ 'spearman_manhattan': 0.7284184255293913,
+ 'pearson_euclidean': 0.7293097297208753,
+ 'spearman_euclidean': 0.7282830906742256,
+ 'pearson_dot': 0.6746605824703588,
+ 'spearman_dot': 0.6754486790570754,
+ 'pearson_max': 0.7296749443525249,
+ 'spearman_max': 0.7284184255293913}
+The original cosine similarity loss example had a score of 0.72 with the full dataset.
+Using only 20% of that data, we managed to get a score of 0.71!
+This method allows us to increase the size of datasets that you already have available
+without the need to manually label hundreds of thousands of sentence pairs. You can
+test the quality of your silver data by also training your embedding model only on the
+gold dataset. The difference in performance indicates how much your silver dataset
+potentially adds to the quality of the model.
+You can restart your notebook a final time for the last example, namely unsupervised
+learning.
+Fine-Tuning an Embedding Model 
+| 
+315

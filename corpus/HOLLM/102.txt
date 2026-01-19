@@ -1,0 +1,26 @@
+Figure 3-7. The tokens with the highest probability after the model’s forward pass.
+Our decoding strategy decides which of the tokens to output by sampling based on the
+probabilities.
+Choosing the highest scoring token every time is called greedy decoding. It’s what
+happens if you set the temperature parameter to zero in an LLM. We cover the
+concept of temperature in Chapter 6.
+Let’s look more closely at the code that demonstrates this process. In this code block,
+we pass the input tokens through the model, and then lm_head:
+prompt = "The capital of France is"
+# Tokenize the input prompt
+input_ids = tokenizer(prompt, return_tensors="pt").input_ids
+# Tokenize the input prompt
+input_ids = input_ids.to("cuda")
+# Get the output of the model before the lm_head
+model_output = model.model(input_ids)
+# Get the output of the lm_head
+lm_head_output = model.lm_head(model_output[0])
+Now, lm_head_output is of the shape [1, 6, 32064]. We can access the token proba‐
+bility scores for the last generated token using lm_head_output[0,-1], which uses
+the index 0 across the batch dimension; the index –1 gets us the last token in the
+sequence. This is now a list of probability scores for all 32,064 tokens. We can get the
+top scoring token ID, and then decode it to arrive at the text of the generated output
+token:
+80 
+| 
+Chapter 3: Looking Inside Large Language Models

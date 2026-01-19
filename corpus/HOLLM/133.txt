@@ -1,0 +1,22 @@
+CHAPTER 4
+Text Classification
+A common task in natural language processing is classification. The goal of the task
+is to train a model to assign a label or class to some input text (see Figure 4-1).
+Classifying text is used across the world for a wide range of applications, from
+sentiment analysis and intent detection to extracting entities and detecting language.
+The impact of language models, both representative and generative, on classification
+cannot be understated.
+Figure 4-1. Using a language model to classify text.
+In this chapter, we will discuss several ways to use language models for classifying
+text. It will serve as an accessible introduction to using language models that already
+have been trained. Due to the broad field of text classification, we will discuss several
+techniques and use them to explore the field of language models:
+• “Text Classification with Representation Models” on page 113 demonstrates the
+•
+flexibility of nongenerative models for classification. We will cover both task-
+specific models and embedding models.
+• “Text Classification with Generative Models” on page 127 is an introduction to
+•
+generative language models as most of them can be used for classification. We
+will cover both an open source as well as a closed source language model.
+111

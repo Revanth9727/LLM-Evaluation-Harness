@@ -1,0 +1,16 @@
+to one consisting of two components—the instruction itself and the data that relates
+to the instruction.
+Figure 6-7. Two components of a basic instruction prompt: the instruction itself and the
+data it refers to.
+More complex use cases might require more components in a prompt. For instance,
+to make sure the model only outputs “negative” or “positive” we can introduce output
+indicators that help guide the model. In Figure 6-8, we prefix the sentence with
+“Text:” and add “Sentiment:” to prevent the model from generating a complete sen‐
+tence. Instead, this structure indicates that we expect either “negative” or “positive.”
+Although the model might not have been trained on these components directly, it was
+fed enough instructions to be able to generalize to this structure.
+Figure 6-8. Extending the prompt with an output indicator that allows for a specific
+output.
+174 
+| 
+Chapter 6: Prompt Engineering

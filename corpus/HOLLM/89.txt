@@ -1,0 +1,30 @@
+Figure 2-16. A neural network is trained to predict if two words are neighbors. It updates
+the embeddings in the training process to produce the final, trained embeddings.
+Based on whether its prediction was correct or not, the typical machine learning
+training step updates the embeddings so that the next time the model is presented
+with those two vectors, it has a better chance of being more correct. And by the
+end of the training process, we have better embeddings for all the tokens in our
+vocabulary.
+This idea of a model that takes two vectors and predicts if they have a certain relation
+is one of the most powerful ideas in machine learning, and time after time has proven
+to work very well with language models. This is why we’re dedicating Chapter 10 to
+this concept and how it optimizes language models for specific tasks (like sentence
+embeddings and retrieval).
+The same idea is also central to bridging modalities like text and images, which is key
+to AI image generation models, as we’ll see in Chapter 9 on multimodal models. In
+that formulation, a model is presented with an image and a caption, and it should
+predict whether that caption describes the image or not.
+Embeddings for Recommendation Systems
+As we’ve mentioned, the concept of embeddings is useful in so many other domains.
+In industry, it’s widely used for recommendation systems, for example.
+Recommending Songs by Embeddings
+In this section we’ll use the word2vec algorithm to embed songs using human-made
+music playlists. Imagine if we treated each song as we would a word or token, and
+we treated each playlist like a sentence. These embeddings can then be used to
+recommend similar songs that often appear together in playlists.
+The dataset we’ll use was collected by Shuo Chen from Cornell University. It contains
+playlists from hundreds of radio stations around the US. Figure 2-17 demonstrates
+this dataset.
+Embeddings for Recommendation Systems 
+| 
+67

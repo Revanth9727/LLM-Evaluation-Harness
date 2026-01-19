@@ -1,0 +1,29 @@
+Figure 11-5. We fully freeze all encoder blocks and embedding layers such that the BERT
+model does not learn new representations during fine-tuning.
+Now that we have successfully frozen everything but the classification head, we can
+move on to train our model:
+from transformers import TrainingArguments, Trainer
+# Trainer which executes the training process
+trainer = Trainer(
+   model=model,
+   args=training_args,
+   train_dataset=tokenized_train,
+   eval_dataset=tokenized_test,
+   tokenizer=tokenizer,
+   data_collator=data_collator,
+   compute_metrics=compute_metrics,
+)
+trainer.train()
+You might notice that training has become much faster. That is because we are
+only training the classification head, which provides us with a significant speedup
+compared to fine-tuning the entire model:
+trainer.evaluate()
+{'eval_loss': 0.6821751594543457,
+ 'eval_f1': 0.6331058020477816,
+ 'eval_runtime': 4.0175,
+ 'eval_samples_per_second': 265.337,
+ 'eval_steps_per_second': 16.677,
+ 'epoch': 1.0}
+330 
+| 
+Chapter 11: Fine-Tuning Representation Models for Classification

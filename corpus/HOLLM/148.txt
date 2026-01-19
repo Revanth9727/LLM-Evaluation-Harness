@@ -1,0 +1,38 @@
+To perform cosine similarity on the embeddings, we only need to compare the
+document embeddings with the label embeddings and get the best matching pairs:
+from sklearn.metrics.pairwise import cosine_similarity
+# Find the best matching label for each document
+sim_matrix = cosine_similarity(test_embeddings, label_embeddings)
+y_pred = np.argmax(sim_matrix, axis=1)
+And that is it! We only needed to come up with names for our labels to perform our
+classification tasks. Let’s see how well this method works:
+evaluate_performance(data["test"]["label"], y_pred)
+                precision    recall  f1-score   support
+Negative Review       0.78      0.77      0.78       533
+Positive Review       0.77      0.79      0.78       533
+       accuracy                           0.78      1066
+      macro avg       0.78      0.78      0.78      1066
+   weighted avg       0.78      0.78      0.78      1066
+If you are familiar with zero-shot classification with Transformer-
+based models, you might wonder why we choose to illustrate this
+with embeddings instead. Although natural language inference
+models are amazing for zero-shot classification, the example here
+demonstrates the flexibility of embeddings for a variety of tasks.
+As you will see throughout the book, embeddings can be found in
+most Language AI use cases and are often an underestimated but
+incredibly vital component.
+An F1 score of 0.78 is quite impressive considering we did not use any labeled data at
+all! This just shows how versatile and useful embeddings are, especially if you are a bit
+creative with how they are used.
+Let’s put that creativity to the test. We decided upon “
+A nega‐
+tive/positive review” as the name of our labels but that can be
+improved. Instead, we can make them a bit more concrete and
+specific toward our data by using “
+A very negative/positive movie
+review” instead. This way, the embedding will capture that it is a
+movie review and will focus a bit more on the extremes of the two
+labels. Try it out and explore how it affects the results.
+126 
+| 
+Chapter 4: Text Classification

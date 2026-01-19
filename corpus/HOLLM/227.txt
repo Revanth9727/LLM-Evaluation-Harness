@@ -1,0 +1,36 @@
+# Use the chain
+basic_chain.invoke(
+    {
+        "input_prompt": "Hi! My name is Maarten. What is 1 + 1?",
+    }
+)
+The answer to 1 + 1 is 2. It's a basic arithmetic operation where you add one 
+unit to another, resulting in two units altogether.
+The output gives us the response without any unnecessary tokens. Now that we have
+created this chain, we do not have to create the prompt template from scratch each
+time we use the LLM. Note that we did not disable sampling as before, so your
+output might differ. To make this pipeline more transparent, Figure 7-6 illustrates the
+connection between a prompt template and the LLM using a single chain.
+Figure 7-6. An example of a single chain using Phi-3’s template.
+The example assumes that the LLM needs a specific template. This
+is not always the case. With OpenAI’s GPT-3.5, its API handles the
+underlying template.
+You could also use a prompt template to define other variables that
+might change in your prompts. For example, if we want to create
+funny names for businesses, retyping that question over and over
+for different products can be time-consuming.
+Instead, we can create a prompt that is reusable:
+# Create a Chain that creates our business' name
+template = "Create a funny name for a business that 
+sells {product}."
+name_prompt = PromptTemplate(
+    template=template,
+    input_variables=["product"]
+)
+Adding a prompt template to the chain is just the very first step you need to enhance
+the capabilities of your LLM. Throughout this chapter, we will see many ways in
+which we can add additional modular components to existing chains, starting with
+memory.
+Chains: Extending the Capabilities of LLMs 
+| 
+205

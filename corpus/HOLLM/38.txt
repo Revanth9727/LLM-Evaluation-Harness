@@ -1,0 +1,15 @@
+Figure 1-17. An encoder block revolves around self-attention to generate intermediate
+representations.
+Compared to previous methods of attention, self-attention can attend to different
+positions within a single sequence, thereby more easily and accurately representing
+the input sequence as illustrated in Figure 1-18. Instead of processing one token at a
+time, it can be used to look at the entire sequence in one go.
+Figure 1-18. Self-attention attends to all parts of the input sequence so that it can “look”
+both forward and back in a single sequence.
+Compared to the encoder, the decoder has an additional layer that pays attention to
+the output of the encoder (to find the relevant parts of the input). As demonstrated
+in Figure 1-19, this process is similar to the RNN attention decoder that we discussed
+previously.
+16 
+| 
+Chapter 1: An Introduction to Large Language Models

@@ -1,0 +1,61 @@
+DATA
+“
+Jay and Maarten have 
+continued their tradition 
+of providing beautifully 
+illustrated and insightful 
+descriptions of complex 
+topics. Their book is 
+a valuable resource 
+for anyone looking to 
+understand the main 
+techniques behind how 
+large language models 
+are built.”
+—Andrew Ng
+founder of DeepLearning.AI
+“I can’t think of another book 
+that is more important to 
+read right now. On every 
+single page, I learned 
+something that is critical 
+to success in this era of 
+language models.”
+—Josh Starmer,  StatQuest
+Hands-On 
+Large Language Models
+linkedin.com/company/oreilly-media
+youtube.com/oreillymedia 
+AI has acquired startling new language capabilities in just 
+the past few years. Driven by rapid advances in deep learning, 
+language AI systems are able to write and understand text 
+better than ever before. This trend is enabling new features, 
+products, and entire industries. Through this book’s visually 
+educational nature, readers will learn practical tools and 
+concepts they need to use these capabilities today.
+You’ll understand how to use pretrained large language 
+models for use cases like copywriting and summarization; 
+create semantic search systems that go beyond keyword 
+matching; and use existing libraries and pretrained models 
+for text classification, search, and clusterings.
+This book also helps you:
+•	 Understand the architecture of Transformer language 
+models that excel at text generation and representation
+•	 Build advanced LLM pipelines to cluster text documents 
+and explore the topics they cover
+•	 Build semantic search engines that go beyond keyword 
+search, using methods like dense retrieval and rerankers
+•	 Explore how generative models can be used, from prompt 
+engineering all the way to retrieval-augmented generation
+•	 Gain a deeper understanding of how to train LLMs 
+and optimize them for specific applications using 
+generative model fine-tuning, contrastive fine-tuning, 
+and in-context learning
+Jay Alammar is director and 
+engineering fellow at Cohere.
+Maarten Grootendorst is 
+senior clinical data scientist at 
+the Netherlands Comprehensive 
+Cancer Organization (IKNL).
+US $79.99	  CAN $99.99
+ISBN: 978-1-098-15096-9

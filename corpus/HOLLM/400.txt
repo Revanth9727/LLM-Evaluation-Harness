@@ -1,0 +1,23 @@
+Preference-Tuning / Alignment / RLHF
+Although our model can now follow instructions, we can further improve its behav‐
+ior by a final training phase that aligns it to how we expect it to behave in different
+scenarios. For instance, when asked “What is an LLM?” we might prefer an elaborate
+answer that describes the internals of an LLM compared to the answer “It is a large
+language model” without further explanations. How exactly do we align our (human)
+preference for one answer over the other with the output of an LLM?
+To start with, recall that an LLM takes a prompt and outputs a generation as illustra‐
+ted in Figure 12-21.
+Figure 12-21. An LLM takes an input prompt and outputs a generation.
+We can ask a person (preference evaluator) to evaluate the quality of that model
+generation. Say they assign it a certain score, like 4 (see Figure 12-22).
+Figure 12-22. Use a preference evaluator (human or otherwise) to evaluate the quality of
+the generation.
+Figure 12-23 shows a preference tuning step updating the model based on that score:
+• If the score is high, the model is updated to encourage it to generate more like
+•
+this type of generation.
+• If the score is low, the model is updated to discourage such generations.
+•
+378 
+| 
+Chapter 12: Fine-Tuning Generation Models

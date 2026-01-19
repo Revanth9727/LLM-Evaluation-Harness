@@ -1,0 +1,25 @@
+Making Text Generation Models Multimodal
+Traditionally, text generation models have been, as you might expect, models that
+interpret textual representations. Models like Llama 2 and ChatGPT excel at reason‐
+ing about textual information and responding with natural language.
+They are, however, limited to the modality they were trained in, namely text. As
+we have seen before with multimodal embedding models, the addition of vision can
+enhance the capabilities of a model.
+In the case of text generation models, we would like it to reason about certain input
+images. For example, we could give it an image of a pizza and ask it what ingredients
+it contains. You could show it a picture of the Eiffel Tower and ask when it was built
+or where it is located. This conversational ability is further illustrated in Figure 9-15.
+Figure 9-15. An example of a multimodal text generation model (BLIP-2) that can
+reason about input images.
+To bridge the gap between these two domains, attempts have been made to introduce
+a form of multimodality to existing models. One such method is called BLIP-2:
+Bootstrapping Language-Image Pre-training for Unified Vision-Language Understand‐
+ing and Generation 2. BLIP-2 is an easy-to-use and modular technique that allows for
+introducing vision capabilities to existing language models.
+BLIP-2: Bridging the Modality Gap
+Creating a multimodal language model from scratch requires significant computing
+power and data. We would have to use billions of images, text, and image-text pairs to
+create such a model. As you can imagine, this is not easily feasible!
+Making Text Generation Models Multimodal 
+| 
+273

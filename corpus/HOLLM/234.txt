@@ -1,0 +1,33 @@
+{'input_prompt': 'What is my name?',
+ 'chat_history': "Human: Hi! My name is Maarten. What is 1 + 1?\nAI:  Hello 
+Maarten! The answer to 1 + 1 is 2. Hope you're having a great day!",
+ 'text': ' Your name is Maarten.'}
+By extending the chain with memory, the LLM was able to use the chat history to find
+the name we gave it previously. This more complex chain is illustrated in Figure 7-11
+to give an overview of this additional functionality.
+Figure 7-11. We extend the LLM chain with memory by appending the entire conversa‐
+tion history to the input prompt.
+Windowed Conversation Buffer
+In our previous example, we essentially created a chatbot. You could talk to it and
+it remembers the conversation you had thus far. However, as the size of the conversa‐
+tion grows, so does the size of the input prompt until it exceeds the token limit.
+One method of minimizing the context window is to use the last k conversations
+instead of maintaining the full chat history. In LangChain, we can use Conversation
+BufferWindowMemory to decide how many conversations are passed to the input
+prompt:
+from langchain.memory import ConversationBufferWindowMemory
+# Retain only the last 2 conversations in memory
+memory = ConversationBufferWindowMemory(k=2, memory_key="chat_history")
+# Chain the LLM, prompt, and memory together
+llm_chain = LLMChain(
+    prompt=prompt,
+    llm=llm,
+    memory=memory
+)
+Using this memory, we can try out a sequence of questions to illustrate what will be
+remembered. We start with two conversations:
+# Ask two questions and generate two conversations in its memory
+llm_chain.predict(input_prompt="Hi! My name is Maarten and I am 33 years old. 
+212 
+| 
+Chapter 7: Advanced Text Generation Techniques and Tools

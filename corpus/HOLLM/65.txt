@@ -1,0 +1,30 @@
+print(tokenizer.decode(3323))
+print(tokenizer.decode(622))
+print(tokenizer.decode([3323, 622]))
+print(tokenizer.decode(29901))
+This outputs:
+Sub
+ject
+Subject
+:
+How Does the Tokenizer Break Down Text?
+There are three major factors that dictate how a tokenizer breaks down an input
+prompt.
+First, at model design time, the creator of the model chooses a tokenization method.
+Popular methods include byte pair encoding (BPE) (widely used by GPT models) and
+WordPiece (used by BERT). These methods are similar in that they aim to optimize
+an efficient set of tokens to represent a text dataset, but they arrive at it in different
+ways.
+Second, after choosing the method, we need to make a number of tokenizer design
+choices like vocabulary size and what special tokens to use. More on this in “Compar‐
+ing Trained LLM Tokenizers” on page 46.
+Third, the tokenizer needs to be trained on a specific dataset to establish the best
+vocabulary it can use to represent that dataset. Even if we set the same methods
+and parameters, a tokenizer trained on an English text dataset will be different from
+another trained on a code dataset or a multilingual text dataset.
+In addition to being used to process the input text into a language model, tokenizers
+are used on the output of the language model to turn the resulting token ID into the
+output word or token associated with it, as Figure 2-5 shows.
+LLM Tokenization 
+| 
+43

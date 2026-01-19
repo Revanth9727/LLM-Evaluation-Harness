@@ -1,0 +1,32 @@
+A Chain with Multiple Prompts
+In our previous example, we created a single chain consisting of a prompt template
+and an LLM. Since our example was quite straightforward, the LLM had no issues
+dealing with the prompt. However, some applications are more involved and require
+lengthy or complex prompts to generate a response that captures those intricate
+details.
+Instead, we could break this complex prompt into smaller subtasks that can be run
+sequentially. This would require multiple calls to the LLM but with smaller prompts
+and intermediate outputs as shown in Figure 7-7.
+Figure 7-7. With sequential chains, the output of a prompt is used as the input for the
+next prompt.
+This process of using multiple prompts is an extension of our previous example.
+Instead of using a single chain, we link chains where each link deals with a specific
+subtask.
+For instance, consider the process of generating a story. We could ask the LLM to
+generate a story along with complex details like the title, a summary, a description
+of the characters, etc. Instead of trying to put all of that information into a single
+prompt, we could dissect this prompt into manageable smaller tasks instead.
+Let’s illustrate with an example. Assume that we want to generate a story that has
+three components:
+• A title
+•
+• A description of the main character
+•
+• A summary of the story
+•
+Instead of generating everything in one go, we create a chain that only requires a
+single input by the user and then sequentially generates the three components. This
+process is illustrated in Figure 7-8.
+206 
+| 
+Chapter 7: Advanced Text Generation Techniques and Tools

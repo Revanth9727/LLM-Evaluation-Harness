@@ -1,0 +1,43 @@
+Galactica
+English and CAP ITAL IZATION
+      
+show _ tokens False None elif == > = else : two t abs : "  " Three t abs : "  "
+1 2 . 0 * 5 0 = 6 0 0
+Phi-3 and
+Llama 2
+<s>
+English and C AP IT AL IZ ATION
+      
+show _ to kens False None elif == >= else : two tabs :"  " Three tabs : "  "
+1 2 . 0 * 5 0 = 6 0 0
+Tokenizer Properties
+The preceding guided tour of trained tokenizers showed a number of ways in which
+actual tokenizers differ from each other. But what determines their tokenization
+behavior? There are three major groups of design choices that determine how the
+tokenizer will break down text: the tokenization method, the initialization parame‐
+ters, and the domain of the data the tokenizer targets.
+Tokenization methods
+As we’ve seen, there are a number of tokenization methods with byte pair encoding
+(BPE) being the more popular one. Each of these methods outlines an algorithm for
+how to choose an appropriate set of tokens to represent a dataset. You can find a great
+overview of all these methods on the Hugging Face page that summarizes tokenizers.
+Tokenizer parameters
+After choosing a tokenization method, an LLM designer needs to make some deci‐
+sions about the parameters of the tokenizer. These include:
+Vocabulary size
+How many tokens to keep in the tokenizer’s vocabulary? (30K and 50K are often
+used as vocabulary size values, but more and more we’re seeing larger sizes like
+100K.)
+Special tokens
+What special tokens do we want the model to keep track of? We can add as many
+of these as we want, especially if we want to build an LLM for special use cases.
+Common choices include:
+• Beginning of text token (e.g., <s>)
+•
+• End of text token
+•
+• Padding token
+•
+LLM Tokenization 
+| 
+55

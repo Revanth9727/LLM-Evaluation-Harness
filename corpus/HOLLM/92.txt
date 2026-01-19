@@ -1,0 +1,48 @@
+That takes a minute or two to train and results in embeddings being calculated for
+each song that we have. Now we can use those embeddings to find similar songs
+exactly as we did earlier with words:
+song_id = 2172
+# Ask the model for songs similar to song #2172
+model.wv.most_similar(positive=str(song_id))
+This outputs:
+[('2976', 0.9977465271949768),
+ ('3167', 0.9977430701255798),
+ ('3094', 0.9975950717926025),
+ ('2640', 0.9966474175453186),
+ ('2849', 0.9963167905807495)]
+That is the list of the songs whose embeddings are most similar to song 2172.
+In this case, the song is:
+print(songs_df.iloc[2172])
+title Fade To Black
+artist Metallica
+Name: 2172 , dtype: object
+This results in recommendations that are all in the same heavy metal and hard rock
+genre:
+import numpy as np
+def print_recommendations(song_id):
+    similar_songs = np.array(
+        model.wv.most_similar(positive=str(song_id),topn=5)
+    )[:,0]
+    return  songs_df.iloc[similar_songs]
+# Extract recommendations
+print_recommendations(2172)
+id
+Title
+artist
+11473
+Little Guitars
+Van Halen
+3167
+Unchained
+Van Halen
+5586
+The Last in Line
+Dio
+5634
+Mr. Brownstone
+Guns N’ Roses
+3094
+Breaking the Law Judas Priest
+70 
+| 
+Chapter 2: Tokens and Embeddings

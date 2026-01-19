@@ -1,0 +1,40 @@
+This code downloads a pretrained tokenizer and model, then uses them to process
+the string “Hello world”
+. The output of the model is then saved in the output variable.
+Let’s inspect that variable by first printing its dimensions (we expect it to be a
+multidimensional array):
+output.shape
+This prints out:
+torch.Size([1, 4, 384])
+Skipping the first dimension, we can read this as four tokens, each one embedded in
+a vector of 384 values. The first dimension is the batch dimension used in cases (like
+training) when we want to send multiple input sentences to the model at the same
+time (they’re processed at the same time, which speeds up the process).
+But what are these four vectors? Did the tokenizer break the two words into four
+tokens, or is something else happening here? We can use what we’ve learned about
+tokenizers to inspect them:
+for token in tokens['input_ids'][0]:
+    print(tokenizer.decode(token))
+This prints out:
+[CLS]
+Hello
+world
+[SEP]
+This particular tokenizer and model operate by adding the [CLS] and [SEP] tokens to
+the beginning and end of a string.
+Our language model has now processed the text input. The result of its output is the
+following:
+tensor([[
+[-3.3060, -0.0507, -0.1098, ..., -0.1704, -0.1618, 0.6932],
+[ 0.8918, 0.0740, -0.1583, ..., 0.1869, 1.4760, 0.0751],
+[ 0.0871, 0.6364, -0.3050, ..., 0.4729, -0.1829, 1.0157],
+[-3.1624, -0.1436, -0.0941, ..., -0.0290, -0.1265, 0.7954]
+]], grad_fn=<NativeLayerNormBackward0>)
+This is the raw output of a language model. The applications of large language models
+build on top of outputs like this.
+We recap the input tokenization and resulting outputs of a language model in Fig‐
+ure 2-9. Technically, the switch from token IDs into raw embeddings is the first step
+that occurs inside a language model.
+60 
+| 
+Chapter 2: Tokens and Embeddings

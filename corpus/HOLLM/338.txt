@@ -1,0 +1,37 @@
+10 Tianyu Gao, Xingcheng Yao, and Danqi Chen. “SimCSE: Simple contrastive learning of sentence embeddings.”
+arXiv preprint arXiv:2104.08821 (2021).
+11 Fredrik Carlsson et al. “Semantic re-tuning with Contrastive Tension.” International Conference on Learning
+Representations, 2021. 2021.
+12 Kexin Wang, Nils Reimers, and Iryna Gurevych. “TSDAE: Using Transformer-based Sequential Denoising
+Auto-Encoder for unsupervised sentence embedding learning.” arXiv preprint arXiv:2104.06979 (2021).
+13 Kexin Wang et al. “GPL: Generative Pseudo Labeling for unsupervised domain adaptation of dense retrieval.”
+arXiv preprint arXiv:2112.07577 (2021).
+Unsupervised Learning
+To create an embedding model, we typically need labeled data. However, not all
+real-world datasets come with a nice set of labels that we can use. We instead
+look for techniques to train the model without any predetermined labels—unsuper‐
+vised learning. Many approaches exist, like Simple Contrastive Learning of Sentence
+Embeddings (SimCSE),10 Contrastive Tension (CT),11 Transformer-based Sequential
+Denoising Auto-Encoder (TSDAE),12 and Generative Pseudo-Labeling (GPL).13
+In this section, we will focus on TSDAE, as it has shown great performance on
+unsupervised tasks as well as domain adaptation.
+Transformer-Based Sequential Denoising Auto-Encoder
+TSDAE is a very elegant approach to creating an embedding model with unsuper‐
+vised learning. The method assumes that we have no labeled data at all and does not
+require us to artificially create labels.
+The underlying idea of TSDAE is that we add noise to the input sentence by remov‐
+ing a certain percentage of words from it. This “damaged” sentence is put through an
+encoder, with a pooling layer on top of it, to map it to a sentence embedding. From
+this sentence embedding, a decoder tries to reconstruct the original sentence from the
+“damaged” sentence but without the artificial noise. The main concept here is that
+the more accurate the sentence embedding is, the more accurate the reconstructed
+sentence will be.
+This method is very similar to masked language modeling, where we try to recon‐
+struct and learn certain masked words. Here, instead of reconstructing masked
+words, we try to reconstruct the entire sentence.
+After training, we can use the encoder to generate embeddings from text since the
+decoder is only used for judging whether the embeddings can accurately reconstruct
+the original sentence (Figure 10-13).
+316 
+| 
+Chapter 10: Creating Text Embedding Models

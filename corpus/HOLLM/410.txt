@@ -1,0 +1,44 @@
+from trl import DPOConfig
+output_dir = "./results"
+# Training arguments
+training_arguments = DPOConfig(
+    output_dir=output_dir,
+    per_device_train_batch_size=2,
+    gradient_accumulation_steps=4,
+    optim="paged_adamw_32bit",
+    learning_rate=1e-5,
+    lr_scheduler_type="cosine",
+    max_steps=200,
+    logging_steps=10,
+    fp16=True,
+    gradient_checkpointing=True,
+    warmup_ratio=0.1
+)
+Training
+Now that we have prepared all our models and parameters, we can start fine-tuning
+our model:
+from trl import DPOTrainer
+# Create DPO trainer
+dpo_trainer = DPOTrainer(
+    model,
+    args=training_arguments,
+    train_dataset=dpo_dataset,
+    tokenizer=tokenizer,
+    peft_config=peft_config,
+    beta=0.1,
+    max_prompt_length=512,
+    max_length=512,
+)
+# Fine-tune model with DPO
+dpo_trainer.train()
+# Save adapter
+dpo_trainer.model.save_pretrained("TinyLlama-1.1B-dpo-qlora")
+We have created a second adapter. To merge both adapters, we iteratively merge the
+adapters with the base model:
+from peft import PeftModel
+# Merge LoRA and base model
+model = AutoPeftModelForCausalLM.from_pretrained(
+    "TinyLlama-1.1B-qlora",
+388 
+| 
+Chapter 12: Fine-Tuning Generation Models

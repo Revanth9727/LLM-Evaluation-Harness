@@ -1,0 +1,28 @@
+the most probable next token is selected. However, to use the temperature and top_p
+parameters, we will set do_sample=True in order to make use of them.
+Temperature
+The temperature controls the randomness or creativity of the text generated. It
+defines how likely it is to choose tokens that are less probable. The underlying idea
+is that a temperature of 0 generates the same response every time because it always
+chooses the most likely word. As illustrated in Figure 6-4, a higher value allows less
+probable words to be generated.
+Figure 6-4. A higher temperature increases the likelihood that less probable tokens are
+generated and vice versa.
+As a result, a higher temperature (e.g., 0.8) generally results in a more diverse output
+while a lower temperature (e.g., 0.2) creates a more deterministic output.
+You can use temperature in your pipeline as follows:
+# Using a high temperature
+output = pipe(messages, do_sample=True, temperature=1)
+print(output[0]["generated_text"])
+Why don't chickens like to go on a rollercoaster? Because they're afraid they 
+might suddenly become chicken-soup!
+Note that every time you rerun this piece of code, the output will change! tempera
+ture introduces stochastic behavior since the model now randomly selects tokens.
+top_p
+top_p, also known as nucleus sampling, is a sampling technique that controls which
+subset of tokens (the nucleus) the LLM can consider. It will consider tokens until it
+reaches their cumulative probability. If we set top_p to 0.1, it will consider tokens
+until it reaches that value. If we set top_p to 1, it will consider all tokens.
+Using Text Generation Models 
+| 
+171

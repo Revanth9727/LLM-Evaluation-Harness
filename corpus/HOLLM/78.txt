@@ -1,0 +1,38 @@
+• Unknown token
+•
+• CLS token
+•
+• Masking token
+•
+Aside from these, the LLM designer can add tokens that help better model the
+domain of the problem they’re trying to focus on, as we’ve seen with Galactica’s
+<work> and [START_REF] tokens.
+Capitalization
+In languages such as English, how do we want to deal with capitalization?
+Should we convert everything to lowercase? (Name capitalization often carries
+useful information, but do we want to waste token vocabulary space on all-caps
+versions of words?)
+The domain of the data
+Even if we select the same method and parameters, tokenizer behavior will be differ‐
+ent based on the dataset it was trained on (before we even start model training). The
+tokenization methods mentioned previously work by optimizing the vocabulary to
+represent a specific dataset. From our guided tour we’ve seen how that has an impact
+on datasets like code and multilingual text.
+For code, for example, we’ve seen that a text-focused tokenizer may tokenize the
+indentation spaces like this (we’ll highlight some tokens in color):
+def add_numbers(a, b):
+...."""Add the two numbers `a` and `b`."""
+....return a + b
+This may be suboptimal for a code-focused model. Code-focused models are often
+improved by making different tokenization choices:
+def add_numbers(a, b):
+...."""Add the two numbers `a` and `b`."""
+....return a + b
+These tokenization choices make the model’s job easier and thus its performance has
+a higher probability of improving.
+You can find a more detailed tutorial on training tokenizers in the Tokenizers section
+of the Hugging Face course and in Natural Language Processing with Transformers,
+Revised Edition.
+56 
+| 
+Chapter 2: Tokens and Embeddings

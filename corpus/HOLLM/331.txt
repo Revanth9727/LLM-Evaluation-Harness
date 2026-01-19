@@ -1,0 +1,40 @@
+Fine-Tuning an Embedding Model
+In the previous section, we went through the basics of training an embedding model
+from scratch and saw how we could leverage loss functions to further optimize its
+performance. This approach, although quite powerful, requires creating an embed‐
+ding model from scratch. This process can be quite costly and time-consuming.
+Instead, the sentence-transformers framework allows nearly all embedding models
+to be used as a base for fine-tuning. We can choose an embedding model that was
+already trained on a large amount of data and fine-tune it for our specific data or
+purpose.
+There are several ways to fine-tune your model, depending on the data availability
+and domain. We will go through two such methods and demonstrate the strength of
+leveraging pretrained embedding models.
+Supervised
+The most straightforward way to fine-tune an embedding model is to repeat the
+process of training our model as we did before but replace the 'bert-base-uncased'
+with a pretrained sentence-transformers model. There are many to choose from
+but generally, all-MiniLM-L6-v2 performs well across many use cases and due to its
+small size is quite fast.
+We use the same data as we used to train our model in the MNR loss example
+but instead use a pretrained embedding model to fine-tune. As always, let’s start by
+loading the data and creating the evaluator:
+from datasets import load_dataset
+from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
+# Load MNLI dataset from GLUE
+# 0 = entailment, 1 = neutral, 2 = contradiction
+train_dataset = load_dataset(
+    "glue", "mnli", split="train"
+).select(range(50_000))
+train_dataset = train_dataset.remove_columns("idx")
+# Create an embedding similarity evaluator for stsb
+val_sts = load_dataset("glue", "stsb", split="validation")
+evaluator = EmbeddingSimilarityEvaluator(
+    sentences1=val_sts["sentence1"],
+    sentences2=val_sts["sentence2"],
+    scores=[score/5 for score in val_sts["label"]],
+    main_similarity="cosine"
+)
+Fine-Tuning an Embedding Model 
+| 
+309

@@ -1,0 +1,48 @@
+# Create a chain for the character description using the summary and title
+template = """<s><|user|>
+Describe the main character of a story about {summary} with the title {title}. 
+Use only two sentences.<|end|>
+<|assistant|>"""
+character_prompt = PromptTemplate(
+    template=template, input_variables=["summary", "title"]
+)
+character = LLMChain(llm=llm, prompt=character_prompt, output_key="character")
+Although we could now use the character variable to generate our character descrip‐
+tion manually, it will be used as part of the automated chain instead.
+Let’s create the final component, which uses the summary, title, and character
+description to generate a short description of the story:
+# Create a chain for the story using the summary, title, and character descrip
+tion
+template = """<s><|user|>
+Create a story about {summary} with the title {title}. The main character is: 
+{character}. Only return the story and it cannot be longer than one paragraph. 
+<|end|>
+<|assistant|>"""
+story_prompt = PromptTemplate(
+    template=template, input_variables=["summary", "title", "character"]
+)
+story = LLMChain(llm=llm, prompt=story_prompt, output_key="story")
+Now that we have generated all three components, we can link them together to
+create our full chain:
+# Combine all three components to create the full chain
+llm_chain = title | character | story
+We can run this newly created chain using the same example we used before:
+llm_chain.invoke("a girl that lost her mother")
+{'summary': 'a girl that lost her mother',
+ 'title': ' "In Loving Memory: A Journey Through Grief"',
+ 'character': ' The protagonist, Emily, is a resilient young girl who strug-
+gles to cope with her overwhelming grief after losing her beloved and caring 
+mother at an early age. As she embarks on a journey of self-discovery and 
+healing, she learns valuable life lessons from the memories and wisdom shared 
+by those around her.',
+ 'story': " In Loving Memory: A Journey Through Grief revolves around Emily, a 
+resilient young girl who loses her beloved mother at an early age. Struggling 
+to cope with overwhelming grief, she embarks on a journey of self-discovery 
+and healing, drawing strength from the cherished memories and wisdom shared 
+by those around her. Through this transformative process, Emily learns valua-
+ble life lessons about resilience, love, and the power of human connection, 
+ultimately finding solace in honoring her mother's legacy while embracing a 
+newfound sense of inner peace amidst the painful loss."}
+208 
+| 
+Chapter 7: Advanced Text Generation Techniques and Tools

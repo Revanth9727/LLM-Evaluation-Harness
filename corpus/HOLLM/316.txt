@@ -1,0 +1,28 @@
+4 Jeffrey Pennington, Richard Socher, and Christopher D. Manning. “GloVe: Global vectors for word represen‐
+tation.” Proceedings of the 2014 Conference on Empirical Methods in Natural Language Processing (EMNLP).
+2014.
+overhead. Before sentence-transformers, sentence embeddings often used an archi‐
+tectural structure called cross-encoders with BERT.
+A cross-encoder allows two sentences to be passed to the Transformer network
+simultaneously to predict the extent to which the two sentences are similar. It does so
+by adding a classification head to the original architecture that can output a similarity
+score. However, the number of computations rises quickly when you want to find
+the highest pair in a collection of 10,000 sentences. That would require n·(n−1)/2
+= 49,995,000 inference computations and therefore generates significant overhead.
+Moreover, a cross-encoder generally does not generate embeddings, as shown in
+Figure 10-6. Instead, it outputs a similarity score between the input sentences.
+A solution to this overhead is to generate embeddings from a BERT model by
+averaging its output layer or using the [CLS] token. This, however, has shown to be
+worse than simply averaging word vectors, like GloVe.4
+Figure 10-6. The architecture of a cross-encoder. Both sentences are concatenated, sepa‐
+rated with a <SEP> token, and fed to the model simultaneously.
+Instead, the authors of sentence-transformers approached the problem differently
+and searched for a method that is fast and creates embeddings that can be compared
+semantically. The result is an elegant alternative to the original cross-encoder archi‐
+tecture. Unlike a cross-encoder, in sentence-transformers the classification head is
+dropped, and instead mean pooling is used on the final output layer to generate an
+embedding. This pooling layer averages the word embeddings and gives back a fixed
+dimensional output vector. This ensures a fixed-size embedding.
+294 
+| 
+Chapter 10: Creating Text Embedding Models

@@ -1,0 +1,29 @@
+Intro to Prompt Engineering
+An essential part of working with text-generative LLMs is prompt engineering. By
+carefully designing our prompts we can guide the LLM to generate desired responses.
+Whether the prompts are questions, statements, or instructions, the main goal of
+prompt engineering is to elicit a useful response from the model.
+Prompt engineering is more than designing effective prompts. It can be used as a
+tool to evaluate the output of a model as well as to design safeguards and safety
+mitigation methods. This is an iterative process of prompt optimization and requires
+experimentation. There is not and unlikely will ever be a perfect prompt design.
+In this section, we will go through common methods for prompt engineering, and
+small tips and tricks to understand what the effect is of certain prompts. These
+skills allow us to understand the capabilities of LLMs and lie at the foundation of
+interfacing with these kinds of models.
+We begin by answering the question: what should be in a prompt?
+The Basic Ingredients of a Prompt
+An LLM is a prediction machine. Based on a certain input, the prompt, it tries to
+predict the words that might follow it. At its core (illustrated in Figure 6-6), the
+prompt does not need to be more than a few words to elicit a response from the LLM.
+Figure 6-6. A basic example of a prompt. No instruction is given so the LLM will simply
+try to complete the sentence.
+However, although the illustration works as a basic example, it fails to complete a
+specific task. Instead, we generally approach prompt engineering by asking a specific
+question or task the LLM should complete. To elicit the desired response, we need a
+more structured prompt.
+For example, and as shown in Figure 6-7, we could ask the LLM to classify a sentence
+into either having positive or negative sentiment. This extends the most basic prompt
+Intro to Prompt Engineering 
+| 
+173

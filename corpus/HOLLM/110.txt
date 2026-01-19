@@ -1,0 +1,30 @@
+When you use a modern commercial LLM, the outputs you get
+are not the ones mentioned earlier in the strict meaning of a “lan‐
+guage model.” Passing “The Shawshank” to a chat LLM like GPT-4
+produces an output:
+"The Shawshank Redemption" is a 1994 film directed 
+by Frank Darabont and is based on the novella "Rita 
+Hayworth and Shawshank Redemption" written by Stephen 
+King. ...etc.
+This is because raw language models (like GPT-3) are difficult
+for people to properly utilize. This is why the language model
+is then trained on instruction-tuning and human preference and
+feedback fine-tuning to match people’s expectations of what the
+model should output.
+The attention layer at a glance
+Context is vital in order to properly model language. Simple memorization and
+interpolation based on the previous token can only take us so far. We know that
+because this was one of the leading approaches to build language models before
+neural networks (see Chapter 3, “N-gram Language Models” of Speech and Language
+Processing by Daniel Jurafsky and James H. Martin).
+Attention is a mechanism that helps the model incorporate context as it’s processing a
+specific token. Think of the following prompt:
+“The dog chased the squirrel because it”
+For the model to predict what comes after “it,” it needs to know what “it” refers to.
+Does it refer to the dog or the squirrel?
+In a trained Transformer LLM, the attention mechanism makes that determination.
+Attention adds information from the context into the representation of the “it” token.
+We can see a simple version of that in Figure 3-14.
+88 
+| 
+Chapter 3: Looking Inside Large Language Models

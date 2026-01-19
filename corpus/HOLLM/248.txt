@@ -1,0 +1,24 @@
+Overview of Semantic Search and RAG
+There’s a lot of research on how to best use language models for search. Three
+broad categories of these models are dense retrieval, reranking, and RAG. Here is
+an overview of these three categories that the rest of the chapter will then explain in
+more detail:
+Dense retrieval
+Dense retrieval systems rely on the concept of embeddings, the same concept
+we’ve encountered in the previous chapters, and turn the search problem into
+retrieving the nearest neighbors of the search query (after both the query and
+the documents are converted into embeddings). Figure 8-1 shows how dense
+retrieval takes a search query, consults its archive of texts, and outputs a set of
+relevant results.
+Figure 8-1. Dense retrieval is one of the key types of semantic search, relying on the
+similarity of text embeddings to retrieve relevant results.
+Reranking
+Search systems are often pipelines of multiple steps. A reranking language model
+is one of these steps and is tasked with scoring the relevance of a subset of results
+against the query; the order of results is then changed based on these scores.
+Figure 8-2 shows how rerankers are different from dense retrieval in that they
+take an additional input: a set of search results from a previous step in the search
+pipeline.
+226 
+| 
+Chapter 8: Semantic Search and Retrieval-Augmented Generation

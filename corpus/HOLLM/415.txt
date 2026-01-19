@@ -1,0 +1,68 @@
+Index
+A
+accuracy
+confusion matrices, 120
+output verification, 192
+adaptive pretraining, 320
+agents, 218-223
+agentic RAG, 256
+ReAct in LangChain, 221-223
+step-by-step reasoning, 219-221
+AI (artificial intelligence)
+accelerated development of, 3
+defined, 4
+ALBERT, 115
+align_labels function, 350
+all-MiniLM-L6-v2 model, 309
+all-mpnet-base-v2 model, 337
+Annoy, 239
+Anthropic Claude, 29
+APIs (application programming interfaces), 30
+Cohere, xv, 230
+external, 134
+generating embeddings, 123
+OpenAI, xv, 133
+artificial intelligence (see AI)
+ArXiv, 138
+attention, 11-18
+overview of, 11-14
+Transformer architecture, 15-18
+attention calculation, 91-93
+attention layer, 79, 86, 88, 106
+Flash Attention, 100
+grouped-query attention, 98-100
+local attention, 96
+multi-query attention, 98-100
+optimizing attention, 98
+self-attention and relevance scoring,
+93-94
+sparse attention, 96
+attention heads, 91-93, 107
+audience, in text-generation prompts, 178
+Augmented SBERT, 311-315
+autoregressive architecture, 12, 15, 22, 76, 97
+B
+bag-of-words model, 6-7
+embeddings, 10
+topic modeling, 148-150, 156
+benchmarks, in generative model evaluation,
+374
+BERT (Bidirectional Encoder Representations
+from Transformers), 18-20
+adoption by search engines, 225
+BERT-like models, 115
+comparing to other trained tokenizers, 47
+fine-tuning pretrained BERT models,
+325-328
+masked language modeling, 311
+Transformer blocks versus, 97
+BERTopic, 148-155
+algorithmic variants, 152
+modularity of, 151
+representation blocks, 156-163
+KeyBERTInspired, 158
+maximal marginal relevance, 159
+text generation, 160-163
+BERTScore, 374
+bias and fairness, 28
+393

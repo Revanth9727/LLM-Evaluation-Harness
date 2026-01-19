@@ -1,0 +1,39 @@
+Valid output
+Even if we allow the model to generate structured output, it still has the capability
+to freely generate its content. For instance, when a model is asked to output
+either one of two choices, it should not come up with a third.
+Ethics
+Some open source generative models have no guardrails and will generate out‐
+puts that do not consider safety or ethical considerations. For instance, use
+cases might require the output to be free of profanity, personally identifiable
+information (PII), bias, cultural stereotypes, etc.
+Accuracy
+Many use cases require the output to adhere to certain standards or performance.
+The aim is to double-check whether the generated information is factually accu‐
+rate, coherent, or free from hallucination.
+Controlling the output of a generative model, as we explored with parameters like
+top_p and temperature, is not an easy feat. These models require help to generate
+consistent output conforming to certain guidelines.
+Generally, there are three ways of controlling the output of a generative model:
+Examples
+Provide a number of examples of the expected output.
+Grammar
+Control the token selection process.
+Fine-tuning
+Tune a model on data that contains the expected output.
+In this section, we will go through the first two methods. The third, fine-tuning a
+model, is left for Chapter 12 where we will go in depth into fine-tuning methods.
+Providing Examples
+A simple and straightforward method to fix the output is to provide the generative
+model with examples of what the output should look like. As we explored before,
+few-shot learning is a helpful technique that guides the output of the generative
+model. This method can be generalized to guide the structure of the output as well.
+For example, let us consider an example where we want the generative model to
+create a character profile for an RPG game. We start by using no examples:
+# Zero-shot learning: Providing no examples
+zeroshot_prompt = [
+    {"role": "user", "content": "Create a character profile for an RPG game in 
+JSON format."}
+192 
+| 
+Chapter 6: Prompt Engineering

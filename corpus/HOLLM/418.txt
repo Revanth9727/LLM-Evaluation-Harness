@@ -1,0 +1,97 @@
+Galactica, 52
+General Language Understanding Evaluation
+(GLUE) benchmark, 297, 300, 359, 374
+generated_text variable, 281, 283
+generation_output variable, 42
+generative models, 20-22
+evaluating, 373-377
+automated evaluation, 376
+benchmarks, 374
+human evaluation, 376
+leaderboards, 376
+word-level metrics, 374
+fine-tuning, 355-389
+evaluation, 373-377
+preference tuning, 356, 378-389
+supervised fine-tuning, 356-373
+training steps, 355-357
+reasoning, 184-191
+self-consistency, 188
+tree-of-thought, 189-191
+representation models versus, 20
+text classification, 127-135
+ChatGPT, 132-135
+T5, 128-131
+generative pre-trained transformers (see GPTs)
+Generative Pseudo-Labeling (GPL), 316
+Gensim library, 63
+get_topic function, 153
+get_topic_info() method, 152
+GGUF model, 195, 200
+GitHub, xvi
+GloVe, 294
+GLUE (General Language Understanding Eval‐
+uation) benchmark, 297, 300, 359, 374
+gold datasets, 312
+Goodhart’s Law, 377
+Google Colab, xii, xiv, 29, 33, 85, 372
+Google Gemini, 250
+Google Search, 225
+GPL (Generative Pseudo-Labeling), 316
+GPT2Tokenizer, 280
+GPTs (generative pre-trained transformers), 20,
+167
+(see also text generation)
+GPT-1, 20
+GPT-2, 3, 20, 46, 49
+GPT-3, 20, 87, 96, 364
+GPT-3.5, 23, 132, 205, 221
+GPT-4, 23, 29, 38, 50, 87
+GPUs
+Flash Attention, 100
+requirements, xiv, 28
+SRAM and HBM, 100
+grammar, 192, 194-197
+greedy decoding, 80
+grounded generation, 250-252
+grouped-query attention, 98-100, 107
+GSM8k, 374
+Guardrails, 194
+Guidance, 194
+H
+hallucination
+avoiding in in instruction-based prompting,
+177
+text generation models, 225
+hard negatives, 308
+harmful content, generating, 28
+Haystack, 200
+HBM (high bandwidth memory), 100
+HDBSCAN (Hierarchical Density-Based Spatial
+Clustering of Applications with Noise), 143,
+153
+HellaSwag, 374
+high bandwidth memory (HBM), 100
+Hugging Face, 32, 112
+creating accounts, xv
+evaluate package, 351
+tokenizers, 56
+human evaluation, 145, 376
+HumanEval, 375
+hybrid search, 235, 242
+I
+Idefics 2, 277
+images (see multimodality)
+in-context learning, 180-182
+indexes, 232
+InfoNCE, 304
+input_ids variable, 40
+instruction-based prompting, 175-177
+intellectual property, 28
+intuition-first philosophy, xi
+invoke function, 204
+J
+Jupyter, 85
+396 
+| 
+Index

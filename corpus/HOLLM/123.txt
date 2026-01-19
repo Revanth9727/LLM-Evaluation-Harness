@@ -1,0 +1,19 @@
+The Transformer Block
+Recall that the two major components of a Transformer block are an attention layer
+and a feedforward neural network. A more detailed view of the block would also
+reveal the residual connections and layer-normalization operations that we can see in
+Figure 3-29.
+Figure 3-29. A Transformer block from the original Transformer paper.
+The latest Transformer models at the time of this writing still retain the major
+components, yet make a number of tweaks as we can see in Figure 3-30.
+One of the differences we see in this version of the Transformer block is that nor‐
+malization happens prior to attention and the feedforward layers. This has been
+reported to reduce the required training time (read: “On layer normalization in the
+Transformer architecture”). Another improvement in normalization here is using
+RMSNorm, which is simpler and more efficient than the LayerNorm used in the
+original Transformer (read: “Root mean square layer normalization”). Lastly, instead
+of the original Transformer’s ReLU activation function, newer variants like SwiGLU
+(described in “GLU Variants Improve Transformer”) are now more common.
+Recent Improvements to the Transformer Architecture 
+| 
+101

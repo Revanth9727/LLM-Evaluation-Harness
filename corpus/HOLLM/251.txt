@@ -1,0 +1,19 @@
+Figure 8-5. Dense retrieval relies on the property that search queries will be close to their
+relevant results.
+Judging by the distances in Figure 8-5, “text 2” is the best result for this query,
+followed by “text 1.” Two questions could arise here, however:
+• Should text 3 even be returned as a result? That’s a decision for you, the system
+•
+designer. It’s sometimes desirable to have a max threshold of similarity score to
+filter out irrelevant results (in case the corpus has no relevant results for the
+query).
+• Are a query and its best result semantically similar? Not always. This is why
+•
+language models need to be trained on question-answer pairs to become better at
+retrieval. This process is explained in more detail in Chapter 10.
+Figure 8-6 shows how we chunk a document before proceeding to embed each chunk.
+Those embedding vectors are then stored in the vector database and are ready for
+retrieval.
+Semantic Search with Language Models 
+| 
+229

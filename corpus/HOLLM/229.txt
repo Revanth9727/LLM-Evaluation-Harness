@@ -1,0 +1,28 @@
+Figure 7-8. The output of the title prompt is used as the input of the character prompt. To
+generate the story, the output of all previous prompts is used.
+To generate that story, we use LangChain to describe the first component, namely the
+title. This first link is the only component that requires some input from the user. We
+define the template and use the "summary" variable as the input variable and "title"
+as the output.
+We ask the LLM to “Create a title for a story about {summary}” where “{summary}”
+will be our input:
+from langchain import LLMChain
+# Create a chain for the title of our story
+template = """<s><|user|>
+Create a title for a story about {summary}. Only return the title.<|end|>
+<|assistant|>"""
+title_prompt = PromptTemplate(template=template, input_variables=["summary"])
+title = LLMChain(llm=llm, prompt=title_prompt, output_key="title")
+Let’s run an example to showcase these variables:
+title.invoke({"summary": "a girl that lost her mother"})
+{'summary': 'a girl that lost her mother',
+ 'title': ' "Whispers of Loss: A Journey Through Grief"'}
+This already gives us a great title for the story! Note that we can see both the input
+("summary") as well as the output ("title").
+Let’s generate the next component, namely the description of the character. We
+generate this component using both the summary as well as the previously generated
+title. Making sure that the chain uses those components, we create a new prompt with
+the {summary} and {title} tags:
+Chains: Extending the Capabilities of LLMs 
+| 
+207

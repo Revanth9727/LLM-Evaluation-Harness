@@ -1,0 +1,22 @@
+Before the beginning of the training process, these vectors are randomly initialized
+like the rest of the model’s weights, but the training process assigns them the values
+that enable the useful behavior they’re trained to perform.
+Figure 2-7. A language model holds an embedding vector associated with each token in
+its tokenizer.
+Creating Contextualized Word Embeddings with Language Models
+Now that we’ve covered token embeddings as the input to a language model, let’s
+look at how language models can create better token embeddings. This is one of
+the primary ways to use language models for text representation. This empowers
+applications like named-entity recognition or extractive text summarization (which
+summarizes a long text by highlighting the most important parts of it, instead of
+generating new text as a summary).
+Instead of representing each token or word with a static vector, language models
+create contextualized word embeddings (shown in Figure 2-8) that represent a word
+with a different token based on its context. These vectors can then be used by other
+systems for a variety of tasks. In addition to the text applications we mentioned in
+the previous paragraph, these contextualized vectors, for example, are what powers
+AI image generation systems like DALL·E, Midjourney, and Stable Diffusion, for
+example.
+58 
+| 
+Chapter 2: Tokens and Embeddings

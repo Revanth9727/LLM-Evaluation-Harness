@@ -1,0 +1,39 @@
+What is the significance of whitespace characters? These are
+important for models to understand or generate code. A model
+that uses a single token to represent four consecutive whitespace
+characters is more tuned to a Python code dataset. While a model
+can live with representing it as four different tokens, it does make
+the modeling more difficult as the model needs to keep track of
+the indentation level, which often leads to worse performance. This
+is an example of where tokenization choices can help the model
+improve on a certain task.
+Flan-T5 (2022)
+Tokenization method: Flan-T5 uses a tokenizer implementation called SentencePiece,
+introduced in “SentencePiece: A simple and language independent subword tokenizer
+and detokenizer for neural text processing”, which supports BPE and the unigram
+language model (described in “Subword regularization: Improving neural network
+translation models with multiple subword candidates”).
+Vocabulary size: 32,100
+Special tokens:
+• unk_token <unk>
+•
+• pad_token <pad>
+•
+Tokenized text:
+English and CA PI TAL IZ ATION <unk> <unk> show _ to ken s Fal s e None e l if = = >
+= else : two tab s : " " Three tab s : " " 12. 0 * 50 = 600 </s>
+The Flan-T5 family of models use  the SentencePiece method. We notice the
+following:
+• No newline or whitespace tokens; this would make it challenging for the model
+•
+to work with code.
+• The emoji and Chinese characters are both replaced by the <unk> token, making
+•
+the model completely blind to them.
+GPT-4 (2023)
+Tokenization method: BPE
+Vocabulary size: A little over 100,000
+Special tokens:
+50 
+| 
+Chapter 2: Tokens and Embeddings

@@ -1,0 +1,18 @@
+Figure 2-14. Skip-gram and negative sampling are two of the main ideas behind the
+word2vec algorithm and are useful in many other problems that can be formulated as
+token sequence problems.
+We can generate millions and even billions of training examples like this from
+running text. Before proceeding to train a neural network on this dataset, we need
+to make a couple of tokenization decisions, which, just like we’ve seen with LLM
+tokenizers, include how to deal with capitalization and punctuation and how many
+tokens we want in our vocabulary.
+We then create an embedding vector for each token, and randomly initialize them, as
+can be seen in Figure 2-15. In practice, this is a matrix of dimensions vocab_size x
+embedding_dimensions.
+Figure 2-15. A vocabulary of words and their starting, random, uninitialized embedding
+vectors.
+A model is then trained on each example to take in two embedding vectors and
+predict if they’re related or not. We can see what this looks like in Figure 2-16.
+66 
+| 
+Chapter 2: Tokens and Embeddings

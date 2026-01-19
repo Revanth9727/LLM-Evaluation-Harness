@@ -1,0 +1,16 @@
+task. The main difference is that we now use a smaller but labeled dataset whereas the
+pretraining process was done on a large dataset without any labels (Figure 12-6).
+Figure 12-6. Compared to language modeling (pretraining), full fine-tuning uses a
+smaller but labeled dataset.
+You can use any labeled data for full fine-tuning, making it also a great technique for
+learning domain-specific representations. To make our LLM follow instructions, we
+will need question-response data. This data, as shown in Figure 12-7, is queries by the
+user with corresponding answers.
+Figure 12-7. Instruction data with instructions by a user and corresponding answers.
+The instructions can contain many different tasks.
+During full fine-tuning, the model takes the input (instructions) and applies next-
+token prediction on the output (response). In turn, instead of generating new ques‐
+tions, it will follow instructions.
+358 
+| 
+Chapter 12: Fine-Tuning Generation Models

@@ -1,0 +1,25 @@
+1 Neil Houlsby et al. “Parameter-efficient transfer learning for NLP.” International Conference on Machine
+Learning. PMLR, 2019.
+Parameter-Efficient Fine-Tuning (PEFT)
+Updating all parameters of a model has a large potential of increasing its performance
+but comes with several disadvantages. It is costly to train, has slow training times,
+and requires significant storage. To resolve these issues, attention has been given
+to parameter-efficient fine-tuning (PEFT) alternatives that focus on fine-tuning pre‐
+trained models at higher computational efficiency.
+Adapters
+Adapters are a core component of many PEFT-based techniques. The method pro‐
+poses a set of additional modular components inside the Transformer that can be
+fine-tuned to improve the model’s performance on a specific task without having to
+fine-tune all the model weights. This saves a lot of time and compute.
+Adapters are described in the paper “Parameter-efficient transfer learning for NLP”,
+which showed that fine-tuning 3.6% of the parameters of BERT for a task can
+yield comparable performance to fine-tuning all the model’s weights.1 On the GLUE
+benchmark, the authors show they reach within 0.4% of the performance of full
+fine-tuning. In a single Transformer block, the paper’s proposed architecture places
+adapters after the attention layer and the feedforward neural network as illustrated in
+Figure 12-8.
+Figure 12-8. Adapters add a small number of weights in certain places in the network
+that can be fine-tuned efficiently while leaving the majority of model weights frozen.
+Supervised Fine-Tuning (SFT) 
+| 
+359

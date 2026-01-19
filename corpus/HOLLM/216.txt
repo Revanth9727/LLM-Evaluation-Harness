@@ -1,0 +1,29 @@
+{
+  "description": "A cunning rogue with a mysterious past, skilled in stealth 
+and deception.",
+  "name": "Lysandra Shadowstep",
+  "armor": "Leather Cloak of the Night",
+  "weapon": "Dagger of Whispers, Throwing Knives"
+}
+The model perfectly followed the example we gave it, which allows for more consis‐
+tent behavior. This also demonstrates the importance of leveraging few-shot learning
+to improve the structure of the output and not only its content.
+An important note here is that it is still up to the model whether it will adhere
+to your suggested format or not. Some models are better than others at following
+instructions.
+Grammar: Constrained Sampling
+Few-shot learning has a big disadvantage: we cannot explicitly prevent certain output
+from being generated. Although we guide the model and give it instructions, it might
+still not follow it entirely.
+Instead, packages have been rapidly developed to constrain and validate the output
+of generative models, like Guidance, Guardrails, and LMQL. In part, they leverage
+generative models to validate their own output, as illustrated in Figure 6-19. The
+generative models retrieve the output as new prompts and attempt to validate it based
+on a number of predefined guardrails.
+Figure 6-19. Use an LLM to check whether the output correctly follows our rules.
+Similarly, as illustrated in Figure 6-20, this validation process can also be used to
+control the formatting of the output by generating parts of its format ourselves as we
+already know how it should be structured.
+194 
+| 
+Chapter 6: Prompt Engineering

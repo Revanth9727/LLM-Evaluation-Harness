@@ -1,0 +1,27 @@
+2 Lewis Tunstall et al. “Efficient few-shot learning without prompts.” arXiv preprint arXiv:2209.11055 (2022).
+When you are training for multiple epochs, the difference (in
+training time and resources) between freezing and not freezing
+often becomes larger. It is therefore advised to play around with a
+balance that works for you.
+Few-Shot Classification
+Few-shot classification is a technique within supervised classification where you have
+a classifier learn target labels based on only a few labeled examples. This technique
+is great when you have a classification task but do not have many labeled data points
+readily available. In other words, this method allows you to label a few high-quality
+data points per class on which to train the model. This idea of using a few labeled
+data points for training your model is shown in Figure 11-8.
+Figure 11-8. In few-shot classification, we only use a few labeled data points to learn
+from.
+SetFit: Efficient Fine-Tuning with Few Training Examples
+To perform few-shot text classification, we use an efficient framework called SetFit.2 It
+is built on top of the architecture of sentence-transformers to generate high-quality
+textual representations that are updated during training. Only a few labeled examples
+are needed for this framework to be competitive with fine-tuning a BERT-like model
+on a large, labeled dataset as we explored in the previous example.
+The underlying algorithm of SetFit consists of three steps:
+1. Sampling training data
+Based on in-class and out-class selection of labeled data it generates positive
+(similar) and negative (dissimilar) pairs of sentences
+Few-Shot Classification 
+| 
+333

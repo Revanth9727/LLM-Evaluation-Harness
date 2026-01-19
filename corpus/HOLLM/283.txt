@@ -1,0 +1,15 @@
+Figure 9-2. Both the original Transformer as well as the Vision Transformer take
+unstructured data, convert it to numerical representations, and finally use that for tasks
+like classification.
+Figure 9-3. Text is passed to one or multiple encoders by first tokenizing it using a
+tokenizer.
+Since an image does not consist of words this tokenization process cannot be used for
+visual data. Instead, the authors of ViT came up with a method for tokenizing images
+into “words,” which allowed them to use the original encoder structure.
+Imagine that you have an image of a cat. This image is represented by a number
+of pixels, let’s say 512 × 512 pixels. Each individual pixel does not convey much
+information but when you combine patches of pixels, you slowly start to see more
+information.
+Transformers for Vision 
+| 
+261

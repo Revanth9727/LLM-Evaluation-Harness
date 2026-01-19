@@ -1,0 +1,24 @@
+Reward model training step
+Now that we have the preference training dataset, we can proceed to train the reward
+model.
+A simple step is that we use the reward model to:
+1. Score the accepted generation
+1.
+2. Score the rejected generation
+2.
+Figure 12-29 shows the training objective: to ensure the accepted generation has a
+higher score than the rejected generation.
+Figure 12-29. The reward model aims to evaluate the quality scores of generations in
+response to a prompt.
+When we combine everything together as shown in Figure 12-30, we get the three
+stages to preference tuning:
+1. Collect preference data
+1.
+2. Train a reward model
+2.
+3. Use the reward model to fine-tune the LLM (operating as the preference
+3.
+evaluator)
+382 
+| 
+Chapter 12: Fine-Tuning Generation Models

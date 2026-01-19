@@ -1,0 +1,20 @@
+10 Shunyu Yao et al. “Tree of thoughts: Deliberate problem solving with large language models.” arXiv preprint
+arXiv:2305.10601 (2023).
+11 “Using tree-of-thought prompting to boost ChatGPT’s reasoning.” Available at https://oreil.ly/a_Nos.
+solutions to the problem at hand. It then votes for the best solution and continues to
+the next step.10
+Figure 6-18. By leveraging a tree-based structure, generative models can generate inter‐
+mediate thoughts to be rated. The most promising thoughts are kept and the lowest are
+pruned.
+This method is tremendously helpful when needing to consider multiple paths, like
+when writing a story or coming up with creative ideas. A disadvantage of this method
+is that it requires many calls to the generative models, which slows the application
+significantly. Fortunately, there has been a successful attempt to convert the tree-of-
+thought framework into a simple prompting technique.11
+Instead of calling the generative model multiple times, we ask the model to mimic
+that behavior by emulating a conversation between multiple experts. These experts
+will question each other until they reach a consensus. An example of a tree-of-
+thought prompt is:
+190 
+| 
+Chapter 6: Prompt Engineering

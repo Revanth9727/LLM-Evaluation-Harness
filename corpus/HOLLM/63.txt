@@ -1,0 +1,27 @@
+Figure 2-4. A tokenizer processes the input prompt and prepares the actual input into
+the language model: a list of token IDs. The specific token IDs in the figure are just
+demonstrative.
+If we want to inspect those IDs, we can use the tokenizer’s decode method to translate
+the IDs back into text that we can read:
+for id in input_ids[0]:
+   print(tokenizer.decode(id))
+This prints (each token is on a separate line):
+<s>
+Write
+an
+email
+apolog
+izing
+to
+Sarah
+for
+the
+trag
+ic
+garden
+ing
+m
+ish
+LLM Tokenization 
+| 
+41

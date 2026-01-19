@@ -1,0 +1,33 @@
+As you scale beyond to the millions of vectors, an optimized approach for retrieval is
+to rely on approximate nearest neighbor search libraries like Annoy or FAISS. These
+allow you to retrieve results from massive indexes in milliseconds and some of them
+can improve their performance by utilizing GPUs and scaling to clusters of machines
+to serve very large indices.
+Another class of vector retrieval systems are vector databases like Weaviate or Pine‐
+cone. A vector database allows you to add or delete vectors without having to rebuild
+the index. They also provide ways to filter your search or customize it in ways beyond
+merely vector distances.
+Fine-tuning embedding models for dense retrieval
+Just as we discussed in Chapter 4 on text classification, we can improve the perfor‐
+mance of an LLM on a task using fine-tuning. As in that case, retrieval needs to
+optimize text embeddings and not simply token embeddings. The process for this
+fine-tuning is to get training data composed of queries and relevant results.
+Let’s look at one example from our dataset, the sentence “Interstellar premiered on
+October 26, 2014, in Los Angeles.” Two possible queries where this is a relevant result
+are:
+• Relevant query 1: “Interstellar release date”
+•
+• Relevant query 2: “When did Interstellar premier”
+•
+The fine-tuning process aims to make the embeddings of these queries close to the
+embedding of the resulting sentence. It also needs to see negative examples of queries
+that are not relevant to the sentence, for example:
+• Irrelevant query: “Interstellar cast”
+•
+With these examples, we now have three pairs—two positive pairs and one negative
+pair. Let’s assume, as we can see in Figure 8-12, that before fine-tuning, all three
+queries have the same distance from the result document. That’s not far-fetched
+because they all talk about Interstellar.
+Semantic Search with Language Models 
+| 
+239

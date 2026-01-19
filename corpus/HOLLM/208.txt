@@ -1,0 +1,24 @@
+of calculating the entire solution based on a few tokens, each additional token in this
+reasoning process allows the LLM to stabilize its output.
+Figure 6-15. Chain-of-thought prompting uses reasoning examples to persuade the gen‐
+erative model to use reasoning in its answer.
+We use the example the authors used in their paper to demonstrate this phenomenon:
+# Answering with chain-of-thought
+cot_prompt = [
+    {"role": "user", "content": "Roger has 5 tennis balls. He buys 2 more cans 
+of tennis balls. Each can has 3 tennis balls. How many tennis balls does he 
+have now?"},
+    {"role": "assistant", "content": "Roger started with 5 balls. 2 cans of 3 
+tennis balls each is 6 tennis balls. 5 + 6 = 11. The answer is 11."},
+    {"role": "user", "content": "The cafeteria had 23 apples. If they used 20 
+to make lunch and bought 6 more, how many apples do they have?"}
+]
+# Generate the output
+outputs = pipe(cot_prompt)
+print(outputs[0]["generated_text"])
+The cafeteria started with 23 apples. They used 20 apples, so they had 23 - 20 
+= 3 apples left. Then they bought 6 more apples, so they now have 3 + 6 = 9 
+apples. The answer is 9.
+186 
+| 
+Chapter 6: Prompt Engineering

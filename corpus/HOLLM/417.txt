@@ -1,0 +1,98 @@
+Density-Based Spatial Clustering (DBSCAN),
+143
+dimensionality reduction model, 140-142
+DistilBERT, 115, 120
+domain adaptation, 320
+do_sample parameter, 34
+DPO (Direct Preference Optimization),
+384-389
+fine-tuning, 388
+model quantization, 386
+templating alignment data, 386
+training configuration, 387
+DSPy, 200
+E
+easy negatives, 308
+Elo rating system, 377
+embeddings, 8-10, 37, 57-70
+dense retrieval, 226, 228-240
+embedding models, defined, 114, 290
+multimodality, 263-272
+CLIP, 265-268
+OpenCLIP, 268-272
+overview of, 8-10, 289-291
+positional embeddings, 102-104
+recommendation systems, 67-70
+text classification tasks that leverage,
+120-126
+supervised classification, 121-123
+zero-shot classification, 123-126
+text clustering pipeline, 139-146
+cluster model, 142-144
+dimensionality reduction model,
+140-142
+embedding model, 139
+inspecting clusters, 144-146
+text embedding models, 61-63, 289-321
+contrastive learning, 291-293
+creating, 296-308
+fine-tuning, 309-315
+SBERT, 293-296
+unsupervised learning, 316
+token embeddings, 57-61
+creating contextualized word embed‐
+dings, 58-61
+tokenizer’s vocabulary and, 57
+types of, 10
+word embeddings, 63-67
+pretrained, 63
+word2vec algorithm and contrastive
+training, 64-67
+encoder-decoder models, 128
+encoder-only models (see representation mod‐
+els)
+ethics, validating output, 192
+exponential backoff, 134
+F
+F1 score, confusion matrices, 120
+FAISS, 239
+Falcon, 168
+feature extraction step, embedding model, 121
+feedforward layer, 86
+feedforward neural networks, 15, 87, 106, 326
+few-shot classification, 333-339
+fine-tuning for classification, 337-339
+SetFit, 333-336
+few-shot prompting, 181-182, 192-194
+find_topics() function, BERTopic, 154
+fine-tuning
+embedding models for dense retrieval, 239
+generative models, 192, 355-389
+evaluating, 373-377
+preference tuning, 356, 378-389
+supervised fine-tuning, 356-373
+training steps, 355-357
+overview of, 26
+representation models, 323-354
+few-shot classification, 333-339
+masked language modeling, 340-345
+named-entity recognition, 345-353
+supervised classification, 323-332
+T5 model, 129
+text embedding models, 309-315
+Augmented SBERT, 311-315
+supervised, 309-311
+Flan-T5 model, 50, 130-131
+Flash Attention, 100, 107
+forward pass, 106
+components of, 76-79
+defined, 74
+foundation models, 23
+fp16 parameter, 299
+freezing layers, 298, 328-332
+frozen (nontrainable) models, 114, 121, 324
+G
+Ġ symbol, 280
+Index 
+| 
+395

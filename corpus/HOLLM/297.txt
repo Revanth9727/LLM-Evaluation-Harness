@@ -1,0 +1,20 @@
+Figure 9-17. In step 1, representation learning is applied to learn representations for
+vision and language simultaneously. In step 2, these representations are converted to soft
+visual prompts to feed the LLM.
+With these inputs, the Q-Former is then trained on three tasks:
+Image-text contrastive learning
+This task attempts to align pairs of image and text embeddings such that they
+maximize their mutual information.
+Image-text matching
+A classification task to predict whether an image and text pair is positive
+(matched) or negative (unmatched).
+Image-grounded text generation
+Trains the model to generate text based on information extracted from the input
+image.
+These three objectives are jointly optimized to improve the visual representations that
+are extracted from the frozen ViT. In a way, we are trying to inject textual information
+into the embeddings of the frozen ViT so that we can use them in the LLM. This first
+step of BLIP-2 is illustrated in Figure 9-18.
+Making Text Generation Models Multimodal 
+| 
+275

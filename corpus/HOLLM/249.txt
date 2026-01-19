@@ -1,0 +1,19 @@
+Figure 8-2. Rerankers, the second key type of semantic search, take a search query
+and a collection of results, and reorder them by relevance, often resulting in vastly
+improved results.
+RAG
+The growing LLM capability of text generation led to a new type of search
+systems that include a model that generates an answer in response to a query.
+Figure 8-3 shows an example of such a generative search system.
+Generative search is a subset of a broader type of category of systems better
+called RAG systems. These are text generation systems that incorporate search
+capabilities to reduce hallucinations, increase factuality, and/or ground the gen‐
+eration model on a specific dataset.
+Figure 8-3. A RAG system formulates an answer to a question and (preferably) cites its
+information sources.
+The rest of the chapter covers these three types of systems in more detail. While these
+are the major categories, they are not the only LLM applications in the domain of
+search.
+Overview of Semantic Search and RAG 
+| 
+227

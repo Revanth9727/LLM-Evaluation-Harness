@@ -1,0 +1,23 @@
+the title instead of the abstract to quickly get an understanding of the documents in a
+topic:
+# Visualize topics and documents
+fig = topic_model.visualize_documents(
+    titles, 
+    reduced_embeddings=reduced_embeddings, 
+    width=1200, 
+    hide_annotations=True
+)
+# Update fonts of legend for easier visualization
+fig.update_layout(font=dict(size=16))
+As we can see in Figure 5-18, this interactive plot quickly gives us a sense of the
+created topics. You can zoom in to view individual documents or double-click a topic
+on the righthand side to only view it.
+Figure 5-18. The output when we visualize documents and topics.
+There is a wide range of visualization options in BERTopic. There are three that are
+worthwhile to explore to get an idea of the relationships between topics:
+# Visualize barchart with ranked keywords
+topic_model.visualize_barchart()
+# Visualize relationships between topics
+From Text Clustering to Topic Modeling 
+| 
+155

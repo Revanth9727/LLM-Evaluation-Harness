@@ -1,0 +1,27 @@
+Figure 9-13. The preprocessed input image by CLIP.
+To convert this preprocessed image into embeddings, we can call the model as we did
+before and explore what shape it returns:
+# Create the image embedding
+image_embedding = model.get_image_features(processed_image)
+image_embedding.shape
+This gives us the following shape:
+    torch.Size([1, 512])
+Notice that the shape of the resulting image embedding is the same as that of the text
+embedding. This is important as it allows us to compare their embeddings and see if
+they are similar.
+We can use these embeddings to calculate how similar they are. To do so, we normal‐
+ize the embeddings first before calculating the dot product to give us a similarity
+score:
+# Normalize the embeddings
+text_embedding /= text_embedding.norm(dim=-1, keepdim=True)
+image_embedding /= image_embedding.norm(dim=-1, keepdim=True)
+# Calculate their similarity
+text_embedding = text_embedding.detach().cpu().numpy()
+image_embedding = image_embedding.detach().cpu().numpy()
+score = np.dot(text_embedding, image_embedding.T)
+score
+This gives us the following score:
+array([[0.33149648]], dtype=float32)
+Multimodal Embedding Models 
+| 
+271

@@ -1,0 +1,15 @@
+Figure 1-11. Two recurrent neural networks (decoder and encoder) translating an input
+sequence from English to Dutch.
+Each step in this architecture is autoregressive. When generating the next word,
+this architecture needs to consume all previously generated words, as shown in
+Figure 1-12.
+Figure 1-12. Each previous output token is used as input to generate the next token.
+The encoding step aims to represent the input as well as possible, generating the
+context in the form of an embedding, which serves as the input for the decoder. To
+generate this representation, it takes embeddings as its inputs for words, which means
+we can use word2vec for the initial representations. In Figure 1-13, we can observe
+this process. Note how the inputs are processed sequentially, one at a time, as well as
+the output.
+12 
+| 
+Chapter 1: An Introduction to Large Language Models

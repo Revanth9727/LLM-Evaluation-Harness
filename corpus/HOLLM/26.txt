@@ -1,0 +1,37 @@
+1 J. McCarthy (2007). “What is artificial intelligence?” Retrieved from https://oreil.ly/C7sja and https://oreil.ly/
+n9X8O.
+scaffolding for the rest of the book and will introduce concepts and terms that we will
+use throughout the chapters.
+But mostly, we intend to answer the following questions in this chapter:
+• What is Language AI?
+•
+• What are large language models?
+•
+• What are the common use cases and applications of large language models?
+•
+• How can we use large language models ourselves?
+•
+What Is Language AI?
+The term artificial intelligence (AI) is often used to describe computer systems dedica‐
+ted to performing tasks close to human intelligence, such as speech recognition, lan‐
+guage translation, and visual perception. It is the intelligence of software as opposed
+to the intelligence of humans.
+Here is a more formal definition by one of the founders of the artificial intelligence
+discipline:
+[Artificial intelligence is] the science and engineering of making intelligent machines,
+especially intelligent computer programs. It is related to the similar task of using
+computers to understand human intelligence, but AI does not have to confine itself to
+methods that are biologically observable.
+—John McCarthy, 20071
+Due to the ever-evolving nature of AI, the term has been used to describe a wide
+variety of systems, some of which might not truly embody intelligent behavior. For
+instance, characters in computer games (NPCs [nonplayable characters]) have often
+been referred to as AI even though many are nothing more than if-else statements.
+Language AI refers to a subfield of AI that focuses on developing technologies
+capable of understanding, processing, and generating human language. The term
+Language AI can often be used interchangeably with natural language processing
+(NLP) with the continued success of machine learning methods in tackling language
+processing problems.
+4 
+| 
+Chapter 1: An Introduction to Large Language Models

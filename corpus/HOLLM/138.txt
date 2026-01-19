@@ -1,0 +1,40 @@
+are great starting points and give you an idea of the base performance of these kinds
+of models. Consider them solid baselines:
+• BERT base model (uncased)
+•
+• RoBERTa base model
+•
+• DistilBERT base model (uncased)
+•
+• DeBERTa base model
+•
+• bert-tiny
+•
+• ALBERT base v2
+•
+For the task-specific model, we are choosing the Twitter-RoBERTa-base for Senti‐
+ment Analysis model. This is a RoBERTa model fine-tuned on tweets for sentiment
+analysis. Although this was not trained specifically for movie reviews, it is interesting
+to explore how this model generalizes.
+When selecting models to generate embeddings from, the MTEB leaderboard is a
+great place to start. It contains open and closed source models benchmarked across
+several tasks. Make sure to not only take performance into account. The importance
+of inference speed should not be underestimated in real-life solutions. As such, we
+will use sentence-transformers/all-mpnet-base-v2 as the embedding throughout this
+section. It is a small but performant model.
+Using a Task-Specific Model
+Now that we have selected our task-specific representation model, let’s start by load‐
+ing our model:
+from transformers import pipeline
+# Path to our HF model
+model_path = "cardiffnlp/twitter-roberta-base-sentiment-latest"
+# Load model into pipeline
+pipe = pipeline(
+    model=model_path,
+    tokenizer=model_path,
+    return_all_scores=True,
+    device="cuda:0"
+)
+116 
+| 
+Chapter 4: Text Classification

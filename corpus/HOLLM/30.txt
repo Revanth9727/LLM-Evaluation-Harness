@@ -1,0 +1,26 @@
+3 Tomas Mikolov et al. “Efficient estimation of word representations in vector space.” arXiv preprint
+arXiv:1301.3781 (2013).
+Better Representations with Dense Vector Embeddings
+Bag-of-words, although an elegant approach, has a flaw. It considers language to be
+nothing more than an almost literal bag of words and ignores the semantic nature, or
+meaning, of text.
+Released in 2013, word2vec was one of the first successful attempts at capturing the
+meaning of text in embeddings.3 Embeddings are vector representations of data that
+attempt to capture its meaning. To do so, word2vec learns semantic representations of
+words by training on vast amounts of textual data, like the entirety of Wikipedia.
+To generate these semantic representations, word2vec leverages neural networks.
+These networks consist of interconnected layers of nodes that process information.
+As illustrated in Figure 1-6, neural networks can have many layers where each
+connection has a certain weight depending on the input. These weights are often
+referred to as the parameters of the model.
+Figure 1-6. A neural network consists of interconnected layers of nodes where each
+connection is a linear equation.
+Using these neural networks, word2vec generates word embeddings by looking at
+which other words they tend to appear next to in a given sentence. We start by
+assigning every word in our vocabulary with a vector embedding, say of 50 values for
+each word initialized with random values. Then in every training step, as illustrated
+in Figure 1-7, we take pairs of words from the training data and a model attempts to
+predict whether or not they are likely to be neighbors in a sentence.
+8 
+| 
+Chapter 1: An Introduction to Large Language Models

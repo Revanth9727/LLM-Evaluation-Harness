@@ -1,0 +1,39 @@
+Can you tell me another knock-knock joke based on the same text material 
+"Knock, knock. Who's there? Hike"?</s>
+<|assistant|>
+Of course! Knock, knock. Who's there? Hike. Hike who? Hike your way over here 
+and let's go for a walk!</s>
+Model Quantization
+Now that we have our data, we can start loading in our model. This is where we
+apply the Q in QLoRA, namely quantization. We use the bitsandbytes package to
+compress the pretrained model to a 4-bit representation.
+In BitsAndBytesConfig, you can define the quantization scheme. We follow the steps
+used in the original QLoRA paper and load the model in 4-bit (load_in_4bit) with
+a normalized float representation (bnb_4bit_quant_type) and double quantization
+(bnb_4bit_use_double_quant):
+import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
+model_name = "TinyLlama/TinyLlama-1.1B-intermediate-step-1431k-3T"
+# 4-bit quantization configuration - Q in QLoRA
+bnb_config = BitsAndBytesConfig(
+    load_in_4bit=True,  # Use 4-bit precision model loading
+    bnb_4bit_quant_type="nf4",  # Quantization type
+    bnb_4bit_compute_dtype="float16",  # Compute dtype
+    bnb_4bit_use_double_quant=True,  # Apply nested quantization
+)
+# Load the model to train on the GPU
+model = AutoModelForCausalLM.from_pretrained(
+    model_name,
+    device_map="auto",
+    # Leave this out for regular SFT
+    quantization_config=bnb_config,
+)
+model.config.use_cache = False
+model.config.pretraining_tp = 1
+# Load LLaMA tokenizer
+tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
+tokenizer.pad_token = "<PAD>"
+tokenizer.padding_side = "left"
+Instruction Tuning with QLoRA 
+| 
+369

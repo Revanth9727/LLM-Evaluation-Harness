@@ -1,0 +1,7 @@
+Figure 3-26. Attention is conducted using matrices of queries, keys, and values. In
+multi-head attention, each head has a distinct version of each of these matrices.
+Figure 3-27. Multi-query attention presents a more efficient attention mechanism by
+sharing the keys and values matrices across all the attention heads.
+Recent Improvements to the Transformer Architecture 
+| 
+99

@@ -1,0 +1,40 @@
+During this process, the agent describes its thoughts (what it should do), its actions
+(what it will do), and its observations (the results of the action). It is a cycle of
+thoughts, actions, and observations that results in the agent’s output.
+ReAct in LangChain
+To illustrate how agents work in LangChain, we are going to build a pipeline that
+can search the web for answers and perform calculations with a calculator. These
+autonomous processes generally require an LLM that is powerful enough to properly
+follow complex instructions.
+The LLM that we used thus far is relatively small and not sufficient to run these
+examples. Instead, we will be using OpenAI’s GPT-3.5 model as it follows these
+complex instructions more closely:
+import os
+from langchain_openai import ChatOpenAI
+# Load OpenAI's LLMs with LangChain
+os.environ["OPENAI_API_KEY"] = "MY_KEY"
+openai_llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
+Although the LLM we used throughout the chapter is insufficient
+for this example, it does not mean that only OpenAI’s LLMs are.
+Larger useful LLMs exist but they require significantly more com‐
+pute and VRAM. For instance, local LLMs often come in different
+sizes and within a family of models, increasing a model’s size leads
+to better performance. To keep the necessary compute at a mini‐
+mum, we choose a smaller LLM throughout the examples in this
+chapter.
+However, as the field of generative models evolves, so do these
+smaller LLMs. We would be anything but surprised if eventually
+smaller LLMs, like the one used in this chapter, would be capable
+enough to run this example.
+After doing so, we will define the template for our agent. As we have shown before, it
+describes the ReAct steps it needs to follow:
+# Create the ReAct template
+react_template = """Answer the following questions as best you can. You have 
+access to the following tools:
+{tools}
+Use the following format:
+Question: the input question you must answer
+Thought: you should always think about what to do
+Agents: Creating a System of LLMs 
+| 
+221

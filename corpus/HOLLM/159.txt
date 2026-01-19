@@ -1,0 +1,14 @@
+CHAPTER 5
+Text Clustering and Topic Modeling
+Although supervised techniques, such as classification, have reigned supreme over
+the last few years in the industry, the potential of unsupervised techniques such as
+text clustering cannot be understated.
+Text clustering aims to group similar texts based on their semantic content, meaning,
+and relationships. As illustrated in Figure 5-1, the resulting clusters of semantically
+similar documents not only facilitate efficient categorization of large volumes of
+unstructured text but also allow for quick exploratory data analysis.
+Figure 5-1. Clustering unstructured textual data.
+The recent evolution of language models, which enable contextual and semantic
+representations of text, has enhanced the effectiveness of text clustering. Language
+is more than a bag of words, and recent language models have proved to be quite
+137

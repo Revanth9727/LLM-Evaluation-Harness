@@ -1,0 +1,17 @@
+10 OpenAI, “Gpt-4 technical report.” arXiv preprint arXiv:2303.08774 (2023).
+Figure 1-27. The context length is the maximum context an LLM can handle.
+The Year of Generative AI
+LLMs had a tremendous impact on the field and led some to call 2023 The Year of
+Generative AI with the release, adoption, and media coverage of ChatGPT (GPT-3.5).
+When we refer to ChatGPT, we are actually talking about the product and not the
+underlying model. When it was first released, it was powered by the GPT-3.5 LLM
+and has since then grown to include several more performant variants, such as
+GPT-4.10
+GPT-3.5 was not the only model that made its impact in the Year of Generative AI.
+As illustrated in Figure 1-28, both open source and proprietary LLMs have made
+their way to the people at an incredible pace. These open source base models are
+often referred to as foundation models and can be fine-tuned for specific tasks, like
+following instructions.
+A Recent History of Language AI 
+| 
+23

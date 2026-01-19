@@ -1,0 +1,45 @@
+Note that we assume that these sentence pairs are unlabeled in this example. We will
+use our fine-tuned cross-encoder to label these sentence pairs (step 3):
+import numpy as np
+# Label the sentence pairs using our fine-tuned cross-encoder
+output = cross_encoder.predict(
+    pairs, apply_softmax=True, 
+show_progress_bar=True
+)
+silver = pd.DataFrame(
+    {
+        "sentence1": silver["premise"], 
+        "sentence2": silver["hypothesis"],
+        "label": np.argmax(output, axis=1)
+    }
+)
+Now that we have a silver and gold dataset, we simply combine them and train our
+embedding model as we did before:
+# Combine gold + silver
+data = pd.concat([gold, silver], ignore_index=True, axis=0)
+data = data.drop_duplicates(subset=["sentence1", "sentence2"], keep="first")
+train_dataset = Dataset.from_pandas(data, preserve_index=False)
+As always, we need to define our evaluator:
+from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
+# Create an embedding similarity evaluator for stsb
+val_sts = load_dataset("glue", "stsb", split="validation")
+evaluator = EmbeddingSimilarityEvaluator(
+    sentences1=val_sts["sentence1"],
+    sentences2=val_sts["sentence2"],
+    scores=[score/5 for score in val_sts["label"]],
+    main_similarity="cosine"
+)
+We train the model the same as before except now we use the augmented dataset:
+from sentence_transformers import losses, SentenceTransformer
+from sentence_transformers.trainer import SentenceTransformerTrainer
+from sentence_transformers.training_args import SentenceTransformerTrainingArgu
+ments
+# Define model
+embedding_model = SentenceTransformer("bert-base-uncased")
+# Loss function
+train_loss = losses.CosineSimilarityLoss(model=embedding_model)
+# Define the training arguments
+args = SentenceTransformerTrainingArguments(
+314 
+| 
+Chapter 10: Creating Text Embedding Models

@@ -1,0 +1,17 @@
+Figure 3-15. A simplified framing of attention: an input sequence and a current position
+being processed. As we’re mainly concerned with this position, the figure shows an input
+vector and an output vector that incorporates information from the previous elements in
+the sequence according to the attention mechanism.
+Two main steps are involved in the attention mechanism:
+1. A way to score how relevant each of the previous input tokens are to the current
+1.
+token being processed (in the pink arrow).
+2. Using those scores, we combine the information from the various positions into a
+2.
+single output vector.
+Figure 3-16 shows these two steps.
+Figure 3-16. Attention is made up of two major steps: relevance scoring for each posi‐
+tion, then a step where we combine the information based on those scores.
+90 
+| 
+Chapter 3: Looking Inside Large Language Models

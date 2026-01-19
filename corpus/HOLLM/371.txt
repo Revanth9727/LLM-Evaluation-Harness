@@ -1,0 +1,45 @@
+from transformers import AutoModelForTokenClassification
+# Load tokenizer
+tokenizer = AutoTokenizer.from_pretrained("bert-base-cased")
+# Load model
+model = AutoModelForTokenClassification.from_pretrained(
+    "bert-base-cased", 
+    num_labels=len(id2label), 
+    id2label=id2label, 
+    label2id=label2id
+)
+Let’s explore how the tokenizer would process our example:
+# Split individual tokens into sub-tokens
+token_ids = tokenizer(example["tokens"], is_split_into_words=True)["input_ids"]
+sub_tokens = tokenizer.convert_ids_to_tokens(token_ids)
+sub_tokens
+['[CLS]',
+ 'Dean',
+ 'Palmer',
+ 'hit',
+ 'his',
+ '30th',
+ 'home',
+ '##r',
+ 'for',
+ 'the',
+ 'Rangers',
+ '.',
+ '[SEP]']
+The tokenizer added the [CLS] and [SEP] tokens as we learned in Chapters 2 and 3.
+Note that the word 'homer' was further split up into the tokens 'home' and '##r'.
+This creates a bit of a problem for us since we have labeled data at the word level but
+not at the token level. This can be resolved by aligning the labels with their subtoken
+counterparts during tokenization.
+Let’s consider the word 'Maarten', which has the label B-PER to signal that this is
+a person. If we pass that word through the tokenizer, it splits the word up into the
+tokens 'Ma', '##arte', and '##n'. We cannot use the B-PER entity for all tokens
+as that would signal that the three tokens are all independent people. Whenever
+an entity is split into tokens, the first token should have B (for beginning) and the
+following should be I (for inner).
+Therefore, 'Ma' will get the B-PER to signal the start of a phrase, and '##arte', and
+'##n' will get the I-PER to signal they belong to a phrase. This alignment process is
+illustrated in Figure 11-21.
+Named-Entity Recognition 
+| 
+349

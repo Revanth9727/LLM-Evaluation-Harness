@@ -1,0 +1,19 @@
+In step 3, we generate embeddings for all sentences and use those as the input of a
+classifier. We can use the fine-tuned SentenceTransformers model to convert our
+sentences into embeddings that we can use as features. The classifier learns from
+our fine-tuned embeddings to accurately predict unseen sentences. This last step is
+illustrated in Figure 11-12.
+Figure 11-12. Step 3: Training a classifier. The classifier can be any scikit-learn model or
+a classification head.
+When we put all the steps together, we get an efficient and elegant pipeline for
+performing classification when you only have a few labels per class. It cleverly makes
+use of the idea that we have labeled data, although not in the way that we would like
+it. The three steps together are illustrated in Figure 11-13 to give a single overview of
+the entire procedure.
+First, sentence pairs are generated based on in-class and out-class selection. Second,
+the sentence pairs are used to fine-tune a pretrained SentenceTransformer model.
+Third, the sentences are embedded with the fine-tuned model on which a classifier is
+trained to predict the classes.
+336 
+| 
+Chapter 11: Fine-Tuning Representation Models for Classification

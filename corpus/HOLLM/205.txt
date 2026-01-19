@@ -1,0 +1,25 @@
+To illustrate, let us say we want to use an LLM to create a product name, slogan, and
+sales pitch for us based on a number of product features. Although we can ask the
+LLM to do this in one go, we can instead break up the problem into pieces.
+As a result, and as illustrated in Figure 6-14, we get a sequential pipeline that first
+creates the product name, uses that with the product features as input to create the
+slogan, and finally, uses the features, product name, and slogan to create the sales
+pitch.
+Figure 6-14. Using a description of a product’s features, chain prompts to create a
+suitable name, slogan, and sales pitch.
+This technique of chaining prompts allows the LLM to spend more time on each
+individual question instead of tackling the whole problem. Let us illustrate this with a
+small example. We first create a name and slogan for a chatbot:
+# Create name and slogan for a product
+product_prompt = [
+    {"role": "user", "content": "Create a name and slogan for a chatbot that 
+leverages LLMs."}
+]
+outputs = pipe(product_prompt)
+product_description = outputs[0]["generated_text"]
+print(product_description)
+Name: 'MindMeld Messenger'
+Slogan: 'Unleashing Intelligent Conversations, One Response at a Time'
+Advanced Prompt Engineering 
+| 
+183

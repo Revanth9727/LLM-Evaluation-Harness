@@ -1,0 +1,13 @@
+We can come up with two smaller matrices, which when multiplied, reconstruct a 10
+× 10 matrix. This is a major efficiency win because instead of using 100 weights (10
+times 10) we now only have 20 weights (10 plus 10), as we can see in Figure 12-13.
+Figure 12-13. Decomposing a large weight matrix into two smaller matrices leads to a
+compressed, low-rank version of the matrix that can be fine-tuned more efficiently.
+During training, we only need to update these smaller matrices instead of the full
+weight changes. The updated change matrices (smaller matrices) are then combined
+with the full (frozen) weights as illustrated in Figure 12-14.
+Figure 12-14. Compared to full fine-tuning, LoRA aims to update a small representation
+of the original weights during training.
+Supervised Fine-Tuning (SFT) 
+| 
+363

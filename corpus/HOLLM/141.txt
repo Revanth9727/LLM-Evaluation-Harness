@@ -1,0 +1,29 @@
+)
+    print(performance)
+Next, let’s create our classification report:
+evaluate_performance(data["test"]["label"], y_pred)
+                precision    recall  f1-score   support
+Negative Review       0.76      0.88      0.81       533
+Positive Review       0.86      0.72      0.78       533
+       accuracy                           0.80      1066
+      macro avg       0.81      0.80      0.80      1066
+   weighted avg       0.81      0.80      0.80      1066
+To read the resulting classification report, let’s first start by exploring how we can
+identify correct and incorrect predictions. There are four combinations depending
+on whether we predict something correctly (True) versus incorrectly (False) and
+whether we predict the correct class (Positive) versus incorrect class (Negative). We
+can illustrate these combinations as a matrix, commonly referred to as a confusion
+matrix, in Figure 4-8.
+Figure 4-8. The confusion matrix describes four types of predictions we can make.
+Using the confusion matrix, we can derive several formulas to describe the quality
+of the model. In the previously generated classification report we can see four such
+methods, namely precision, recall, accuracy, and the F1 score:
+• Precision measures how many of the items found are relevant, which indicates the
+•
+accuracy of the relevant results.
+• Recall refers to how many relevant classes were found, which indicates its ability
+•
+to find all relevant results.
+Using a Task-Specific Model 
+| 
+119

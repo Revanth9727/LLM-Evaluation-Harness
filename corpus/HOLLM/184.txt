@@ -1,0 +1,50 @@
+generator, prompt=prompt, doc_length=50, tokenizer="whitespace"
+)
+topic_model.update_topics(abstracts, representation_model=representation_model)
+# Show topic differences
+topic_differences(topic_model, original_topics)
+Topic
+Original
+Updated
+0
+speech | asr | recognition | end | acoustic
+Speech-to-description
+1
+medical | clinical | biomedical | patient | he...
+Science/Tech
+2
+sentiment | aspect | analysis | reviews | opinion
+Review
+3
+translation | nmt | machine | neural | bleu
+Attention-based neural machine translation
+4
+summarization | summaries | summary | abstract...
+Summarization
+Some of these labels, like “Summarization” seem to be logical when comparing
+them to the original representations. Others, however, like “Science/Tech,” seem quite
+broad and do not do the original topic justice. Let’s explore instead how OpenAI’s
+GPT-3.5 would perform considering the model is not only larger but expected to
+have more linguistic capabilities:
+import openai
+from bertopic.representation import OpenAI
+prompt = """
+I have a topic that contains the following documents:
+[DOCUMENTS]
+The topic is described by the following keywords: [KEYWORDS]
+Based on the information above, extract a short topic label in the following 
+format:
+topic: <short topic label>
+"""
+# Update our topic representations using GPT-3.5
+client = openai.OpenAI(api_key="YOUR_KEY_HERE")
+representation_model = OpenAI(
+    client, model="gpt-3.5-turbo", exponential_backoff=True, chat=True, 
+prompt=prompt
+)
+topic_model.update_topics(abstracts, representation_model=representation_model)
+# Show topic differences
+topic_differences(topic_model, original_topics)
+162 
+| 
+Chapter 5: Text Clustering and Topic Modeling

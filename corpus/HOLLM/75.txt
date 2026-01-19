@@ -1,0 +1,44 @@
+special tokens for citations, reasoning, mathematics, amino acid sequences, and DNA
+sequences.
+Tokenization method: Byte pair encoding (BPE)
+Vocabulary size: 50,000
+Special tokens:
+• <s>
+•
+• <pad>
+•
+• </s>
+•
+• <unk>
+•
+• References: Citations are wrapped within the two special tokens:
+•
+— [START_REF]
+—
+— [END_REF]
+—
+— One example of usage from the paper is: Recurrent neural net
+—
+works, long short-term memory [START_REF]Long Short-Term Memory,
+Hochreiter[END_REF]
+• Step-by-step reasoning:
+•
+— <work> is an interesting token that the model uses for chain-of-thought rea‐
+—
+soning.
+Tokenized text:
+English and CAP ITAL IZATION
+      
+show _ tokens False None elif == > = else : two t abs : "  " Three t abs : "  "
+1 2 . 0 * 5 0 = 6 0 0
+The Galactica tokenizer behaves similar to StarCoder2 in that it has code in mind. It
+also encodes whitespaces in the same way: assigning a single token to sequences of
+whitespace of different lengths. It differs in that it also does that for tabs, though. So
+from all the tokenizers we’ve seen so far, it’s the only one that assigns a single token to
+the string made up of two tabs ('\t\t').
+Phi-3 (and Llama 2)
+The Phi-3 model we look at in this book reuses the tokenizer of Llama 2 yet adds a
+number of special tokens.
+LLM Tokenization 
+| 
+53

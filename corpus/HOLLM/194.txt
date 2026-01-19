@@ -1,0 +1,48 @@
+As shown in Figure 6-5, by lowering the value, it will consider fewer tokens and
+generally give less “creative” output, while increasing the value allows the LLM to
+choose from more tokens.
+Figure 6-5. A higher top_p increases the number of tokens that can be selected to
+generate and vice versa.
+Similarly, the top_k parameter controls exactly how many tokens the LLM can
+consider. If you change its value to 100, the LLM will only consider the top 100 most
+probable tokens.
+You can use top_p in your pipeline as follows:
+# Using a high top_p
+output = pipe(messages, do_sample=True, top_p=1)
+print(output[0]["generated_text"])
+Why don't chickens make good comedians? Because their 'jokes' always 'feather' 
+the truth!
+As shown in Table 6-1, these parameters allow the user to have a sliding scale
+between being creative (high temperature and top_p) and being predictable (lower
+temperature and top_p).
+Table 6-1. Use case examples when selecting values for temperature and top_p.
+Example use case
+Tempera
+ture
+top_p
+Description
+Brainstorming
+session
+High
+High
+High randomness with large pool of potential tokens. The results will be highly
+diverse, often leading to very creative and unexpected results.
+Email generation
+Low
+Low
+Deterministic output with high probable predicted tokens. This results in
+predictable, focused, and conservative outputs.
+Creative writing
+High
+Low
+High randomness with a small pool of potential tokens. This combination
+produces creative outputs but still remains coherent.
+Translation
+Low
+High
+Deterministic output with high probable predicted tokens. Produces coherent
+output with a wider range of vocabulary, leading to outputs with linguistic
+variety.
+172 
+| 
+Chapter 6: Prompt Engineering

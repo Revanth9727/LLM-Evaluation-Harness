@@ -1,0 +1,35 @@
+Preprocessing Multimodal Inputs
+Now that we know how BLIP-2 is created, there are a number of interesting use cases
+for such a model, not limited to captioning images, answering visual questions, and
+even performing prompting.
+Before we go through some use cases, let’s first load the model and explore how you
+can use it:
+from transformers import AutoProcessor, Blip2ForConditionalGeneration
+import torch
+# Load processor and main model
+blip_processor = AutoProcessor.from_pretrained("Salesforce/blip2-opt-2.7b")
+model = Blip2ForConditionalGeneration.from_pretrained(
+    "Salesforce/blip2-opt-2.7b",
+    torch_dtype=torch.float16
+)
+# Send the model to GPU to speed up inference
+device = "cuda" if torch.cuda.is_available() else "cpu"
+model.to(device)
+Using model.vision_model and model.language_model, we can
+see which ViT and generative model are used, respectively, in the
+BLIP-2 model we loaded.
+We loaded two components that make up our full pipeline: a processor and a model.
+The processor can be compared to the tokenizer of language models. It converts
+unstructured input, such as images and text, to representations that the model gener‐
+ally expects.
+Preprocessing images
+Let’s start by exploring what the processor does to images. We start by loading the
+picture of a very wide image for illustration purposes:
+# Load image of a supercar
+car_path = "https://raw.githubusercontent.com/HandsOnLLM/Hands-On-Large-
+Language-Models/main/chapter09/images/car.png"
+image = Image.open(urlopen(car_path)).convert("RGB")
+image
+278 
+| 
+Chapter 9: Multimodal Large Language Models

@@ -1,0 +1,32 @@
+max_new_tokens
+The maximum number of tokens the model will generate. By setting a limit, we
+prevent long and unwieldy output as some models might continue generating
+output until they reach their context window.
+do_sample
+Whether the model uses a sampling strategy to choose the next token. By setting
+this to False, the model will always select the next most probable token. In
+Chapter 6, we explore several sampling parameters that invoke some creativity in
+the model’s output.
+To generate our first text, let’s instruct the model to tell a joke about chickens. To do
+so, we format the prompt in a list of dictionaries where each dictionary relates to an
+entity in the conversation. Our role is that of “user” and we use the “content” key to
+define our prompt:
+# The prompt (user input / query)
+messages = [
+    {"role": "user", "content": "Create a funny joke about chickens."}
+]
+# Generate output
+output = generator(messages)
+print(output[0]["generated_text"])
+Why don't chickens like to go to the gym? Because they can't crack the egg-
+sistence of it!
+And that is it! The first text generated in this book was a decent joke about chickens.
+Summary
+In this first chapter of the book, we delved into the revolutionary impact LLMs have
+had on the Language AI field. It has significantly changed our approach to tasks such
+as translation, classification, summarization, and more. Through a recent history of
+Language AI, we explored the fundamentals of several types of LLMs, from a simple
+bag-of-words representation to more complex representations using neural networks.
+34 
+| 
+Chapter 1: An Introduction to Large Language Models

@@ -1,0 +1,21 @@
+Training these encoder stacks can be a difficult task that BERT approaches by adopt‐
+ing a technique called masked language modeling (see Chapters 2 and 11). As shown
+in Figure 1-22, this method masks a part of the input for the model to predict. This
+prediction task is difficult but allows BERT to create more accurate (intermediate)
+representations of the input.
+Figure 1-22. Train a BERT model by using masked language modeling.
+This architecture and training procedure makes BERT and related architectures
+incredible at representing contextual language. BERT-like models are commonly used
+for transfer learning, which involves first pretraining it for language modeling and
+then fine-tuning it for a specific task. For instance, by training BERT on the entirety
+of Wikipedia, it learns to understand the semantic and contextual nature of text.
+Then, as shown in Figure 1-23, we can use that pretrained model to fine-tune it for a
+specific task, like text classification.
+Figure 1-23. After pretraining BERT on masked language model, we fine-tune it for
+specific tasks.
+A huge benefit of pretrained models is that most of the training is already done for
+us. Fine-tuning on specific tasks is generally less compute-intensive and requires less
+data. Moreover, BERT-like models generate embeddings at almost every step in their
+A Recent History of Language AI 
+| 
+19

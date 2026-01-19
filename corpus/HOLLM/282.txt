@@ -1,0 +1,38 @@
+1 Jason Wei et al. “Emergent abilities of large language models.” arXiv preprint arXiv:2206.07682 (2022).
+2 Alexey Dosovitskiy et al. “
+An image is worth 16x16 words: Transformers for image recognition at scale.” arXiv
+preprint arXiv:2010.11929 (2020).
+We have seen all manner of emerging behaviors rising from LLMs, from generaliza‐
+tion capabilities and reasoning to arithmetic and linguistics. As models grow larger
+and smarter, so do their skill sets.1
+The ability to receive and reason with multimodal input might further increase and
+help emerge capabilities that were previously locked. In practice, language does not
+solely live in a vacuum. As an example, your body language, facial expressions,
+intonation, etc. are all methods of communication that enhance the spoken word.
+The same thing applies to LLMs; if we can enable them to reason about multimodal
+information, their capabilities might increase and we become able to deploy them to
+solve new kinds of problems.
+In this chapter, we will explore a number of different LLMs that have multimodal
+capabilities and what that means for practical use cases. We will start by exploring
+how images are converted to numerical representations using an adaptation of the
+original Transformer technique. Then, we will show how LLMs can be extended to
+include vision tasks using this Transformer.
+Transformers for Vision
+Throughout the chapters of this book, we have seen the success of using Transformer-
+based models for a variety of language modeling tasks, from classification and
+clustering to search and generative modeling. So it might not be surprising that
+researchers have been looking at a way to generalize some of the Transformer’s
+success to the field of computer vision.
+The method they came up with is called the Vision Transformer (ViT), which has
+been shown to do tremendously well on image recognition tasks compared to the
+previously default convolutional neural networks (CNNs).2 Like the original Trans‐
+former, ViT is used to transform unstructured data, an image, into representations
+that can be used for a variety of tasks, like classification, as illustrated in Figure 9-2.
+ViT relies on an important component of the Transformer architecture, namely the
+encoder. As we saw in Chapter 1, the encoder is responsible for converting textual
+input into numerical representations before being passed to the decoder. However,
+before the encoder can perform its duties, the textual input needs to be tokenized
+first, as is illustrated in Figure 9-3.
+260 
+| 
+Chapter 9: Multimodal Large Language Models

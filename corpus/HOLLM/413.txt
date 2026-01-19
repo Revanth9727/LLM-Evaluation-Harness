@@ -1,0 +1,24 @@
+Afterword
+Thank you to all who joined us on this fascinating journey through the world of
+large language models. We are grateful for your dedication to learning about these
+powerful models that have revolutionized language processing.
+Throughout this book, we have seen how LLMs work and how they can be used
+to create a wide range of applications, from simple chatbots to more complex sys‐
+tems like search engines. We have also explored various methods for fine-tuning
+pretrained LLMs on specific tasks, including classification, generation, and language
+representation. By mastering these techniques, readers will be able to unlock the
+potential of LLMs and create innovative solutions that can benefit from their capabili‐
+ties. This knowledge will enable readers to stay ahead of the curve and adapt to new
+developments in the field.
+As we come to the end of this book, we want to emphasize that our exploration of
+LLMs is only just the beginning. There are many more exciting developments on
+the horizon, and we encourage you to continue following the advancements in the
+field. To help with this process, keep an eye out on the repository of this book as we
+continue to add resources.
+We hope that by reading this book, you gained a deeper understanding of how LLMs
+can be used in various applications and how they have the potential to transform
+industries.
+With this book as your guide, we believe that you will be well-equipped to navigate
+the exciting landscape of LLMs and make meaningful contributions to this rapidly
+advancing field.
+391

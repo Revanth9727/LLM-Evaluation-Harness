@@ -1,0 +1,32 @@
+# Load data from Hugging Face
+from datasets import load_dataset
+dataset = load_dataset("maartengr/arxiv_nlp")["train"]
+# Extract metadata
+abstracts = dataset["Abstracts"]
+titles = dataset["Titles"]
+A Common Pipeline for Text Clustering
+Text clustering allows for discovering patterns in data that you may or may not be
+familiar with. It allows for getting an intuitive understanding of the task, for example,
+a classification task, but also of its complexity. As a result, text clustering can become
+more than just a quick method for exploratory data analysis.
+Although there are many methods for text clustering, from graph-based neural net‐
+works to centroid-based clustering techniques, a common pipeline that has gained
+popularity involves three steps and algorithms:
+1. Convert the input documents to embeddings with an embedding model.
+1.
+2. Reduce the dimensionality of embeddings with a dimensionality reduction model.
+2.
+3. Find groups of semantically similar documents with a cluster model.
+3.
+Embedding Documents
+The first step is to convert our textual data to embeddings, as illustrated in Figure 5-3.
+Recall from previous chapters that embeddings are numerical representations of text
+that attempt to capture its meaning.
+Figure 5-3. Step 1: We convert documents to embeddings using an embedding model.
+Choosing embedding models optimized for semantic similarity tasks is especially
+important for clustering as we attempt to find groups of semantically similar
+documents. Fortunately, most embedding models at the time of writing focus on
+just that, semantic similarity.
+A Common Pipeline for Text Clustering 
+| 
+139

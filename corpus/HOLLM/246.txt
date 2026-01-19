@@ -1,0 +1,19 @@
+Summary
+In this chapter, we explored several ways to extend the capabilities of LLMs by
+adding modular components. We began by creating a simple but reusable chain that
+connected the LLM with a prompt template. We then expanded on this concept by
+adding memory to the chain, which allowed the LLM to remember conversations. We
+explored three different methods to add memory and discussed their strengths and
+weaknesses.
+We then delved into the world of agents that leverage LLMs to determine their
+actions and make decisions. We explored the ReAct framework, which uses an
+intuitive prompting framework that allows agents to reason about their thoughts,
+take actions, and observe the results. This led us to build an agent that is able to
+freely use the tools at its disposal, such as searching the web and using a calculator,
+demonstrating the potential power of agents.
+With this foundation in place, we are now poised to explore ways in which LLMs can
+be used to improve existing search systems and even become the core of new, more
+powerful search systems, as discussed in the next chapter.
+224 
+| 
+Chapter 7: Advanced Text Generation Techniques and Tools

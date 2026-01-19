@@ -1,0 +1,24 @@
+After fitting our model, we got a score of 0.70, which is quite impressive considering
+we did all this training with unlabeled data.
+Using TSDAE for Domain Adaptation
+When you have very little or no labeled data available, you typically use unsupervised
+learning to create your text embedding model. However, unsupervised techniques
+are generally outperformed by supervised techniques and have difficulty learning
+domain-specific concepts.
+This is where domain adaptation comes in. Its goal is to update existing embedding
+models to a specific textual domain that contains different subjects from the source
+domain. Figure 10-14 demonstrates how domains can differ in content. The target
+domain, or out-domain, generally contains words and subjects that were not found in
+the source domain or in-domain.
+Figure 10-14. In domain adaptation, the aim is to create and generalize an embedding
+model from one domain to another.
+One method for domain adaptation is called adaptive pretraining. You start by pre‐
+training your domain-specific corpus using an unsupervised technique, such as the
+previously discussed TSDAE or masked language modeling. Then, as illustrated in
+Figure 10-15, you fine-tune that model using a training dataset that can be either
+outside or in your target domain. Although data from the target domain is preferred,
+out-domain data also works since we started with unsupervised training on the target
+domain.
+320 
+| 
+Chapter 10: Creating Text Embedding Models

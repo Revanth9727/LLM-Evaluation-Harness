@@ -1,0 +1,50 @@
+Figure 2-17. For song embeddings that capture song similarity we’ll use a dataset made
+up of a collection of playlists, each containing a list of songs.
+Let’s demonstrate the end product before we look at how it’s built. So let’s give it a few
+songs and see what it recommends in response.
+Let’s start by giving it Michael Jackson’s “Billie Jean,” the song with ID 3822:
+# We will define and explore this function in detail below
+print_recommendations(3822)
+id
+Title
+artist
+4181
+Kiss
+Prince & The Revolution
+12749
+Wanna Be Startin’ Somethin’
+Michael Jackson
+1506
+The Way You Make Me Feel
+Michael Jackson
+3396
+Holiday
+Madonna
+500
+Don’t Stop ‘Til You Get Enough Michael Jackson
+That looks reasonable. Madonna, Prince, and other Michael Jackson songs are the
+nearest neighbors.
+Let’s step away from pop and into rap, and see the neighbors of 2Pac’s “California
+Love”:
+print_recommendations(842)
+id
+Title
+artist
+413
+If I Ruled the World (Imagine That) (w\/ Lauryn Hill)
+Nas
+196
+I’ll Be Missing You
+Puff Daddy & The Family
+330
+Hate It or Love It (w\/ 50 Cent)
+The Game
+211
+Hypnotize
+The Notorious B.I.G.
+5788
+Drop It Like It’s Hot (w\/ Pharrell)
+Snoop Dogg
+68 
+| 
+Chapter 2: Tokens and Embeddings

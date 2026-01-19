@@ -1,0 +1,31 @@
+To perform contrastive learning, we need two things. First, we need data that consti‐
+tutes similar/dissimilar pairs. Second, we will need to define how the model defines
+and optimizes similarity.
+Creating an Embedding Model
+There are many methods through which an embedding model can be created
+but generally, we look toward contrastive learning. This is an important aspect
+of many embedding models as the process allows it to efficiently learn semantic
+representations.
+However, this is not a free process. We will need to understand how to generate
+contrastive examples, how to train the model, and how to properly evaluate it.
+Generating Contrastive Examples
+When pretraining your embedding model, you will often see data being used from
+natural language inference (NLI) datasets. NLI refers to the task of investigating
+whether, for a given premise, it entails the hypothesis (entailment), contradicts it
+(contradiction), or neither (neutral).
+For example, when the premise is “He is in the cinema watching Coco” and the
+hypothesis “He is watching Frozen at home,” then these statements are contradictions.
+In contrast, when the premise is “He is in the cinema watching Coco” and the
+hypothesis “In the movie theater he is watching the Disney movie Coco,” then these
+statements are considered entailment. This principle is illustrated in Figure 10-8.
+Figure 10-8. We can leverage the structure of NLI datasets to generate negative examples
+(contradiction) and positive examples (entailments) for contrastive learning.
+If you look closely at entailment and contradiction, then they describe the extent to
+which two inputs are similar to one another. As such, we can use NLI datasets to
+generate negative examples (contradictions) and positive examples (entailments) for
+contrastive learning.
+The data that we are going to be using throughout creating and fine-tuning
+embedding models is derived from the General Language Understanding Evaluation
+296 
+| 
+Chapter 10: Creating Text Embedding Models

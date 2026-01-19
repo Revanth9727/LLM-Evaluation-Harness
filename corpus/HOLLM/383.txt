@@ -1,0 +1,20 @@
+2 Jonas Pfeiffer et al. “
+AdapterHub: A framework for adapting transformers.” arXiv preprint arXiv:2007.07779
+(2020).
+3 Renrui Zhang et al. “Llama-adapter: Efficient fine-tuning of language models with zero-init attention.” arXiv
+preprint arXiv:2303.16199 (2023).
+Figure 12-10. Adapters that specialize in specific tasks can be swapped into the same
+architecture (if they share the same original model architecture and weights).
+The paper “
+AdapterHub: A framework for adapting transformers” introduced the
+Adapter Hub as a central repository for sharing adapters.2 A lot of these earlier adapt‐
+ers were more focused on BERT architectures. More recently, the concept has been
+applied to text generation Transformers in papers like “LLaMA-Adapter: Efficient
+fine-tuning of language models with zero-init attention”.3
+Low-Rank Adaptation (LoRA)
+As an alternative to adapters, low-rank adaptation (LoRA) was introduced and is at
+the time of writing is a widely used and effective technique for PEFT. LoRA is a
+technique that (like adapters) only requires updating a small set of parameters. As
+Supervised Fine-Tuning (SFT) 
+| 
+361

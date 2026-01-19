@@ -1,0 +1,36 @@
+Running this chain gives us all three components. This only required us to input a
+single short prompt, the summary. Another advantage of dividing the problem into
+smaller tasks is that we now have access to these individual components. We can
+easily extract the title; that might not have been the case if we were to use a single
+prompt.
+Memory: Helping LLMs to Remember Conversations
+When we are using LLMs out of the box, they will not remember what was being said
+in a conversation. You can share your name in one prompt but it will have forgotten
+it by the next prompt.
+Let’s illustrate this phenomenon with an example using the basic_chain we created
+before. First, we tell the LLM our name:
+# Let's give the LLM our name
+basic_chain.invoke({"input_prompt": "Hi! My name is Maarten. What is 1 + 1?"})
+Hello Maarten! The answer to 1 + 1 is 2.
+Next, we ask it to reproduce the name we have given it:
+# Next, we ask the LLM to reproduce the name
+basic_chain.invoke({"input_prompt": "What is my name?"})
+I'm sorry, but as a language model, I don't have the ability to know personal 
+information about individuals. You can provide the name you'd like to know 
+more about, and I can help you with information or general inquiries related 
+to it.
+Unfortunately, the LLM does not know the name we gave it. The reason for this
+forgetful behavior is that these models are stateless—they have no memory of any
+previous conversation!
+As illustrated in Figure 7-9, conversing with an LLM that does not have any memory
+is not the greatest experience.
+To make these models stateful, we can add specific types of memory to the chain
+that we created earlier. In this section, we will go through two common methods for
+helping LLMs to remember conservations:
+• Conversation buffer
+•
+• Conversation summary
+•
+Memory: Helping LLMs to Remember Conversations 
+| 
+209

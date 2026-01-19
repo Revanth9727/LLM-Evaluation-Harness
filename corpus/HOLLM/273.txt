@@ -1,0 +1,8 @@
+Figure 8-25. Generative search formulates answers and summaries at the end of a search
+pipeline while citing its sources (returned by the previous steps in the search system).
+Figure 8-26. Find the most relevant information to an input prompt by comparing the
+similarities between embeddings. The most relevant information is added to the prompt
+before giving it to the LLM.
+Retrieval-Augmented Generation (RAG) 
+| 
+251

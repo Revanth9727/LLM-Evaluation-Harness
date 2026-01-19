@@ -1,0 +1,20 @@
+Figure 1-14. Attention allows a model to “attend” to certain parts of sequences that
+might relate more or less to one another.
+By adding these attention mechanisms to the decoder step, the RNN can generate
+signals for each input word in the sequence related to the potential output. Instead of
+passing only a context embedding to the decoder, the hidden states of all input words
+are passed. This process is demonstrated in Figure 1-15.
+Figure 1-15. After generating the words “Ik,
+” “hou,
+” and “van,
+” the attention mechanism
+of the decoder enables it to focus on the word “llamas” before it generates the Dutch
+translation (“lama’s”).
+As a result, during the generation of “Ik hou van lama’s,” the RNN keeps track of
+the words it mostly attends to perform the translation. Compared to word2vec, this
+architecture allows for representing the sequential nature of text and the context
+in which it appears by “attending” to the entire sentence. This sequential nature,
+however, precludes parallelization during training of the model.
+14 
+| 
+Chapter 1: An Introduction to Large Language Models

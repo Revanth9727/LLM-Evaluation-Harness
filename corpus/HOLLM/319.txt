@@ -1,0 +1,40 @@
+benchmark (GLUE). This GLUE benchmark consists of nine language understanding
+tasks to evaluate and analyze model performance.
+One of these tasks is the Multi-Genre Natural Language Inference (MNLI) corpus,
+which is a collection of 392,702 sentence pairs annotated with entailment (contradic‐
+tion, neutral, entailment). We will be using a subset of the data, 50,000 annotated
+sentence pairs, to create a minimal example that does not need to be trained for hours
+on end. Do note, though, that the smaller the dataset, the more unstable training
+or fine-tuning an embedding model is. If possible, larger datasets are preferred
+assuming it is still quality data:
+from datasets import load_dataset
+# Load MNLI dataset from GLUE
+# 0 = entailment, 1 = neutral, 2 = contradiction
+train_dataset = load_dataset(
+    "glue", "mnli", split="train"
+).select(range(50_000))
+train_dataset = train_dataset.remove_columns("idx")
+Next, we take a look at an example:
+dataset[2]
+{'premise': 'One of our number will carry out your instructions minutely.',
+ 'hypothesis': 'A member of my team will execute your orders with immense 
+precision.',
+ 'label': 0}
+This shows an example of an entailment between the premise and the hypothesis as
+they are positively related and have near identical meanings.
+Train Model
+Now that we have our dataset with training examples, we will need to create our
+embedding model. We typically choose an existing sentence-transformers model
+and fine-tune that model, but in this example, we are going to train an embedding
+from scratch.
+This means that we will have to define two things. First, a pretrained Transformer
+model that serves as embedding individual words. We will use the BERT base model
+(uncased) as it is a great introduction model. However, many others exist that
+also have been evaluated using sentence-transformers. Most notably, microsoft/
+mpnet-base often gives good results when used as a word embedding model.
+from sentence_transformers import SentenceTransformer
+# Use a base model
+embedding_model = SentenceTransformer('bert-base-uncased')
+Creating an Embedding Model 
+| 
+297

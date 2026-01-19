@@ -1,0 +1,19 @@
+The Inputs and Outputs of a Reward Model
+The way we expect this reward model to work is that we give it a prompt and
+a generation, and it outputs a single number indicating the preference/quality of
+that generation in response to that prompt. Figure 12-26 shows the reward model
+generating this single number.
+Figure 12-26. Use a reward model trained on human preference to generate the comple‐
+tion quality score.
+Training a Reward Model
+We cannot directly use the reward model. It needs to first be trained to properly score
+generations. So let’s get a preference dataset that the model can learn from.
+Reward model training dataset
+One common shape for preference datasets is for a training example to have a
+prompt, with one accepted generation and one rejected generation. (Nuance: it’s not
+always a good versus bad generation; it can be that the two generations are both good,
+but that one is better than the other). Figure 12-27 shows an example preference
+training set with two training examples.
+380 
+| 
+Chapter 12: Fine-Tuning Generation Models

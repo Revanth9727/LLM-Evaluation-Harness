@@ -1,0 +1,42 @@
+Action: the action to take, should be one of [{tool_names}]
+Action Input: the input to the action
+Observation: the result of the action
+... (this Thought/Action/Action Input/Observation can repeat N times)
+Thought: I now know the final answer
+Final Answer: the final answer to the original input question
+Begin!
+Question: {input}
+Thought:{agent_scratchpad}"""
+prompt = PromptTemplate(
+    template=react_template,
+    input_variables=["tools", "tool_names", "input", "agent_scratchpad"]
+)
+This template illustrates the process of starting with a question and generating inter‐
+mediate thoughts, actions, and observations.
+To have the LLM interact with the outside world, we will describe the tools it can use:
+from langchain.agents import load_tools, Tool
+from langchain.tools import DuckDuckGoSearchResults
+# You can create the tool to pass to an agent
+search = DuckDuckGoSearchResults()
+search_tool = Tool(
+    name="duckduck",
+    description="A web search engine. Use this to as a search engine for gen
+eral queries.",
+    func=search.run,
+)
+# Prepare tools
+tools = load_tools(["llm-math"], llm=openai_llm)
+tools.append(search_tool)
+The tools include the DuckDuckGo search engine and a math tool that allows it to
+access a basic calculator.
+Finally, we create the ReAct agent and pass it to the AgentExecutor, which handles
+executing the steps:
+from langchain.agents import AgentExecutor, create_react_agent
+# Construct the ReAct agent
+agent = create_react_agent(openai_llm, tools, prompt)
+agent_executor = AgentExecutor(
+    agent=agent, tools=tools, verbose=True, handle_parsing_errors=True
+)
+222 
+| 
+Chapter 7: Advanced Text Generation Techniques and Tools

@@ -1,0 +1,35 @@
+for i in range(len(memory))
+          ]
+      ) + " Question: " + question + " Answer:"
+    # Generate text
+    inputs = blip_processor(image, text=prompt, return_tensors="pt")
+    inputs = inputs.to(device, torch.float16)
+    generated_ids = model.generate(**inputs, max_new_tokens=100)
+    generated_text = blip_processor.batch_decode(
+        generated_ids, 
+        skip_special_tokens=True
+    )
+    generated_text = generated_text[0].strip().split("Question")[0]
+    # Update memory
+    memory.append((question, generated_text))
+    # Assign to output
+    output.append_display_data(HTML("<b>USER:</b> " + question))
+    output.append_display_data(HTML("<b>BLIP-2:</b> " + generated_text))
+    output.append_display_data(HTML("<br>"))
+# Prepare widgets
+in_text = widgets.Text()
+in_text.continuous_update = False
+in_text.observe(text_eventhandler, "value")
+output = widgets.Output()
+memory = []
+# Display chat box
+display(
+    widgets.VBox(
+        children=[output, in_text],
+        layout=widgets.Layout(display="inline-flex", flex_flow="column-
+reverse"),
+    )
+)
+Making Text Generation Models Multimodal 
+| 
+285

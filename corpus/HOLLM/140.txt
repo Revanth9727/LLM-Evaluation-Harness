@@ -1,0 +1,26 @@
+Figure 4-7. By breaking down an unknown word into tokens, word embeddings can still
+be generated.
+After loading all the necessary components, we can go ahead and use our model on
+the test split of our data:
+import numpy as np
+from tqdm import tqdm
+from transformers.pipelines.pt_utils import KeyDataset
+# Run inference
+y_pred = []
+for output in tqdm(pipe(KeyDataset(data["test"], "text")), 
+total=len(data["test"])):
+    negative_score = output[0]["score"]
+    positive_score = output[2]["score"]
+    assignment = np.argmax([negative_score, positive_score])
+    y_pred.append(assignment)
+Now that we have generated our predictions, all that is left is evaluation. We create a
+small function that we can easily use throughout this chapter:
+from sklearn.metrics import classification_report
+def evaluate_performance(y_true, y_pred):
+    """Create and print the classification report"""
+    performance = classification_report(
+        y_true, y_pred,
+        target_names=["Negative Review", "Positive Review"]
+118 
+| 
+Chapter 4: Text Classification

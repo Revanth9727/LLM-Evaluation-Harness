@@ -1,0 +1,26 @@
+Summary
+In this chapter, we looked at different ways of using language models to improve
+existing search systems and even be the core of new, more powerful search systems.
+These include:
+• Dense retrieval, which relies on the similarity of text embeddings. These are
+•
+systems that embed a search query and retrieve the documents with the nearest
+embeddings to the query’s embedding.
+• Rerankers, systems (like monoBERT) that look at a query and candidate results
+•
+and score the relevance of each document to that query. These relevance scores
+are then used to order the shortlisted results according to their relevance to the
+query, often producing an improved results ranking.
+• RAG, where search systems have a generative LLM at the end of the pipeline to
+•
+formulate an answer based on retrieved documents while citing sources.
+We also looked at one of the possible methods of evaluating search systems. Mean
+average precision allows us to score search systems to be able to compare across a
+test suite of queries and their known relevance to the test queries. Evaluating RAG
+systems requires multiple axes, however, like faithfulness, fluency, and others that can
+be evaluated by humans or by LLM-as-a-judge.
+In the next chapter, we will explore how language models can be made multimodal
+and reason not just about text but images as well.
+258 
+| 
+Chapter 8: Semantic Search and Retrieval-Augmented Generation

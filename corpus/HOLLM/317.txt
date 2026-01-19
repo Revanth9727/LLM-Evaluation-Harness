@@ -1,0 +1,24 @@
+The training for sentence-transformers uses a Siamese architecture. In this archi‐
+tecture, as visualized in Figure 10-7, we have two identical BERT models that share
+the same weights and neural architecture. These models are fed the sentences from
+which embeddings are generated through the pooling of token embeddings. Then,
+models are optimized through the similarity of the sentence embeddings. Since the
+weights are identical for both BERT models, we can use a single model and feed it the
+sentences one after the other.
+Figure 10-7. The architecture of the original sentence-transformers model, which
+leverages a Siamese network, also called a bi-encoder.
+The optimization process of these pairs of sentences is done through loss functions,
+which can have a major impact on the model’s performance. During training, the
+embeddings for each sentence are concatenated together with the difference between
+the embeddings. Then, this resulting embedding is optimized through a softmax
+classifier.
+The resulting architecture is also referred to as a bi-encoder or SBERT for sentence-
+BERT. Although a bi-encoder is quite fast and creates accurate sentence representa‐
+tions, cross-encoders generally achieve better performance than a bi-encoder but do
+not generate embeddings.
+The bi-encoder, like a cross-encoder, leverages contrastive learning; by optimizing the
+(dis)similarity between pairs of sentences, the model will eventually learn the things
+that make the sentences what they are.
+SBERT 
+| 
+295

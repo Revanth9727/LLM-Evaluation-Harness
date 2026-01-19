@@ -1,0 +1,26 @@
+Let’s take the image of a supercar and use the processor to derive pixels in the
+expected shape:
+# Load an AI-generated image of a supercar
+image = Image.open(urlopen(car_path)).convert("RGB")
+# Convert an image into inputs and preprocess it
+inputs = blip_processor(image, return_tensors="pt").to(device, torch.float16)
+image
+The next step is converting the image into token IDs using the BLIP-2 model. After
+doing so, we can convert the IDs into text (the generated caption):
+# Generate image ids to be passed to the decoder (LLM)
+generated_ids = model.generate(**inputs, max_new_tokens=20)
+# Generate text from the image ids
+generated_text = blip_processor.batch_decode(
+    generated_ids, skip_special_tokens=True
+)
+generated_text = generated_text[0].strip()
+generated_text
+generated_text contains the caption:
+an orange supercar driving on the road at sunset
+This seems like a perfect description for this image!
+Image captioning is a great way to get to learn this model before stepping into more
+complex use cases. Try it out with a few images yourself and see where it performs
+well and where it performs poorly. Domain-specific images, like pictures of specific
+Making Text Generation Models Multimodal 
+| 
+281

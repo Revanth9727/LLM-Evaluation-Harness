@@ -1,0 +1,19 @@
+Figure 12-33. Scores are calculated by taking the probabilities of generation on a token
+level. The shift in probabilities between the reference model and the trainable model is
+optimized. The accepted generation follows the same procedure.
+Using these scores, we can optimize the parameters of the trainable model to be more
+confident of generating the accepted generations and less confident of generating the
+rejected generations. Compared to PPO, the authors found DPO to be more stable
+during training and more accurate. Due to its stability, we will be using it as our
+primary model for preference tuning our previously instruction-tuned model.
+Preference Tuning with DPO
+When we use the Hugging Face stack, preference tuning is eerily similar to the
+instruction tuning we covered before with some slight differences. We will still be
+using TinyLlama but this time an instruction-tuned version that was first trained
+using full fine-tuning and then further aligned with DPO. Compared to our initial
+instruction-tuned model, this LLM was trained on much larger datasets.
+In this section, we will demonstrate how you can further align this model using DPO
+with reward-based datasets.
+Preference Tuning with DPO 
+| 
+385

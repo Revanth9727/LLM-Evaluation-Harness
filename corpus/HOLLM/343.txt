@@ -1,0 +1,28 @@
+Figure 10-15. Domain adaptation can be performed with adaptive pretraining and
+adaptive fine-tuning.
+Using everything you have learned in this chapter, you should be able to reproduce
+this pipeline! First, you can start with TSDAE to train an embedding model on
+your target domain and then fine-tune it using either general supervised training or
+Augmented SBERT.
+Summary
+In this chapter, we looked at creating and fine-tuning embedding models through
+various tasks. We discussed the concept of embeddings and their role in representing
+textual data in a numerical format. We then explored the foundational technique of
+many embedding models, namely contrastive learning, which learns primarily from
+(dis)similar pairs of documents.
+Using a popular embedding framework, sentence-transformers, we then created
+embedding models using a pretrained BERT model while exploring different loss
+functions, such as cosine similarity loss and MNR loss. We discussed how the collec‐
+tion of (dis)similar pairs or triples of documents is vital to the performance of the
+resulting model.
+In the sections that followed, we explored techniques for fine-tuning embedding
+models. Both supervised and unsupervised techniques were discussed such as Aug‐
+mented SBERT and TSDAE for domain adaptation. Compared to creating an embed‐
+ding model, fine-tuning generally needs less data and is a great way to adapt existing
+embedding models to your domain.
+In the next chapter, methods for fine-tuning representations for classification will be
+discussed. Both BERT models and embedding models will make an appearance as
+well as a wide range of fine-tuning techniques.
+Summary 
+| 
+321

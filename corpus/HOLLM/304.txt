@@ -1,0 +1,23 @@
+8 Roy Schafer. Psychoanalytic Interpretation in Rorschach Testing: Theory and Application (1954).
+cartoon characters or imaginary creations, may fail as the model was trained on
+largely public data.
+Let’s end this use case with a fun example, namely an image from the Rorschach test,
+which is illustrated in Figure 9-21. It is part of an old psychological experiment that
+tests the individual’s perception of inkblots.8 What someone sees in such an inkblot
+supposedly tells you something about a person’s personality characteristics. It is quite
+a subjective test but that just makes it more fun!
+Figure 9-21. An image from the Rorschach test. What do you see in it?
+Let’s take the image illustrated in Figure 9-21 and use that as our input:
+# Load Rorschach image
+url = "https://upload.wikimedia.org/wikipedia/commons/7/70/Ror
+schach_blot_01.jpg"
+image = Image.open(urlopen(url)).convert("RGB")
+# Generate caption
+inputs = blip_processor(image, return_tensors="pt").to(device, torch.float16)
+generated_ids = model.generate(**inputs, max_new_tokens=20)
+generated_text = blip_processor.batch_decode(
+    generated_ids, skip_special_tokens=True
+)
+282 
+| 
+Chapter 9: Multimodal Large Language Models

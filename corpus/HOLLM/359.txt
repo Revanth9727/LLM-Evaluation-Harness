@@ -1,0 +1,26 @@
+Figure 11-13. The three main steps of SetFit.
+Fine-Tuning for Few-Shot Classification
+We previously trained on a dataset containing roughly 8,500 movie reviews. However,
+since this is a few-shot setting, we will only sample 16 examples per class. With two
+classes, we will only have 32 documents to train on compared to the 8,500 movie
+reviews we used before!
+from setfit import sample_dataset
+# We simulate a few-shot setting by sampling 16 examples per class
+sampled_train_data = sample_dataset(tomatoes["train"], num_samples=16)
+After sampling the data, we choose a pretrained SentenceTransformer model to fine-
+tune. The official documentation contains an overview of pretrained SentenceTrans
+former models from which we are going to be using "sentence-transformers/
+all-mpnet-base-v2". It is one of the best-performing models on the MTEB leader‐
+board, which shows the performance of embedding models across a variety of tasks:
+from setfit import SetFitModel
+# Load a pretrained SentenceTransformer model
+model = SetFitModel.from_pretrained("sentence-transformers/all-mpnet-base-v2")
+After loading in the pretrained SentenceTransformer model, we can start defining
+our SetFitTrainer. By default, a logistic regression model is chosen as the classifier
+to train.
+Similar to what we did with Hugging Face Transformers, we can use the trainer to
+define and play around with relevant parameters. For example, we set the num_epochs
+to 3 so that contrastive learning will be performed for three epochs:
+Few-Shot Classification 
+| 
+337

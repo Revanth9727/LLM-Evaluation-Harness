@@ -1,0 +1,14 @@
+Figure 3-11. The bulk of the Transformer LLM processing happens inside a series of
+Transformer blocks, each handing the result of its processing as input to the subsequent
+block.
+A Transformer block (Figure 3-12) is made up of two successive components:
+1. The attention layer is mainly concerned with incorporating relevant information
+1.
+from other input tokens and positions
+2. The feedforward layer houses the majority of the model’s processing capacity
+2.
+Figure 3-12. A Transformer block is made up of a self-attention layer and a feedforward
+neural network.
+86 
+| 
+Chapter 3: Looking Inside Large Language Models

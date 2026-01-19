@@ -1,0 +1,16 @@
+Figure 4-3. A foundation model is fine-tuned for specific tasks; for instance, to perform
+classification or generate general-purpose embeddings.
+A task-specific model is a representation model, such as BERT, trained for a specific
+task, like sentiment analysis. As we explored in Chapter 1, an embedding model
+generates general-purpose embeddings that can be used for a variety of tasks not
+limited to classification, like semantic search (see Chapter 8).
+The process of fine-tuning a BERT model for classification is covered in Chapter 11
+while creating an embedding model is covered in Chapter 10. In this chapter, we keep
+both models frozen (nontrainable) and only use their output as shown in Figure 4-4.
+Figure 4-4. Perform classification directly with a task-specific model or indirectly with
+general-purpose embeddings.
+We will leverage pretrained models that others have already fine-tuned for us and
+explore how they can be used to classify our selected movie reviews.
+114 
+| 
+Chapter 4: Text Classification

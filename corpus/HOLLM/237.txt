@@ -1,0 +1,41 @@
+This means that whenever we ask the LLM a question, there are two calls:
+• The user prompt
+•
+• The summarization prompt
+•
+To use this in LangChain, we first need to prepare a summarization template that we
+will use as the summarization prompt:
+# Create a summary prompt template
+summary_prompt_template = """<s><|user|>Summarize the conversations and update 
+with the new lines.
+Current summary:
+{summary}
+new lines of conversation:
+{new_lines}
+New summary:<|end|>
+<|assistant|>"""
+summary_prompt = PromptTemplate(
+    input_variables=["new_lines", "summary"],
+    template=summary_prompt_template
+)
+Using ConversationSummaryMemory in LangChain is similar to what we did with the
+previous examples. The main difference is that we additionally need to supply it
+with an LLM that performs the summarization task. Although we use the same LLM
+for both summarizing and user prompting, you could use a smaller LLM for the
+summarization task to speed up computation:
+from langchain.memory import ConversationSummaryMemory
+# Define the type of memory we will use
+memory = ConversationSummaryMemory(
+    llm=llm, 
+    memory_key="chat_history", 
+    prompt=summary_prompt
+)
+# Chain the LLM, prompt, and memory together
+llm_chain = LLMChain(
+    prompt=prompt,
+    llm=llm,
+    memory=memory
+)
+Memory: Helping LLMs to Remember Conversations 
+| 
+215

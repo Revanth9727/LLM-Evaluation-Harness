@@ -1,0 +1,72 @@
+Topic Count Name
+Representation
+-1
+14520
+-1_the_of_and_to
+[the, of, and, to, in, we, that, language, for...
+0
+2290
+0_speech_asr_recognition_end
+[speech, asr, recognition, end, acoustic, spea...
+1
+1403
+1_medical_clinical_biomedical_patient
+[medical, clinical, biomedical, patient, healt...
+2
+1156
+2_sentiment_aspect_analysis_reviews
+[sentiment, aspect, analysis, reviews, opinion...
+3
+986
+3_translation_nmt_machine_neural
+[translation, nmt, machine, neural, bleu, engl...
+...
+...
+...
+...
+150
+54
+150_coherence_discourse_paragraph_text
+[coherence, discourse, paragraph, text, cohesi...
+151
+54
+151_prompt_prompts_optimization_prompting
+[prompt, prompts, optimization, prompting, llm...
+152
+53
+152_sentence_sts_embeddings_similarity
+[sentence, sts, embeddings, similarity, embedd...
+153
+53
+153_counseling_mental_health_therapy
+[counseling, mental, health, therapy, psychoth...
+154
+50
+154_backdoor_attacks_attack_triggers
+[backdoor, attacks, attack, triggers, poisoned...
+Each of these topics is represented by several keywords, which are concatenated with
+a “_” in the Name column. This Name column allows us to quickly get a feeling of what
+the topic is about as it shows the four keywords that best represent it.
+You might also have noticed that the very first topic is labeled -1.
+That topic contains all documents that could not be fitted within a
+topic and are considered outliers. This is a result of the clustering
+algorithm, HDBSCAN, which does not force all points to be clus‐
+tered. To remove outliers, we could either use a non-outlier algo‐
+rithm like k-means or use BERTopic’s reduce_outliers() function
+to reassign the outliers to topics.
+We can inspect individual topics and explore which keywords best represent them
+with the get_topic function. For example, topic 0 contains the following keywords:
+topic_model.get_topic(0)
+[('speech', 0.028177697715245358),
+ ('asr', 0.018971184497453525),
+ ('recognition', 0.013457745472471012),
+ ('end', 0.00980445092749381),
+ ('acoustic', 0.009452082794507863),
+ ('speaker', 0.0068822647060204885),
+ ('audio', 0.006807649923681604),
+ ('the', 0.0063343444687017645),
+ ('error', 0.006320144717019838),
+ ('automatic', 0.006290216996043161)]
+From Text Clustering to Topic Modeling 
+| 
+153

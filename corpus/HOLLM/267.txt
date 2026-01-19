@@ -1,0 +1,14 @@
+Figure 8-16. To evaluate search systems, we need a test suite including queries and
+relevance judgments indicating which documents in our archive are relevant for each
+query.
+Using this test suite, we can proceed to explore evaluating search systems. Let’s start
+with a simple example. Let’s assume we pass query 1 to two different search systems.
+And get two sets of results. Say we limit the number of results to three, as we can see
+in Figure 8-17.
+Figure 8-17. To compare two search systems, we pass the same query from our test suite
+to both systems and look at their top results.
+To tell which is a better system, we turn to the relevance judgments that we have for
+the query. Figure 8-18 shows which of the returned results are relevant.
+Semantic Search with Language Models 
+| 
+245

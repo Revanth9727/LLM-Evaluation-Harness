@@ -1,0 +1,24 @@
+6 Jacob Devlin et al. “BERT: Pre-training of deep bidirectional transformers for language understanding.” arXiv
+preprint arXiv:1810.04805 (2018).
+There is much more to the Transformer architecture than what we explored thus
+far. In Chapters 2 and 3, we will go through the many reasons why Transformer
+models work so well, including multi-head attention, positional embeddings, and
+layer normalization.
+Representation Models: Encoder-Only Models
+The original Transformer model is an encoder-decoder architecture that serves trans‐
+lation tasks well but cannot easily be used for other tasks, like text classification.
+In 2018, a new architecture called Bidirectional Encoder Representations from Trans‐
+formers (BERT) was introduced that could be leveraged for a wide variety of tasks
+and would serve as the foundation of Language AI for years to come.6 BERT is
+an encoder-only architecture that focuses on representing language, as illustrated
+in Figure 1-21. This means that it only uses the encoder and removes the decoder
+entirely.
+Figure 1-21. The architecture of a BERT base model with 12 encoders.
+These encoder blocks are the same as we saw before: self-attention followed by
+feedforward neural networks. The input contains an additional token, the [CLS] or
+classification token, which is used as the representation for the entire input. Often,
+we use this [CLS] token as the input embedding for fine-tuning the model on specific
+tasks, like classification.
+18 
+| 
+Chapter 1: An Introduction to Large Language Models

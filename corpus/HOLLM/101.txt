@@ -1,0 +1,39 @@
+Looking at this structure, we can notice the following highlights:
+• This shows us the various nested layers of the model. The majority of the model
+•
+is labeled model, followed by lm_head.
+• Inside the Phi3Model model, we see the embeddings matrix embed_tokens and its
+•
+dimensions. It has 32,064 tokens each with a vector size of 3,072.
+• Skipping the dropout layer for now, we can see the next major component is
+•
+the stack of Transformer decoder layers. It contains 32 blocks of type Phi3Deco
+derLayer.
+• Each of these Transformer blocks includes an attention layer and a feedforward
+•
+neural network (also known as an mlp or multilevel perceptron). We’ll cover
+these in more detail later in the chapter.
+• Finally, we see the lm_head taking a vector of size 3,072 and outputting a vector
+•
+equivalent to the number of tokens the model knows. That output is the proba‐
+bility score for each token that helps us select the output token.
+Choosing a Single Token from the Probability Distribution (Sampling/
+Decoding)
+At the end of processing, the output of the model is a probability score for each token
+in the vocabulary, as we saw previously in Figure 3-6. The method of choosing a sin‐
+gle token from the probability distribution is called the decoding strategy. Figure 3-7
+shows how this leads to picking the token “Dear” in one example.
+The easiest decoding strategy would be to always pick the token with the highest
+probability score. In practice, this doesn’t tend to lead to the best outputs for most
+use cases. A better approach is to add some randomness and sometimes choose the
+second or third highest probability token. The idea here is to basically sample from
+the probability distribution based on the probability score, as the statisticians would
+say.
+What this means for the example in Figure 3-7 is that if the token “Dear” has a 40%
+probability of being the next token, then it has a 40% chance of being picked (instead
+of greedy search, which would pick it directly for having the highest score). So with
+this method, all the other tokens have a chance of being picked according to their
+score.
+An Overview of Transformer Models 
+| 
+79

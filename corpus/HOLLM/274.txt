@@ -1,0 +1,37 @@
+Example: Grounded Generation with an LLM API
+Let’s look at how to add a grounded generation step after the search results to create
+our first RAG system. For this example, we’ll use Cohere’s managed LLM, which
+builds on the search systems we’ve seen earlier in the chapter. We’ll use embedding
+search to retrieve the top documents, then we’ll pass those to the co.chat endpoint
+along with the questions to provide a grounded answer:
+query = "income generated"
+# 1- Retrieval
+# We'll use embedding search. But ideally we'd do hybrid
+results = search(query)
+# 2- Grounded Generation
+docs_dict = [{'text': text} for text in results['texts']]
+response = co.chat(
+    message = query,
+    documents=docs_dict
+)
+print(response.text)
+Result:
+The film generated a worldwide gross of over $677 million, or $773 million 
+with subsequent re-releases.
+We are highlighting some of the text because the model indicated the source for these
+spans of text to be the first document we passed in:
+citations=[ChatCitation(start=21, end=36, text='worldwide gross', docu-
+ment_ids=['doc_0']), ChatCitation(start=40, end=57, text='over $677 million', 
+document_ids=['doc_0']), ChatCitation(start=62, end=103, text='$773 million 
+with subsequent re-releases.', document_ids=['doc_0'])]
+documents=[{'id': 'doc_0', 'text': 'The film had a worldwide gross over $677 
+million (and $773 million with subsequent re-releases), making it the tenth-
+highest grossing film of 2014'}]
+Example: RAG with Local Models
+Let us now replicate this basic functionality with local models. We will lose the
+ability to do span citations and the smaller local model isn’t going to work as well
+as the larger managed model, but it’s useful to demonstrate the flow. We’ll start by
+downloading a quantized model.
+252 
+| 
+Chapter 8: Semantic Search and Retrieval-Augmented Generation

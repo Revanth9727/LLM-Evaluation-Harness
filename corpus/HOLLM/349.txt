@@ -1,0 +1,44 @@
+predictions = np.argmax(logits, axis=-1)
+   load_f1 = load_metric("f1")
+   f1 = load_f1.compute(predictions=predictions, references=labels)["f1"]
+   return {"f1": f1}
+With compute_metrics we can define any number of metrics that we are interested
+in and that can be printed out or logged during training. This is especially helpful
+during training as it allows for detecting overfitting behavior.
+Next, we instantiate our Trainer:
+from transformers import TrainingArguments, Trainer
+# Training arguments for parameter tuning
+training_args = TrainingArguments(
+   "model",
+   learning_rate=2e-5,
+   per_device_train_batch_size=16,
+   per_device_eval_batch_size=16,
+   num_train_epochs=1,
+   weight_decay=0.01,
+   save_strategy="epoch",
+   report_to="none"
+)
+# Trainer which executes the training process
+trainer = Trainer(
+   model=model,
+   args=training_args,
+   train_dataset=tokenized_train,
+   eval_dataset=tokenized_test,
+   tokenizer=tokenizer,
+   data_collator=data_collator,
+   compute_metrics=compute_metrics,
+)
+The TrainingArguments class defines hyperparameters we want to tune, such as the
+learning rate and how many epochs (rounds) we want to train. The Trainer is used
+to execute the training process.
+Finally, we can train our model and evaluate it:
+trainer.evaluate()
+{'eval_loss': 0.3663691282272339,
+ 'eval_f1': 0.8492366412213741,
+ 'eval_runtime': 4.5792,
+ 'eval_samples_per_second': 232.791,
+ 'eval_steps_per_second': 14.631,
+ 'epoch': 1.0}
+Supervised Classification 
+| 
+327

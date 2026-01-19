@@ -1,0 +1,43 @@
+Topic Original
+Updated
+0
+speech | asr | recognition | end | acoustic
+Leveraging External Data for Improving Low-Res...
+1
+medical | clinical | biomedical | patient | he...
+Improved Representation Learning for Biomedica...
+2
+sentiment | aspect | analysis | reviews | opinion
+Advancements in Aspect-Based Sentiment Analys...
+3
+translation | nmt | machine | neural | bleu
+Neural Machine Translation Enhancements
+4
+summarization | summaries | summary | abstract...
+Document Summarization Techniques
+The resulting labels are quite impressive! We are not even using GPT-4 and the
+resulting labels seem to be more informative than our previous example. Note that
+BERTopic is not confined to only using OpenAI’s offering but has local backends as
+well.
+Although it seems like we do not need the keywords anymore, they
+are still representative of the input documents. No model is perfect
+and it is generally advised to generate multiple topic representa‐
+tions. BERTopic allows for all topics to be represented by different
+representations. You could, for example, use KeyBERTInspired,
+MMR, and GPT-3.5 side by side to get different perspectives on the
+same topic.
+With these GPT-3.5 generated labels, we can create beautiful illustrations using the
+datamapplot package (Figure 5-24):
+# Visualize topics and documents
+fig = topic_model.visualize_document_datamap(
+    titles,
+    topics=list(range(20)),
+    reduced_embeddings=reduced_embeddings,
+    width=1200,
+    label_font_size=11,
+    label_wrap_width=20,
+    use_medoids=True,
+)
+From Text Clustering to Topic Modeling 
+| 
+163

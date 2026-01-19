@@ -1,0 +1,42 @@
+This quantization procedure allows us to decrease the size of the original model while
+retaining most of the original weights’ precision. Loading the model now only uses
+~1 GB VRAM compared to the ~4 GB of VRAM it would need without quantization.
+Note that during fine-tuning, more VRAM will be necessary so it does not cap out on
+the ~1 GB VRAM needed to load the model.
+LoRA Configuration
+Next, we will need to define our LoRA configuration using the peft library, which
+represents hyperparameters of the fine-tuning process:
+from peft import LoraConfig, prepare_model_for_kbit_training, get_peft_model
+# Prepare LoRA Configuration
+peft_config = LoraConfig(
+    lora_alpha=32,  # LoRA Scaling
+    lora_dropout=0.1,  # Dropout for LoRA Layers
+    r=64,  # Rank
+    bias="none",
+    task_type="CAUSAL_LM",
+    target_modules=  # Layers to target
+     ["k_proj", "gate_proj", "v_proj", "up_proj", "q_proj", "o_proj", 
+"down_proj"]
+)
+# Prepare model for training
+model = prepare_model_for_kbit_training(model)
+model = get_peft_model(model, peft_config)
+There are several parameters worth mentioning:
+r
+This is the rank of the compressed matrices (recall this from Figure 12-13)
+Increasing this value will also increase the sizes of compressed matrices leading
+to less compression and thereby improved representative power. Values typically
+range between 4 and 64.
+lora_alpha
+Controls the amount of change that is added to the original weights. In essence, it
+balances the knowledge of the original model with that of the new task. A rule of
+thumb is to choose a value twice the size of r.
+target_modules
+Controls which layers to target. The LoRA procedure can choose to ignore
+specific layers, like specific projection layers. This can speed up training but
+reduce performance and vice versa.
+Playing around with the parameters is a worthwhile experiment to get an intuitive
+understanding of values that work and those that do not. You can find an amazing
+370 
+| 
+Chapter 12: Fine-Tuning Generation Models

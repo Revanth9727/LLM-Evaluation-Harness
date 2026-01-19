@@ -1,0 +1,48 @@
+Query: 'how precise was the science'
+Nearest neighbors:
+ 
+texts
+distance
+0
+It has also received praise from many astronomers for its scientific accuracy and portrayal of
+theoretical astrophysics
+10757.379883
+1
+Caltech theoretical physicist and 2017 Nobel laureate in Physics[4] Kip Thorne was an executive
+producer, acted as a scientific consultant, and wrote a tie-in book, The Science of Interstellar
+11566.131836
+2
+Interstellar uses extensive practical and miniature effects and the company Double Negative
+created additional digital effects
+11922.833008
+The first result has the least distance, and so is the most similar to the query. Looking
+at it, it answers the question perfectly. Notice that this wouldn’t have been possible if
+we were only doing keyword search because the top result did not include the same
+keywords in the query.
+We can actually verify that by defining a keyword search function to compare the
+two. We’ll use the BM25 algorithm, which is one of the leading lexical search meth‐
+ods. See this notebook for the source of these code snippets:
+from rank_bm25 import BM25Okapi
+from sklearn.feature_extraction import _stop_words
+import string
+def bm25_tokenizer(text):
+    tokenized_doc = []
+    for token in text.lower().split():
+        token = token.strip(string.punctuation)
+        if len(token) > 0 and token not in _stop_words.ENGLISH_STOP_WORDS:
+            tokenized_doc.append(token)
+    return tokenized_doc
+tokenized_corpus = []
+for passage in tqdm(texts):
+    tokenized_corpus.append(bm25_tokenizer(passage))
+bm25 = BM25Okapi(tokenized_corpus)
+def keyword_search(query, top_k=3, num_candidates=15):
+    print("Input question:", query)
+    ##### BM25 search (lexical search) #####
+    bm25_scores = bm25.get_scores(bm25_tokenizer(query))
+    top_n = np.argpartition(bm25_scores, -num_candidates)[-num_candidates:]
+    bm25_hits = [{'corpus_id': idx, 'score': bm25_scores[idx]} for idx in top_n]
+    bm25_hits = sorted(bm25_hits, key=lambda x: x['score'], reverse=True)
+Semantic Search with Language Models 
+| 
+233

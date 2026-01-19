@@ -1,0 +1,15 @@
+Figure 3-4. A Transformer LLM is made up of a tokenizer, a stack of Transformer blocks,
+and a language modeling head.
+Recall from Chapter 2 that the tokenizer contains a table of tokens—the tokenizer’s
+vocabulary. The model has a vector representation associated with each of these
+tokens in the vocabulary (token embeddings). Figure 3-5 shows both the vocabulary
+and associated token embeddings for a model with a vocabulary of 50,000 tokens.
+Figure 3-5. The tokenizer has a vocabulary of 50,000 tokens. The model has token
+embeddings associated with those embeddings.
+The flow of the computation follows the direction of the arrow from top to bottom.
+For each generated token, the process flows once through each of the Transformer
+blocks in the stack in order, then to the LM head, which finally outputs the probabil‐
+ity distribution for the next token, seen in Figure 3-6.
+An Overview of Transformer Models 
+| 
+77

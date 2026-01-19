@@ -1,0 +1,46 @@
+gold_dataloader = NoDuplicatesDataLoader(gold_examples, batch_size=32)
+# Pandas DataFrame for easier data handling
+gold = pd.DataFrame(
+    {
+    "sentence1": dataset["premise"],
+    "sentence2": dataset["hypothesis"],
+    "label": [mapping[label] for label in dataset["label"]]
+    }
+)
+This is the gold dataset since it is labeled and represents our ground truth.
+Using this gold dataset, we train our cross-encoder (step 1):
+from sentence_transformers.cross_encoder import CrossEncoder
+# Train a cross-encoder on the gold dataset
+cross_encoder = CrossEncoder("bert-base-uncased", num_labels=2)
+cross_encoder.fit(
+    train_dataloader=gold_dataloader,
+    epochs=1,
+    show_progress_bar=True,
+    warmup_steps=100,
+    use_amp=False
+)
+After training our cross-encoder, we use the remaining 400,000 sentence pairs (from
+our original dataset of 50,000 sentence pairs) as our silver dataset (step 2):
+# Prepare the silver dataset by predicting labels with the cross-encoder
+silver = load_dataset(
+    "glue", "mnli", split="train"
+).select(range(10_000, 50_000))
+pairs = list(zip(silver["premise"], silver["hypothesis"]))
+If you do not have any additional unlabeled sentence pairs, you
+can randomly sample them from your original gold dataset. To
+illustrate, you can create a new sentence pair by taking the premise
+from one row and the hypothesis from another. This allows you to
+easily generate 10 times as many sentence pairs that can be labeled
+with the cross-encoder.
+This strategy, however, likely generates significantly more dissimi‐
+lar than similar pairs. Instead, we can use a pretrained embedding
+model to embed all candidate sentence pairs and retrieve the
+top-k sentences for each input sentence using semantic search.
+This rough reranking process allows us to focus on sentence pairs
+that are likely to be more similar. Although the sentences are still
+chosen based on an approximation since the pretrained embedding
+model was not trained on our data, it is much better than random
+sampling.
+Fine-Tuning an Embedding Model 
+| 
+313

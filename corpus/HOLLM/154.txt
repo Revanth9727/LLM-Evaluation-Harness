@@ -1,0 +1,21 @@
+ChatGPT for Classification
+Although we focus throughout the book on open source models, another major com‐
+ponent of the Language AI field is closed sourced models; in particular, ChatGPT.
+Although the underlying architecture of the original ChatGPT model (GPT-3.5)
+is not shared, we can assume from its name that it is based on the decoder-only
+architecture that we have seen in the GPT models thus far.
+Fortunately, OpenAI shared an overview of the training procedure that involved
+an important component, namely preference tuning. As illustrated in Figure 4-22,
+OpenAI first manually created the desired output to an input prompt (instruction
+data) and used that data to create a first variant of its model.
+Figure 4-22. Manually labeled data consisting of an instruction (prompt) and output
+was used to perform fine-tuning (instruction-tuning).
+OpenAI used the resulting model to generate multiple outputs that were manually
+ranked from best to worst. As shown in Figure 4-23, this ranking demonstrates
+a preference for certain outputs (preference data) and was used to create its final
+model, ChatGPT.
+Figure 4-23. Manually ranked preference data was used to generate the final model,
+ChatGPT.
+132 
+| 
+Chapter 4: Text Classification

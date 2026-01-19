@@ -1,0 +1,24 @@
+We can continue adding or updating the elements of a prompt until we elicit the
+response we are looking for. We could add additional examples, describe the use case
+in more detail, provide additional context, etc. These components are merely exam‐
+ples and not a limited set of possibilities. The creativity that comes with designing
+these components is key.
+Although a prompt is a single piece of text, it is tremendously helpful to think of
+prompts as pieces of a larger puzzle. Have I described the context of my question?
+Does the prompt have an example of the output?
+Instruction-Based Prompting
+Although prompting comes in many flavors, from discussing philosophy with the
+LLM to role-playing with your favorite superhero, prompting is often used to have
+the LLM answer a specific question or resolve a certain task. This is referred to as
+instruction-based prompting.
+Figure 6-9 illustrates a number of use cases in which instruction-based prompting
+plays an important role. We already did one of these in the previous example, namely
+supervised classification.
+Figure 6-9. Use cases for instruction-based prompting.
+Each of these tasks requires different prompting formats and more specifically, asking
+different questions of the LLM. Asking the LLM to summarize a piece of text will not
+suddenly result in classification. To illustrate, examples of prompts for some of these
+use cases can be found in Figure 6-10.
+Intro to Prompt Engineering 
+| 
+175

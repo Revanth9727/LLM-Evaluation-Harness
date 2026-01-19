@@ -1,0 +1,13 @@
+Figure 8-10. Chunking the text into overlapping segments is one strategy to retain more
+of the context around different segments.
+Nearest neighbor search versus vector databases
+Once the query is embedded, we need to find the nearest vectors to it from our
+text archive as we can see in Figure 8-11. The most straightforward way to find the
+nearest neighbors is to calculate the distances between the query and the archive.
+That can easily be done with NumPy and is a reasonable approach if you have
+thousands or tens of thousands of vectors in your archive.
+Figure 8-11. As we saw in Chapter 3, we can compare embeddings to quickly find the
+most similar documents to a query.
+238 
+| 
+Chapter 8: Semantic Search and Retrieval-Augmented Generation

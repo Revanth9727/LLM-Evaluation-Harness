@@ -1,0 +1,100 @@
+K
+k-means algorithm, 143, 151, 153
+KeyBERTInspired, 158, 160
+keyword search
+reranking, 242-243
+verifying semantic search with, 233
+kv (keys and values) cache, 83-85
+L
+LangChain, 200
+(see also chains)
+loading quantized models with, 200-202
+ReAct in, 221-223
+Language AI (Language Artificial Intelligence),
+3-24
+defining, 4
+recent history of, 5-24
+attention, 11-18
+bag-of-words model, 6-7
+embeddings, 8-10
+generative models, 20-22
+representation models, 18-20
+Year of Generative AI, 23-24
+language modeling, 355
+language modeling head (LM head), 76-79
+large language models (see LLMs)
+latent Dirichlet allocation, 147
+LayerNorm, 101
+leaderboards, in generative model evaluation,
+376
+learning_rate parameter, 371
+Llama, 168
+Llama 2, xv, 29, 53, 98, 168, 273
+llama-cpp-python library, 195
+LLaVA, 277
+LLM-as-a-judge, 257
+LLMs (large language models), 3-35
+code examples and exercises, xvi
+embeddings, 37, 57-70
+recommendation systems, 67-70
+text embeddings, 61-63
+token embeddings, 57-61
+word embeddings, 63-67
+fine-tuning generative models, 355-389
+evaluation, 373-377
+preference tuning, 356, 378-389
+supervised fine-tuning, 356-373
+training steps, 355-357
+fine-tuning representation models, 323-354
+few-shot classification, 333-339
+masked language modeling, 340-345
+named-entity recognition, 345-353
+supervised classification, 323-332
+generating text, 32-34
+generative models, 20-22
+hardware and software requirements, xiv, 28
+high-level view, 38
+history of Language AI, 5-24
+interfacing with, 29-32
+closed-source models, 29
+open models, 30-32
+intuition-first philosophy, xi
+moving definition of, 25
+multimodality, 259-286
+embedding models, 263-272
+text generation models, 273-286
+Vision Transformer, 260-262
+prompt engineering, 167-198
+chain prompting, 182-184
+in-context learning, 180-182
+instruction-based prompting, 175-177
+output verification, 191-197
+potential complexity of prompts,
+177-179
+prompt components, 173-175
+reasoning with generative models,
+184-191
+text generation models, 167-172
+representation models, 18-20
+responsible development and usage of, 28
+retrieval-augmented generation, 227,
+249-257
+agentic RAG, 256
+converting search system to, 250
+evaluating results, 257
+grounded generation, 252
+multi-hop RAG, 256
+multi-query RAG, 255
+query rewriting, 255
+query routing, 256
+with local models, 252, 254
+semantic search, 225-249
+dense retrieval, 226, 228-240
+reranking, 226, 240-244
+retrieval evaluation metrics, 244-249
+text classification, 111-135
+with generative models, 127-135
+movie reviews, 112, 113
+Index 
+| 
+397

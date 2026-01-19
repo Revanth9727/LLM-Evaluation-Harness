@@ -1,0 +1,41 @@
+• Numbers and digits.
+•
+• Special tokens. These are unique tokens that have a role other than representing
+•
+text. They include tokens that indicate the beginning of the text, or the end of the
+text (which is the way the model signals to the system that it has completed this
+generation), or other functions as we’ll see.
+Let’s go from older to newer tokenizers to see how they tokenize this text and what
+that might say about the language model. We’ll tokenize the text, and then print each
+token with a color background color using this function:
+colors_list = [
+    '102;194;165', '252;141;98', '141;160;203', 
+    '231;138;195', '166;216;84', '255;217;47'
+]
+def show_tokens(sentence, tokenizer_name):
+    tokenizer = AutoTokenizer.from_pretrained(tokenizer_name)
+    token_ids = tokenizer(sentence).input_ids
+    for idx, t in enumerate(token_ids):
+        print(
+            f'\x1b[0;30;48;2;{colors_list[idx % len(colors_list)]}m' + 
+            tokenizer.decode(t) + 
+            '\x1b[0m', 
+            end=' '
+        )
+BERT base model (uncased) (2018)
+Link to the model on the HuggingFace model hub
+Tokenization method: WordPiece, introduced in “Japanese and Korean voice search”:
+Vocabulary size: 30,522
+Special tokens:
+unk_token [UNK]
+An unknown token that the tokenizer has no specific encoding for.
+sep_token [SEP]
+A separator that enables certain tasks that require giving the model two texts (in
+these cases, the model is called a cross-encoder). One example is reranking, as
+we’ll see in Chapter 8.
+pad_token [PAD]
+A padding token used to pad unused positions in the model’s input (as the model
+expects a certain length of input, its context-size).
+LLM Tokenization 
+| 
+47

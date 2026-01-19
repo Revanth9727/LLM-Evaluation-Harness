@@ -1,0 +1,24 @@
+More Efficient Attention
+The area that gets the most focus from the research community is the attention layer
+of the Transformer. This is because the attention calculation is the most computation‐
+ally expensive part of the process.
+Local/sparse attention
+As Transformers started getting larger, ideas like sparse attention (“Generating long
+sequences with sparse transformers”) and sliding window attention (“Longformer:
+The long-document transformer”) provided improvements for the efficiency of the
+attention calculation. Sparse attention limits the context of previous tokens that the
+model can attend to, as we can see in Figure 3-22.
+Figure 3-22. Local attention boosts performance by only paying attention to a small
+number of previous positions.
+One model that incorporates such a mechanism is GPT-3. But it does not use that
+for all the Transformer blocks—the quality of the generation would vastly degrade
+if the model could only see a small number of previous tokens. The GPT-3 architec‐
+ture interweaved full-attention and efficient-attention Transformer blocks. So the
+Transformer blocks alternate between full attention (e.g., blocks 1 and 3) and sparse
+attention (e.g., blocks 2 and 4).
+To demonstrate different kinds of attention, review Figure 3-23, which shows how
+different attention mechanisms work. Each figure shows which previous tokens (light
+blue) can be attended to when processing the current token (in dark blue).
+96 
+| 
+Chapter 3: Looking Inside Large Language Models

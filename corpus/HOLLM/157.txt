@@ -1,0 +1,40 @@
+# Extract predictions
+y_pred = [int(pred) for pred in predictions]
+# Evaluate performance
+evaluate_performance(data["test"]["label"], y_pred)
+                precision    recall  f1-score   support
+Negative Review       0.87      0.97      0.92       533
+Positive Review       0.96      0.86      0.91       533
+       accuracy                           0.91      1066
+      macro avg       0.92      0.91      0.91      1066
+   weighted avg       0.92      0.91      0.91      1066
+The F1 score of 0.91 already gives a glimpse into the performance of the model that
+brought generative AI to the masses. However, since we do not know what data the
+model was trained on, we cannot easily use these kinds of metrics for evaluating the
+model. For all we know, it might have actually been trained on our dataset!
+In Chapter 12, we will explore how we can evaluate both open source and closed
+source models on more generalized tasks.
+Summary
+In this chapter, we discussed many different techniques for performing a wide variety
+of classification tasks, from fine-tuning your entire model to no tuning at all! Classi‐
+fying textual data is not as straightforward as it may seem on the surface and there is
+an incredible amount of creative techniques for doing so.
+In this chapter, we explored text classification using both generative and representa‐
+tion language models. Our goal was to assign a label or class to input text for the
+classification of a review’s sentiment.
+We explored two types of representation models, a task-specific model and an
+embedding model. The task-specific model was pretrained on a large dataset specif‐
+ically for sentiment analysis and showed us that pretrained models are a great
+technique for classifying documents. The embedding model was used to generate
+multipurpose embeddings that we used as the input to train a classifier.
+Similarly, we explored two types of generative models, an open source encoder-
+decoder model (Flan-T5) and a closed source decoder-only model (GPT-3.5). We
+used these generative models in text classification without requiring specific (addi‐
+tional) training on domain data or labeled datasets.
+In the next chapter, we will continue with classification but focus instead on unsuper‐
+vised classification. What can we do if we have textual data without any labels? What
+information can we extract? We will focus on clustering our data as well as naming
+the clusters with topic modeling techniques.
+Summary 
+| 
+135

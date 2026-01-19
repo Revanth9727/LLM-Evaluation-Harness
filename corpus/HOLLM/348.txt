@@ -1,0 +1,40 @@
+1 Jacob Devlin et al. “BERT: Pre-training of deep bidirectional transformers for language understanding.” arXiv
+preprint arXiv:1810.04805 (2018).
+The first step in our classification task is to select the underlying model we want to
+use. We use "bert-base-cased", which was pretrained on the English Wikipedia as
+well as a large dataset consisting of unpublished books.1
+We define the number of labels that we want to predict beforehand. This is necessary
+to create the feedforward neural network that is applied on top of our pretrained
+model:
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+# Load model and tokenizer
+model_id = "bert-base-cased"
+model = AutoModelForSequenceClassification.from_pretrained(
+    model_id, num_labels=2
+)
+tokenizer = AutoTokenizer.from_pretrained(model_id)
+Next, we will tokenize our data:
+from transformers import DataCollatorWithPadding
+# Pad to the longest sequence in the batch
+data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
+def preprocess_function(examples):
+   """Tokenize input data"""
+   return tokenizer(examples["text"], truncation=True)
+# Tokenize train/test data
+tokenized_train = train_data.map(preprocess_function, batched=True)
+tokenized_test = test_data.map(preprocess_function, batched=True)
+Before creating the Trainer, we will want to prepare a special DataCollator. A
+DataCollator is a class that helps us build batches of data but also allows us to apply
+data augmentation.
+During this process of tokenization, and as shown in Chapter 9, we will add padding
+to the input text to create equally sized representations. We use DataCollatorWith
+Padding for that.
+Of course, an example would not be complete without defining some metrics:
+import numpy as np
+from datasets import load_metric
+def compute_metrics(eval_pred):
+   """Calculate F1 score"""
+   logits, labels = eval_pred
+326 
+| 
+Chapter 11: Fine-Tuning Representation Models for Classification

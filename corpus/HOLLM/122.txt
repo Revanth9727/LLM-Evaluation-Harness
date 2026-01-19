@@ -1,0 +1,20 @@
+As model sizes grow, however, this optimization can be too punishing and we can
+afford to use a little more memory to improve the quality of the models. This is where
+grouped-query attention comes in. Instead of cutting the number of keys and values
+matrices to one of each, it allows us to use more (but less than the number of heads).
+Figure 3-28 shows these groups and how each group of attention heads shares keys
+and values matrices.
+Figure 3-28. Grouped-query attention sacrifices a little bit of the efficiency of multi-
+query attention in return for a large improvement in quality by allowing multiple groups
+of shared key/value matrices; each group has its respective set of attention heads.
+Flash Attention
+Flash Attention is a popular method and implementation that provides significant
+speedups for both training and inference of Transformer LLMs on GPUs. It speeds up
+the attention calculation by optimizing what values are loaded and moved between a
+GPU’s shared memory (SRAM) and high bandwidth memory (HBM). It is described
+in detail in the papers “FlashAttention: Fast and memory-efficient exact attention
+with IO-awareness” and the subsequent “FlashAttention-2: Faster attention with bet‐
+ter parallelism and work partitioning”.
+100 
+| 
+Chapter 3: Looking Inside Large Language Models

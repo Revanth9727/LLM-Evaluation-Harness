@@ -1,0 +1,60 @@
+12 Dan Hendrycks et al. “Measuring massive multitask language understanding.” arXiv preprint arXiv:2009.03300
+(2020).
+13 Alex Wang et al. “GLUE: A multi-task benchmark and analysis platform for natural language understanding.”
+arXiv preprint arXiv:1804.07461 (2018).
+14 Stephanie Lin, Jacob Hilton, and Owain Evans. “TruthfulQA: Measuring how models mimic human false‐
+hoods.” arXiv preprint arXiv:2109.07958 (2021).
+15 Karl Cobbe et al. “Training verifiers to solve math word problems.” arXiv preprint arXiv:2110.14168 (2021).
+16 Roman Zellers et al. “HellaSwag: Can a machine really finish your sentence?” arXiv preprint arXiv:1905.07830
+(2019).
+17 Mark Chen et al. “Evaluating large language models trained on code.” arXiv preprint arXiv:2107.03374 (2021).
+information about basic language understanding but also complex analytical answer‐
+ing, like math problems.
+Aside from natural language tasks, some models specialize in other domains, like
+programming. These models tend to be evaluated on different benchmarks, such
+as HumanEval,17 which consists of challenging programming tasks for the model to
+solve. Table 12-1 gives an overview of common public benchmarks for generative
+models.
+Table 12-1. Common public benchmarks for generative models
+Benchmark
+Description
+Resources
+MMLU
+The Massive Multitask Language Understanding (MMLU) benchmark tests the model on 57
+different tasks, including classification, question answering, and sentiment analysis.
+https://oreil.ly/
+nrG_g
+GLUE
+The General Language Understanding Evaluation (GLUE) benchmark consists of language
+understanding tasks covering a wide degree of difficulty.
+https://oreil.ly/
+LV_fb
+TruthfulQA
+TruthfulQA measures the truthfulness of a model’s generated text.
+https://oreil.ly/
+i2Brj
+GSM8k
+The GSM8k dataset contains grade-school math word problems. It is linguistically diverse
+and created by human problem writers.
+https://oreil.ly/
+oOBXY
+HellaSwag
+HellaSwag is a challenge dataset for evaluating common-sense inference. It consists of
+multiple-choice questions that the model needs to answer. It can select one of four answer
+choices for each question.
+https://oreil.ly/
+aDvBP
+HumanEval
+The HumanEval benchmark is used for evaluating generated code based on 164
+programming problems.
+https://oreil.ly/
+dlJIX
+Benchmarks are a great way to get a basic understanding on how well a model
+performs on a wide variety of tasks. A downside to public benchmarks is that models
+can be overfitted to these benchmarks to generate the best responses. Moreover,
+these are still broad benchmarks and might not cover very specific use cases. Lastly,
+another downside is that some benchmarks require strong GPUs with a long running
+time (over hours) to compute, which makes iteration difficult.
+Evaluating Generative Models 
+| 
+375

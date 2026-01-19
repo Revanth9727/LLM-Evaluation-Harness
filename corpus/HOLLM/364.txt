@@ -1,0 +1,29 @@
+Figure 11-16. The three-step approach illustrated for specific use cases.
+In this example, we will demonstrate how to apply step 2 and continue pretraining an
+already pretrained BERT model. We use the same data that we started with, namely
+the Rotten Tomatoes reviews.
+We start by loading the "bert-base-cased" model we have used thus far and prepare
+it for MLM:
+from transformers import AutoTokenizer, AutoModelForMaskedLM
+# Load model for masked language modeling (MLM)
+model = AutoModelForMaskedLM.from_pretrained("bert-base-cased")
+tokenizer = AutoTokenizer.from_pretrained("bert-base-cased")
+We need to tokenize the raw sentences. We will also remove the labels since this is not
+a supervised task:
+def preprocess_function(examples):
+   return tokenizer(examples["text"], truncation=True)
+# Tokenize data
+tokenized_train = train_data.map(preprocess_function, batched=True)
+tokenized_train = tokenized_train.remove_columns("label")
+tokenized_test = test_data.map(preprocess_function, batched=True)
+tokenized_test = tokenized_test.remove_columns("label")
+Previously, we used DataCollatorWithPadding, which dynamically pads the input it
+receives.
+Instead, we will have a DataCollator that will perform the masking of tokens for
+us. There are two methods that are generally used for this: token and whole-word
+masking. With token masking, we randomly mask 15% of the tokens in a sentence.
+It might happen that part of a word will be masked. To enable masking of the entire
+word, we could apply whole-word masking, as illustrated in Figure 11-17.
+342 
+| 
+Chapter 11: Fine-Tuning Representation Models for Classification

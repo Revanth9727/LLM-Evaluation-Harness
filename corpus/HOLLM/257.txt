@@ -1,0 +1,29 @@
+Tracking the information of whether the user clicked on a result (and were satisfied
+by it) can improve future versions of the search system.
+Another caveat of dense retrieval is when a user wants to find an exact match for a
+specific phrase. That’s a case that’s perfect for keyword matching. That’s one reason
+why hybrid search, which includes both semantic search and keyword search, is
+advised instead of relying solely on dense retrieval.
+Dense retrieval systems also find it challenging to work properly in domains other
+than the ones that they were trained on. So, for example, if you train a retrieval model
+on internet and Wikipedia data, and then deploy it on legal texts (without having
+enough legal data as part of the training set), the model will not work as well in that
+legal domain.
+The final thing we’d like to point out is that this is a case where each sentence
+contained a piece of information, and we showed queries that specifically ask for
+that information. What about questions whose answers span multiple sentences? This
+highlights one of the important design parameters of dense retrieval systems: what is
+the best way to chunk long texts? And why do we need to chunk them in the first
+place?
+Chunking long texts
+One limitation of Transformer language models is that they are limited in context
+sizes, meaning we cannot feed them very long texts that go above the number of
+words or tokens that the model supports. So how do we embed long texts?
+There are several possible ways, and two possible approaches shown in Figure 8-7
+include indexing one vector per document and indexing multiple vectors per
+document.
+Figure 8-7. It’s possible to create one vector representing an entire document, but it’s bet‐
+ter for longer documents to be split into smaller chunks that get their own embeddings.
+Semantic Search with Language Models 
+| 
+235

@@ -1,0 +1,11 @@
+It’s not enough to only alter one Transformer block, however, so these components
+are part of every block in the model, as Figure 12-9 shows.
+Figure 12-9. Adapter components span the various Transformer blocks in the model.
+Seeing all the adapter’s components across the model like this enables us to see indi‐
+vidual adapters as shown in Figure 12-10, which is a collection of these components
+spanning all the blocks of the model. Adapter 1 can be a specialist in, say, medical text
+classification, while Adapter 2 can specialize in named-entity recognition (NER). You
+can download specialized adapters from https://oreil.ly/XraXg.
+360 
+| 
+Chapter 12: Fine-Tuning Generation Models

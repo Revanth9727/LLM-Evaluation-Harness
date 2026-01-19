@@ -1,0 +1,23 @@
+We get a similarity score of 0.33, which is difficult to interpret considering we don’t
+know what the model considers a low versus a high similarity score. Instead, let’s
+extend the example with more images and captions as illustrated in Figure 9-14.
+Figure 9-14. The similarity matrix between three images and three captions.
+It seems that a score of 0.33 is indeed high considering the similarities with other
+images are quite a bit lower.
+Using sentence-transformers to Load CLIP
+sentence-transformers implements a few CLIP-based models that make it much
+easier to create embeddings. It only takes a few lines of code:
+from sentence_transformers import SentenceTransformer, util
+# Load SBERT-compatible CLIP model
+model = SentenceTransformer("clip-ViT-B-32")
+# Encode the images
+image_embeddings = model.encode(images)
+# Encode the captions
+text_embeddings = model.encode(captions)
+#Compute cosine similarities
+sim_matrix = util.cos_sim(
+    image_embeddings, text_embeddings
+)
+272 
+| 
+Chapter 9: Multimodal Large Language Models

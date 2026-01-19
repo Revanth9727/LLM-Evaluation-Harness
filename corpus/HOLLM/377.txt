@@ -1,0 +1,23 @@
+CHAPTER 12
+Fine-Tuning Generation Models
+In this chapter, we will take a pretrained text generation model and go over the pro‐
+cess of fine-tuning it. This fine-tuning step is key in producing high-quality models
+and an important tool in our toolbox to adapt a model to a specific desired behavior.
+Fine-tuning allows us to adapt a model to a specific dataset or domain.
+Throughout this chapter, we will guide you among the two most common methods
+for fine-tuning text generation models, supervised fine-tuning and preference tuning.
+We will explore the transformative potential of fine-tuning pretrained text generation
+models to make them more effective tools for your application.
+The Three LLM Training Steps: Pretraining, Supervised
+Fine-Tuning, and Preference Tuning
+There are three common steps that lead to creating a high-quality LLM:
+1. Language modeling
+The first step in creating a high-quality LLM is to pretrain it on one or more
+massive text datasets (Figure 12-1). During training, it attempts to predict the
+next token to accurately learn linguistic and semantic representations found in
+the text. As we saw before in Chapters 3 and 11, this is called language modeling
+and is a self-supervised method.
+This produces a base model, also commonly referred to as a pretrained or founda‐
+tion model. Base models are a key artifact of the training process but are harder
+for the end user to deal with. This is why the next step is important.
+355

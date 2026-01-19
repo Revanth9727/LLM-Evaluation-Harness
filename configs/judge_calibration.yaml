@@ -1,0 +1,20 @@
+# Judge calibration config
+run_name: judge_calibration
+dataset_path: data/judge_gold.jsonl
+
+judge:
+  provider: ${JUDGE_PROVIDER}
+  model: ${JUDGE_MODEL}
+  system_prompt_path: system_prompts/judge.txt
+  rubric_path: rubrics/judge_prompt.txt
+  order_randomization_trials: 3
+  two_pass_on_uncertain: true
+
+thresholds:
+  min_agreement_pct: 80
+  max_flip_rate_pct: 15
+  max_order_bias_pct: 10
+
+artifacts:
+  root_dir: artifacts
+  write_calibration_report: true

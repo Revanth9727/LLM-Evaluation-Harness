@@ -1,0 +1,39 @@
+# Calculate results
+results = evaluation.run(model)
+{'Banking77Classification': {'mteb_version': '1.1.2',
+ 'dataset_revision': '0fd18e25b25c072e09e0d92ab615fda904d66300',
+ 'mteb_dataset_name': 'Banking77Classification',
+ 'test': {'accuracy': 0.4926298701298701,
+ 'f1': 0.49083335791288685,
+ 'accuracy_stderr': 0.010217785746224237,
+ 'f1_stderr': 0.010265814957074591,
+ 'main_score': 0.4926298701298701,
+ 'evaluation_time': 31.83}}}
+This gives us several evaluation metrics for this specific task that we can use to
+explore its performance.
+The great thing about this evaluation benchmark is not only the diversity of the tasks
+and languages but that even the evaluation time is saved. Although many embedding
+models exist, we typically want those that are both accurate and have low latency. The
+tasks for which embedding models are used, like semantic search, often benefit from
+and require fast inference.
+Since testing your model on the entire MTEB can take a couple of hours depending
+on your GPU, we will use the STSB benchmark throughout this chapter instead for
+illustration purposes.
+Whenever you are done training and evaluating your model, it is
+important to restart the notebook. This will clear your VRAM up
+for the next training examples throughout this chapter. By restart‐
+ing the notebook, we can be sure that all VRAM is cleared.
+Loss Functions
+We trained our model using softmax loss to illustrate how one of the first sentence-
+transformers models was trained. However, not only is there a large variety of loss
+functions to choose from, but softmax loss is generally not advised as there are more
+performant losses.
+Instead of going through every single loss function out there, there are two loss
+functions that are typically used and seem to perform generally well, namely:
+• Cosine similarity
+•
+• Multiple negatives ranking (MNR) loss
+•
+Creating an Embedding Model 
+| 
+301

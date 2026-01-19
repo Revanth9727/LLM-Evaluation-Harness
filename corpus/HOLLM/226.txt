@@ -1,0 +1,32 @@
+The template for Phi-3 is comprised of four main components:
+• <s> to indicate when the prompt starts
+•
+• <|user|> to indicate the start of the user’s prompt
+•
+• <|assistant|> to indicate the start of the model’s output
+•
+• <|end|> to indicate the end of either the prompt or the model’s output
+•
+These are further illustrated in Figure 7-5 with an example.
+Figure 7-5. The prompt template Phi-3 expects.
+To generate our simple chain, we first need to create a prompt template that
+adheres to Phi-3’s expected template. Using this template, the model takes in a
+system_prompt, which generally describes what we expect from the LLM. Then, we
+can use the input_prompt to ask the LLM specific questions:
+from langchain import PromptTemplate
+# Create a prompt template with the "input_prompt" variable
+template = """<s><|user|>
+{input_prompt}<|end|>
+<|assistant|>"""
+prompt = PromptTemplate(
+    template=template,
+    input_variables=["input_prompt"]
+)
+To create our first chain, we can use both the prompt that we created and the LLM
+and chain them together:
+basic_chain = prompt | llm
+To use the chain, we need to use the invoke function and make sure that we use the
+input_prompt to insert our question:
+204 
+| 
+Chapter 7: Advanced Text Generation Techniques and Tools

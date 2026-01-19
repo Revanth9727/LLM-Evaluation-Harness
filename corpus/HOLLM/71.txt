@@ -1,0 +1,42 @@
+• Both BERT tokenizers wrap the input within a starting [CLS] token and a closing
+•
+[SEP] token. [CLS] and [SEP] are utility tokens used to wrap the input text
+and they serve their own purposes. [CLS] stands for classification as it’s a token
+used at times for sentence classification. [SEP] stands for separator, as it’s used to
+separate sentences in some applications that require passing two sentences to a
+model (For example, in Chapter 8, we will use a [SEP] token to separate the text
+of the query and a candidate result.)
+GPT-2 (2019)
+Link to the model on the HuggingFace model hub
+Tokenization method: Byte pair encoding (BPE), introduced in “Neural machine
+translation of rare words with subword units”.
+Vocabulary size: 50,257
+Special tokens: <|endoftext|>
+English and CAP ITAL IZ ATION
+     
+show _ t ok ens False None el if == >= else : two tabs :" " Three tabs : " "
+12 . 0 * 50 = 600
+With the GPT-2 tokenizer, we notice the following:
+• The newline breaks are represented in the tokenizer.
+•
+• Capitalization is preserved, and the word “CAPITALIZATION” is represented in
+•
+four tokens.
+• The 🎵鸟 characters are now represented by multiple tokens each. While we see
+•
+these tokens printed as the  character, they actually stand for different tokens.
+For example, the 🎵 emoji is broken down into the tokens with token IDs 8582,
+236, and 113. The tokenizer is successful in reconstructing the original character
+from these tokens. We can see that by printing tokenizer.decode([8582, 236,
+113]), which prints out 🎵.
+• The two tabs are represented as two tokens (token number 197 in that vocabu‐
+•
+lary) and the four spaces are represented as three tokens (number 220) with the
+final space being a part of the token for the closing quote character.
+• The two tabs are represented as two tokens (token number 197 in that vocabu‐
+•
+lary) and the four spaces are represented as three tokens (number 220) with the
+final space being a part of the token for the closing quote character.
+LLM Tokenization 
+| 
+49

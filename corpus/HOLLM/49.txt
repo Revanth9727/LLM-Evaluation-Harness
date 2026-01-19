@@ -1,0 +1,37 @@
+Large Language Model Applications: What Makes Them
+So Useful?
+The nature of LLMs makes them suitable for a wide range of tasks. With text genera‐
+tion and prompting, it almost seems as if your imagination is the limit. To illustrate,
+let’s explore some common tasks and techniques:
+Detecting whether a review left by a customer is positive or negative
+This is (supervised) classification and can be handled with both encoder- and
+decoder-only models either with pretrained models (see Chapter 4) or by fine-
+tuning models (see Chapter 11).
+Developing a system for finding common topics in ticket issues
+This is (unsupervised) classification for which we have no predefined labels.
+We can leverage encoder-only models to perform the classification itself and
+decoder-only models for labeling the topics (see Chapter 5).
+Building a system for retrieval and inspection of relevant documents
+A major component of language model systems is their ability to add external
+resources of information. Using semantic search, we can build systems that allow
+us to easily access and find information for an LLM to use (see Chapter 8).
+Improve your system by creating or fine-tuning a custom embedding model (see
+Chapter 12).
+Constructing an LLM chatbot that can leverage external resources, such as tools and
+documents
+This is a combination of techniques that demonstrates how the true power of
+LLMs can be found through additional components. Methods such as prompt
+engineering (see Chapter 6), retrieval-augmented generation (see Chapter 8), and
+fine-tuning an LLM (see Chapter 12) are all pieces of the LLM puzzle.
+Constructing an LLM capable of writing recipes based on a picture showing the products
+in your fridge
+This is a multimodal task where the LLM takes in an image and reasons about
+what it sees (see Chapter 9). LLMs are being adapted to other modalities, such as
+Vision, which opens a wide variety of interesting use cases.
+LLM applications are incredibly satisfying to create since they are partially bounded
+by the things you can imagine. As these models grow more accurate, using them in
+practice for creative use cases such as role-playing and writing children’s books simply
+becomes more and more fun.
+Large Language Model Applications: What Makes Them So Useful? 
+| 
+27

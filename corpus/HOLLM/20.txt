@@ -1,0 +1,39 @@
+love the kangaroo! Big thanks to Kate Dullea for being so patient with us having to go
+through hundreds of illustrations many times over. The timely early releases by Clare
+Laylock helped us see our work grow which was a big motivator, thank you. Thanks
+to Ashley Stussy and Charles Roumeliotis for the development in the final stages of
+the book and everyone else at O’Reilly who contributed.
+Thanks to our amazing crew of technical reviewers. Invaluable feedback was given
+by Harm Buisman, Emir Muñoz, Luba Elliott, Guarav Chawla, Rafael V. Pierre, Luba
+Elliott, Tarun Narayanan, Nikhil Buduma, and Patrick Harrison.
+Jay
+I’d love to extend my deepest gratitude to my family for their unwavering support
+and inspiration. I would like to specifically acknowledge my parents, Abdullah and
+Mishael, and my aunts, Hussah and Aljoharah.
+I’m grateful to the friends, colleagues, and collaborators who helped me understand
+and explain the tricky concepts covered in this book as well as to the Cohere folks
+who cultivate a supporting learning and sharing environment. Thank you to Adrien
+Morisot, Aidan Gomez, Andy Toulis, Anfal Alatawi, Arash Ahmadian, Bharat Venki‐
+tesh, Edward Grefenstette, Ivan Zhang, Joao Araújo, Luis Serrano, Matthias Gallé,
+Meor Amer, Nick Frosst, Patrick Lewis, Phil Blunsom, Sara Hooker, and Suhas Pai.
+I couldn’t conceive of this project getting accomplished to the level it has without
+the extraordinary talent and tireless effort of Maarten, my coauthor. Your ability
+to repeatedly nail the technical details (from the pinned version of the nth import
+dependency to the latest in LLM quantization) while weaving some of the world’s best
+visual narratives is absolutely breathtaking.
+Lastly, a tip of the hat to the incredible coffee shop scene of Riyadh, Saudi Arabia for
+supplying me with caffeine and a good place to focus from dawn until midnight. It’s
+where I read most of these papers and worked out my understanding (looking at you,
+Elixir Bunn).
+Maarten
+I want to begin by expressing my heartfelt appreciation to my coauthor, Jay. Your
+insights have made this not only possible but incredibly fulfilling. This journey has
+been nothing short of amazing and collaborating with you has been an absolute joy.
+I want to sincerely thank my wonderful colleagues at IKNL for their continued
+support throughout this journey. A special mention goes to Harm—our Monday
+morning coffee breaks discussing this book were a constant source of encouragement.
+Thank you to my family and friends for their unwavering support, and to my parents
+in particular. Pap, despite the challenges you faced, you always found a way to be
+xviii 
+| 
+Preface

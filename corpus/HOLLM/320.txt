@@ -1,0 +1,42 @@
+By default, all layers of an LLM in sentence-transformers are
+trainable. Although it is possible to freeze certain layers, it is
+generally not advised since the performance is often better when
+unfreezing all layers.
+Next, we will need to define a loss function over which we will optimize the model.
+As mentioned at the beginning of this section, one of the first instances of sentence-
+transformers uses softmax loss. For illustrative purposes, we are going to be using
+that for now, but we will go into more performant losses later on:
+from sentence_transformers import losses
+# Define the loss function. In softmax loss, we will also need to explicitly 
+set the number of labels.
+train_loss = losses.SoftmaxLoss(
+    model=embedding_model,
+    sentence_embedding_dimension=embedding_model.get_sentence_embedding_dimen
+sion(),
+    num_labels=3
+)
+Before we train our model, we define an evaluator to evaluate the model’s perfor‐
+mance during training, which also determines the best model to save.
+We can perform evaluation of the performance of our model using the Semantic
+Textual Similarity Benchmark (STSB). It is a collection of human-labeled sentence
+pairs, with similarity scores between 1 and 5.
+We use this dataset to explore how well our model scores on this semantic similarity
+task. Moreover, we process the STSB data to make sure all values are between 0 and 1:
+from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
+# Create an embedding similarity evaluator for STSB
+val_sts = load_dataset("glue", "stsb", split="validation")
+evaluator = EmbeddingSimilarityEvaluator(
+    sentences1=val_sts["sentence1"],
+    sentences2=val_sts["sentence2"],
+    scores=[score/5 for score in val_sts["label"]],
+    main_similarity="cosine",
+)
+Now that we have our evaluator, we create SentenceTransformerTrainingArgu
+ments, similar to training with Hugging Face Transformers (as we will explore in
+the next chapter):
+from sentence_transformers.training_args import SentenceTransformerTrainingArgu
+ments
+# Define the training arguments
+298 
+| 
+Chapter 10: Creating Text Embedding Models

@@ -1,0 +1,21 @@
+the dimensionality-reduced embeddings is applied to cluster the input text. Manually
+inspecting the clusters helped us understand which documents they contained and
+how to interpret these clusters.
+To transition away from this manual inspection, we explored how BERTopic extends
+this text clustering pipeline with a method for automatically representing the clusters.
+This methodology is often referred to as topic modeling, which attempts to uncover
+themes within large amounts of documents. BERTopic generates these topic repre‐
+sentations through a bag-of-words approach enhanced with c-TF-IDF, which weighs
+words based on their cluster relevance and frequency across all clusters.
+A major benefit of BERTopic is its modular nature. In BERTopic, you can choose
+any model in the pipeline, which allows for additional representations of topics that
+create multiple perspectives of the same topic. We explored maximal marginal rele‐
+vance and KeyBERTInspired as methodologies to fine-tune the topic representations
+generated with c-TF-IDF. Additionally, we used the same generative LLMs as in the
+previous chapter (Flan-T5 and GPT-3.5) to further improve the interpretability of
+topics by generating highly interpretable labels.
+In the next chapter, we shift focus and explore a common method for improving the
+output of generative models, namely prompt engineering.
+Summary 
+| 
+165

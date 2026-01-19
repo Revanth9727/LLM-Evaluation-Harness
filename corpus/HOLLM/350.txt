@@ -1,0 +1,40 @@
+We get an F1 score of 0.85, which is quite a bit higher than the task-specific model
+we used in Chapter 4, which resulted in an F1 score of 0.80. It shows that fine-tuning
+a model yourself can be more advantageous than using a pretrained model. It only
+costs us a couple of minutes to train.
+Freezing Layers
+To further showcase the importance of training the entire network, the next example
+will demonstrate how you can use Hugging Face Transformers to freeze certain layers
+of your network.
+We will freeze the main BERT model and allow only updates to pass through the
+classification head. This will be a great comparison as we will keep everything the
+same, except for freezing specific layers.
+To start, let’s reinitialize our model so we can start from scratch:
+# Load model and tokenizer
+model = AutoModelForSequenceClassification.from_pretrained(
+    model_id, num_labels=2
+)
+tokenizer = AutoTokenizer.from_pretrained(model_id)
+Our pretrained BERT model contains a lot of layers that we can potentially freeze.
+Inspecting these layers gives insight into the structure of the network and what we
+might want to freeze:
+# Print layer names
+for name, param in model.named_parameters():
+    print(name)
+bert.embeddings.word_embeddings.weight
+bert.embeddings.position_embeddings.weight
+bert.embeddings.token_type_embeddings.weight
+bert.embeddings.LayerNorm.weight
+bert.embeddings.LayerNorm.bias
+bert.encoder.layer.0.attention.self.query.weight
+bert.encoder.layer.0.attention.self.query.bias
+...
+bert.encoder.layer.11.output.LayerNorm.weight
+bert.encoder.layer.11.output.LayerNorm.bias
+bert.pooler.dense.weight
+bert.pooler.dense.bias
+classifier.weight
+classifier.bias
+328 
+| 
+Chapter 11: Fine-Tuning Representation Models for Classification

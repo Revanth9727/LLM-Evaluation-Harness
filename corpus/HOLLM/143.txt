@@ -1,0 +1,21 @@
+There might be times when you want to fine-tune the model yourself if you have
+sufficient computing available (see Chapter 11). However, not everyone has access to
+extensive computing. This is where general-purpose embedding models come in.
+Supervised Classification
+Unlike the previous example, we can perform part of the training process ourselves
+by approaching it from a more classical perspective. Instead of directly using the rep‐
+resentation model for classification, we will use an embedding model for generating
+features. Those features can then be fed into a classifier, thereby creating a two-step
+approach as shown in Figure 4-10.
+Figure 4-10. The feature extraction step and classification steps are separated.
+A major benefit of this separation is that we do not need to fine-tune our embedding
+model, which can be costly. In contrast, we can train a classifier, like a logistic
+regression, on the CPU instead.
+In the first step, we convert our textual input to embeddings using the embedding
+model as shown in Figure 4-11. Note that this model is similarly kept frozen and is
+not updated during the training process.
+Figure 4-11. In step 1, we use the embedding model to extract the features and convert
+the input text to embeddings.
+Classification Tasks That Leverage Embeddings 
+| 
+121

@@ -1,0 +1,39 @@
+This sentence is now encoded in this one vector with a dimension of 768 numerical
+values. In Part II of this book, once we start looking at applications, we’ll start to
+see the immense usefulness of these text embeddings vectors in powering everything
+from categorization to semantic search to RAG.
+Word Embeddings Beyond LLMs
+Embeddings are useful even outside of text and language generation. Embeddings,
+or assigning meaningful vector representations to objects, turns out to be useful in
+many domains, including recommender engines and robotics. In this section, we’ll
+look at how to use pretrained word2vec embeddings and touch on how the method
+creates word embeddings. Seeing how word2vec is trained will prime you to learn
+about contrastive training in Chapter 10. Then in the following section, we’ll see how
+those embeddings can be used for recommendation systems.
+Using pretrained Word Embeddings
+Let’s look at how we can download pretrained word embeddings (like word2vec or
+GloVe) using the Gensim library:
+import gensim.downloader as api
+# Download embeddings (66MB, glove, trained on wikipedia, vector size: 50)
+# Other options include "word2vec-google-news-300"
+# More options at https://github.com/RaRe-Technologies/gensim-data
+model = api.load("glove-wiki-gigaword-50")
+Here, we’ve downloaded the embeddings of a large number of words trained on
+Wikipedia. We can then explore the embedding space by seeing the nearest neighbors
+of a specific word, “king” for example:
+model.most_similar([model['king']], topn=11)
+This outputs:
+[('king', 1.0000001192092896),
+('prince', 0.8236179351806641),
+('queen', 0.7839043140411377),
+('ii', 0.7746230363845825),
+('emperor', 0.7736247777938843),
+('son', 0.766719400882721),
+('uncle', 0.7627150416374207),
+('kingdom', 0.7542161345481873),
+('throne', 0.7539914846420288),
+('brother', 0.7492411136627197),
+('ruler', 0.7434253692626953)]
+Word Embeddings Beyond LLMs 
+| 
+63

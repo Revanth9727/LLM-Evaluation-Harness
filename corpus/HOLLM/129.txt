@@ -1,0 +1,20 @@
+• A Transformer attention layer conducts several attention operations in parallel,
+•
+each occurring inside an attention head, and their outputs are aggregated to make
+up the output of the attention layer.
+• Attention can be accelerated via sharing the keys and values matrices between all
+•
+heads, or groups of heads (grouped-query attention).
+• Methods like Flash Attention speed up the attention calculation by optimizing
+•
+how the operation is done on the different memory systems of a GPU.
+Transformers continue to see new developments and proposed tweaks to improve
+them in different scenarios, including language models and other domains and
+applications.
+In Part II of the book, we will cover some of these practical applications of LLMs.
+In Chapter 4, we start with text classification, a common task in Language AI. This
+next chapter serves as an introduction to applying both generative and representation
+models.
+Summary 
+| 
+107

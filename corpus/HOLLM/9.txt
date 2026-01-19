@@ -1,0 +1,43 @@
+Model Selection                                                                                                            115
+Using a Task-Specific Model                                                                                      116
+Classification Tasks That Leverage Embeddings                                                     120
+Supervised Classification                                                                                        121
+What If We Do Not Have Labeled Data?                                                              123
+Text Classification with Generative Models                                                             127
+Using the Text-to-Text Transfer Transformer                                                      128
+ChatGPT for Classification                                                                                     132
+Summary                                                                                                                       135
+5. Text Clustering and Topic Modeling. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  137
+ArXiv’s Articles: Computation and Language                                                         138
+A Common Pipeline for Text Clustering                                                                 139
+Embedding Documents                                                                                          139
+Reducing the Dimensionality of Embeddings                                                     140
+Cluster the Reduced Embeddings                                                                          142
+Inspecting the Clusters                                                                                            144
+From Text Clustering to Topic Modeling                                                                 146
+BERTopic: A Modular Topic Modeling Framework                                           148
+Adding a Special Lego Block                                                                                  156
+The Text Generation Lego Block                                                                           160
+Summary                                                                                                                       164
+6. Prompt Engineering. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  167
+Using Text Generation Models                                                                                  167
+Choosing a Text Generation Model                                                                       167
+Loading a Text Generation Model                                                                         168
+Controlling Model Output                                                                                     170
+Intro to Prompt Engineering                                                                                     173
+The Basic Ingredients of a Prompt                                                                        173
+Instruction-Based Prompting                                                                                175
+Advanced Prompt Engineering                                                                                 177
+The Potential Complexity of a Prompt                                                                 177
+In-Context Learning: Providing Examples                                                          180
+Chain Prompting: Breaking up the Problem                                                       182
+Reasoning with Generative Models                                                                          184
+Chain-of-Thought: Think Before Answering                                                      185
+Self-Consistency: Sampling Outputs                                                                     188
+Tree-of-Thought: Exploring Intermediate Steps                                                 189
+Output Verification                                                                                                     191
+Providing Examples                                                                                                 192
+Grammar: Constrained Sampling                                                                         194
+Table of Contents 
+| 
+vii

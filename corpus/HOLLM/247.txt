@@ -1,0 +1,23 @@
+CHAPTER 8
+Semantic Search and
+Retrieval-Augmented Generation
+Search was one of the first language model applications to see broad industry adop‐
+tion. Months after the release of the seminal “BERT: Pre-training of deep bidirec‐
+tional transformers for language understanding” (2018) paper, Google announced it
+was using it to power Google Search and that it represented “one of the biggest leaps
+forward in the history of Search.” Not to be outdone, Microsoft Bing also stated that
+“Starting from April of this year, we used large transformer models to deliver the
+largest quality improvements to our Bing customers in the past year.”
+This is a clear testament to the power and usefulness of these models. Their addi‐
+tion instantly and dramatically improves some of the most mature, well-maintained
+systems that billions of people around the planet rely on. The ability they add is
+called semantic search, which enables searching by meaning, and not simply keyword
+matching.
+On a separate track, the fast adoption of text generation models led many users to
+ask the models questions and expect factual answers. And while the models were
+able to answer fluently and confidently, their answers were not always correct or
+up-to-date. This problem grew to be known as model “hallucinations,” and one of the
+leading ways to reduce it is to build systems that can retrieve relevant information
+and provide it to the LLM to aid it in generating more factual answers. This method,
+called RAG, is one of the most popular applications of LLMs.
+225

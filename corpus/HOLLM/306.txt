@@ -1,0 +1,43 @@
+A sports car driving on the road at sunset
+It correctly describes the image. However, this is a rather simple example since our
+question is essentially asking the model to create a caption. Instead, we can ask
+follow-up questions in a chat-based manner.
+To do so, we can give the model our previous conversation, including its answer to
+our question. We then ask it a follow-up question:
+# Chat-like prompting
+prompt = "Question: Write down what you see in this picture. Answer: A sports 
+car driving on the road at sunset. Question: What would it cost me to drive 
+that car? Answer:"
+# Generate output
+inputs = blip_processor(image, text=prompt, return_tensors="pt").to(device, 
+torch.float16)
+generated_ids = model.generate(**inputs, max_new_tokens=30)
+generated_text = blip_processor.batch_decode(
+    generated_ids, skip_special_tokens=True
+)
+generated_text = generated_text[0].strip()
+generated_text
+This gives us the following answer:
+$1,000,000
+$1,000,000 is highly specific! This shows more chat-like behavior from BLIP-2, which
+allows for some interesting conversations.
+Finally, we can make this process a bit smoother by creating an interactive chatbot
+using ipywidgets, an extension for Jupyter notebooks that allows us to make interac‐
+tive buttons, input text, etc:
+from IPython.display import HTML, display
+import ipywidgets as widgets
+def text_eventhandler(*args):
+  question = args[0]["new"]
+  if question:
+    args[0]["owner"].value = ""
+    # Create prompt
+    if not memory:
+      prompt = " Question: " + question + " Answer:"
+    else:
+      template = "Question: {} Answer: {}."
+      prompt = " ".join(
+          [
+              template.format(memory[i][0], memory[i][1]) 
+284 
+| 
+Chapter 9: Multimodal Large Language Models

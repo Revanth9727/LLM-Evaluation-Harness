@@ -1,0 +1,38 @@
+This outputs (15, 4096), which indicates that we have 15 vectors, each one of size
+4,096.
+Building the search index.    Before we can search, we need to build a search index.
+An index stores the embeddings and is optimized to quickly retrieve the nearest
+neighbors even if we have a very large number of points:
+import faiss
+dim = embeds.shape[1]
+index = faiss.IndexFlatL2(dim)
+print(index.is_trained)
+index.add(np.float32(embeds))
+Search the index.    We can now search the dataset using any query we want. We simply
+embed the query and present its embedding to the index, which will retrieve the most
+similar sentence from the Wikipedia article.
+Let’s define our search function:
+def search(query, number_of_results=3):
+  
+  # 1. Get the query's embedding
+  query_embed = co.embed(texts=[query], 
+                input_type="search_query",).embeddings[0]
+  # 2. Retrieve the nearest neighbors
+  distances , similar_item_ids = index.search(np.float32([query_embed]), num
+ber_of_results) 
+  # 3. Format the results
+  texts_np = np.array(texts) # Convert texts list to numpy for easier indexing
+  results = pd.DataFrame(data={'texts': texts_np[similar_item_ids[0]], 
+                              'distance': distances[0]})
+  
+  # 4. Print and return the results
+  print(f"Query:'{query}'\nNearest neighbors:")
+  return results
+We are now ready to write a query and search the texts!
+query = "how precise was the science"
+results = search(query)
+results
+This produces the following output:
+232 
+| 
+Chapter 8: Semantic Search and Retrieval-Augmented Generation

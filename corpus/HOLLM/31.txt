@@ -1,0 +1,25 @@
+During this training process, word2vec learns the relationship between words and
+distills that information into the embedding. If the two words tend to have the
+same neighbors, their embeddings will be closer to one another and vice versa. In
+Chapter 2, we will look closer at word2vec’s training procedure.
+Figure 1-7. A neural network is trained to predict if two words are neighbors. During
+this process, the embeddings are updated to be in line with the ground truth.
+The resulting embeddings capture the meaning of words but what exactly does that
+mean? To illustrate this phenomenon, let’s somewhat oversimplify and imagine we
+have embeddings of several words, namely “apple” and “baby.” Embeddings attempt
+to capture meaning by representing the properties of words. For instance, the word
+“baby” might score high on the properties “newborn” and “human” while the word
+“apple” scores low on these properties.
+As illustrated in Figure 1-8, embeddings can have many properties to represent the
+meaning of a word. Since the size of embeddings is fixed, their properties are chosen
+to create a mental representation of the word.
+Figure 1-8. The values of embeddings represent properties that are used to represent
+words. We may oversimplify by imagining that dimensions represent concepts (which
+they don’t), but it helps express the idea.
+In practice, these properties are often quite obscure and seldom relate to a single
+entity or humanly identifiable concept. However, together, these properties make
+sense to a computer and serve as a good way to translate human language into
+computer language.
+A Recent History of Language AI 
+| 
+9

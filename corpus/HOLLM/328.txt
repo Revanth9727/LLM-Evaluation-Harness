@@ -1,0 +1,46 @@
+mnli = mnli.filter(lambda x: True if x["label"] == 0 else False)
+# Prepare data and add a soft negative
+train_dataset = {"anchor": [], "positive": [], "negative": []}
+soft_negatives = mnli["hypothesis"]
+random.shuffle(soft_negatives)
+for row, soft_negative in tqdm(zip(mnli, soft_negatives)):
+    train_dataset["anchor"].append(row["premise"])
+    train_dataset["positive"].append(row["hypothesis"])
+    train_dataset["negative"].append(soft_negative)
+train_dataset = Dataset.from_dict(train_dataset)
+Since we only selected sentences labeled with “entailment,” the number of rows
+reduced quite a a bit from 50,000 to 16,875 rows.
+Let’s define the evaluator:
+from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
+# Create an embedding similarity evaluator for stsb
+val_sts = load_dataset("glue", "stsb", split="validation")
+evaluator = EmbeddingSimilarityEvaluator(
+    sentences1=val_sts["sentence1"],
+    sentences2=val_sts["sentence2"],
+    scores=[score/5 for score in val_sts["label"]],
+    main_similarity="cosine"
+)
+We then train as before but with MNR loss instead:
+from sentence_transformers import losses, SentenceTransformer
+from sentence_transformers.trainer import SentenceTransformerTrainer
+from sentence_transformers.training_args import SentenceTransformerTrainingArgu
+ments
+# Define model
+embedding_model = SentenceTransformer('bert-base-uncased')
+# Loss function
+train_loss = losses.MultipleNegativesRankingLoss(model=embedding_model)
+# Define the training arguments
+args = SentenceTransformerTrainingArguments(
+    output_dir="mnrloss_embedding_model",
+    num_train_epochs=1,
+    per_device_train_batch_size=32,
+    per_device_eval_batch_size=32,
+    warmup_steps=100,
+    fp16=True,
+    eval_steps=100,
+    logging_steps=100,
+)
+# Train model
+306 
+| 
+Chapter 10: Creating Text Embedding Models

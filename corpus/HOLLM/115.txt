@@ -1,0 +1,14 @@
+Figure 3-19 shows these three new matrices, and how the bottom row of all three
+matrices is associated with the current position while the rows above it are associated
+with the previous positions.
+Figure 3-19. Attention is carried out by the interaction of the queries, keys, and val‐
+ues matrices. Those are produced by multiplying the layer’s inputs with the projection
+matrices.
+Self-attention: Relevance scoring
+In a generative Transformer, we’re generating one token at a time. This means we’re
+processing one position at a time. So the attention mechanism here is only concerned
+with this one position, and how information from other positions can be pulled in to
+inform this position.
+An Overview of Transformer Models 
+| 
+93

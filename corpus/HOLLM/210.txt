@@ -1,0 +1,32 @@
+8 Chengrun Yang et al. “Large language models as optimizers.” arXiv preprint arXiv:2309.03409 (2023).
+9 Xuezhi Wang et al. “Self-consistency improves chain of thought reasoning in language models.” arXiv preprint
+arXiv:2203.11171 (2022).
+Step 1: Start with the initial number of apples, which is 23.
+Step 2: Subtract the number of apples used to make lunch, which is 20. So, 23 
+- 20 = 3 apples remaining.
+Step 3: Add the number of apples bought, which is 6. So, 3 + 6 = 9 apples.
+The cafeteria now has 9 apples.
+Without needing to provide examples, we again got the same reasoning behavior.
+This is why it is so important to “show your work” when doing calculations. By
+addressing the reasoning process the LLM can use the previously generated informa‐
+tion as a guide through generating the final answer.
+Although the prompt “Let’s think step by step” can improve the
+output, you are not constrained by this exact formulation. Alterna‐
+tives exist like “Take a deep breath and think step-by-step” and
+“Let’s work through this problem step-by-step.”8
+Self-Consistency: Sampling Outputs
+Using the same prompt multiple times can lead to different results if we allow for a
+degree of creativity through parameters like temperature and top_p. As a result, the
+quality of the output might improve or degrade depending on the random selection
+of tokens. In other words, luck!
+To counteract this degree of randomness and improve the performance of generative
+models, self-consistency was introduced. This method asks the generative model the
+same prompt multiple times and takes the majority result as the final answer.9 During
+this process, each answer can be affected by different temperature and top_p values
+to increase the diversity of sampling.
+As illustrated in Figure 6-17, this method can further be improved by adding chain-
+of-thought prompting to improve its reasoning while only using the answer for the
+voting procedure.
+188 
+| 
+Chapter 6: Prompt Engineering

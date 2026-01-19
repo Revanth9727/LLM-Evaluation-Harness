@@ -1,0 +1,28 @@
+Agents: Creating a System of LLMs
+Thus far, we have created systems that follow a user-defined set of steps to take. One
+of the most promising concepts in LLMs is their ability to determine the actions they
+can take. This idea is often called agents, systems that leverage a language model to
+determine which actions they should take and in what order.
+Agents can make use of everything we have seen thus far, such as model I/O, chains,
+and memory, and extend it further with two vital components:
+• Tools that the agent can use to do things it could not do itself
+•
+• The agent type, which plans the actions to take or tools to use
+•
+Unlike the chains we have seen thus far, agents are able to show more advanced
+behavior like creating and self-correcting a roadmap to achieve a goal. They can
+interact with the real world through the use of tools. As a result, these agents can
+perform a variety of tasks that go beyond what an LLM is capable of in isolation.
+For example, LLMs are notoriously bad at mathematical problems and often fail at
+solving simple math-based tasks but they could do much more if we provide access
+to a calculator. As illustrated in Figure 7-14, the underlying idea of agents is that they
+utilize LLMs not only to understand our query but also to decide which tool to use
+and when.
+Figure 7-14. Giving LLMs the ability to choose which tools they use for a particular
+problem results in more complex and accurate behavior.
+In this example, we would expect the LLM to use the calculator when it faces a math‐
+ematical task. Now imagine we extend this with dozens of other tools, like a search
+engine or a weather API. Suddenly, the capabilities of LLMs increase significantly.
+218 
+| 
+Chapter 7: Advanced Text Generation Techniques and Tools

@@ -1,0 +1,37 @@
+Our unique network of experts and innovators share their knowledge and expertise
+through books, articles, and our online learning platform. O’Reilly’s online learning
+platform gives you on-demand access to live training courses, in-depth learning
+paths, interactive coding environments, and a vast collection of text and video from
+O’Reilly and 200+ other publishers. For more information, visit https://oreilly.com.
+How to Contact Us
+Please address comments and questions concerning this book to the publisher:
+O’Reilly Media, Inc.
+1005 Gravenstein Highway North
+Sebastopol, CA 95472
+800-889-8969 (in the United States or Canada)
+707-827-7019 (international or local)
+707-829-0104 (fax)
+support@oreilly.com
+https://www.oreilly.com/about/contact.html
+We have a web page for this book, where we list errata, examples, and any additional
+information. You can access this page at https://oreil.ly/hands_on_LLMs_1e.
+For news and information about our books and courses, visit https://oreilly.com.
+Find us on LinkedIn: https://linkedin.com/company/oreilly-media.
+Watch us on YouTube: https://youtube.com/oreillymedia.
+Acknowledgments
+Writing this book has been an incredible experience, collaboration, and journey
+for us.
+The field of (large) language models is one of the most dynamic areas in technology
+today, and within the span of writing this book, we have witnessed extraordinary
+advancements. Yet, despite the rapid pace of change, the fundamental principles
+remain strikingly consistent which made the writing process particularly intriguing.
+We are grateful to have had the opportunity to explore this field in-depth at such a
+pivotal moment.
+Working with our O’Reilly team was incredible! Special thanks to Michele Cronin for
+her amazing feedback, support, and enthusiasm for this book from day one. We could
+not have asked for a better editor—you are amazing! Thank you, Nicole Butterfield,
+for kicking off this book and helping us maintain a structured approach throughout
+the writing. Thank you to Karen Montgomery for creating our wonderful cover, we
+Preface 
+| 
+xvii

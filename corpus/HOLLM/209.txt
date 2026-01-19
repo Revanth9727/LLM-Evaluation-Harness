@@ -1,0 +1,27 @@
+7 Takeshi Kojima et al. “Large language models are zero-shot reasoners.” Advances in Neural Information
+Processing Systems 35 (2022): 22199–22213.
+Note how the model doesn’t generate only the answer but provides an explanation
+before doing so. By doing so, it can leverage the knowledge it has generated thus far
+to compute the final answer.
+Although chain-of-thought is a great method for enhancing the output of a genera‐
+tive model, it does require one or more examples of reasoning in the prompt, which
+the user might not have access to. Instead of providing examples, we can simply ask
+the generative model to provide the reasoning (zero-shot chain-of-thought). There
+are many different forms that work but a common and effective method is to use the
+phrase “Let’s think step-by-step,” which is illustrated in Figure 6-16.7
+Figure 6-16. Chain-of-thought prompting without using examples. Instead, it uses the
+phrase “Let’s think step-by-step” to prime reasoning in its answer.
+Using the example we used before, we can simply append that phrase to the prompt
+to enable chain-of-thought-like reasoning:
+# Zero-shot chain-of-thought
+zeroshot_cot_prompt = [
+    {"role": "user", "content": "The cafeteria had 23 apples. If they used 20 
+to make lunch and bought 6 more, how many apples do they have? Let's think 
+step-by-step."}
+]
+# Generate the output
+outputs = pipe(zeroshot_cot_prompt)
+print(outputs[0]["generated_text"])
+Reasoning with Generative Models 
+| 
+187

@@ -1,0 +1,31 @@
+The Moving Definition of a “Large Language Model”
+In our travels through the recent history of Language AI, we observed that primarily
+generative decoder-only (Transformer) models are commonly referred to as large
+language models. Especially if they are considered to be “large.” In practice, this seems
+like a rather constrained description!
+What if we create a model with the same capabilities as GPT-3 but 10 times smaller?
+Would such a model fall outside the “large” language model categorization?
+Similarly, what if we released a model as big as GPT-4 that can perform accurate
+text classification but does not have any generative capabilities? Would it still qualify
+as a large “language model” if its primary function is not language generation, even
+though it still represents text?
+The problem with these kinds of definitions is that we exclude capable models. What
+name we give one model or the other does not change how it behaves.
+Since the definition of the term “large language model” tends to evolve with the
+release of new models, we want to be explicit in what it means for this book. “Large”
+is arbitrary and what might be considered a large model today could be small tomor‐
+row. There are currently many names for the same thing and to us, “large language
+models” are also models that do not generate text and can be run on consumer
+hardware.
+As such, aside from covering generative models, this book will also cover models with
+fewer than 1 billion parameters that do not generate text. We will explore how other
+models, such as embedding models, representation models, and even bag-of-words
+can be used to empower LLMs.
+The Training Paradigm of Large Language Models
+Traditional machine learning generally involves training a model for a specific task,
+like classification. As shown in Figure 1-29, we consider this to be a one-step process.
+Figure 1-29. Traditional machine learning involves a single step: training a model for a
+specific target task, like classification or regression.
+The Training Paradigm of Large Language Models 
+| 
+25

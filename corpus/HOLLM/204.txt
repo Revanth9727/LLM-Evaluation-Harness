@@ -1,0 +1,46 @@
+},
+    {
+        "role": "assistant",
+        "content": "I have a Gigamuru that my uncle gave me as a gift. I love 
+to play it at home."
+    },
+    {
+        "role": "user",
+        "content": "To 'screeg' something is to swing a sword at it. An example 
+of a sentence that uses the word screeg is:"
+    }
+]
+print(tokenizer.apply_chat_template(one_shot_prompt, tokenize=False))
+<s><|user|>
+A 'Gigamuru' is a type of Japanese musical instrument. An example of a sen-
+tence that uses the word Gigamuru is:<|end|>
+<|assistant|>
+I have a Gigamuru that my uncle gave me as a gift. I love to play it at home.<|
+end|>
+<|user|>
+To 'screeg' something is to swing a sword at it. An example of a sentence that 
+uses the word screeg is:<|end|>
+<|assistant|>
+The prompt illustrates the need to differentiate between the user and the assistant. If
+we did not, it would seem as if we were talking to ourselves. Using these interactions,
+we can generate output as follows:
+# Generate the output
+outputs = pipe(one_shot_prompt)
+print(outputs[0]["generated_text"])
+During the intense duel, the knight skillfully screeged his opponent's shield, 
+forcing him to defend himself.
+It correctly generated the answer!
+As with all prompt components, one- or few-shot prompting is not the be all and
+end all of prompt engineering. We can use it as one piece of the puzzle to further
+enhance the descriptions that we gave it. The model can still “choose,” through
+random sampling, to ignore the instructions.
+Chain Prompting: Breaking up the Problem
+In previous examples, we explored splitting up prompts into modular components to
+improve the performance of LLMs. Although this works well for many use cases, this
+might not be feasible for highly complex prompts or use cases.
+Instead of breaking the problem within a prompt, we can do so between prompts.
+Essentially, we take the output of one prompt and use it as input for the next, thereby
+creating a continuous chain of interactions that solves our problem.
+182 
+| 
+Chapter 6: Prompt Engineering

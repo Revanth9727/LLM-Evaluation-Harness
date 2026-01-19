@@ -1,0 +1,28 @@
+One vector per document.    In this approach, we use a single vector to represent the
+whole document. The possibilities here include:
+• Embedding only a representative part of the document and ignoring the rest of
+•
+the text. This may mean embedding only the title, or only the beginning of the
+document. This is useful to get quickly started with building a demo but it leaves
+a lot of information unindexed and therefore unsearchable. As an approach, it
+may work better for documents where the beginning captures the main points of
+a document (think: Wikipedia article). But it’s really not the best approach for a
+real system because a lot of information would be left out of the index and would
+be unsearchable.
+• Embedding the document in chunks, embedding those chunks, and then aggre‐
+•
+gating those chunks into a single vector. The usual method of aggregation here is
+to average those vectors. A downside of this approach is that it results in a highly
+compressed vector that loses a lot of the information in the document.
+This approach can satisfy some information needs, but not others. A lot of the time,
+a search is for a specific piece of information contained in an article, which is better
+captured if the concept had its own vector.
+Multiple vectors per document.    In this approach, we chunk the document into smaller
+pieces, and embed those chunks. Our search index then becomes that of chunk
+embeddings, not entire document embeddings. Figure 8-8 shows a number of possi‐
+ble text chunking approaches.
+Figure 8-8. Several chunking methods and their effects on the input text. Overlapping
+chunks can be important to prevent the absence of context.
+236 
+| 
+Chapter 8: Semantic Search and Retrieval-Augmented Generation

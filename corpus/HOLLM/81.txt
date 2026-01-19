@@ -1,0 +1,20 @@
+Figure 2-8. Language models produce contextualized token embeddings that improve on
+raw, static token embeddings.
+Let’s look at how we can generate contextualized word embeddings; the majority of
+this code should be familiar to you by now:
+from transformers import AutoModel, AutoTokenizer
+# Load a tokenizer
+tokenizer = AutoTokenizer.from_pretrained("microsoft/deberta-base")
+# Load a language model
+model = AutoModel.from_pretrained("microsoft/deberta-v3-xsmall")
+# Tokenize the sentence
+tokens = tokenizer('Hello world', return_tensors='pt')
+# Process the tokens
+output = model(**tokens)[0]
+The model we’re using here is called DeBERTa v3, which at the time of writing is one
+of the best-performing language models for token embeddings while being small and
+highly efficient. It is described in the paper “DeBERTaV3: Improving DeBERTa using
+ELECTRA-style pre-training gradient-disentangled embedding sharing”.
+Token Embeddings 
+| 
+59

@@ -1,0 +1,20 @@
+To do so, instead of freezing the model, we allow it to be trainable and update its
+parameters during training. As illustrated in Figure 11-3, we will use a pretrained
+BERT model and add a neural network as a classification head, both of which will be
+fine-tuned for classification.
+Figure 11-3. The architecture of a task-specific model. It contains a pretrained represen‐
+tation model (e.g., BERT) with an additional classification head for the specific task.
+In practice, this means that the pretrained BERT model and the classification head
+are updated jointly. Instead of independent processes, they learn from one another
+and allow for more accurate representations.
+Fine-Tuning a Pretrained BERT Model
+We will be using the same dataset we used in Chapter 4 to fine-tune our model,
+namely the Rotten Tomatoes dataset, which contains 5,331 positive and 5,331 nega‐
+tive movie reviews from Rotten Tomatoes:
+from datasets import load_dataset
+# Prepare data and splits
+tomatoes = load_dataset("rotten_tomatoes")
+train_data, test_data = tomatoes["train"], tomatoes["test"]
+Supervised Classification 
+| 
+325

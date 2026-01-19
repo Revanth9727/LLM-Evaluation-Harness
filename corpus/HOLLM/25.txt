@@ -1,0 +1,28 @@
+CHAPTER 1
+An Introduction to Large Language Models
+Humanity is at an inflection point. From 2012 onwards, developments in building AI
+systems (using deep neural networks) accelerated so that by the end of the decade,
+they yielded the first software system able to write articles indiscernible from those
+written by humans. This system was an AI model called Generative Pre-trained
+Transformer 2, or GPT-2. 2022 marked the release of ChatGPT, which demonstrated
+how profoundly this technology was poised to revolutionize how we interact with
+technology and information. Reaching one million active users in five days and
+then one hundred million active users in two months, the new breed of AI models
+started out as human-like chatbots but quickly evolved into a monumental shift in
+our approach to common tasks, like translation, text generation, summarization, and
+more. It became an invaluable tool for programmers, educators, and researchers.
+The success of ChatGPT was unprecedented and popularized more research into the
+technology behind it, namely large language models (LLMs). Both proprietary and
+public models were being released at a steady pace, closing in on, and eventually
+catching up to the performance of ChatGPT. It is not an exaggeration to state that
+almost all attention was on LLMs.
+As a result, 2023 will always be known, at least to us, as the year that drastically
+changed our field, Language Artificial Intelligence (Language AI), a field character‐
+ized by the development of systems capable of understanding and generating human
+language.
+However, LLMs have been around for a while now and smaller models are still rele‐
+vant to this day. LLMs are much more than just a single model and there are many
+other techniques and models in the field of language AI that are worth exploring.
+In this book, we aim to give readers a solid understanding of the fundamentals
+of both LLMs and the field of Language AI in general. This chapter serves as the
+3

@@ -1,0 +1,25 @@
+8 Hyung Won Chung et al. “Scaling instruction-finetuned language models.” arXiv preprint arXiv:2210.11416
+(2022).
+Figure 4-21. By converting specific tasks to textual instructions, the T5 model can be
+trained on a variety of tasks during fine-tuning.
+This method of fine-tuning was extended in the paper “Scaling instruction-finetuned
+language models”, which introduced more than a thousand tasks during fine-tuning
+that more closely follow instructions as we know them from GPT models.8 This
+resulted in the Flan-T5 family of models that benefit from this large variety of tasks.
+To use this pretrained Flan-T5 model for classification, we will start by loading it
+through the "text2text-generation" task, which is generally reserved for these
+encoder-decoder models:
+# Load our model
+pipe = pipeline(
+    "text2text-generation", 
+    model="google/flan-t5-small", 
+    device="cuda:0"
+)
+The Flan-T5 model comes in various sizes (flan-t5-small/base/large/xl/xxl) and we
+will use the smallest to speed things up a bit. However, feel free to play around with
+larger models to see if you can improve the results.
+Compared to our task-specific model, we cannot just give the model some text and
+hope it will output the sentiment. Instead, we will have to instruct the model to do so.
+130 
+| 
+Chapter 4: Text Classification

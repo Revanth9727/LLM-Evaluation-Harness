@@ -1,0 +1,44 @@
+args = SentenceTransformerTrainingArguments(
+    output_dir="base_embedding_model",
+    num_train_epochs=1,
+    per_device_train_batch_size=32,
+    per_device_eval_batch_size=32,
+    warmup_steps=100,
+    fp16=True,
+    eval_steps=100,
+    logging_steps=100,
+)
+Of note are the following arguments:
+num_train_epochs
+The number of training rounds. We keep this at 1 for faster training but it is
+generally advised to increase this value.
+per_device_train_batch_size
+The number of samples to process simultaneously on each device (e.g., GPU or
+CPU) during evaluation. Higher values generally means faster training.
+per_device_eval_batch_size
+The number of samples to process simultaneously on each device (e.g., GPU or
+CPU) during evaluation. Higher values generally means faster evaluation.
+warmup_steps
+The number of steps during which the learning rate will be linearly increased
+from zero to the initial learning rate defined for the training process. Note that
+we did not specify a custom learning rate for this training process.
+fp16
+By enabling this parameter we allow for mixed precision training, where compu‐
+tations are performed using 16-bit floating-point numbers (FP16) instead of the
+default 32-bit (FP32). This reduces memory usage and potentially increases the
+training speed.
+Now that we have defined our data, embedding model, loss, and evaluator, we can
+start training our model. We can do that using SentenceTransformerTrainer:
+from sentence_transformers.trainer import SentenceTransformerTrainer
+# Train embedding model
+trainer = SentenceTransformerTrainer(
+    model=embedding_model,
+    args=args,
+    train_dataset=train_dataset,
+    loss=train_loss,
+    evaluator=evaluator
+)
+trainer.train()
+Creating an Embedding Model 
+| 
+299

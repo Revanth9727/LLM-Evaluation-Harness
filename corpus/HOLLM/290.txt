@@ -1,0 +1,27 @@
+Eventually, we expect the embedding of an image of a cat would be similar to the
+embedding of the phrase “a picture of a cat.” As we will see in Chapter 10, to make
+sure the representations are as accurate as possible, negative examples of images
+and captions that are not related should also be included in the training process.
+Modeling similarity is not only knowing what makes things similar to one another,
+but also what makes them different and dissimilar.
+OpenCLIP
+For our next example, we are going to be using models from the open source variant
+of CLIP, namely OpenCLIP. Using OpenCLIP, or any CLIP model, boils down to
+two things: processing the textual and image inputs before passing them to the main
+model.
+Before doing so, let’s take a look at a small example where we will be using one
+of the images we have seen before, namely, an AI-generated image (through stable
+diffusion) of a puppy playing in the snow, as illustrated in Figure 9-12:
+from urllib.request import urlopen
+from PIL import Image
+# Load an AI-generated image of a puppy playing in the snow
+puppy_path = "https://raw.githubusercontent.com/HandsOnLLM/Hands-On-Large-
+Language-Models/main/chapter09/images/puppy.png"
+image = Image.open(urlopen(puppy_path)).convert("RGB")
+caption = "a puppy playing in the snow"
+Figure 9-12. An AI-generated image of a puppy playing in the snow.
+Since we have a caption for this image, we can use OpenCLIP to generate embeddings
+for both.
+268 
+| 
+Chapter 9: Multimodal Large Language Models

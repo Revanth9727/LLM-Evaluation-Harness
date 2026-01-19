@@ -1,0 +1,31 @@
+3 Nils Reimers and Iryna Gurevych. “Sentence-BERT: Sentence embeddings using Siamese BERT-networks.”
+arXiv preprint arXiv:1908.10084 (2019).
+model steer toward what we are interested in, we essentially ask it, “Why is this a
+dog and not a cat?” By providing the contrast between two concepts, it starts to learn
+the features that define the concept but also the features that are not related. We get
+more information when we frame a question as a contrast. We further illustrate this
+concept of contrastive explanation in Figure 10-5.
+Figure 10-5. When we feed an embedding model different contrasts (degrees of similar‐
+ity), it starts to learn what makes things different from one another and thereby the
+distinctive characteristics of concepts.
+One of the earliest and most popular examples of contrastive learn‐
+ing in NLP is actually word2vec, as we discussed in Chapters 1 and
+2. The model learns word representations by training on individual
+words in a sentence. A word close to a target word in a sentence
+will be constructed as a positive pair whereas randomly sampled
+words constitute dissimilar pairs. In other words, positive examples
+of neighboring words are contrasted with randomly selected words
+that are not neighbors. Although not widely known, it is one of
+the first major breakthroughs in NLP that leverages contrastive
+learning with neural networks.
+There are many ways we can apply contrastive learning to create text embed‐
+ding models but the most well-known technique and framework is sentence-
+transformers.
+SBERT
+Although there are many forms of contrastive learning, one framework that has
+popularized the technique within the natural language processing community is
+sentence-transformers.3 Its approach fixes a major problem with the original
+BERT implementation for creating sentence embeddings, namely its computational
+SBERT 
+| 
+293

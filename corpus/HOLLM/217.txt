@@ -1,0 +1,25 @@
+Figure 6-20. Use an LLM to generate only the pieces of information we do not know
+beforehand.
+This process can be taken one step further and instead of validating the output we
+can already perform validation during the token sampling process. When sampling
+tokens, we can define a number of grammars or rules that the LLM should adhere
+to when choosing its next token. For instance, if we ask the model to either return
+“positive,” “negative,” or “neutral” when performing sentiment classification, it might
+still return something else. As illustrated in Figure 6-21, by constraining the sampling
+process, we can have the LLM only output what we are interested in. Note that this is
+still affected by parameters such as top_p and temperature.
+Figure 6-21. Constrain the token selection to only three possible tokens: “positive,
+”
+“neutral,
+” and “negative.
+”
+Let us illustrate this phenomenon with llama-cpp-python, a library similar to trans
+formers that we can use to load in our language model. It is generally used to
+efficiently load and use compressed models (through quantization; see Chapter 12)
+but we can also use it to apply a JSON grammar.
+We load the same model we used throughout this chapter but use a different format
+instead, namely GGUF. llama-cpp-python expects this format, which is generally
+used for compressed (quantized) models.
+Output Verification 
+| 
+195

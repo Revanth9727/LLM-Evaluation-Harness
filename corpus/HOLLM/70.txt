@@ -1,0 +1,40 @@
+cls_token [CLS]
+A special classification token for classification tasks, as we’ll see in Chapter 4.
+mask_token [MASK]
+A masking token used to hide tokens during the training process.
+Tokenized text:
+[CLS] english and capital ##ization [UNK] [UNK] show _ token ##s false none
+eli ##f = = > = else : two tab ##s : " " three tab ##s : " " 12 . 0 * 50 = 600 [SEP]
+BERT was released in two major flavors: cased (where the capitalization is kept) and
+uncased (where all capital letters are first turned into small cap letters). With the
+uncased (and more popular) version of the BERT tokenizer, we notice the following:
+• The newline breaks are gone, which makes the model blind to information
+•
+encoded in newlines (e.g., a chat log when each turn is in a new line).
+• All the text is in lowercase.
+•
+• The word “capitalization” is encoded as two subtokens: capital ##ization. The
+•
+## characters are used to indicate this token is a partial token connected to the
+token that precedes it. This is also a method to indicate where the spaces are, as it
+is assumed tokens without ## in front have a space before them.
+• The emoji and Chinese characters are gone and replaced with the [UNK] special
+•
+token indicating an “unknown token.”
+BERT base model (cased) (2018)
+Link to the model on the HuggingFace model hub
+Tokenization method: WordPiece
+Vocabulary size: 28,996
+Special tokens: Same as the uncased version
+Tokenized text:
+[CLS] English and CA ##PI ##TA ##L ##I ##Z ##AT ##ION [UNK] [UNK] show _ token
+##s F ##als ##e None el ##if = = > = else : two ta ##bs : " " Three ta ##bs : " "
+12 . 0 * 50 = 600 [SEP]
+The cased version of the BERT tokenizer differs mainly in including uppercase
+tokens.
+• Notice how “CAPITALIZATION” is now represented as eight tokens: CA ##PI
+•
+##TA ##L ##I ##Z ##AT ##ION.
+48 
+| 
+Chapter 2: Tokens and Embeddings

@@ -1,0 +1,28 @@
+5 Armen Aghajanyan, Luke Zettlemoyer, and Sonal Gupta. “Intrinsic dimensionality explains the effectiveness
+of language model fine-tuning.” arXiv preprint arXiv:2012.13255 (2020).
+But you might suspect that performance would drop. And you would be right. But
+where does this trade-off make sense?
+Papers like “Intrinsic dimensionality explains the effectiveness of language model
+fine-tuning” demonstrate that language models “have a very low intrinsic dimen‐
+sion.”5 This means that we can find small ranks that approximate even the massive
+matrices of an LLM. A 175B model like GPT-3, for example, would have a weight
+matrix of 12,288 × 12,288 inside each of its 96 Transformer blocks. That’s 150 million
+parameters. If we can successfully adapt that matrix into rank 8, that would only
+require two 12,288 × 2 matrices resulting in 197K parameters per block. These are
+major savings in speed, storage, and compute as explained further in the previously
+referenced LoRA paper.
+This smaller representation is quite flexible in that you can select which parts of the
+base model to fine-tune. For instance, we can only fine-tune the Query and Value
+weight matrices in each Transformer layer.
+Compressing the model for (more) efficient training
+We can make LoRA even more efficient by reducing the memory requirements of the
+model’s original weights before projecting them into smaller matrices. The weights of
+an LLM are numeric values with a given precision, which can be expressed by the
+number of bits like float64 or float32. As illustrated in Figure 12-15, if we lower the
+amount of bits to represent a value, we get a less accurate result. However, if we lower
+the number of bits we also lower the memory requirements of that model.
+Figure 12-15. Attempting to represent pi with float 32-bit and float 16-bit representa‐
+tions. Notice the lowered accuracy when we halve the number of bits.
+364 
+| 
+Chapter 12: Fine-Tuning Generation Models

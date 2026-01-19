@@ -1,0 +1,12 @@
+As we load our model, we also load the tokenizer, which is responsible for converting
+input text into individual tokens, as illustrated in Figure 4-6. Although that parameter
+is not needed as it is loaded automatically, it illustrates what is happening under the
+hood.
+Figure 4-6. An input sentence is first fed to a tokenizer before it can be processed by the
+task-specific model.
+These tokens are at the core of most language models, as explored in depth in
+Chapter 2. A major benefit of these tokens is that they can be combined to generate
+representations even if they were not in the training data, as shown in Figure 4-7.
+Using a Task-Specific Model 
+| 
+117

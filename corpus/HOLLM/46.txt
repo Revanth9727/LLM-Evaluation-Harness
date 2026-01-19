@@ -1,0 +1,20 @@
+11 Albert Gu and Tri Dao. “Mamba: Linear-time sequence modeling with selective state spaces.” arXiv preprint
+arXiv:2312.00752 (2023).
+12 See “A Visual Guide to Mamba and State Space Models” for an illustrated and visual guide to Mamba as an
+alternative to the Transformer architecture.
+13 Bo Peng et al. “RWKV: Reinventing RNNs for the transformer era.” arXiv preprint arXiv:2305.13048 (2023).
+Figure 1-28. A comprehensive view into the Year of Generative AI. Note that many
+models are still missing from this overview!
+Apart from the widely popular Transformer architecture, new promising architec‐
+tures have emerged such as Mamba11,12 and RWKV.13 These novel architectures
+attempt to reach Transformer-level performance with additional advantages, like
+larger context windows or faster inference.
+These developments exemplify the evolution of the field and showcase 2023 as a truly
+hectic year for AI. It took all we had to just keep up with the many developments,
+both within and outside of Language AI.
+As such, this book explores more than just the latest LLMs. We will explore how
+other models, such as embedding models, encoder-only models, and even bag-of-
+words can be used to empower LLMs.
+24 
+| 
+Chapter 1: An Introduction to Large Language Models

@@ -1,0 +1,14 @@
+Figure 5-24. The top 20 topics visualized.
+Summary
+In this chapter, we explored how LLMs, both generative and representative, can
+be used in the domain of unsupervised learning. Despite supervised methods like
+classification being prevalent in recent years, unsupervised approaches such as text
+clustering hold immense potential due to their ability to group texts based on seman‐
+tic content without prior labeling.
+We covered a common pipeline for clustering textual documents that starts with
+converting input text into numerical representations, which we call embeddings.
+Then, dimensionality reduction is applied to these embeddings to simplify high-
+dimensional data for better clustering outcomes. Finally, a clustering algorithm on
+164 
+| 
+Chapter 5: Text Clustering and Topic Modeling

@@ -1,0 +1,32 @@
+Figure 6-1 shows a small selection of impactful foundation models, LLMs that have
+been pretrained on vast amounts of text data and are often fine-tuned for specific
+applications.
+Figure 6-1. Foundation models are often released in several different sizes.
+From those foundation models, hundreds if not thousands of models have been
+fine-tuned, one more suitable for certain tasks than another. Choosing the model to
+use can be a daunting task!
+We advise starting with a small foundation model. So let’s continue using Phi-3-mini,
+which has 3.8 billion parameters. This makes it suitable for running with devices
+up to 8 GB of VRAM. Overall, scaling up to larger models tends to be a nicer
+experience than scaling down. Smaller models provide a great introduction and lay a
+solid foundation for progressing to larger models.
+Loading a Text Generation Model
+The most straightforward method of loading a model, as we have done in previous
+chapters, is by leveraging the transformers library:
+import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
+# Load model and tokenizer
+model = AutoModelForCausalLM.from_pretrained(
+    "microsoft/Phi-3-mini-4k-instruct",
+    device_map="cuda",
+    torch_dtype="auto",
+    trust_remote_code=True,
+)
+tokenizer = AutoTokenizer.from_pretrained("microsoft/Phi-3-mini-4k-instruct")
+# Create a pipeline
+pipe = pipeline(
+    "text-generation",
+    model=model,
+168 
+| 
+Chapter 6: Prompt Engineering

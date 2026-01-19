@@ -1,0 +1,38 @@
+Summary
+In this chapter, we have covered LLM tokens, tokenizers, and useful approaches to
+using token embeddings. This prepares us to start looking closer at language models
+in the next chapter, and also opens the door to learn about how embeddings are used
+beyond language models.
+We explored how tokenizers are the first step in processing input to an LLM, trans‐
+forming raw textual input into token IDs. Common tokenization schemes include
+breaking text down into words, subword tokens, characters, or bytes, depending on
+the specific requirements of a given application.
+A tour of real-world pretrained tokenizers (from BERT to GPT-2, GPT-4, and other
+models) showed us areas where some tokenizers are better (e.g., preserving informa‐
+tion like capitalization, newlines, or tokens in other languages) and other areas where
+tokenizers are just different from each other (e.g., how they break down certain
+words).
+Three of the major tokenizer design decisions are the tokenizer algorithm (e.g.,
+BPE, WordPiece, SentencePiece), tokenization parameters (including vocabulary size,
+special tokens, capitalization, treatment of capitalization and different languages), and
+the dataset the tokenizer is trained on.
+Language models are also creators of high-quality contextualized token embeddings
+that improve on raw static embeddings. Those contextualized token embeddings
+are what’s used for tasks including named-entity recognition (NER), extractive text
+summarization, and text classification. In addition to producing token embeddings,
+language models can produce text embeddings that cover entire sentences or even
+documents. This empowers plenty of applications that will be shown in Part II of this
+book covering language model applications
+Before LLMs, word embedding methods like word2vec, GloVe, and fastText were
+popular. In language processing, this has largely been replaced with contextualized
+word embeddings produced by language models. The word2vec algorithm relies on
+two main ideas: skip-gram and negative sampling. It also uses contrastive training
+similar to the type we’ll see in Chapter 10.
+Embeddings are useful for creating and improving recommender systems as we
+discussed in the music recommender we built from curated song playlists.
+In the next chapter, we will take a deep dive into the process after tokenization: how
+does an LLM process these tokens and generate text? We will look at some of the
+main intuitions of how LLMs that use the Transformer architecture work.
+Summary 
+| 
+71

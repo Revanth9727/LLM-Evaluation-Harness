@@ -1,0 +1,12 @@
+Figure 6-10. Prompt examples of common use cases. Notice how within a use case, the
+structure and location of the instruction can be changed.
+Although these tasks require different instructions, there is actually a lot of overlap
+in the prompting techniques used to improve the quality of the output. A non-
+exhaustive list of these techniques includes:
+Specificity
+Accurately describe what you want to achieve. Instead of asking the LLM to
+“Write a description for a product” ask it to “Write a description for a product in
+less than two sentences and use a formal tone.”
+176 
+| 
+Chapter 6: Prompt Engineering

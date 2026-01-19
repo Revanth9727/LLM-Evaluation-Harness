@@ -1,0 +1,15 @@
+Figure 2-9. A language model operates on raw, static embeddings as its input and
+produces contextual text embeddings.
+A visual like this is essential for the next chapter when we start to look at how
+Transformer-based LLMs work.
+Text Embeddings (for Sentences and Whole Documents)
+While token embeddings are key to how LLMs operate, a number of LLM applica‐
+tions require operating on entire sentences, paragraphs, or even text documents. This
+has led to special language models that produce text embeddings—a single vector that
+represents a piece of text longer than just one token.
+We can think of text embedding models as taking a piece of text and ultimately
+producing a single vector that represents that text and captures its meaning in some
+useful form. Figure 2-10 shows that process.
+Text Embeddings (for Sentences and Whole Documents) 
+| 
+61

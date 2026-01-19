@@ -1,0 +1,27 @@
+How reranking models work
+One popular way of building LLM search rerankers is to present the query and
+each result to an LLM working as a cross-encoder. This means that a query and
+possible result are presented to the model at the same time allowing the model to
+view both these texts before it assigns a relevance score, as we can see in Figure 8-15.
+All of the documents are processed simultaneously as a batch yet each document is
+evaluated against the query independently. The scores then determine the new order
+of the results. This method is described in more detail in a paper titled “Multi-stage
+document ranking with BERT” and is sometimes referred to as monoBERT.
+Figure 8-15. A reranker assigns a relevance score to each document by looking at the
+document and the query at the same time.
+This formulation of search as relevance scoring basically boils down to being a
+classification problem. Given those inputs, the model outputs a score from 0–1 where
+0 is irrelevant and 1 is highly relevant. This should be familiar from our classification
+discussions in Chapter 4.
+To learn more about the development of using LLMs for search, "Pretrained trans‐
+formers for text tanking: BERT and beyond" is a highly recommended look at the
+developments of these models until about 2021.
+Retrieval Evaluation Metrics
+Semantic search is evaluated using metrics from the Information Retrieval (IR) field.
+Let’s discuss one of these popular metrics: mean average precision (MAP).
+Evaluating search systems needs three major components: a text archive, a set of
+queries, and relevance judgments indicating which documents are relevant for each
+query. We see these components in Figure 8-16.
+244 
+| 
+Chapter 8: Semantic Search and Retrieval-Augmented Generation

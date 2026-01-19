@@ -1,0 +1,16 @@
+5 David M. Blei, Andrew Y. Ng, and Michael I. Jordan. “Latent Dirichlet allocation.” Journal of Machine Learning
+Research 3. Jan (2003): 993–1022.
+Figure 5-9. Traditionally, topics are represented by a number of keywords but can take
+other forms.
+Instead of labeling a topic as “sign language,” these techniques use keywords such as
+“sign,” “language,” and “translation” to describe the topic. As such, this does not give a
+single label to a topic and instead requires the user to understand the meaning of the
+topic through those keywords.
+Classic approaches, like latent Dirichlet allocation, assume that each topic is charac‐
+terized by a probability distribution of words in a corpus’s vocabulary.5 Figure 5-10
+demonstrates how each word in a vocabulary is scored against its relevance to each
+topic.
+Figure 5-10. Keywords are extracted based on their distribution over a single topic.
+From Text Clustering to Topic Modeling 
+| 
+147

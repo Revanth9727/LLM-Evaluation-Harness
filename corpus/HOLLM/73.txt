@@ -1,0 +1,45 @@
+• <|endoftext|>
+•
+• Fill in the middle tokens. These three tokens enable the LLM to generate a
+•
+completion given not only the text before it but also considering the text after
+it. This method is explained in more detail in the paper “Efficient training of
+language models to fill in the middle”; its exact details are beyond the scope of
+this book. These special tokens are:
+— <|fim_prefix|>
+—
+— <|fim_middle|>
+—
+— <|fim_suffix|>
+—
+Tokenized text:
+English and CAPITAL IZATION
+     
+show _tokens False None elif == >= else : two tabs :"  " Three tabs : "  "
+12 . 0 * 50 = 600
+The GPT-4 tokenizer behaves similarly to its ancestor, the GPT-2 tokenizer. Some
+differences are:
+• The GPT-4 tokenizer represents the four spaces as a single token. In fact, it has a
+•
+specific token for every sequence of whitespaces up to a list of 83 whitespaces.
+• The Python keyword elif has its own token in GPT-4. Both this and the previ‐
+•
+ous point stem from the model’s focus on code in addition to natural language.
+• The GPT-4 tokenizer uses fewer tokens to represent most words. Examples here
+•
+include “CAPITALIZATION” (two tokens versus four) and “tokens” (one token
+versus three).
+• Refer back to what we said about the GPT-2 tokenizer with regards to the Ł
+•
+tokens.
+StarCoder2 (2024)
+StarCoder2 is a 15-billion parameter model focused on generating code described in
+the paper “StarCoder 2 and the stack v2: The next generation”, which continues the
+work from the original StarCoder described in “StarCoder: May the source be with
+you!”.
+Tokenization method: Byte pair encoding (BPE)
+Vocabulary size: 49,152
+Example special tokens:
+LLM Tokenization 
+| 
+51

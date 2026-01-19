@@ -1,0 +1,39 @@
+19 Wei-Lin Chiang et al. “Chatbot Arena: An open platform for evaluating LLMs by human preference.” arXiv
+preprint arXiv:2403.04132 (2024).
+20 Mafilyn Strathern. “‘Improving ratings’: audit in the British University system.” European Review 5.3 (1997):
+305–321.
+will receive their output. Then, you can decide which output you prefer. This process
+allows for the community to vote on which models they prefer without knowing
+which ones are presented. Only after you vote do you see which model generated
+which text.
+At the time of writing, this method has generated over 800,000+ human votes that
+were used to compute a leaderboard. These votes are used to calculate the relative
+skill level of LLMs based on their win rates. For instance, if a low-ranked LLM beats a
+high-ranked LLM, its ranking changes significantly. In chess, this is referred to as the
+Elo rating system.
+This methodology therefore uses crowdsourced votes, which helps us understand the
+quality of the LLM. However, it is still the aggregated opinion of a wide variety of
+users, which might not relate to your use case.
+As a result, there is no one perfect method of evaluating LLMs. All mentioned
+methodologies and benchmarks provide an important, although limited evaluation
+perspective. Our advice is to evaluate your LLM based on the intended use case. For
+coding, HumanEval would be more logical than GSM8k.
+But most importantly, we believe that you are the best evaluator. Human evaluation
+remains the gold standard because it is up to you to decide whether the LLM works
+for your intended use case. As with the examples in this chapter, we highly advise
+that you also try these models and perhaps develop some questions yourself. For
+example, the authors of this book are Arabic (Jay Alammar) and Dutch (Maarten
+Grootendorst), and we often ask questions in our native language when approached
+with new models.
+One final note on this topic is a quote we hold dear:
+When a measure becomes a target, it ceases to be a good measure.
+—Goodhart’s Law20
+In the context of LLMs, when using a specific benchmark, we tend to optimize for
+that benchmark regardless of the consequences. For instance, if we focus purely on
+optimizing for generating grammatically correct sentences, the model could learn to
+only output one sentence: “This is a sentence.” It is grammatically correct but tells you
+nothing about its language understanding capabilities. Thus, the model may excel at a
+specific benchmark but potentially at the expense of other useful capabilities.
+Evaluating Generative Models 
+| 
+377

@@ -1,0 +1,48 @@
+• <|endoftext|>
+•
+• Fill in the middle tokens:
+•
+— <fim_prefix>
+—
+— <fim_middle>
+—
+— <fim_suffix>
+—
+— <fim_pad>
+—
+• When representing code, managing the context is important. One file might
+•
+make a function call to a function that is defined in a different file. So the model
+needs some way of being able to identify code that is in different files in the same
+code repository, while making a distinction between code in different repos.
+That’s why StarCoder2 uses special tokens for the name of the repository and the
+filename:
+— <filename>
+—
+— <reponame>
+—
+— <gh_stars>
+—
+Tokenized text:
+English and CAPITAL IZATION
+    
+show _ tokens False None elif == >= else : two tabs :"  " Three tabs : "  "
+1 2 . 0 * 5 0 = 6 0 0
+This is an encoder that focuses on code generation:
+• Similar to GPT-4, it encodes the list of whitespaces as a single token.
+•
+• A major difference here to everything we’ve seen so far is that each digit is
+•
+assigned its own token (so 600 becomes 6 0 0). The hypothesis here is that this
+would lead to better representation of numbers and mathematics. In GPT-2, for
+example, the number 870 is represented as a single token. But 871 is represented
+as two tokens (8 and 71). You can intuitively see how that might be confusing to
+the model and how it represents numbers.
+Galactica
+The Galactica model described in “Galactica: A large language model for science” is
+focused on scientific knowledge and is trained on many scientific papers, reference
+materials, and knowledge bases. It pays extra attention to tokenization that makes it
+more sensitive to the nuances of the dataset it’s representing. For example, it includes
+52 
+| 
+Chapter 2: Tokens and Embeddings

@@ -1,0 +1,8 @@
+Figure 3-32. Rotary embeddings are applied in the attention step, not at the start of the
+forward pass.
+During the attention process, the positional information is mixed in specifically to the
+queries and keys matrices just before we multiply them for relevance scoring, as we
+can see in Figure 3-33.
+104 
+| 
+Chapter 3: Looking Inside Large Language Models

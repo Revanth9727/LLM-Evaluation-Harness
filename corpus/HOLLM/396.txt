@@ -1,0 +1,34 @@
+8 Fred Jelinek et al. “Perplexity—a measure of the difficulty of speech recognition tasks.” The Journal of the
+Acoustical Society of America 62.S1 (1977): S63.
+9 Chin-Yew Lin. “ROUGE: A package for automatic evaluation of summaries.” Text Summarization Branches
+Out, 74–81. 2004.
+10 Kishore Papineni, et al. “Bleu: a method for automatic evaluation of machine translation.” Proceedings of the
+40th Annual Meeting of the Association for Computational Linguistics. 2002.
+11 Tianyi Zhang et al. “BERTscore: Evaluating text generation with BERT.” arXiv preprint arXiv:1904.09675
+(2019).
+In this section, we will explore a few common evaluation methods, but we want to
+emphasize the current lack of golden standards. No one metric is perfect for all use
+cases.
+Word-Level Metrics
+One common metrics category for comparing generative models is word-level evalu‐
+ation. These classic techniques compare a reference dataset with the generated tokens
+on a token(set) level. Common word-level metrics include perplexity,8 ROUGE,9
+BLEU,10 and BERTScore.11
+Of note is perplexity, which measures how well a language model predicts a text.
+Given input text, the model predicts how likely the next token is. With perplexity, we
+assume a model performs better if it gives the next token a high probability. In other
+words, the models should not be “perplexed” when presented with a well-written
+document.
+As illustrated in Figure 12-20, when presented with the input “When a measure
+becomes a,” the model is asked how probable the word “target” is as the next word.
+Figure 12-20. Next-word prediction is a central feature of many LLMs.
+Although perplexity, and other word-level metrics, are useful metrics to understand
+the confidence of the model, they are not a perfect measure. They do not account for
+consistency, fluency, creativity, or even correctness of the generated text.
+Benchmarks
+A common method for evaluating generative models on language generation and
+understanding tasks is on well-known and public benchmarks, such as MMLU,12
+GLUE,13 TruthfulQA,14 GSM8k,15 and HellaSwag.16 These benchmarks give us
+374 
+| 
+Chapter 12: Fine-Tuning Generation Models

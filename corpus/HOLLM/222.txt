@@ -1,0 +1,28 @@
+Agents
+Combining complex behavior with external tools
+Chains
+Connecting methods and modules
+These methods are all integrated with the LangChain framework that will help us
+easily use these advanced techniques throughout this chapter. LangChain is one of
+the earlier frameworks that simplify working with LLMs through useful abstractions.
+Newer frameworks of note are DSPy and Haystack. Some of these abstractions are
+illustrated in Figure 7-1. Note that retrieval will be discussed in the next chapter.
+Figure 7-1. LangChain is a complete framework for using LLMs. It has modular compo‐
+nents that can be chained together to allow for complex LLM systems.
+Each of these techniques has significant strengths by themselves but their true value
+does not exist in isolation. It is when you combine all of these techniques that you
+get an LLM-based system with incredible performance. The culmination of these
+techniques is truly where LLMs shine.
+Model I/O: Loading Quantized Models with LangChain
+Before we can make use of LangChain’s features to extend the capabilities of LLMs,
+we need to start by loading our LLM. As in previous chapters, we will be using
+Phi-3 but with a twist; we will use a GGUF model variant instead. A GGUF model
+represents a compressed version of its original counterpart through a method called
+quantization, which reduces the number of bits needed to represent the parameters of
+an LLM.
+Bits, a series of 0s and 1s, represent values by encoding them in binary form. More
+bits result in a wider range of values but requires more memory to store those values,
+as shown in Figure 7-2.
+200 
+| 
+Chapter 7: Advanced Text Generation Techniques and Tools

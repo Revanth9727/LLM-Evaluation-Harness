@@ -1,0 +1,23 @@
+Multi-query and grouped-query attention
+A more recent efficient attention tweak to the Transformer is grouped-query atten‐
+tion (“GQA: Training generalized multi-query transformer models from multi-head
+checkpoints”), which is used by models like Llama 2 and 3. Figure 3-25 shows these
+different types of attention, and the next section continues to explain them.
+Figure 3-25. A comparison of different kinds of attention: the original multi-head,
+grouped-query attention, and multi-query attention (source: “Fast transformer decod‐
+ing: One write-head is all you need”).
+Grouped-query attention builds on multi-query attention (“Fast transformer decod‐
+ing: One write-head is all you need”). These methods improve inference scalability of
+larger models by reducing the size of the matrices involved.
+Optimizing attention: From multi-head to multi-query to grouped query
+Earlier in the chapter we showed how the Transformer paper described multi-headed
+attention. The Illustrated Transformer discusses in detail how the queries, keys, and
+values matrices are used to conduct the attention operation. Figure 3-26 shows how
+each “attention head” has its own distinct query, key, and value matrices calculated for
+a given input.
+The way that multi-query attention optimizes this is to share the keys and values
+matrices between all the heads. So the only unique matrices for each head would be
+the queries matrices, as we can see in Figure 3-27.
+98 
+| 
+Chapter 3: Looking Inside Large Language Models

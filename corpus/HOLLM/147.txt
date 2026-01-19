@@ -1,0 +1,18 @@
+We can create these label embeddings using the .encode function as we did earlier:
+# Create embeddings for our labels
+label_embeddings = model.encode(["A negative review",  "A positive review"])
+To assign labels to documents, we can apply cosine similarity to the document label
+pairs. This is the cosine of the angle between vectors, which is calculated through
+the dot product of the embeddings and divided by the product of their lengths, as
+illustrated in Figure 4-15.
+Figure 4-15. The cosine similarity is the angle between two vectors or embeddings. In this
+example, we calculate the similarity between a document and the two possible labels,
+positive and negative.
+We can use cosine similarity to check how similar a given document is to the descrip‐
+tion of the candidate labels. The label with the highest similarity to the document is
+chosen as illustrated in Figure 4-16.
+Figure 4-16. After embedding the label descriptions and the documents, we can use
+cosine similarity for each label document pair.
+Classification Tasks That Leverage Embeddings 
+| 
+125

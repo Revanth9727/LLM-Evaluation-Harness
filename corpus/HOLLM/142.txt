@@ -1,0 +1,25 @@
+• Accuracy refers to how many correct predictions the model makes out of all
+•
+predictions, which indicates the overall correctness of the model.
+• The F1 score balances both precision and recall to create a model’s overall
+•
+performance.
+These four metrics are illustrated in Figure 4-9, which describes them using the
+aforementioned classification report.
+Figure 4-9. The classification report describes several metrics for evaluating a model’s
+performance.
+We will consider the weighted average of the F1 score throughout the examples in
+this book to make sure each class is treated equally. Our pretrained BERT model gives
+us an F1 score of 0.80 (we are reading this from the weighted avg row and the f1-score
+column), which is great for a model not trained specifically on our domain data!
+To improve the performance of our selected model, we could do a few different
+things including selecting a model trained on our domain data, movie reviews in this
+case, like DistilBERT base uncased finetuned SST-2. We could also shift our focus to
+another flavor of representation models, namely embedding models.
+Classification Tasks That Leverage Embeddings
+In the previous example, we used a pretrained task-specific model for sentiment
+analysis. However, what if we cannot find a model that was pretrained for this specific
+task? Do we need to fine-tune a representation model ourselves? The answer is no!
+120 
+| 
+Chapter 4: Text Classification

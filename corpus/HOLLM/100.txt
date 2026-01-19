@@ -1,0 +1,38 @@
+Figure 3-6. At the end of the forward pass, the model predicts a probability score for each
+token in the vocabulary.
+The LM head is a simple neural network layer itself. It is one of multiple possible
+“heads” to attach to a stack of Transformer blocks to build different kinds of systems.
+Other kinds of Transformer heads include sequence classification heads and token
+classification heads.
+We can display the order of the layers by simply printing out the model variable. For
+this model, we have:
+Phi3ForCausalLM(
+  (model): Phi3Model(
+    (embed_tokens): Embedding(32064, 3072, padding_idx=32000)
+    (embed_dropout): Dropout(p=0.0, inplace=False)
+    (layers): ModuleList(
+      (0-31): 32 x Phi3DecoderLayer(
+        (self_attn): Phi3Attention(
+          (o_proj): Linear(in_features=3072, out_features=3072, bias=False)
+          (qkv_proj): Linear(in_features=3072, out_features=9216, bias=False)
+          (rotary_emb): Phi3RotaryEmbedding()
+        )
+        (mlp): Phi3MLP(
+          (gate_up_proj): Linear(in_features=3072, out_features=16384, 
+bias=False)
+          (down_proj): Linear(in_features=8192, out_features=3072, bias=False)
+          (activation_fn): SiLU()
+        )
+        (input_layernorm): Phi3RMSNorm()
+        (resid_attn_dropout): Dropout(p=0.0, inplace=False)
+        (resid_mlp_dropout): Dropout(p=0.0, inplace=False)
+        (post_attention_layernorm): Phi3RMSNorm()
+      )
+    )
+    (norm): Phi3RMSNorm()
+  )
+  (lm_head): Linear(in_features=3072, out_features=32064, bias=False)
+)
+78 
+| 
+Chapter 3: Looking Inside Large Language Models

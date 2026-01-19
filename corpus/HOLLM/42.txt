@@ -1,0 +1,36 @@
+7 Alec Radford et al. “Improving language understanding by generative pre-training”, (2018).
+8 Alec Radford et al. “Language models are unsupervised multitask learners.” OpenAI Blog 1.8 (2019): 9.
+9 Tom Brown et al. “Language models are few-shot learners.” Advances in Neural Information Processing Systems
+33 (2020): 1877–1901.
+architecture. This also makes BERT models feature extraction machines without the
+need to fine-tune them on a specific task.
+Encoder-only models, like BERT, will be used in many parts of the book. For years,
+they have been and are still used for common tasks, including classification tasks (see
+Chapter 4), clustering tasks (see Chapter 5), and semantic search (see Chapter 8).
+Throughout the book, we will refer to encoder-only models as representation models
+to differentiate them from decoder-only, which we refer to as generative models.
+Note that the main distinction does not lie between the underlying architecture and
+the way these models work. Representation models mainly focus on representing
+language, for instance, by creating embeddings, and typically do not generate text. In
+contrast, generative models focus primarily on generating text and typically are not
+trained to generate embeddings.
+The distinction between representation and generative models and components will
+also be shown in most images. Representation models are teal with a small vector
+icon (to indicate its focus on vectors and embeddings) whilst generative models are
+pink with a small chat icon (to indicate its generative capabilities).
+Generative Models: Decoder-Only Models
+Similar to the encoder-only architecture of BERT, a decoder-only architecture was
+proposed in 2018 to target generative tasks.7 This architecture was called a Generative
+Pre-trained Transformer (GPT) for its generative capabilities (it’s now known as
+GPT-1 to distinguish it from later versions). As shown in Figure 1-24, it stacks
+decoder blocks similar to the encoder-stacked architecture of BERT.
+GPT-1 was trained on a corpus of 7,000 books and Common Crawl, a large dataset of
+web pages. The resulting model consisted of 117 million parameters. Each parameter
+is a numerical value that represents the model’s understanding of language.
+If everything remains the same, we expect more parameters to greatly influence the
+capabilities and performance of language models. Keeping this in mind, we saw larger
+and larger models being released at a steady pace. As illustrated in Figure 1-25, GPT-2
+had 1.5 billion parameters8 and GPT-3 used 175 billion parameters9 quickly followed.
+20 
+| 
+Chapter 1: An Introduction to Large Language Models

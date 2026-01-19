@@ -1,0 +1,20 @@
+6 Haotian Liu et al. “Visual instruction tuning.” Advances in Neural Information Processing Systems 36 (2024).
+7 Hugo Laurençon et al. “What matters when building vision-language models?” arXiv preprint
+arXiv:2405.02246 (2024).
+When we put these steps together, they make it possible for the Q-Former to learn
+visual and textual representations in the same dimensional space, which can be used
+as a soft prompt to the LLM. As a result, the LLM will be given information about
+the image in a similar manner to the context you would provide an LLM when
+prompting. The full in-depth process is illustrated in Figure 9-20.
+Figure 9-20. The full BLIP-2 procedure.
+Since BLIP-2, many other visual LLMs have been released that have similar processes,
+like LLaVA, a framework for making textual LLMs multimodal6 or Idefics 2, an
+efficient visual LLM based on the Mistral 7B LLM.7 Both visual LLMs, although
+having different architectures, connect pretrained CLIP-like visual encoders with
+textual LLMs. The goal of these architectures is to project visual features from the
+input images to language embeddings such that they can be used as the input for an
+LLM. Similar to the Q-Former, they attempt to bridge the gap between images and
+text.
+Making Text Generation Models Multimodal 
+| 
+277

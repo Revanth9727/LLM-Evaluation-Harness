@@ -1,0 +1,33 @@
+Then we time how long it takes to generate 100 tokens with caching. We can use the
+%%timeit magic command in Jupyter or Colab to time how long the execution takes
+(it runs the command several times and gets the average):
+%%timeit -n 1
+# Generate the text
+generation_output = model.generate(
+  input_ids=input_ids,
+  max_new_tokens=100,
+  use_cache=True
+)
+On a Colab with a T4 GPU, this comes to 4.5 seconds. How long would that take if we
+disable the cache, however?
+%%timeit -n 1
+# Generate the text
+generation_output = model.generate(
+  input_ids=input_ids,
+  max_new_tokens=100,
+  use_cache=False
+)
+This comes out to 21.8 seconds. A dramatic difference. In fact, from a user experience
+standpoint, even the four-second generation time tends to be a long time to wait for
+a user that’s staring at a screen and waiting for an output from the model. This is one
+reason why LLM APIs stream the output tokens as the model generates them instead
+of waiting for the entire generation to be completed.
+Inside the Transformer Block
+We can now talk about where the vast majority of processing happens: the Trans‐
+former blocks. As Figure 3-11 shows, Transformer LLMs are composed of a series
+Transformer blocks (often in the range of six in the original Transformer paper, to
+over a hundred in many large LLMs). Each block processes its inputs, then passes the
+results of its processing to the next block.
+An Overview of Transformer Models 
+| 
+85

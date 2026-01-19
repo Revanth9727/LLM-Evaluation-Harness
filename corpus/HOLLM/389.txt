@@ -1,0 +1,24 @@
+Combined with the blockwise quantization, this normalization procedure allows for
+accurate representation of high precision values by low precision values with only
+a small decrease in the performance of the LLM. As a result, we can go from a
+16-bit float representation to a measly 4-bit normalized float representation. A 4-bit
+representation significantly reduces the memory requirements of the LLM during
+training. Note that the quantization of LLMs in general is also helpful for inference as
+quantized LLMs are smaller in size and therefore require less VRAM.
+There are more elegant methods to further optimize this like double quantization and
+paged optimizers, which you can read about more in the QLoRA paper discussed
+earlier. For a complete and highly visual guide to quantization, see this blog post.
+Instruction Tuning with QLoRA
+Now that we have explored how QLoRA works, let us put that knowledge into
+practice! In this section, we will fine-tune a completely open source and smaller
+version of Llama, TinyLlama, to follow instructions using the QLoRA procedure.
+Consider this model a base or pretrained model, one that was trained with language
+modeling but cannot yet follow instructions.
+Templating Instruction Data
+To have the LLM follow instructions, we will need to prepare instruction data that
+follows a chat template. This chat template, as illustrated in Figure 12-19, differenti‐
+ates between what the LLM has generated and what the user has generated.
+Figure 12-19. The chat template that we use throughout this chapter.
+Instruction Tuning with QLoRA 
+| 
+367

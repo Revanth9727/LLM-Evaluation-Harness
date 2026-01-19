@@ -1,0 +1,39 @@
+Token Embeddings
+Now that we understand tokenization, we have solved one part of the problem of
+representing language to a language model. In this sense, language is a sequence of
+tokens. And if we train a good-enough model on a large-enough set of tokens, it
+starts to capture the complex patterns that appear in its training dataset:
+• If the training data contains a lot of English text, that pattern reveals itself as a
+•
+model capable of representing and generating the English language.
+• If the training data contains factual information (Wikipedia, for example), the
+•
+model would have the ability to generate some factual information (see the
+following note).
+The next piece of the puzzle is finding the best numerical representation for these
+tokens that the model can use to calculate and properly model the patterns in the
+text. These patterns reveal themselves to us as a model’s coherence in a specific
+language, or capability to code, or any of the growing list of capabilities we expect
+from language models.
+As we’ve seen in Chapter 1, that is what embeddings are. They are the numeric
+representation space utilized to capture the meanings and patterns in language.
+Oops: Achieving a good threshold of language coherence and
+better-than-average factual generation, however, starts to present a
+new problem. Some users start to trust the model’s fact generation
+ability (e.g., at the beginning of 2023 some language models were
+being dubbed “Google killers”). It didn’t take long for advanced
+users to recognize that generation models alone aren’t reliable
+search engines. This led to the rise of retrieval-augmented genera‐
+tion (RAG), which combines search and LLMs. We cover RAG in
+more detail in Chapter 8.
+A Language Model Holds Embeddings for the Vocabulary of Its
+Tokenizer
+After a tokenizer is initialized and trained, it is then used in the training process of its
+associated language model. This is why a pretrained language model is linked with its
+tokenizer and can’t use a different tokenizer without training.
+The language model holds an embedding vector for each token in the tokenizer’s
+vocabulary, as we can see in Figure 2-7. When we download a pretrained language
+model, a portion of the model is this embeddings matrix holding all of these vectors.
+Token Embeddings 
+| 
+57

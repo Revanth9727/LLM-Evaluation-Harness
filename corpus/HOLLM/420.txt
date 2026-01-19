@@ -1,0 +1,100 @@
+with representation models, 113-126
+text clustering, 137-146
+text embedding models, 289-321
+contrastive learning, 291-293
+creating, 296-308
+fine-tuning, 309-315
+SBERT, 293-296
+unsupervised learning, 316
+text generation, 199-224
+agents, 218-223
+chains, 202-209
+memory of conversations, 209-217
+model I/O, 200-202
+tokens and tokenizers, 37-61
+comparing trained tokenizers, 46-54
+downloading and running LLMs, 39-42
+input preparation, 38
+text breakdown, 43
+token embeddings, 57-61
+tokenization schemes, 44-46
+tokenizer properties, 55-56
+topic modeling, 138, 146-163
+training paradigm of, 25-26
+Transformer architecture, 73-107
+decoding strategy, 79-81
+forward pass components, 76-79
+inputs and outputs of, 74-76
+keys and values cache, 83-85
+parallel token processing and context
+size, 81-83
+recent improvements to, 95-105
+Transformer blocks, 85-94
+utility of, 27
+LM head (language modeling head), 76-79
+LMQL, 194
+local attention, 96
+LoRA (low-rank adaptation), 361-364, 387
+(see also QLoRA)
+lora_alpha parameter, 370
+loss functions, 301-308
+cosine similarity loss, 302-304
+multiple negatives ranking loss, 304-308
+lr_scheduler_type parameter, 371
+M
+Mamba, 24
+MAP (mean average precision), 244-249
+MarginMSE loss, 302
+masked language modeling (MLM), 340-345
+mask_token [MASK], 48
+Massive Text Embedding Benchmark (MTEB),
+116, 140, 253, 300
+matplotlib library, 145
+maximal marginal relevance (MMR), 159
+max_new_tokens parameter, 34
+McCarthy, John, 4
+mean average precision (MAP)
+memory of conversations, 209-217
+conversation buffer, 210-212
+conversation summary, 214-217
+windowed conversation buffer, 212-214
+Meta Llama model, 30
+Microsoft Bing, 225, 241
+Microsoft Bing AI, 250
+Microsoft Phi model, 30
+microsoft/mpnet-base model, 297
+min_cluster_size parameter, 144
+min_dist parameter, 142
+MIRACL, 243
+Mistral, 30, 168, 277
+MLM (masked language modeling), 340-345
+MMLU, 374, 376
+MMR (maximal marginal relevance), 159
+MNLI (Multi-Genre Natural Language Infer‐
+ence) corpus, 297, 305
+MNR (multiple negatives ranking) loss,
+304-308
+model I/O, 200-202
+monoBERT, 244
+MTEB (Massive Text Embedding Benchmark),
+116, 140, 253, 300
+Multi-Genre Natural Language Inference
+(MNLI) corpus, 297, 305
+multi-hop RAG, 256
+multi-query attention, 98-100
+multi-query RAG, 255
+multilevel perceptrons, 79
+(see also feedforward neural networks)
+multimodality, 259-286
+defined, 259
+embedding models, 263-272
+CLIP, 265-268
+OpenCLIP, 268-272
+text generation models, 273-286
+BLIP-2, 273-277
+chat-based prompting, 283-286
+image captioning, 280-283
+preprocessing images, 278
+398 
+| 
+Index

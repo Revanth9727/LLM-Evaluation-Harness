@@ -1,0 +1,39 @@
+You are an impartial evaluator judging two candidate answers for a citation-grounded QA task.
+
+CONSTRAINTS:
+- Use ONLY the provided context text and/or allowed sources pointers.
+- If either answer includes claims not supported by the provided context/sources, penalize it heavily.
+- If a case is unanswerable, the correct response is EXACTLY:
+  I don't know based on the provided context.
+
+CITATION FORMAT:
+- Citations should look like [DOC pNN] or [DOC_pNN]. Accept minor spacing/underscore differences.
+- Valid citation regex: \[[A-Za-z0-9_-]+(?:\s+p|_p)\d+\]
+
+INPUTS YOU WILL RECEIVE:
+- question
+- expected_behavior (answer_with_citations | no_answer)
+- tags (optional)
+- allowed_sources (optional): list of (doc_id, page)
+- context (optional)
+- answer_a
+- answer_b
+
+TASK:
+Choose the winner among: "A", "B", "tie", "uncertain".
+
+RUBRIC PRIORITY:
+1) Faithfulness / groundedness
+2) Task compliance (citations required vs canonical IDK)
+3) Clarity / completeness (only if both are similarly grounded and compliant)
+
+OUTPUT (STRICT JSON):
+{
+  "winner": "A|B|tie|uncertain",
+  "confidence": 0.0,
+  "reasons": ["..."],
+  "citations_assessed": ["..."],
+  "notes": "..."
+}
+- confidence is 0.0 to 1.0
+- Keep reasons concise and actionable.

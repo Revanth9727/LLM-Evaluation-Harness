@@ -1,0 +1,42 @@
+# Initialize Trainer
+trainer = Trainer(
+    model=model,
+    args=training_args,
+    train_dataset=tokenized_train,
+    eval_dataset=tokenized_test,
+    tokenizer=tokenizer,
+    data_collator=data_collator
+)
+Several parameters are worth noting. We train for 20 epochs and keep the task short.
+You can experiment with the learning rate and weight decay to ascertain whether they
+assist in fine-tuning the model.
+Before we start our training loop we will first save our pretrained tokenizer. The
+tokenizer is not updated during training so there is no need to save it after training.
+We will, however, save our model after we continue pretraining:
+# Save pre-trained tokenizer
+tokenizer.save_pretrained("mlm")
+# Train model
+trainer.train()
+# Save updated model
+model.save_pretrained("mlm")
+This gives us an updated model in the mlm folder. To evaluate its performance we
+would normally fine-tune the model on a variety of tasks. For our purposes, however,
+we can run some masking tasks to see if it has learned from its continued training.
+We will do so by loading in our pretrained model before we continue pretraining.
+Using the sentence "What a horrible [MASK]!" the model will predict which word
+would be in place of "[MASK]":
+from transformers import pipeline
+# Load and create predictions
+mask_filler = pipeline("fill-mask", model="bert-base-cased")
+preds = mask_filler("What a horrible [MASK]!")
+# Print results
+for pred in preds:
+    print(f">>> {pred["sequence"]}")
+>>> What a horrible idea!
+>>> What a horrible dream!
+>>> What a horrible thing!
+>>> What a horrible day!
+>>> What a horrible thought!
+344 
+| 
+Chapter 11: Fine-Tuning Representation Models for Classification

@@ -1,0 +1,30 @@
+Figure 8-6. Convert some external knowledge base to a vector database. We can then
+query this vector database for information about the knowledge base.
+Dense retrieval example
+Let’s take a look at a dense retrieval example by using Cohere to search the Wikipedia
+page for the film Interstellar. In this example, we will do the following:
+1. Get the text we want to make searchable and apply some light processing to
+1.
+chunk it into sentences.
+2. Embed the sentences.
+2.
+3. Build the search index.
+3.
+4. Search and see the results.
+4.
+Get your Cohere API key by signing up at https://oreil.ly/GxrQ1. Paste it in the
+following code. You will not have to pay anything to run through this example.
+Let’s import the libraries we’ll need:
+import cohere
+import numpy as np
+import pandas as pd
+from tqdm import tqdm
+# Paste your API key here. Remember to not share publicly
+api_key = ''
+# Create and retrieve a Cohere API key from os.cohere.ai
+co = cohere.Client(api_key)
+Getting the text archive and chunking it.    Let’s use the first section of the Wikipedia arti‐
+cle on the film Interstellar. We’ll get the text, then break it into sentences:
+230 
+| 
+Chapter 8: Semantic Search and Retrieval-Augmented Generation

@@ -1,0 +1,40 @@
+16 Marah Abdin et al. “Phi-3 technical report: A highly capable language model locally on your phone.” arXiv
+preprint arXiv:2404.14219 (2024).
+More specifically, we focus on backend packages. These are packages without a
+GUI (graphical user interface) that are created for efficiently loading and running
+any LLM on your device, such as llama.cpp, LangChain, and the core of many
+frameworks, Hugging Face Transformers.
+We will mostly cover frameworks for interacting with large lan‐
+guage models through code. Although it helps you learn the
+fundamentals of these frameworks, sometimes you just want a
+ChatGPT-like interface with a local LLM. Fortunately, there are
+many incredible frameworks that allow for this. A few examples
+include text-generation-webui, KoboldCpp, and LM Studio.
+Generating Your First Text
+An important component of using language models is selecting them. The main
+source for finding and downloading LLMs is the Hugging Face Hub. Hugging Face
+is the organization behind the well-known Transformers package, which for years
+has driven the development of language models in general. As the name implies, the
+package was built on top of the transformers framework that we discussed in “
+A
+Recent History of Language AI” on page 5.
+At the time of writing, you will find more than 800,000 models on Hugging Face’s
+platform for many different purposes, from LLMs and computer vision models to
+models that work with audio and tabular data. Here, you can find almost any open
+source LLM.
+Although we will explore all kinds of models throughout this book, let’s start our first
+lines of code with a generative model. The main generative model we use throughout
+the book is Phi-3-mini, which is a relatively small (3.8 billion parameters) but quite
+performant model.16 Due to its small size, the model can be run on devices with less
+than 8 GB of VRAM. If you perform quantization, a type of compression that we will
+further discuss in Chapters 7 and 12, you can use even less than 6 GB of VRAM.
+Moreover, the model is licensed under the MIT license, which allows the model to be
+used for commercial purposes without constraints!
+Keep in mind that new and improved LLMs are frequently released. To ensure this
+book remains current, most examples are designed to work with any LLM. We’ll also
+highlight different models in the repository associated with this book for you to try
+out.
+Let’s get started! When you use an LLM, two models are loaded:
+32 
+| 
+Chapter 1: An Introduction to Large Language Models

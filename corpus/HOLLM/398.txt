@@ -1,0 +1,38 @@
+18 Lianmin Zheng et al. “Judging LLM-as-a-judge with MT-Bench and Chatbot Arena.” Advances in Neural
+Information Processing Systems 36 (2024).
+Leaderboards
+With so many different benchmarks, it is hard to choose which benchmark best suits
+your model. Whenever a model is released, you will often see it evaluated on several
+benchmarks to showcase how it performs across the board.
+As such, leaderboards were developed containing multiple benchmarks. A common
+leaderboard is the Open LLM Leaderboard, which, at the time of writing, includes six
+benchmarks, including HellaSwag, MMLU, TruthfulQA, and GSM8k. Models that top
+the leaderboard, assuming they were not overfitted on the data, are generally regar‐
+ded as the “best” model. However, since these leaderboards often contain publicly
+available benchmarks, there is a risk of overfitting on the leaderboard.
+Automated Evaluation
+Part of evaluating a generative output is the quality of its text. For instance, even if
+two models were to give the same correct answer to a question, the way they derived
+that answer might be different. It is often not just about the final answer but also the
+construction of it. Similarly, although two summaries might be similar, one could be
+significantly shorter than another, which is often important for a good summary.
+To evaluate the quality of the generated text above the correctness of the final answer,
+LLM-as-a-judge was introduced.18 In essence, a separate LLM is asked to judge the
+quality of the LLM to be evaluated. An interesting variant of this method is pairwise
+comparison. Two different LLMs will generate an answer to a question and a third
+LLM will be the judge to declare which is better.
+As a result, this methodology allows for automated evaluation of open-ended ques‐
+tions. A major advantage is that as LLMs improve, so do their capabilities to judge the
+quality of output. In other words, this evaluation methodology grows with the field.
+Human Evaluation
+Although benchmarks are important, the gold standard of evaluation is gener‐
+ally considered to be human evaluation. Even if an LLM scores well on broad
+benchmarks, it still might not score well on domain-specific tasks. Moreover, bench‐
+marks do not fully capture human preference and all methods discussed before are
+merely proxies for that.
+A great example of a human-based evaluation technique is the Chatbot Arena.19
+When you go to this leaderboard you are shown two (anonymous) LLMs you can
+interact with. Any question or prompt you ask will be sent to both models and you
+376 
+| 
+Chapter 12: Fine-Tuning Generation Models

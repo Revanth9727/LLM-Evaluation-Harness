@@ -1,0 +1,22 @@
+One common way to assign numeric scores in this scenario is average precision,
+which evaluates system 1’s result for the query to be 1 and system 2’s to be 0.3. So let’s
+see how average precision is calculated to evaluate one set of results, and then how it’s
+aggregated to evaluate a system across all the queries in the test suite.
+Scoring a single query with average precision
+To score a search system on this query, we can focus on scoring the relevant docu‐
+ments. Let’s start by looking at a query that only has one relevant document in the test
+suite.
+The first one is easy: the search system placed the relevant result (the only available
+one for this query) at the top. This gets the system the perfect score of 1. Figure 8-20
+shows this calculation: looking at the first position, we have a relevant result leading
+to a precision at position 1 of 1.0 (calculated as the number of relevant results at
+position 1, divided by the position we’re currently looking at).
+Figure 8-20. To calculate mean average precision, we start by calculating precision at
+each position, starting with position 1.
+Since we’re only scoring relevant documents we can ignore the scores of nonrelevant
+documents and stop our calculation here. What if the system actually placed the
+only relevant result at the third position, however? How would that affect the score?
+Figure 8-21 shows how that results in a penalty.
+Semantic Search with Language Models 
+| 
+247

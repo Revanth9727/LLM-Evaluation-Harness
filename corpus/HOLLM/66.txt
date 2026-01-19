@@ -1,0 +1,25 @@
+Figure 2-5. Tokenizers are also used to process the output of the model by converting the
+output token ID into the word or token associated with that ID.
+Word Versus Subword Versus Character Versus Byte Tokens
+The tokenization scheme we just discussed is called subword tokenization. It’s the
+most commonly used tokenization scheme but not the only one. The four notable
+ways to tokenize are shown in Figure 2-6. Let’s go over them:
+Word tokens
+This approach was common with earlier methods like word2vec but is being
+used less and less in NLP. Its usefulness, however, led it to be used outside of NLP
+for use cases such as recommendation systems, as we’ll see later in the chapter.
+One challenge with word tokenization is that the tokenizer may be unable to
+deal with new words that enter the dataset after the tokenizer was trained. This
+also results in a vocabulary that has a lot of tokens with minimal differences
+between them (e.g., apology, apologize, apologetic, apologist). This latter chal‐
+lenge is resolved by subword tokenization as it has a token for apolog, and then
+suffix tokens (e.g., -y, -ize, -etic, -ist) that are common with many other tokens,
+resulting in a more expressive vocabulary.
+Subword tokens
+This method contains full and partial words. In addition to the vocabulary
+expressivity mentioned earlier, another benefit of the approach is its ability to
+represent new words by breaking down the new token into smaller characters,
+which tend to be a part of the vocabulary.
+44 
+| 
+Chapter 2: Tokens and Embeddings

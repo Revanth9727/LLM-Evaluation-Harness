@@ -1,0 +1,21 @@
+Figure 2-12. Each generated training example shows a pair of neighboring words.
+If, however, we have a dataset of only a target value of 1, then a model can cheat
+and ace it by outputting 1 all the time. To get around this, we need to enrich our
+training dataset with examples of words that are not typically neighbors. These are
+called negative examples and are shown in Figure 2-13.
+Figure 2-13. We need to present our models with negative examples: words that are not
+usually neighbors. A better model is able to better distinguish between the positive and
+negative examples.
+It turns out that we don’t have to be too scientific in how we choose the negative
+examples. A lot of useful models result from the simple ability to detect positive
+examples from randomly generated examples (inspired by an important idea called
+noise-contrastive estimation and described in “Noise-contrastive estimation: A new
+estimation principle for unnormalized statistical models”). So in this case, we get
+random words and add them to the dataset and indicate that they are not neighbors
+(and thus the model should output 0 when it sees them).
+With this, we’ve seen two of the main concepts of word2vec (Figure 2-14): skip-gram,
+the method of selecting neighboring words, and negative sampling, adding negative
+examples by random sampling from the dataset.
+Word Embeddings Beyond LLMs 
+| 
+65

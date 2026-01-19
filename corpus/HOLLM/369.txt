@@ -1,0 +1,41 @@
+4 Erik F. Sang and Fien De Meulder. “Introduction to the CoNLL-2003 shared task: Language-independent
+named entity recognition.” arXiv preprint cs/0306050 (2003).
+5 Jingjing Liu et al. “
+Asgard: A portable architecture for multilingual dialogue systems.” 2013 IEEE International
+Conference on Acoustics, Speech and Signal Processing. IEEE, 2013.
+Preparing Data for Named-Entity Recognition
+In this example, we will use the English version of the CoNLL-2003 dataset, which
+contains several different types of named entities (person, organization, location,
+miscellaneous, and no entity) and has roughly 14,000 training samples.4
+# The CoNLL-2003 dataset for NER
+dataset = load_dataset("conll2003", trust_remote_code=True)
+While researching datasets to use for this example, there were a
+few more that we wanted to share. wnut_17 is a task that focuses
+on emerging and rare entities, those that are more difficult to
+spot. Furthermore, the tner/mit_movie_trivia and tner/mit_res
+taurant datasets are quite fun to use. tner/mit_movie_trivia is
+for detecting entities like actor, plot, and soundtrack whereas tner/
+mit_restaurant aims to detect entities such as amenity, dish, and
+cuisine.5
+Let’s inspect the structure of the data with an example:
+example = dataset["train"][848]
+example
+{'id': '848',
+ 'tokens': ['Dean',
+  'Palmer',
+  'hit',
+  'his',
+  '30th',
+  'homer',
+  'for',
+  'the',
+  'Rangers',
+  '.'],
+ 'pos_tags': [22, 22, 38, 29, 16, 21, 15, 12, 23, 7],
+ 'chunk_tags': [11, 12, 21, 11, 12, 12, 13, 11, 12, 0],
+ 'ner_tags': [1, 2, 0, 0, 0, 0, 0, 0, 3, 0]}
+This dataset provides us with labels for each word given in a sentence. These labels
+can be found in the ner_tags key, which refers to the following possible entities:
+Named-Entity Recognition 
+| 
+347

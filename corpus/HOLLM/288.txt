@@ -1,0 +1,22 @@
+This dataset can be used to create two representations for each pair, the image and
+its caption. To do so, CLIP uses a text encoder to embed text and an image encoder
+to embed images. As is shown in Figure 9-9, the result is an embedding for both the
+image and its corresponding caption.
+Figure 9-9. In the first step of training CLIP, both images and text are embedded using
+an image and text encoder, respectively.
+The pair of embeddings that are generated are compared through cosine similarity.
+As we saw in Chapter 4, cosine similarity is the cosine of the angle between vectors,
+which is calculated through the dot product of the embeddings and divided by the
+product of their lengths.
+When we start training, the similarity between the image embedding and text embed‐
+ding will be low as they are not yet optimized to be within the same vector space.
+During training, we optimize for the similarity between the embeddings and want
+to maximize them for similar image/caption pairs and minimize them for dissimilar
+image/caption pairs (Figure 9-10).
+After calculating their similarity, the model is updated and the process starts again
+with new batches of data and updated representations (Figure 9-11). This method
+is called contrastive learning, and we will go in depth into its inner workings in
+Chapter 10 where we will create our own embedding model.
+266 
+| 
+Chapter 9: Multimodal Large Language Models

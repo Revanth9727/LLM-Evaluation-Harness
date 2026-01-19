@@ -1,0 +1,17 @@
+go in depth about tokenization and how that technique influences language models.
+As illustrated in Figure 1-4, after tokenization, we combine all unique words from
+each sentence to create a vocabulary that we can use to represent the sentences.
+Figure 1-4. A vocabulary is created by retaining all unique words across both sentences.
+Using our vocabulary, we simply count how often a word in each sentence appears,
+quite literally creating a bag of words. As a result, a bag-of-words model aims to
+create representations of text in the form of numbers, also called vectors or vector
+representations, observed in Figure 1-5. Throughout the book, we refer to these kinds
+of models as representation models.
+Figure 1-5. A bag-of-words is created by counting individual words. These values are
+referred to as vector representations.
+Although bag-of-words is a classic method, it is by no means completely obsolete.
+In Chapter 5, we will explore how it can still be used to complement more recent
+language models.
+A Recent History of Language AI 
+| 
+7

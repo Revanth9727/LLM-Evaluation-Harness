@@ -1,0 +1,9 @@
+Figure 3-2. Transformer LLMs generate one token at a time, not the entire text at once.
+After each token generation, we tweak the input prompt for the next generation step
+by appending the output token to the end of the input prompt. We can see this in
+Figure 3-3.
+Figure 3-3. An output token is appended to the prompt, then this new text is presented to
+the model again for another forward pass to generate the next token.
+An Overview of Transformer Models 
+| 
+75

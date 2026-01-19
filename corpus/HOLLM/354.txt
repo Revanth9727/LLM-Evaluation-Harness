@@ -1,0 +1,26 @@
+tokenizer=tokenizer,
+   data_collator=data_collator,
+   compute_metrics=compute_metrics,
+)
+trainer.train()
+After training, we evaluate the results:
+trainer.evaluate()
+{'eval_loss': 0.40812647342681885,
+ 'eval_f1': 0.8,
+ 'eval_runtime': 3.7125,
+ 'eval_samples_per_second': 287.137,
+ 'eval_steps_per_second': 18.047,
+ 'epoch': 1.0}
+We got an F1 score of 0.8, which is much higher than our previous score of 0.63 when
+freezing all layers. It demonstrates that although we generally want to train as many
+layers as possible, you can get away with training less if you do not have the necessary
+computing power.
+To further illustrate this effect, we tested the effect of iteratively freezing encoder
+blocks and fine-tuning them as we did thus far. As shown in Figure 11-7, training
+only the first five encoder blocks (red vertical line) is enough to almost reach the
+performance of training all encoder blocks.
+Figure 11-7. The effect of freezing certain encoder blocks on the performance of the
+model. Training more blocks leads to improved performance but stabilizes early on.
+332 
+| 
+Chapter 11: Fine-Tuning Representation Models for Classification

@@ -1,0 +1,12 @@
+Figure 12-17. Blockwise quantization can accurately represent weights in lower precision
+through quantization blocks.
+A nice property of neural networks is that their values are generally normally dis‐
+tributed between –1 and 1. This property allows us to bin the original weights to
+lower bits based on their relative density, as illustrated in Figure 12-18. The mapping
+between weights is more efficient as it takes into account the relative frequency of
+weights. This also reduces issues with outliers.
+Figure 12-18. Using distribution-aware blocks we can prevent values close to one another
+from being represented with the same quantized value.
+366 
+| 
+Chapter 12: Fine-Tuning Generation Models

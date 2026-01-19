@@ -1,0 +1,18 @@
+4 Dzmitry Bahdanau, Kyunghyun Cho, and Yoshua Bengio. “Neural machine translation by jointly learning to
+align and translate.” arXiv preprint arXiv:1409.0473 (2014).
+Figure 1-13. Using word2vec embeddings, a context embedding is generated that repre‐
+sents the entire sequence.
+This context embedding, however, makes it difficult to deal with longer sentences
+since it is merely a single embedding representing the entire input. In 2014, a solution
+called attention was introduced that highly improved upon the original architecture.4
+Attention allows a model to focus on parts of the input sequence that are relevant
+to one another (“attend” to each other) and amplify their signal, as shown in Fig‐
+ure 1-14. Attention selectively determines which words are most important in a given
+sentence.
+For instance, the output word “lama’s” is Dutch for “llamas,” which is why the atten‐
+tion between both is high. Similarly, the words “lama’s” and “I” have lower attention
+since they aren’t as related. In Chapter 3, we will go more in depth on the attention
+mechanism.
+A Recent History of Language AI 
+| 
+13

@@ -1,0 +1,42 @@
+from hdbscan import HDBSCAN
+# We fit the model and extract the clusters
+hdbscan_model = HDBSCAN(
+    min_cluster_size=50, metric="euclidean", cluster_selection_method="eom"
+).fit(reduced_embeddings)
+clusters = hdbscan_model.labels_
+# How many clusters did we generate?
+len(set(clusters))
+156
+With HDBSCAN, we generated 156 clusters in our dataset. To create more clusters,
+we will need to reduce the value of min_cluster_size as it represents the minimum
+size that a cluster can take.
+Inspecting the Clusters
+Now that we have generated our clusters, we can inspect each cluster manually and
+explore the assigned documents to get an understanding of its content. For example,
+let us take a few random documents from cluster 0:
+import numpy as np
+# Print first three documents in cluster 0
+cluster = 0
+for index in np.where(clusters==cluster)[0][:3]:
+    print(abstracts[index][:300] + "... \n")
+This works aims to design a statistical machine translation from English text
+to American Sign Language (ASL). The system is based on Moses tool with some
+modifications and the results are synthesized through a 3D avatar for
+interpretation. First, we translate the input text to gloss, a written fo...
+Researches on signed languages still strongly dissociate lin- guistic issues
+related on phonological and phonetic aspects, and gesture studies for
+recognition and synthesis purposes. This paper focuses on the imbrication of
+motion and meaning for the analysis, synthesis and evaluation of sign lang...
+Modern computational linguistic software cannot produce important aspects of
+sign language translation. Using some researches we deduce that the majority of
+automatic sign language translation systems ignore many aspects when they
+generate animation; therefore the interpretation lost the truth inf...
+From these documents, it seems that this cluster contains documents mostly about
+translation from and to sign language, interesting!
+We can take this one step further and attempt to visualize our results instead of going
+through all documents manually. To do so, we will need to reduce our document
+embeddings to two dimensions, as that allows us to plot the documents on an x/y
+plane:
+144 
+| 
+Chapter 5: Text Clustering and Topic Modeling

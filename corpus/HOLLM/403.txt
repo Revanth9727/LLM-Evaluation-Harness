@@ -1,0 +1,9 @@
+Figure 12-27. Preference tuning datasets are often made up of prompts with accepted
+and rejected generations.
+One way to generate preference data is to present a prompt to the LLM and have
+it generate two different generations. As shown in Figure 12-28, we can ask human
+labelers which of the two they prefer.
+Figure 12-28. Output two generations and ask a human labeler which one they prefer.
+Automating Preference Evaluation Using Reward Models 
+| 
+381

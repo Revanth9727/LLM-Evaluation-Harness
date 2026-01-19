@@ -1,0 +1,18 @@
+Text Classification with Generative Models
+Classification with generative language models, such as OpenAI’s GPT models, works
+a bit differently from what we have done thus far. These models take as input some
+text and generative text and are thereby aptly named sequence-to-sequence models.
+This is in stark contrast to our task-specific model, which outputs a class instead, as
+illustrated in Figure 4-17.
+Figure 4-17. A task-specific model generates numerical values from sequences of tokens
+while a generative model generates sequences of tokens from sequences of tokens.
+These generative models are generally trained on a wide variety of tasks and usually
+do not perform your use case out of the box. For instance, if we give a generative
+model a movie review without any context, it has no idea what to do with it.
+Instead, we need to help it understand the context and guide it toward the answers
+that we are looking for. As demonstrated in Figure 4-18, this guiding process is done
+mainly through the instruction, or prompt, that you give such a model. Iteratively
+improving your prompt to get your preferred output is called prompt engineering.
+Text Classification with Generative Models 
+| 
+127

@@ -1,0 +1,22 @@
+Embeddings are tremendously helpful as they allow us to measure the semantic
+similarity between two words. Using various distance metrics, we can judge how close
+one word is to another. As illustrated in Figure 1-9, if we were to compress these
+embeddings into a two-dimensional representation, you would notice that words
+with similar meaning tend to be closer. In Chapter 5, we will explore how to compress
+these embeddings into n-dimensional space.
+Figure 1-9. Embeddings of words that are similar will be close to each other in dimen‐
+sional space.
+Types of Embeddings
+There are many types of embeddings, like word embeddings and sentence embed‐
+dings that are used to indicate different levels of abstractions (word versus sentence),
+as illustrated in Figure 1-10.
+Bag-of-words, for instance, creates embeddings at a document level since it repre‐
+sents the entire document. In contrast, word2vec generates embeddings for words
+only.
+Throughout the book, embeddings will take on a central role as they are utilized in
+many use cases, such as classification (see Chapter 4), clustering (see Chapter 5), and
+semantic search and retrieval-augmented generation (see Chapter 8). In Chapter 2,
+we will take our first deep dive into token embeddings.
+10 
+| 
+Chapter 1: An Introduction to Large Language Models

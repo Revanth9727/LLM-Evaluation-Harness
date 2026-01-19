@@ -1,0 +1,22 @@
+Figure 3-30. The Transformer block of a 2024-era Transformer like Llama 3 features
+some tweaks like pre-normalization and an attention optimized with grouped-query
+attention and rotary embeddings.
+Positional Embeddings (RoPE)
+Positional embeddings have been a key component since the original Transformer.
+They enable the model to keep track of the order of tokens/words in a sequence/
+sentence, which is an indispensable source of information in language. From the
+many positional encoding schemes proposed in the past years, rotary positional
+embeddings (or “RoPE,” introduced in “RoFormer: Enhanced Transformer with
+rotary position embedding”) is especially important to point out.
+The original Transformer paper and some of the early variants had absolute posi‐
+tional embeddings that, in essence, marked the first token as position 1, the second as
+position 2...etc. These could either be static methods (where the positional vectors are
+generated using geometric functions) or learned (where the model training assigns
+them their values during the learning process). Some challenges arise from such
+methods when we scale up models, which requires us to find ways to improve their
+efficiency.
+For example, one challenge in efficiently training models with large context is that
+a lot of documents in the training set are much shorter than that context. It would
+102 
+| 
+Chapter 3: Looking Inside Large Language Models

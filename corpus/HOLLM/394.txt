@@ -1,0 +1,38 @@
+optim
+The paged optimizers used in the original QLoRA paper.
+Optimizing these parameters is a difficult task and there are no set guidelines for
+doing so. It requires experimentation to figure out what works best for specific
+datasets, model sizes, and target tasks.
+Although this section describes instruction tuning, we could also
+use QLoRA to fine-tune an instruction model. For instance, we
+could fine-tune a chat model to generate specific SQL code or
+to create JSON output that adheres to a specific format. As long
+as you have the data available (with appropriate query-response
+items), QLoRA is a great technique for nudging an existing chat
+model to be more appropriate for your use case.
+Training
+Now that we have prepared all our models and parameters, we can start fine-tuning
+our model. We load in SFTTrainer and simply run trainer.train():
+from trl import SFTTrainer
+# Set supervised fine-tuning parameters
+trainer = SFTTrainer(
+    model=model,
+    train_dataset=dataset,
+    dataset_text_field="text",
+    tokenizer=tokenizer,
+    args=training_arguments,
+    max_seq_length=512,
+    # Leave this out for regular SFT
+    peft_config=peft_config,
+)
+# Train model
+trainer.train()
+# Save QLoRA weights
+trainer.model.save_pretrained("TinyLlama-1.1B-qlora")
+During training the loss will be printed every 10 steps according to the log
+ging_steps parameter. If you are using the free GPU provided by Google Colab,
+which is the Tesla T4 at the time of writing, then training might take up to an hour. A
+good time to take a break!
+372 
+| 
+Chapter 12: Fine-Tuning Generation Models

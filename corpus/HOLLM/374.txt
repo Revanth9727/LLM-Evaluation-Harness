@@ -1,0 +1,45 @@
+results = seqeval.compute(
+    predictions=true_predictions, references=true_labels
+)
+    return {"f1": results["overall_f1"]}
+Fine-Tuning for Named-Entity Recognition
+We are nearly there. Instead of DataCollatorWithPadding, we need a collator that
+works with classification on a token level, namely DataCollatorForTokenClassifica
+tion:
+from transformers import DataCollatorForTokenClassification
+# Token-classification DataCollator
+data_collator = DataCollatorForTokenClassification(tokenizer=tokenizer)
+Now that we have loaded our model, the rest of the steps are similar to previous
+training procedures in this chapter. We define a trainer with specific arguments that
+we can tune and create a Trainer:
+# Training arguments for parameter tuning
+training_args = TrainingArguments(
+   "model",
+   learning_rate=2e-5,
+   per_device_train_batch_size=16,
+   per_device_eval_batch_size=16,
+   num_train_epochs=1,
+   weight_decay=0.01,
+   save_strategy="epoch",
+   report_to="none"
+)
+# Initialize Trainer
+trainer = Trainer(
+    model=model,
+    args=training_args,
+    train_dataset=tokenized["train"],
+    eval_dataset=tokenized["test"],
+    tokenizer=tokenizer,
+    data_collator=data_collator,
+    compute_metrics=compute_metrics,
+)
+trainer.train()
+We then evaluate the model that we created:
+# Evaluate the model on our test data
+trainer.evaluate()
+Lastly, let’s save the model and use it in a pipeline for inference. This allows us to
+check certain data so we can manually inspect what happens during inference and if
+we are satisfied with the output:
+352 
+| 
+Chapter 11: Fine-Tuning Representation Models for Classification

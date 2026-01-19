@@ -1,0 +1,28 @@
+even when used in conjunction with each other. Chains not only allow for extending
+the capabilities of LLMs but also for multiple chains to be connected together.
+The most basic form of a chain in LangChain is a single chain. Although a chain can
+take many forms, each with a different complexity, it generally connects an LLM with
+some additional tool, prompt, or feature. This idea of connecting a component to an
+LLM is illustrated in Figure 7-3.
+Figure 7-3. A single chain connects some modular component, like a prompt template or
+external memory, to the LLM.
+In practice, chains can become complex quite quickly. We can extend the prompt
+template however we want and we can even combine several separate chains together
+to create intricate systems. In order to thoroughly understand what is happening in a
+chain, let’s explore how we can add Phi-3’s prompt template to the LLM.
+A Single Link in the Chain: Prompt Template
+We start with creating our first chain, namely the prompt template that Phi-3 expects.
+In the previous chapter, we explored how transformers.pipeline applies the chat
+template automatically. This is not always the case with other packages and they
+might need the prompt template to be explicitly defined. With LangChain, we will use
+chains to create and use a default prompt template. It also serves as a nice hands-on
+experience with using prompt templates.
+The idea, as illustrated in Figure 7-4, is that we chain the prompt template together
+with the LLM to get the output we are looking for. Instead of having to copy-paste the
+prompt template each time we use the LLM, we would only need to define the user
+and system prompts.
+Figure 7-4. By chaining a prompt template with an LLM, we only need to define the
+input prompts. The template will be constructed for you.
+Chains: Extending the Capabilities of LLMs 
+| 
+203

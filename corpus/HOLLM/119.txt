@@ -1,0 +1,14 @@
+Figure 3-23. Full attention versus sparse attention. Figure 3-24 explains the coloring.
+(Source: “Generating long sequences with sparse transformers”.)
+Each row corresponds to a token being processed. The color coding indicates which
+tokens the model is able to pay attention to while it’s processing the token in the dark
+blue cell. Figure 3-24 describes this with more clarity.
+Figure 3-24. Attention figures show which token is being processed, and which previous
+tokens an attention mechanism allows it to attend to.
+This figure also shows the autoregressive nature of decoder Transformer blocks
+(which make up most text generation models); they can only pay attention to previ‐
+ous tokens. Contrast this to BERT, which can pay attention to both sides (hence the B
+in BERT stands for bidirectional).
+Recent Improvements to the Transformer Architecture 
+| 
+97

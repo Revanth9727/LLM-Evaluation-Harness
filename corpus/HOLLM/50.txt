@@ -1,0 +1,38 @@
+Responsible LLM Development and Usage
+The impact of LLMs has been and likely continues to be significant due to their wide‐
+spread adoption. As we explore the incredible capabilities of LLMs it is important to
+keep their societal and ethical implications in mind. Several key points to consider:
+Bias and fairness
+LLMs are trained on large amounts of data that might contain biases. LLMs
+might learn from these biases, start to reproduce them, and potentially amplify
+them. Since the data on which LLMs are trained are seldom shared, it remains
+unclear what potential biases they might contain unless you try them out.
+Transparency and accountability
+Due to LLMs’ incredible capabilities, it is not always clear when you are talking
+with a human or an LLM. As such, the usage of LLMs when interacting with
+humans can have unintended consequences when there is no human in the
+loop. For instance, LLM-based applications used in the medical field might be
+regulated as medical devices since they could affect a patient’s well-being.
+Generating harmful content
+An LLM does not necessarily generate ground-truth content and might confi‐
+dently output incorrect text. Moreover, they can be used to generate fake news,
+articles, and other misleading sources of information.
+Intellectual property
+Is the output of an LLM your intellectual property or that of the LLM’s creator?
+When the output is similar to a phrase in the training data, does the intellectual
+property belong to the author of that phrase? Without access to the training data
+it remains unclear when copyrighted material is being used by the LLM.
+Regulation
+Due to the enormous impact of LLMs, governments are starting to regulate
+commercial applications. An example is the European AI Act, which regulates
+the development and deployment of foundation models including LLMs.
+As you develop and use LLMs, we want to stress the importance of ethical considera‐
+tions and urge you to learn more about the safe and responsible use of LLMs and AI
+systems in general.
+Limited Resources Are All You Need
+The compute resources that we have referenced several times thus far generally relate
+to the GPU(s) you have available on your system. A powerful GPU (graphics card)
+will make both training and using LLMs much more efficient and faster.
+28 
+| 
+Chapter 1: An Introduction to Large Language Models

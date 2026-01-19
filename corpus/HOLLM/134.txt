@@ -1,0 +1,25 @@
+1 Bo Pang and Lillian Lee. “Seeing stars: Exploiting class relationships for sentiment categorization with respect
+to rating scales.” arXiv preprint cs/0506075 (2005).
+In this chapter, we will focus on leveraging pretrained language models, models that
+already have been trained on large amounts of data that can be used for classifying
+text. As illustrated in Figure 4-2, we will examine both representation and language
+models and explore their differences.
+Figure 4-2. Although both representation and generative models can be used for classifi‐
+cation, their approaches differ.
+This chapter serves as an introduction to a variety of language models, both genera‐
+tive and nongenerative. We will encounter common packages for loading and using
+these models.
+Although this book focuses on LLMs, it is highly advised to com‐
+pare these examples against classic, but strong baselines such as
+representing text with TF-IDF and training a logistic regression
+classifier on top of that.
+The Sentiment of Movie Reviews
+You can find the data we use to explore techniques for classifying text on the Hugging
+Face Hub, a platform for hosting models but also data. We will use the well-known
+“rotten_tomatoes” dataset to train and evaluate our models.1 It contains 5,331 positive
+and 5,331 negative movie reviews from Rotten Tomatoes.
+To load this data, we make use of the datasets package, which will be used through‐
+out the book:
+112 
+| 
+Chapter 4: Text Classification

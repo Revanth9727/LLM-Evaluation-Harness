@@ -1,0 +1,29 @@
+2 Nelson F. Liu, Tianyi Zhang, and Percy Liang. “Evaluating verifiability in generative search engines.” arXiv
+preprint arXiv:2304.09848 (2023).
+RAG Evaluation
+There are still ongoing developments in how to evaluate RAG models. A good paper
+to read on this topic is “Evaluating verifiability in generative search engines” (2023),
+which runs human evaluations on different generative search systems.2
+It evaluates results along four axes:
+Fluency
+Whether the generated text is fluent and cohesive.
+Perceived utility
+Whether the generated answer is helpful and informative.
+Citation recall
+The proportion of generated statements about the external world that are fully
+supported by their citations.
+Citation precision
+The proportion of generated citations that support their associated statements.
+While human evaluation is always preferred, there are approaches that attempt to
+automate these evaluations by having a capable LLM act as a judge (called LLM-as-a-
+judge) and score the different generations along the different axes. Ragas is a software
+library that does exactly this. It also scores some additional useful metrics like:
+Faithfulness
+Whether the answer is consistent with the provided context
+Answer relevance
+How relevant the answer is to the question
+The Ragas documentation site provides more details about the formulas to actually
+calculate these metrics.
+Retrieval-Augmented Generation (RAG) 
+| 
+257

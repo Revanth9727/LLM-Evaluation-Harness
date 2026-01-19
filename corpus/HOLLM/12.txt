@@ -1,0 +1,25 @@
+Training Configuration                                                                                           371
+Training                                                                                                                     372
+Merge Weights                                                                                                          373
+Evaluating Generative Models                                                                                   373
+Word-Level Metrics                                                                                                 374
+Benchmarks                                                                                                              374
+Leaderboards                                                                                                            376
+Automated Evaluation                                                                                             376
+Human Evaluation                                                                                                   376
+Preference-Tuning / Alignment / RLHF                                                                  378
+Automating Preference Evaluation Using Reward Models                                   379
+The Inputs and Outputs of a Reward Model                                                       380
+Training a Reward Model                                                                                       380
+Training No Reward Model                                                                                    384
+Preference Tuning with DPO                                                                                     385
+Templating Alignment Data                                                                                   386
+Model Quantization                                                                                                 386
+Training Configuration                                                                                           387
+Training                                                                                                                     388
+Summary                                                                                                                       389
+Afterword. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  391
+Index. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  393
+x 
+| 
+Table of Contents
