@@ -1,17 +1,17 @@
 # Project 1 - Eval Harness
 
-A production-ready, CI-gated A/B evaluation framework for comparing AI models, prompts, or configurations with confidence intervals, quality gates, and comprehensive reporting.
+A production-ready, CI-ready A/B evaluation framework for comparing AI models, prompts, or configurations with confidence intervals, quality gates, and comprehensive reporting.
 
 ## Key Features
 
-✅ **Hard Checks First** - Deterministic validation (schema, citations, length, etc.)
-✅ **LLM Judge** - Subjective quality comparison (only when hard checks pass)
-✅ **Metrics + Confidence Intervals** - Win rate, refusal rate, format pass rate with bootstrap 95% CI
-✅ **Quality Gates** - Configurable thresholds that fail builds on regressions
-✅ **Judge Calibration** - Verify judge reliability with agreement, flip rate, order bias metrics
-✅ **Metamorphic Testing** - Robustness checks via input transformations
-✅ **Failure Replay** - Debug specific cases with exact reproduction
-✅ **CI/CD Ready** - GitHub Actions integration with artifact uploads
+ **Hard Checks First** - Deterministic validation (schema, citations, length, etc.)
+ **LLM Judge** - Subjective quality comparison (only when hard checks pass)
+ **Metrics + Confidence Intervals** - Win rate, refusal rate, format pass rate with bootstrap 95% CI
+ **Quality Gates** - Configurable thresholds that fail builds on regressions
+ **Judge Calibration** - Verify judge reliability with agreement, flip rate, order bias metrics
+ **Metamorphic Testing** - Robustness checks via input transformations
+ **Failure Replay** - Debug specific cases with exact reproduction
+ **CI/CD Ready** - GitHub Actions integration with artifact uploads
 
 ## Quick Start (2 Minutes)
 
@@ -30,7 +30,7 @@ make smoke-mock
 cat artifacts/smoke_mock_*/summary.md
 ```
 
-🎉 **Done!** You just ran an A/B evaluation with 40 test cases.
+**Done!** You just ran an A/B evaluation with 40 test cases.
 
 ## Core Capabilities
 
@@ -47,12 +47,19 @@ Every run produces:
 
 ```yaml
 gates:
-  enabled: true
+  # CI currently runs `configs/smoke_mock.yaml`, which keeps gates OFF by default
+  # (it validates wiring without enforcing quality thresholds).
+  enabled: false
+
+  # To enforce merge-blocking thresholds, set enabled: true and tune:
   win_rate_min: 0.50              # Minimum win rate
   win_rate_ci_lower_min: 0.40     # Lower CI bound must be >= 40%
   refusal_rate_max: 0.20          # Max refusal rate
   format_pass_rate_min: 0.90      # Min format compliance
 ```
+
+If you want CI to *fail the build* on quality regressions, enable gates in the config used by CI (or add a second CI job that runs a gated config).
+
 
 **Exit codes:**
 - `0` = PASS (all gates met)
@@ -71,7 +78,7 @@ regression:
 
 ```bash
 # Development & Testing
-make test                        # Run unit tests (31 tests)
+make test                        # Run unit tests (pytest)
 make smoke-mock                  # Quick test with mock models (no cost)
 make smoke                       # Quick test with real models
 
@@ -90,7 +97,7 @@ make replay CASE_ID=cite_001 ARTIFACT_DIR=artifacts/run_20260119
 ## Technology Stack
 
 - **Python 3.10+** - Core language
-- **pytest** - Testing framework (31 unit tests)
+- **pytest** - Testing framework (unit tests)
 - **NumPy** - Statistical computations (bootstrap CI)
 - **YAML** - Configuration format
 - **JSONL** - Dataset format
@@ -104,24 +111,11 @@ make replay CASE_ID=cite_001 ARTIFACT_DIR=artifacts/run_20260119
 
 ## Documentation
 
-### Start Here (New Users)
-- **🚀 [HOW_TO_RUN.md](HOW_TO_RUN.md)** - Complete beginner's guide (start here!)
-- **📘 [docs/project1_eval_harness.md](docs/project1_eval_harness.md)** - Full project explanation
+- ** [HOW_TO_RUN.md](HOW_TO_RUN.md)** — Step-by-step guide for running locally (configs, providers, artifacts)
+- ** [corpus/Readme.md](corpus/Readme.md)** — Corpus format and how source docs are organized
+- ** `configs/`** — Example run configurations (smoke + templates you can copy)
 
-### Specifications & Contracts
-- **📋 [CLAUDE.md](CLAUDE.md)** - Project constitution (how AI should modify this repo)
-- **📦 [docs/ARTIFACTS_SPEC.md](docs/ARTIFACTS_SPEC.md)** - Artifact schemas (source of truth)
-- **✅ [docs/Project1_Complete_Checklist.md](docs/Project1_Complete_Checklist.md)** - Definition of Done
-- **📝 [docs/task_contract.md](docs/task_contract.md)** - What "passing" means for Citation Q&A
-- **🔒 [docs/hard_checks.md](docs/hard_checks.md)** - Deterministic validation rules
-- **⚖️ [docs/judge_rubric.md](docs/judge_rubric.md)** - Judge comparison criteria
-
-### Advanced Topics
-- **📊 [docs/judge_calibration.md](docs/judge_calibration.md)** - Judge reliability methodology
-- **🔄 [docs/metamorphic_testing.md](docs/metamorphic_testing.md)** - Robustness testing guide
-- **🐛 [docs/runbook_interpreting_reports.md](docs/runbook_interpreting_reports.md)** - How to debug failures
-
-> **💡 Tip:** If you're new, read [HOW_TO_RUN.md](HOW_TO_RUN.md) first. It has everything you need to get started!
+> Note: Earlier README drafts referenced a `docs/` folder (schemas/runbooks). Those files are not in this repo yet, so links were removed to avoid 404s.
 
 ## Repository layout
 
@@ -133,7 +127,6 @@ make replay CASE_ID=cite_001 ARTIFACT_DIR=artifacts/run_20260119
 - `system_prompts/` - system prompts for LLMs
 - `configs/` - run configs (YAML)
 - `artifacts/` - run outputs and reports
-- `docs/` - project documentation
 - `.github/workflows/` - CI/CD workflows
 
 ## Artifacts
@@ -149,7 +142,7 @@ Every run creates a timestamped folder: `artifacts/<run_name>_<timestamp>_<git_s
 5. **hard_checks.jsonl** - Hard check results (one line per case+candidate)
 6. **judge_votes.jsonl** - Judge decisions (only for cases that passed hard checks)
 7. **summary.json** - Complete metrics and statistics (machine-readable)
-8. **summary.md** - Human-readable report (⭐ **start here!**)
+8. **summary.md** - Human-readable report (**start here!**)
 
 ### Example summary.json (with new metrics)
 
@@ -192,14 +185,14 @@ Every run creates a timestamped folder: `artifacts/<run_name>_<timestamp>_<git_s
 - `metamorphic_summary.md` - Robustness score breakdown
 - `outputs_transformed.jsonl` - Transformed outputs
 
-> See [docs/ARTIFACTS_SPEC.md](docs/ARTIFACTS_SPEC.md) for complete schemas
+> See the **Artifacts** section above for file list + examples (schemas are intentionally lightweight here).
 
 ## Contributing
 
 ### Development Workflow
 
 1. **Make changes** to code or test cases
-2. **Run unit tests:** `make test` (must pass all 31 tests)
+2. **Run unit tests:** `make test` (must pass all tests)
 3. **Run smoke test:** `make smoke-mock` (quick validation, no API costs)
 4. **Check results:** `cat artifacts/smoke_mock_*/summary.md`
 5. **If judge/rubric changed:** `make judge-healthcheck` (verify reliability)
@@ -210,10 +203,10 @@ Every run creates a timestamped folder: `artifacts/<run_name>_<timestamp>_<git_s
 The repo includes `.github/workflows/ci.yml` that runs on every PR:
 
 ```yaml
-✅ Unit tests (pytest)
-✅ Smoke test with mock providers
-✅ Artifact uploads
-✅ Gate evaluation (blocks merge on FAIL)
+Unit tests (pytest)
+Smoke test with mock providers
+Artifact uploads
+(Optional) Gate evaluation when enabled in config
 ```
 
 **No API keys needed for CI** - mock providers enable zero-cost testing.
@@ -235,34 +228,34 @@ All should pass before deploying changes.
 
 ### Recent Updates (January 2026)
 
-✨ **New Metrics:**
+**New Metrics:**
 - Win rate with 95% bootstrap confidence intervals
 - Per-candidate refusal rates
 - Format pass rates
 - Per-tag breakdown in all reports
 
-✨ **Quality Gates:**
+**Quality Gates:**
 - Configurable thresholds (win_rate, refusal_rate, format_pass_rate)
 - Regression detection vs baseline
 - Exit code 2 on FAIL (blocks CI/CD)
 
-✨ **Enhanced Reporting:**
+**Enhanced Reporting:**
 - Budget statistics (latency, tokens)
 - Top 3 failure examples
 - Gate results in summary
 
-✨ **Improved Replay:**
+**Improved Replay:**
 - `make replay` now executes (previously just printed usage)
 - Pass CASE_ID and ARTIFACT_DIR as arguments
 
-See [docs/Project1_fixes.md](docs/Project1_fixes.md) for implementation details.
+Implementation notes are captured in the git history; this README focuses on how to run and interpret results.
 
 ## Support & Troubleshooting
 
-- **📖 Read [HOW_TO_RUN.md](HOW_TO_RUN.md)** - Comprehensive troubleshooting guide
-- **🔍 Check error messages** - They're designed to be helpful
-- **🐛 Review artifacts** - `summary.md` shows what went wrong
-- **💬 Open an issue** - We're here to help!
+- ** Read [HOW_TO_RUN.md](HOW_TO_RUN.md)** - Comprehensive troubleshooting guide
+- ** Check error messages** - They're designed to be helpful
+- ** Review artifacts** - `summary.md` shows what went wrong
+- ** Open an issue** - We're here to help!
 
 ## License
 
