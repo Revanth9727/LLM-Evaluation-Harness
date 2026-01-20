@@ -17,10 +17,6 @@ build/
 .venv/
 venv/
 
-# Artifacts (generated outputs)
-artifacts/
-runs/
-logs/
 
 # OS / editor
 .DS_Store
