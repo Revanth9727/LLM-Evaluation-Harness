@@ -17,7 +17,6 @@ candidates:
 context_builder:
   mode: oracle_from_corpus
   corpus_root: corpus
-  page_offset: 22
   max_chars_per_chunk: 4000
   chunk_template: |
     [{{doc_id}} p{{dataset_page}}]

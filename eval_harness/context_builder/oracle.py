@@ -18,7 +18,6 @@ class OracleContextBuilder:
             config: Context builder configuration
         """
         self.corpus_root = Path(config.get('corpus_root', 'corpus'))
-        self.page_offset = config.get('page_offset', 0)
         self.max_chars_per_chunk = config.get('max_chars_per_chunk', 4000)
 
     def build_context(self, case: Case) -> List[ContextChunk]:
@@ -40,18 +39,17 @@ class OracleContextBuilder:
         chunks = []
 
         for source in case.sources:
-            # Calculate corpus page: corpus_page = dataset_page + page_offset
+            # Use dataset page directly (no offset)
             dataset_page = source.page
-            corpus_page = dataset_page + self.page_offset
 
-            # Build corpus file path
-            corpus_file = self.corpus_root / source.doc_id / f"{corpus_page}.txt"
+            # Build corpus file path using dataset page
+            corpus_file = self.corpus_root / source.doc_id / f"{dataset_page}.txt"
 
             # Check if file exists
             if not corpus_file.exists():
                 raise ValueError(
                     f"Corpus file not found for case {case.id}: {corpus_file}\n"
-                    f"(dataset_page={dataset_page}, corpus_page={corpus_page}, offset={self.page_offset})"
+                    f"(dataset_page={dataset_page})"
                 )
 
             # Read text
@@ -67,11 +65,10 @@ class OracleContextBuilder:
                 text, truncated = truncate_text(text, self.max_chars_per_chunk)
 
             # Create chunk
-            # CRITICAL: Header must cite dataset_page, NOT corpus_page
             chunk = ContextChunk(
                 doc_id=source.doc_id,
-                dataset_page=dataset_page,  # Use dataset page in header
-                corpus_page=corpus_page,     # Store corpus page for metadata
+                dataset_page=dataset_page,
+                corpus_page=dataset_page,  # Same as dataset_page (no offset)
                 text=text,
                 truncated=truncated,
                 blank_page=is_blank

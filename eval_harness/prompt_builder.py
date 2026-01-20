@@ -1,7 +1,7 @@
 """
 Prompt builder for candidates.
 """
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 from .models import Case, ContextChunk
 
 
@@ -22,6 +22,7 @@ def build_candidate_prompt(case: Case, context_chunks: List[ContextChunk] = None
     # Add context if present
     if context_chunks:
         # Context from oracle builder (ContextChunk objects)
+        # Oracle builder already handles page_offset internally
         context_text = "\n\n".join([
             f"[{chunk.doc_id} p{chunk.dataset_page}]\n{chunk.text}"
             for chunk in context_chunks
@@ -30,9 +31,7 @@ def build_candidate_prompt(case: Case, context_chunks: List[ContextChunk] = None
     elif case.context:
         # Context from dataset (dict format)
         context_text = "\n\n".join([
-            f"[{ctx.get('doc_id', 'UNKNOWN')} p{ctx.get('page', 0)}]\n{ctx.get('text', '')}"
-            if 'doc_id' in ctx
-            else ctx.get('text', '')
+            _format_embedded_context_chunk(ctx)
             for ctx in case.context
         ])
         prompt_parts.append(f"Context:\n{context_text}")
@@ -41,3 +40,26 @@ def build_candidate_prompt(case: Case, context_chunks: List[ContextChunk] = None
     prompt_parts.append(f"Question: {case.input}")
 
     return "\n\n".join(prompt_parts)
+
+
+def _format_embedded_context_chunk(ctx: Dict[str, Any]) -> str:
+    """
+    Format a single embedded context chunk.
+
+    Args:
+        ctx: Context dictionary with doc_id, page, text
+
+    Returns:
+        Formatted context chunk string
+    """
+    # If no doc_id, just return text
+    if 'doc_id' not in ctx:
+        return ctx.get('text', '')
+
+    # Get page number directly (no offset)
+    page = ctx.get('page', 0)
+
+    doc_id = ctx.get('doc_id', 'UNKNOWN')
+    text = ctx.get('text', '')
+
+    return f"[{doc_id} p{page}]\n{text}"

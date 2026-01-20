@@ -1,4 +1,4 @@
-# Smoke run config (Schema A: input + context[])
+# Smoke run config (Schema B: question + sources[]; context built from corpus)
 run_name: smoke
 dataset_path: data/smoke.jsonl
 

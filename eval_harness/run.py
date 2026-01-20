@@ -282,7 +282,9 @@ def run_evaluation(config_path: str):
         judge_runner = JudgeRunner(config['judge'], judge_provider)
 
     # Initialize hard check runner
-    hard_check_runner = HardCheckRunner(config.get('hard_checks', {}))
+    hard_checks_config = config.get('hard_checks', {}).copy()
+    hard_checks_config['task_contract'] = config.get('task_contract', {})
+    hard_check_runner = HardCheckRunner(hard_checks_config)
 
     # Initialize oracle context builder if needed
     oracle_builder = None

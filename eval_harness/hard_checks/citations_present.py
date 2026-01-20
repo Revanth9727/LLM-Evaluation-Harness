@@ -17,6 +17,11 @@ class CitationsPresentCheck(HardCheck):
             r'\[[A-Za-z0-9_-]+(?:\s+p|_p)\d+\]'
         )
         self.pattern = re.compile(self.citation_regex)
+        # Canonical IDK response (no citations required)
+        self.canonical_idk = self.config.get(
+            'canonical_idk',
+            "I don't know based on the provided context."
+        )
 
     def applies_to(self, case: Case) -> bool:
         """
@@ -45,6 +50,22 @@ class CitationsPresentCheck(HardCheck):
         Returns:
             HardCheckResult
         """
+        # Check if output is canonical IDK - if so, citations not required
+        if output.strip() == self.canonical_idk:
+            return HardCheckResult(
+                name="citations_present",
+                passed=True,
+                severity="error",
+                reason=None,
+                details={
+                    "expected": "canonical IDK response (no citations required)",
+                    "found": [],
+                    "count": 0,
+                    "is_canonical_idk": True
+                }
+            )
+
+        # Otherwise, check for citations as normal
         citations = self.pattern.findall(output)
         has_citations = len(citations) > 0
 

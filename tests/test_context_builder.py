@@ -36,8 +36,8 @@ def test_oracle_context_builder():
         doc_dir = corpus_root / "TEST_DOC"
         doc_dir.mkdir()
 
-        # Create corpus file (page 25 = dataset page 4 + offset 21)
-        corpus_file = doc_dir / "25.txt"
+        # Create corpus file (page 4, no offset)
+        corpus_file = doc_dir / "4.txt"
         corpus_file.write_text("This is page 4 content.")
 
         # Create case with sources
@@ -50,7 +50,6 @@ def test_oracle_context_builder():
         # Build context
         builder = OracleContextBuilder({
             'corpus_root': str(corpus_root),
-            'page_offset': 21,
             'max_chars_per_chunk': 4000
         })
 
@@ -59,7 +58,7 @@ def test_oracle_context_builder():
         assert len(chunks) == 1
         assert chunks[0].doc_id == "TEST_DOC"
         assert chunks[0].dataset_page == 4  # Dataset page
-        assert chunks[0].corpus_page == 25   # Corpus page
+        assert chunks[0].corpus_page == 4    # Same as dataset page (no offset)
         assert chunks[0].text == "This is page 4 content."
         assert not chunks[0].truncated
 
@@ -71,8 +70,8 @@ def test_oracle_context_builder_blank_page():
         doc_dir = corpus_root / "TEST_DOC"
         doc_dir.mkdir()
 
-        # Create blank page
-        corpus_file = doc_dir / "25.txt"
+        # Create blank page (page 4, no offset)
+        corpus_file = doc_dir / "4.txt"
         corpus_file.write_text("[[BLANK_PAGE]]")
 
         case = Case(
@@ -83,7 +82,6 @@ def test_oracle_context_builder_blank_page():
 
         builder = OracleContextBuilder({
             'corpus_root': str(corpus_root),
-            'page_offset': 21,
             'max_chars_per_chunk': 4000
         })
 
