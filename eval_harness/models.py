@@ -48,6 +48,21 @@ class CandidateOutput:
     output: str
     error: Optional[str] = None
     latency_ms: Optional[float] = None
+    citations: Optional[List[Any]] = None
+    token_usage: Optional[Dict[str, Any]] = None
+    model_id: Optional[str] = None
+    metadata: Dict[str, Any] = field(default_factory=dict)
+
+
+@dataclass
+class ModelResponse:
+    """Canonical internal model response shape."""
+    output: str
+    citations: Optional[List[Any]] = None
+    latency_ms: Optional[float] = None
+    token_usage: Optional[Dict[str, Any]] = None
+    model_id: Optional[str] = None
+    metadata: Dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass

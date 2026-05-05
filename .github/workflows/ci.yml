@@ -22,7 +22,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install .[dev]
 
     - name: Run unit tests
       run: |
@@ -31,6 +31,19 @@ jobs:
     - name: Run smoke test (mock providers)
       run: |
         python -m eval_harness.run --config configs/smoke_mock.yaml
+
+    - name: Build package artifacts
+      run: |
+        python -m build
+
+    - name: Validate package metadata
+      run: |
+        python -m twine check dist/*
+
+    - name: Install from wheel and verify CLI
+      run: |
+        python -m pip install --force-reinstall dist/*.whl
+        eval-harness --help
 
     - name: Upload smoke test artifacts
       if: always()

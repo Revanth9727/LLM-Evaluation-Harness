@@ -1,14 +1,8 @@
-# Core dependencies
+# Convenience runtime requirements.
+# Source of truth is pyproject.toml.
 pyyaml>=6.0
 python-dotenv>=1.0.0
 openai>=1.12.0
 anthropic>=0.18.0
-
-# Testing
-pytest>=7.4.0
-pytest-cov>=4.1.0
-
-# Utilities
 jinja2>=3.1.2
-
 numpy>=1.23.0

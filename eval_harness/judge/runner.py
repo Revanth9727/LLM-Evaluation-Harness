@@ -3,9 +3,10 @@ Judge runner.
 """
 import json
 import random
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, Callable
 from ..models import Case, JudgeVote
 from ..providers.base import BaseProvider
+from ..runtime.callables import normalize_judge_response
 from ..utils.system_prompts import load_system_prompt
 from .prompt_builder import load_rubric, build_judge_prompt
 
@@ -13,16 +14,23 @@ from .prompt_builder import load_rubric, build_judge_prompt
 class JudgeRunner:
     """Runs judge evaluations."""
 
-    def __init__(self, config: Dict[str, Any], provider: BaseProvider):
+    def __init__(
+        self,
+        config: Dict[str, Any],
+        provider: Optional[BaseProvider] = None,
+        judge_callable: Optional[Callable[..., Any]] = None,
+    ):
         """
         Initialize judge runner.
 
         Args:
             config: Judge configuration
             provider: Judge provider
+            judge_callable: Optional BYO callable for judging
         """
         self.config = config
         self.provider = provider
+        self.judge_callable = judge_callable
         self.enabled = config.get('enabled', True)
 
         if self.enabled and 'rubric_path' in config:
@@ -36,6 +44,9 @@ class JudgeRunner:
         self.order_randomization_seed = config.get('order_randomization_seed', 1337)
         self.two_pass_on_uncertain = config.get('two_pass_on_uncertain', False)
         self._case_counter = 0
+
+        if self.enabled and self.provider is None and self.judge_callable is None:
+            raise ValueError("JudgeRunner requires either provider or judge_callable when enabled")
 
     def judge_case(
         self,
@@ -73,29 +84,26 @@ class JudgeRunner:
 
         # Get judge response
         try:
-            raw_response = self.provider.generate(prompt, system_message=self.system_prompt)
-            vote = self._parse_judge_response(raw_response, case.id, swapped)
+            vote = self._judge_with_prompt(prompt, case.id, swapped)
 
-            # Two-pass judging for uncertain votes
-            if self.two_pass_on_uncertain and vote.confidence < 0.5:
-                # Swap order and judge again
+            # Two-pass judging is verdict-state driven, not confidence-driven
+            if self.two_pass_on_uncertain and vote.winner == "uncertain":
                 prompt2, swapped2 = build_judge_prompt(
                     case=case,
                     answer_a=output_a,
                     answer_b=output_b,
                     rubric=self.rubric,
                     randomize_order=True,
-                    seed=case_seed + 1000  # Different seed for second pass
+                    seed=case_seed + 1000
                 )
 
-                raw_response2 = self.provider.generate(prompt2, system_message=self.system_prompt)
-                vote2 = self._parse_judge_response(raw_response2, case.id, swapped2)
+                vote2 = self._judge_with_prompt(prompt2, case.id, swapped2)
 
-                # If votes disagree, mark as uncertain
-                if vote.winner != vote2.winner:
-                    vote.winner = "uncertain"
-                    vote.confidence = min(vote.confidence, vote2.confidence)
-                    vote.notes += f" [Two-pass disagreement: {vote.winner} vs {vote2.winner}]"
+                # If second pass is decisive, use it. Else remain uncertain.
+                if vote2.winner in ["A", "B", "tie"]:
+                    return vote2
+
+                vote.notes = (vote.notes + " [Two-pass remained uncertain]").strip()
 
             return vote
 
@@ -110,6 +118,34 @@ class JudgeRunner:
                 notes="Error during judging",
                 raw_response=""
             )
+
+    def _judge_with_prompt(self, prompt: str, case_id: str, swapped: bool) -> JudgeVote:
+        """Run judging for a prepared prompt using provider or BYO callable."""
+        if self.judge_callable is not None:
+            raw = self.judge_callable(prompt=prompt, metadata={"system_prompt": self.system_prompt})
+            normalized = normalize_judge_response(raw)
+            winner = normalized['winner']
+            if swapped and winner in ['A', 'B']:
+                winner = 'B' if winner == 'A' else 'A'
+
+            confidence = normalized.get('confidence', 0.0)
+            try:
+                confidence = float(confidence)
+            except (TypeError, ValueError):
+                confidence = 0.0
+
+            return JudgeVote(
+                case_id=case_id,
+                winner=winner,
+                confidence=confidence,
+                reasons=normalized.get('reasons', []),
+                citations_assessed=normalized.get('citations_assessed', []),
+                notes=normalized.get('notes', ''),
+                raw_response=normalized.get('raw_response', ''),
+            )
+
+        raw_response = self.provider.generate(prompt, system_message=self.system_prompt)
+        return self._parse_judge_response(raw_response, case_id, swapped)
 
     def _parse_judge_response(
         self,

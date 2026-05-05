@@ -257,7 +257,7 @@ class ArtifactWriter:
         # Group cases by tag
         tags_map = {}
         for case in cases:
-            for tag in case.tags:
+            for tag in (case.tags or []):
                 if tag not in tags_map:
                     tags_map[tag] = []
                 tags_map[tag].append(case.id)

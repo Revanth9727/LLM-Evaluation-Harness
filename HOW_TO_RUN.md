@@ -39,11 +39,11 @@ Before you start, make sure you have:
 
 ```bash
 # If you already have the project, navigate to it
-cd path/to/Eval-Harness
+cd path/to/LLM-Evaluation-Harness
 
 # Or if you're cloning it for the first time
 git clone <repository-url>
-cd Eval-Harness
+cd LLM-Evaluation-Harness
 ```
 
 ### Step 2: Install dependencies
@@ -64,8 +64,8 @@ python -m venv .venv
 # On Mac/Linux:
 source .venv/bin/activate
 
-# Install dependencies
-pip install -r requirements.txt
+# Install the package with development tools
+pip install .[dev]
 ```
 
 ### Step 3: Set up environment variables (optional for mock runs)
@@ -144,12 +144,12 @@ code artifacts/smoke_mock_*/summary.md
 
 ### What is this tool?
 
-This is an **A/B testing framework** for comparing two AI models (or prompts, or configurations). It:
+This is an **A/B regression gate** for comparing two AI models, prompts, or configurations before a change merges. It:
 
 1. **Runs both models** on the same test cases
 2. **Checks outputs** using deterministic rules (hard checks)
 3. **Uses a judge** to compare subjective quality (only if both pass hard checks)
-4. **Generates reports** with metrics and confidence intervals
+4. **Generates artifacts** with metrics, confidence intervals, and a CI-friendly exit code
 
 ### Key Concepts
 
@@ -508,7 +508,7 @@ tests/test_metrics.py::test_bootstrap_ci_basic PASSED
 make setup
 
 # Or manually
-pip install -r requirements.txt --force-reinstall
+pip install --force-reinstall .[dev]
 ```
 
 ### Problem: "OPENAI_API_KEY not set"
@@ -635,8 +635,9 @@ Now that you know how to run evaluations:
 
 1. **Read the docs:**
    - `README.md` - Overview and quickstart
-   - `docs/project1_eval_harness.md` - Full project explanation
-   - `docs/runbook_interpreting_reports.md` - Deep dive on reports
+   - `PROJECT.md` - v1 product scope and contracts
+   - `changes.md` - Summary of the recent PyPI/callable updates
+   - `artifacts/artifacts_spec.md` - Artifact schema reference
 
 2. **Try different configs:**
    - Edit `configs/smoke_mock.yaml`

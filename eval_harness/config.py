@@ -83,5 +83,30 @@ def validate_run_config(config: Dict[str, Any]) -> None:
 
     for candidate in ['A', 'B']:
         cand_config = config['candidates'][candidate]
-        if 'provider' not in cand_config or 'model' not in cand_config:
-            raise ValueError(f"Candidate {candidate} must have 'provider' and 'model'")
+        has_provider = 'provider' in cand_config
+        has_callable = 'callable' in cand_config
+
+        if has_provider == has_callable:
+            raise ValueError(
+                f"Candidate {candidate} must define exactly one of 'provider' or 'callable'"
+            )
+
+        if has_provider and 'model' not in cand_config:
+            raise ValueError(f"Candidate {candidate} must have 'model' when using 'provider'")
+
+        if has_callable and not isinstance(cand_config.get('callable'), str):
+            raise ValueError(f"Candidate {candidate} callable must be a string path 'module:function'")
+
+    judge_config = config.get('judge', {})
+    if judge_config.get('enabled', False):
+        has_provider = 'provider' in judge_config
+        has_callable = 'callable' in judge_config
+
+        if has_provider == has_callable:
+            raise ValueError("Judge must define exactly one of 'provider' or 'callable' when enabled")
+
+        if has_provider and 'model' not in judge_config:
+            raise ValueError("Judge must have 'model' when using 'provider'")
+
+        if has_callable and not isinstance(judge_config.get('callable'), str):
+            raise ValueError("Judge callable must be a string path 'module:function'")

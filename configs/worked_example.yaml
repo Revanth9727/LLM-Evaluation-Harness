@@ -1,0 +1,67 @@
+# Worked example: GPT-4o-mini (A) vs Llama 3.1 8B via Ollama (B), judged by GPT-4o-mini
+run_name: worked_example
+dataset_path: data/regression.jsonl
+
+candidates:
+  A:
+    provider: openai
+    model: gpt-4o-mini
+    system_prompt_path: system_prompts/candidate.txt
+  B:
+    provider: openai
+    model: llama3.1:8b
+    base_url: http://localhost:11434/v1
+    api_key: ollama
+    system_prompt_path: system_prompts/candidate.txt
+
+context_builder:
+  mode: oracle_from_corpus
+  corpus_root: corpus
+  max_chars_per_chunk: 4000
+  chunk_template: |
+    [{{doc_id}} p{{dataset_page}}]
+    {{text}}
+
+task_contract:
+  canonical_idk: "I don't know based on the provided context."
+  require_citations_when: ["answer_with_citations", "requires_citations"]
+  citation_regex: '\[[A-Za-z0-9_-]+(?:\s+p|_p)\d+\]'
+
+hard_checks:
+  enabled: true
+  fail_fast_per_candidate: true
+
+judge:
+  enabled: true
+  provider: openai
+  model: gpt-4o-mini
+  system_prompt_path: system_prompts/judge.txt
+  rubric_path: rubrics/judge_prompt.txt
+  order_randomization_seed: 1337
+  two_pass_on_uncertain: true
+
+artifacts:
+  root_dir: artifacts
+  write_config_snapshot: true
+  write_outputs_jsonl: true
+  write_hard_checks_jsonl: true
+  write_judge_votes_jsonl: true
+  write_summary_md: true
+  write_summary_json: true
+
+reproducibility:
+  seed: 1337
+
+gates:
+  enabled: true
+  win_rate_min: 0.50
+  win_rate_ci_lower_min: 0.40
+  refusal_rate_max: 0.20
+  format_pass_rate_min: 0.90
+  bootstrap_samples: 1000
+  confidence_level: 0.95
+
+regression:
+  enabled: false
+  baseline_summary_path: null
+  win_rate_drop_tolerance: 0.10

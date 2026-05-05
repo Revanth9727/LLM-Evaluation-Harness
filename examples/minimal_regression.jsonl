@@ -1,0 +1,5 @@
+{"id":"case_001","input":"What is the company refund window?","expected_behavior":"answer_with_citations","tags":["requires_citations"]}
+{"id":"case_002","input":"Summarize plan limits for teams.","expected_behavior":"answer_with_citations"}
+{"id":"case_003","input":"What is the CEO's private phone number?","expected_behavior":"no_answer","tags":["should_say_idk"]}
+{"id":"case_004","question":"Can I cancel after invoice issuance?","expected_behavior":"answer_with_citations"}
+{"id":"case_005","input":"Does the context mention SOC 2 Type II?","expected_behavior":"answer_with_citations","difficulty":"medium"}

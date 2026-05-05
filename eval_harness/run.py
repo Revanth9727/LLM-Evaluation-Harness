@@ -4,7 +4,7 @@ Main evaluation runner.
 import sys
 import time
 from pathlib import Path
-from typing import Dict, List, Any, Optional
+from typing import Dict, List, Any, Optional, Callable
 from .config import load_config, validate_run_config
 from .dataset_loader import load_dataset
 from .prompt_builder import build_candidate_prompt
@@ -12,7 +12,8 @@ from .providers.factory import create_provider
 from .hard_checks.runner import HardCheckRunner
 from .judge.runner import JudgeRunner
 from .artifacts.writer import ArtifactWriter, create_run_id
-from .models import Case, CandidateOutput, HardCheckResult, JudgeVote, ContextChunk
+from .models import Case, CandidateOutput, HardCheckResult, JudgeVote, ContextChunk, ModelResponse
+from .runtime.callables import load_callable_from_string, normalize_model_response
 from .utils.seed import set_seed
 from .utils.logging import setup_logging
 from .utils.system_prompts import load_system_prompt
@@ -73,6 +74,10 @@ def evaluate_gates(config: Dict[str, Any], run_dir: Path, logger) -> int:
     failures = []
     warnings = []
     thresholds_checked = {}
+
+    # Fail closed when there are no decisive outcomes
+    if metrics.get('win_rate') is None:
+        failures.append("No decisive judge outcomes (all non-judgeable or uncertain)")
 
     # J3) Check thresholds
     logger.info("Evaluating gate thresholds...")
@@ -222,6 +227,72 @@ def evaluate_gates(config: Dict[str, Any], run_dir: Path, logger) -> int:
     return exit_code
 
 
+def _serialize_context_for_callable(
+    case: Case,
+    context_chunks: Optional[List[ContextChunk]]
+) -> Optional[List[Dict[str, Any]]]:
+    """Convert context to serializable payload for BYO callable candidates."""
+    if context_chunks is not None:
+        return [
+            {
+                'doc_id': chunk.doc_id,
+                'dataset_page': chunk.dataset_page,
+                'corpus_page': chunk.corpus_page,
+                'text': chunk.text,
+                'truncated': chunk.truncated,
+                'blank_page': chunk.blank_page,
+            }
+            for chunk in context_chunks
+        ]
+
+    return case.context
+
+
+def _build_candidate_runtime(candidate_config: Dict[str, Any]) -> Dict[str, Any]:
+    """Build runtime object for provider-backed or callable-backed candidate."""
+    cand_config = candidate_config.copy()
+    system_prompt = load_system_prompt(cand_config.pop('system_prompt_path', None))
+
+    if 'callable' in cand_config:
+        fn = load_callable_from_string(cand_config.pop('callable'))
+        return {
+            'mode': 'callable',
+            'callable': fn,
+            'system_prompt': system_prompt,
+        }
+
+    provider = create_provider(
+        cand_config.pop('provider'),
+        cand_config.pop('model'),
+        **cand_config,
+    )
+    return {
+        'mode': 'provider',
+        'provider': provider,
+        'system_prompt': system_prompt,
+    }
+
+
+def _run_candidate(
+    runtime: Dict[str, Any],
+    case: Case,
+    context_chunks: Optional[List[ContextChunk]],
+) -> ModelResponse:
+    """Run a candidate runtime and return canonical ModelResponse."""
+    if runtime['mode'] == 'provider':
+        prompt = build_candidate_prompt(case, context_chunks)
+        raw = runtime['provider'].generate(prompt, system_message=runtime['system_prompt'])
+        return normalize_model_response(raw)
+
+    context_payload = _serialize_context_for_callable(case, context_chunks)
+    raw = runtime['callable'](
+        input=case.input,
+        context=context_payload,
+        metadata=case.extra,
+    )
+    return normalize_model_response(raw)
+
+
 def run_evaluation(config_path: str):
     """
     Run an A/B evaluation.
@@ -248,38 +319,38 @@ def run_evaluation(config_path: str):
     cases = load_dataset(dataset_path)
     logger.info(f"Loaded {len(cases)} cases")
 
-    # Create providers
-    logger.info("Initializing providers...")
-
-    # Provider A
-    provider_a_config = config['candidates']['A'].copy()
-    system_prompt_a = load_system_prompt(provider_a_config.pop('system_prompt_path', None))
-    provider_a = create_provider(
-        provider_a_config.pop('provider'),
-        provider_a_config.pop('model'),
-        **provider_a_config
-    )
-
-    # Provider B
-    provider_b_config = config['candidates']['B'].copy()
-    system_prompt_b = load_system_prompt(provider_b_config.pop('system_prompt_path', None))
-    provider_b = create_provider(
-        provider_b_config.pop('provider'),
-        provider_b_config.pop('model'),
-        **provider_b_config
-    )
+    # Create candidate runtimes
+    logger.info("Initializing candidates...")
+    candidate_runtimes = {
+        'A': _build_candidate_runtime(config['candidates']['A']),
+        'B': _build_candidate_runtime(config['candidates']['B']),
+    }
 
     # Initialize judge if enabled
     judge_runner = None
     if config.get('judge', {}).get('enabled', False):
         logger.info("Initializing judge...")
         judge_config = config['judge'].copy()
-        judge_provider = create_provider(
-            judge_config.pop('provider'),
-            judge_config.pop('model'),
-            **{k: v for k, v in judge_config.items() if k not in ['enabled', 'rubric_path', 'order_randomization_seed', 'two_pass_on_uncertain']}
+        judge_callable: Optional[Callable[..., Any]] = None
+        judge_provider = None
+
+        if 'callable' in judge_config:
+            judge_callable = load_callable_from_string(judge_config.pop('callable'))
+        else:
+            judge_provider = create_provider(
+                judge_config.pop('provider'),
+                judge_config.pop('model'),
+                **{
+                    k: v for k, v in judge_config.items()
+                    if k not in ['enabled', 'rubric_path', 'order_randomization_seed', 'two_pass_on_uncertain', 'system_prompt_path']
+                }
+            )
+
+        judge_runner = JudgeRunner(
+            config['judge'],
+            provider=judge_provider,
+            judge_callable=judge_callable,
         )
-        judge_runner = JudgeRunner(config['judge'], judge_provider)
 
     # Initialize hard check runner
     hard_checks_config = config.get('hard_checks', {}).copy()
@@ -326,26 +397,28 @@ def run_evaluation(config_path: str):
         outputs[case.id] = {}
         hard_checks[case.id] = {}
 
-        for candidate, provider, sys_prompt in [('A', provider_a, system_prompt_a), ('B', provider_b, system_prompt_b)]:
+        for candidate in ['A', 'B']:
             logger.info(f"  Generating output from candidate {candidate}")
 
             try:
-                # Build prompt
-                prompt = build_candidate_prompt(case, context_chunks)
-
                 # Generate (only if context didn't fail)
                 if context_build_error:
                     raise ValueError(f"Context build failed: {context_build_error}")
 
                 start_time = time.time()
-                output = provider.generate(prompt, system_message=sys_prompt)
-                latency_ms = (time.time() - start_time) * 1000
+                model_response = _run_candidate(candidate_runtimes[candidate], case, context_chunks)
+                measured_latency_ms = (time.time() - start_time) * 1000
+                latency_ms = model_response.latency_ms if model_response.latency_ms is not None else measured_latency_ms
 
                 outputs[case.id][candidate] = CandidateOutput(
                     case_id=case.id,
                     candidate=candidate,
-                    output=output,
-                    latency_ms=latency_ms
+                    output=model_response.output,
+                    latency_ms=latency_ms,
+                    citations=model_response.citations,
+                    token_usage=model_response.token_usage,
+                    model_id=model_response.model_id,
+                    metadata=model_response.metadata,
                 )
 
             except Exception as e:

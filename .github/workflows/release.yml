@@ -1,0 +1,59 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version to publish (e.g. 0.1.1)"
+        required: true
+        type: string
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install packaging tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install build twine
+
+      - name: Validate version input
+        run: |
+          python - <<'PY'
+          import tomllib
+          from pathlib import Path
+
+          pyproject = Path('pyproject.toml')
+          data = tomllib.loads(pyproject.read_text())
+          declared = data['project']['version']
+          requested = '${{ inputs.version }}'
+          if declared != requested:
+              raise SystemExit(
+                  f"Version mismatch: pyproject.toml has {declared}, workflow input is {requested}."
+              )
+          print(f"Version check passed: {declared}")
+          PY
+
+      - name: Build package artifacts
+        run: |
+          python -m build
+
+      - name: Validate package metadata
+        run: |
+          python -m twine check dist/*
+
+      - name: Publish to PyPI (trusted publishing)
+        uses: pypa/gh-action-pypi-publish@release/v1
