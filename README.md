@@ -55,14 +55,20 @@ All artifacts land in `artifacts/smoke_mock_<timestamp>_<git_sha>/` — 8 files 
 
 ## Quickstart
 
-```bash
-pip install eval-harness
-eval-harness run --config configs/smoke_mock.yaml
-```
+    git clone git@github.com:Revanth9727/LLM-Evaluation-Harness.git
+    cd LLM-Evaluation-Harness
+    python -m venv .venv
+    source .venv/bin/activate
+    pip install -e ".[dev]"
+    eval-harness run --config configs/smoke_mock.yaml
 
-Results print to stdout. Full artifacts write to `artifacts/`. Start with `summary.md` in the run folder.
+This runs the zero-cost mock suite and writes artifacts to the artifacts/ folder.
 
-When developing from a local checkout, use `pip install .[dev]`. The Makefile is a contributor convenience; the installed user interface is the `eval-harness` CLI.
+> PyPI publishing is intentionally not enabled yet. Until the package name is finalized, install from source.
+
+## Positioning
+
+This is not a hosted observability dashboard and not a public benchmark leaderboard. Use it to answer one production question: "I changed a prompt, retriever, model, or config. Did I regress my document-grounded assistant?" The harness is batch-oriented and CI-friendly: deterministic checks first, LLM judging second, an artifact trail always.
 
 ## BYO Contract (v1)
 
